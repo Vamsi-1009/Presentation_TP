@@ -2297,14 +2297,40 @@
     const text = voiceTexts[lang][current];
     if (!text) return;
 
+    const targetLang = lang === 'en' ? 'en-IN' : 'te-IN';
+
+    // Check if the required voice is available
+    const voices = window.speechSynthesis.getVoices();
+    const hasVoice = voices.some(v => v.lang.startsWith(targetLang.split('-')[0]));
+
+    if (lang === 'te' && !hasVoice) {
+      // Show a short toast instead of blocking alert
+      showVoiceToast('Telugu voice not available on this device.\nAndroid: Settings → Text-to-Speech → Install Telugu');
+      return;
+    }
+
     const utter = new SpeechSynthesisUtterance(text);
-    utter.lang  = lang === 'en' ? 'en-IN' : 'te-IN';
+    utter.lang  = targetLang;
     utter.rate  = 0.92;
     utter.pitch = 1;
 
     btn.classList.add('speaking');
     utter.onend = utter.onerror = () => btn.classList.remove('speaking');
     window.speechSynthesis.speak(utter);
+  }
+
+  function showVoiceToast(msg) {
+    let toast = document.getElementById('voiceToast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'voiceToast';
+      toast.style.cssText = 'position:fixed;bottom:62px;right:12px;background:rgba(20,20,20,0.92);color:#fff;font-size:0.72rem;padding:8px 12px;border-radius:10px;z-index:99999;max-width:220px;line-height:1.5;border:1px solid rgba(255,255,255,0.15);text-align:left;white-space:pre-line;';
+      document.body.appendChild(toast);
+    }
+    toast.textContent = msg;
+    toast.style.display = 'block';
+    clearTimeout(toast._t);
+    toast._t = setTimeout(() => { toast.style.display = 'none'; }, 4000);
   }
 
 
