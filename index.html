@@ -2153,6 +2153,64 @@
     }
   });
 
+  /* ══════════════════════════════════════════
+     TOUCH — swipe to navigate, hold to pause
+  ══════════════════════════════════════════ */
+  (function() {
+    let touchStartX = 0, touchStartY = 0;
+    let touchStartTime = 0;
+    let holdTimer = null;
+    let isHolding = false;
+    const SWIPE_MIN = 50;   // px minimum swipe distance
+    const HOLD_MS   = 350;  // ms before a tap becomes a hold/pause
+
+    function onTouchStart(e) {
+      const t = e.touches[0];
+      touchStartX    = t.clientX;
+      touchStartY    = t.clientY;
+      touchStartTime = Date.now();
+      isHolding      = false;
+
+      holdTimer = setTimeout(() => {
+        isHolding = true;
+        pause();
+      }, HOLD_MS);
+    }
+
+    function onTouchEnd(e) {
+      clearTimeout(holdTimer);
+
+      if (isHolding) {
+        // finger lifted after hold — resume
+        resume();
+        return;
+      }
+
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      const dy = e.changedTouches[0].clientY - touchStartY;
+      const elapsed_ms = Date.now() - touchStartTime;
+
+      // Only count as swipe if mostly horizontal and fast enough
+      if (Math.abs(dx) > SWIPE_MIN && Math.abs(dx) > Math.abs(dy) * 1.5 && elapsed_ms < 500) {
+        if (dx < 0) goTo(current + 1);   // swipe left  → next
+        else        goTo(current - 1);   // swipe right → prev
+      }
+    }
+
+    function onTouchMove(e) {
+      // If finger moves more than 10px, cancel the hold timer
+      const dx = Math.abs(e.touches[0].clientX - touchStartX);
+      const dy = Math.abs(e.touches[0].clientY - touchStartY);
+      if (dx > 10 || dy > 10) {
+        clearTimeout(holdTimer);
+      }
+    }
+
+    document.addEventListener('touchstart', onTouchStart, { passive: true });
+    document.addEventListener('touchend',   onTouchEnd,   { passive: true });
+    document.addEventListener('touchmove',  onTouchMove,  { passive: true });
+  })();
+
   // ══ Responsive scaling ══
   const DESIGN_W = 1440, DESIGN_H = 810;
 
