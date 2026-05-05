@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover"/>
   <title>Movie Anti-Piracy Protection System</title>
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'Segoe UI',sans-serif; background:#000; color:#fff; overflow:hidden; width:100vw; height:100vh; display:flex; align-items:center; justify-content:center; }
+    body { font-family:'Segoe UI',sans-serif; background:#000; color:#fff; overflow:hidden; width:100vw; height:100vh; margin:0; padding:0; }
 
     .slide { display:none; width:1440px; height:810px; position:absolute; top:0; left:0; overflow:hidden; }
     .slide.active { display:flex; }
@@ -673,8 +673,9 @@
     /* ═══ PRESENTATION WRAPPER — responsive scale ═══ */
     .presentation-wrapper {
       width:1440px; height:810px;
-      position:absolute;
+      position:fixed;
       transform-origin:top left;
+      top:0; left:0;
     }
     /* ═══ LANGUAGE TOGGLE ═══ */
     .lang-toggle {
@@ -690,6 +691,284 @@
     }
     .lang-btn.active { background:rgba(0,140,255,0.28); color:#fff; text-shadow:0 0 8px rgba(0,180,255,0.5); }
     .lang-btn:hover:not(.active) { color:rgba(255,255,255,0.75); }
+
+
+    /* ════════════════════════════════════════════════
+       MOBILE RESPONSIVE  (max-width: 599px)
+       CSS media-query layout — JS transform disabled
+    ════════════════════════════════════════════════ */
+    @media (max-width: 599px) {
+
+      /* ── Wrapper & Slide base ── */
+      .presentation-wrapper {
+        width:100vw !important; height:100svh !important;
+        position:fixed !important; transform:none !important;
+        left:0 !important; top:0 !important;
+        overflow:hidden !important;
+      }
+      .slide {
+        width:100vw !important; height:100svh !important;
+        overflow-y:auto !important; overflow-x:hidden !important;
+        padding:16px !important;
+        box-sizing:border-box !important;
+      }
+
+      /* ── Progress bar & pause btn ── */
+      .s-progress { height:2px !important; }
+      .s-pause-btn { width:80px !important; height:20px !important; }
+
+      /* ── Language toggle ── */
+      .lang-toggle { top:8px !important; right:8px !important; }
+      .lang-btn { padding:4px 10px !important; font-size:0.6rem !important; }
+
+      /* ────── SLIDE 1 ────── */
+      #slide1 {
+        flex-direction:column !important;
+        align-items:center !important;
+        justify-content:flex-start !important;
+        gap:20px !important;
+        padding:44px 14px 20px !important;
+      }
+      .s1-title { font-size:1.3rem !important; text-align:center !important; }
+      .s1-divider { width:80% !important; }
+      .s1-flow {
+        flex-direction:column !important;
+        align-items:center !important;
+        width:100% !important;
+        gap:6px !important;
+      }
+      .s1-card {
+        width:85% !important; min-height:auto !important;
+        flex-direction:row !important; gap:10px !important;
+        padding:10px 14px !important; justify-content:flex-start !important;
+        align-items:center !important;
+      }
+      .s1-badge { position:static !important; transform:none !important; flex-shrink:0 !important; width:28px !important; height:28px !important; font-size:0.75rem !important; }
+      .s1-icon { font-size:1.6rem !important; }
+      .s1-label { font-size:0.78rem !important; text-align:left !important; }
+      .s1-arrow { font-size:1rem !important; padding:0 !important; transform:rotate(90deg) !important; }
+      .danger-arrows { font-size:1rem !important; gap:3px !important; }
+      .rupee { font-size:1.6rem !important; }
+
+      /* ────── SLIDE 2 ────── */
+      #slide2 {
+        flex-direction:column !important;
+        align-items:flex-start !important;
+        justify-content:flex-start !important;
+        overflow-y:auto !important;
+        padding:44px 16px 20px !important;
+        gap:16px !important;
+      }
+      .s2-left {
+        flex:none !important; width:100% !important;
+        padding:0 !important; gap:14px !important;
+      }
+      .s2-right {
+        flex:none !important; width:100% !important;
+        padding:0 !important; gap:12px !important;
+        align-items:flex-start !important;
+      }
+      .s2-right::before { display:none !important; }
+      .s2-title .line1,.s2-title .line2 { font-size:1.4rem !important; }
+      .s2-point-text { font-size:0.82rem !important; }
+      .s2-point-icon { width:36px !important; height:36px !important; font-size:1.1rem !important; }
+      .s2-revenue-number { font-size:2.6rem !important; }
+      .s2-chart { width:100% !important; height:120px !important; }
+
+      /* ────── SLIDE 3 ────── */
+      #slide3 {
+        flex-direction:column !important;
+        align-items:center !important;
+        justify-content:flex-start !important;
+        gap:12px !important;
+        padding:44px 14px 20px !important;
+      }
+      .s3-title-wrap .t1,.s3-title-wrap .t2 { font-size:1.8rem !important; }
+      .s3-subtitle { font-size:0.78rem !important; }
+      .s3-shield { width:70px !important; height:82px !important; }
+      .s3-radar { display:none !important; }
+
+      /* ────── SLIDE 4 ────── */
+      #slide4 {
+        flex-direction:column !important;
+        align-items:center !important;
+        justify-content:flex-start !important;
+        overflow-y:auto !important;
+        padding:44px 14px 20px !important;
+        gap:14px !important;
+      }
+      .s4-head { font-size:0.72rem !important; margin-bottom:10px !important; }
+      .s4-layout { flex-direction:column !important; align-items:center !important; gap:12px !important; }
+      .s4-middle { flex-direction:column !important; align-items:center !important; gap:12px !important; }
+      .s4-con-h,.s4-con-v { display:none !important; }
+      .s4-card { width:90% !important; }
+      .s4-card-title { font-size:0.8rem !important; }
+      .s4-card-desc  { font-size:0.72rem !important; }
+      .s4-shield-wrap { width:80px !important; height:80px !important; }
+      .s4-shield { width:72px !important; height:84px !important; }
+
+      /* ────── SLIDE 5 ────── */
+      #slide5 {
+        flex-direction:column !important;
+        align-items:flex-start !important;
+        justify-content:flex-start !important;
+        overflow-y:auto !important;
+        padding:44px 16px 20px !important;
+      }
+      .s5-left { flex:none !important; width:100% !important; padding:0 0 16px !important; gap:12px !important; }
+      .s5-left::after { display:none !important; }
+      .s5-right { flex:none !important; width:100% !important; padding:0 !important; gap:14px !important; align-items:flex-start !important; }
+      .s5-title { font-size:1.6rem !important; }
+      .s5-lead { font-size:0.8rem !important; }
+      .s5-step { padding:8px 10px !important; }
+      .s5-step-title { font-size:0.8rem !important; }
+      .s5-step-desc  { font-size:0.72rem !important; }
+      .s5-compare { flex-direction:row !important; justify-content:flex-start !important; gap:10px !important; }
+      .s5-eye-box { width:110px !important; padding:10px !important; }
+      .s5-screen-preview { width:88px !important; height:56px !important; }
+
+      /* ────── SLIDE 6 ────── */
+      #slide6 {
+        flex-direction:column !important;
+        align-items:flex-start !important;
+        justify-content:flex-start !important;
+        overflow-y:auto !important;
+        padding:44px 16px 20px !important;
+      }
+      .s6-left { flex:none !important; width:100% !important; padding:0 0 16px !important; gap:12px !important; }
+      .s6-left::after { display:none !important; }
+      .s6-right { flex:none !important; width:100% !important; padding:0 !important; gap:14px !important; align-items:flex-start !important; }
+      .s6-title { font-size:1.6rem !important; }
+      .s6-lead  { font-size:0.8rem !important; }
+      .s6-step { padding:8px 10px !important; }
+      .s6-step-title { font-size:0.8rem !important; }
+      .s6-step-desc  { font-size:0.72rem !important; }
+      .s6-compare { flex-direction:row !important; gap:10px !important; }
+      .s6-view-box { width:110px !important; padding:10px !important; }
+      .s6-preview { width:88px !important; height:56px !important; }
+
+      /* ────── SLIDE 7 ────── */
+      #slide7 {
+        flex-direction:column !important;
+        align-items:flex-start !important;
+        justify-content:flex-start !important;
+        overflow-y:auto !important;
+        padding:44px 16px 20px !important;
+      }
+      .s7-left { flex:none !important; width:100% !important; padding:0 0 16px !important; gap:12px !important; }
+      .s7-left::after { display:none !important; }
+      .s7-right { flex:none !important; width:100% !important; padding:0 !important; gap:14px !important; align-items:flex-start !important; }
+      .s7-title { font-size:1.6rem !important; }
+      .s7-lead  { font-size:0.8rem !important; }
+      .s7-step { padding:8px 10px !important; }
+      .s7-step-title { font-size:0.8rem !important; }
+      .s7-step-desc  { font-size:0.72rem !important; }
+      .s7-wm-frame { width:100% !important; height:100px !important; }
+
+      /* ────── SLIDE 8 ────── */
+      #slide8 {
+        flex-direction:column !important;
+        align-items:flex-start !important;
+        justify-content:flex-start !important;
+        overflow-y:auto !important;
+        padding:44px 16px 20px !important;
+      }
+      .s8-left { flex:none !important; width:100% !important; padding:0 0 16px !important; gap:12px !important; }
+      .s8-left::after { display:none !important; }
+      .s8-right { flex:none !important; width:100% !important; padding:0 !important; gap:14px !important; align-items:flex-start !important; }
+      .s8-title { font-size:1.6rem !important; }
+      .s8-lead  { font-size:0.8rem !important; }
+      .s8-step { padding:8px 10px !important; }
+      .s8-step-title { font-size:0.8rem !important; }
+      .s8-step-desc  { font-size:0.72rem !important; }
+
+      /* ────── SLIDE 9 ────── */
+      #slide9 {
+        flex-direction:column !important;
+        align-items:flex-start !important;
+        justify-content:flex-start !important;
+        overflow-y:auto !important;
+        padding:44px 16px 20px !important;
+      }
+      .s9-left { flex:none !important; width:100% !important; padding:0 0 14px !important; }
+      .s9-left::after { display:none !important; }
+      .s9-right { flex:none !important; width:100% !important; padding:0 !important; }
+      .s9-title { font-size:1.5rem !important; }
+      .s9-lead  { font-size:0.78rem !important; }
+      .s9-grid  { grid-template-columns:1fr !important; gap:10px !important; }
+      .s9-card  { padding:12px !important; }
+      .s9-card-title { font-size:0.82rem !important; }
+      .s9-point { font-size:0.7rem !important; }
+
+      /* ────── SLIDE 10 ────── */
+      #slide10 {
+        flex-direction:column !important;
+        align-items:flex-start !important;
+        justify-content:flex-start !important;
+        overflow-y:auto !important;
+        padding:44px 14px 20px !important;
+        gap:10px !important;
+      }
+      .s10-h1 { font-size:1.3rem !important; }
+      .s10-stats { grid-template-columns:1fr 1fr !important; gap:8px !important; }
+      .s10-stat-val { font-size:1.2rem !important; }
+      .s10-stat-icon { width:32px !important; height:32px !important; font-size:0.95rem !important; }
+      .s10-stat-label { font-size:0.6rem !important; }
+      .s10-panels { grid-template-columns:1fr !important; gap:10px !important; }
+
+      /* ────── SLIDE 11 ────── */
+      #slide11 {
+        flex-direction:column !important;
+        align-items:center !important;
+        justify-content:flex-start !important;
+        overflow-y:auto !important;
+        padding:44px 14px 20px !important;
+        gap:10px !important;
+      }
+      .s11-title { font-size:1.4rem !important; }
+      .s11-main {
+        grid-template-columns:1fr 1fr !important;
+        grid-template-rows:auto auto !important;
+        gap:10px !important;
+      }
+      .s11-panel.before { margin-right:0 !important; grid-column:1; }
+      .s11-panel.after  { margin-left:0 !important; grid-column:2; }
+      .s11-center { display:none !important; }
+      .s11-badge { font-size:0.6rem !important; padding:3px 10px !important; }
+      .s11-item-text { font-size:0.7rem !important; }
+      .s11-item-icon { width:26px !important; height:26px !important; font-size:0.75rem !important; }
+      .s11-banner-text { font-size:0.78rem !important; }
+      .s11-banner { padding:8px 16px !important; }
+    }
+
+    /* ════ Small landscape phones (e.g. 667×375) ════ */
+    @media (max-height: 500px) and (orientation: landscape) and (max-width: 900px) {
+      .presentation-wrapper {
+        width:100vw !important; height:100svh !important;
+        position:fixed !important; transform:none !important;
+        left:0 !important; top:0 !important;
+      }
+      .slide {
+        width:100vw !important; height:100svh !important;
+        overflow-y:auto !important; overflow-x:hidden !important;
+        padding:8px 12px !important; box-sizing:border-box !important;
+      }
+      /* Two-column slides — keep columns but reduce padding */
+      .s5-left,.s6-left,.s7-left,.s8-left { padding:0 20px 0 10px !important; gap:8px !important; }
+      .s5-right,.s6-right,.s7-right,.s8-right { padding:0 10px 0 0 !important; gap:8px !important; }
+      .s5-title,.s6-title,.s7-title,.s8-title { font-size:1.4rem !important; }
+      .s5-step,.s6-step,.s7-step,.s8-step { padding:5px 8px !important; }
+      .s5-lead,.s6-lead,.s7-lead,.s8-lead { font-size:0.72rem !important; line-height:1.4 !important; }
+      /* Slide 1 */
+      #slide1 { gap:10px !important; padding:8px 10px !important; }
+      .s1-title { font-size:1rem !important; }
+      .s1-card { min-height:auto !important; padding:6px 10px !important; }
+      .s1-icon { font-size:1.4rem !important; }
+      /* Slide 2 */
+      #slide2 { padding:8px !important; }
+      .s2-title .line1,.s2-title .line2 { font-size:1.1rem !important; }
+      .s2-revenue-number { font-size:2rem !important; }
+    }
   </style>
 </head>
 <body>
@@ -1846,23 +2125,44 @@
   });
 
   // ══ Responsive scaling ══
+  const DESIGN_W = 1440, DESIGN_H = 810;
+
   function scalePresentation() {
     const wrapper = document.getElementById('presentationWrapper');
-    const scaleX  = window.innerWidth  / 1440;
-    const scaleY  = window.innerHeight / 810;
-    const scale   = Math.min(scaleX, scaleY);
-    const offsetX = (window.innerWidth  - 1440 * scale) / 2;
-    const offsetY = (window.innerHeight - 810  * scale) / 2;
+    const vp      = window.visualViewport;
+    const vw      = vp ? vp.width  : window.innerWidth;
+    const vh      = vp ? vp.height : window.innerHeight;
+
+    // On phones (<600px) CSS media-query layout takes over — no JS transform
+    if (vw < 600) {
+      wrapper.style.transform = 'none';
+      wrapper.style.left = '0px';
+      wrapper.style.top  = '0px';
+      wrapper.style.width  = '';
+      wrapper.style.height = '';
+      return;
+    }
+
+    // Tablet/desktop: letterbox-fit scaling
+    const scale   = Math.min(vw / DESIGN_W, vh / DESIGN_H);
+    const offsetX = Math.round((vw - DESIGN_W * scale) / 2);
+    const offsetY = Math.round((vh - DESIGN_H * scale) / 2);
     wrapper.style.transform = `scale(${scale})`;
     wrapper.style.left = offsetX + 'px';
     wrapper.style.top  = offsetY + 'px';
+    wrapper.style.width  = '';
+    wrapper.style.height = '';
   }
+
   window.addEventListener('resize', scalePresentation);
+  if (window.visualViewport) window.visualViewport.addEventListener('resize', scalePresentation);
+  window.addEventListener('orientationchange', () => setTimeout(scalePresentation, 200));
   scalePresentation();
 
   // Init
   applyTranslations('en');
   startTimer();
 </script>
+
 </body>
 </html>
