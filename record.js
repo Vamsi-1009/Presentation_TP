@@ -6,7 +6,7 @@ const { execSync } = require('child_process');
 const CHROME  = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
 const HTML    = path.resolve(__dirname, 'index.html').replace(/\\/g, '/');
 const FRAMES  = path.join(__dirname, '_frames');
-const OUTPUT  = path.join(__dirname, 'presentation.mp4');
+const OUTPUT  = path.join(__dirname, 'presentation_te.mp4');
 const W = 1440, H = 810;
 
 const SLIDE_DURATIONS = [6000,6000,6000,10000,7000,7000,7000,7000,7000,7000,8000];
@@ -32,6 +32,11 @@ async function main() {
 
   const page = await browser.newPage();
   await page.goto(`file:///${HTML}`, { waitUntil: 'networkidle0' });
+
+  // Switch to Telugu before recording starts
+  await page.evaluate(() => switchLang('te'));
+  // Small pause so the first slide renders in Telugu before screencast begins
+  await new Promise(r => setTimeout(r, 400));
 
   const client = await page.createCDPSession();
 
