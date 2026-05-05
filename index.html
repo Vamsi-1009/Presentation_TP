@@ -69,18 +69,26 @@
     .chart-bars rect { fill:rgba(180,0,0,0.35); }
     .chart-arrow { fill:none; stroke:#ff2a2a; stroke-width:4; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:400; stroke-dashoffset:400; }
     .arrow-head { fill:#ff2a2a; }
-    #slide2.active .s2-title .line1  { animation:slideRight 0.6s 0.1s ease both; }
-    #slide2.active .s2-title .line2  { animation:slideRight 0.6s 0.3s ease both; }
-    #slide2.active .s2-divider       { animation:expandWidth 0.7s 0.5s ease both; }
-    #slide2.active .s2-point:nth-child(1){ animation:slideRight 0.5s 0.6s ease both; }
-    #slide2.active .s2-point:nth-child(2){ animation:slideRight 0.5s 0.8s ease both; }
-    #slide2.active .s2-point:nth-child(3){ animation:slideRight 0.5s 1.0s ease both; }
-    #slide2.active .s2-point:nth-child(4){ animation:slideRight 0.5s 1.2s ease both; }
-    #slide2.active .s2-point:nth-child(5){ animation:slideRight 0.5s 1.4s ease both; }
-    #slide2.active .s2-revenue-label { animation:fadeIn 0.6s 0.5s ease both; }
-    #slide2.active .s2-revenue-number{ animation:countUp 0.8s 0.8s ease both; }
-    #slide2.active .s2-chart         { animation:fadeIn 0.6s 1.0s ease both; }
-    #slide2.active .chart-arrow      { animation:arrowDrop 1.2s 1.3s ease both; }
+    #slide2.active .s2-title .line1  { animation:slideRight 1.0s 0.3s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide2.active .s2-title .line2  { animation:slideRight 1.0s 0.9s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide2.active .s2-divider       { animation:expandWidth 1.2s 1.6s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide2.active .s2-point:nth-child(1){ animation:s2PointIn 0.8s 1.8s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide2.active .s2-point:nth-child(2){ animation:s2PointIn 0.8s 2.4s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide2.active .s2-point:nth-child(3){ animation:s2PointIn 0.8s 3.0s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide2.active .s2-point:nth-child(4){ animation:s2PointIn 0.8s 3.6s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide2.active .s2-point:nth-child(5){ animation:s2PointIn 0.8s 4.2s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide2.active .s2-revenue-label { animation:fadeIn  0.9s 1.4s ease both; }
+    #slide2.active .s2-revenue-number{ animation:s2NumIn 1.2s 2.0s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide2.active .s2-chart         { animation:fadeIn  1.0s 3.0s ease both; }
+    #slide2.active .chart-arrow      { animation:arrowDrop 2.0s 3.8s ease both; }
+    @keyframes s2PointIn {
+      from { opacity:0; transform:translateX(-50px); }
+      to   { opacity:1; transform:translateX(0); }
+    }
+    @keyframes s2NumIn {
+      from { opacity:0; transform:scale(0.5); filter:blur(6px); }
+      to   { opacity:1; transform:scale(1);   filter:blur(0); }
+    }
     .s2-title .line1,.s2-title .line2{ opacity:0; }
 
     /* ════ SLIDE 3 ════ */
@@ -1723,7 +1731,7 @@
 <script>
   const slides   = document.querySelectorAll('.slide');
   const bar      = document.getElementById('progressBar');
-  const durations = [6000,6000,6000,10000,7000,7000,7000,7000,7000,7000,8000];
+  const durations = [6000,12000,6000,10000,7000,7000,7000,7000,7000,7000,8000];
   let current=0, paused=false, timer=null, barAnim=null, elapsed=0, slideStart=0;
 
   /* ══════════════════════════════════════════
