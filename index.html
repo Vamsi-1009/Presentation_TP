@@ -725,57 +725,51 @@
       #slide1 {
         flex-direction:column !important;
         align-items:center !important;
-        justify-content:space-evenly !important;
+        justify-content:flex-start !important;
         gap:0 !important;
-        padding:44px 16px 16px !important;
+        padding:52px 16px 16px !important;
       }
       .s1-title {
-        font-size:1.25rem !important; text-align:center !important;
-        width:100% !important;
+        font-size:1.2rem !important; text-align:center !important;
+        width:100% !important; margin-bottom:6px !important;
       }
-      /* kill the desktop negative-margin trick — it overlaps on mobile */
       .s1-divider {
-        width:65% !important; margin-top:6px !important;
-        animation:none !important;
+        width:55% !important; margin-top:0 !important;
+        margin-bottom:16px !important; animation:none !important;
       }
+      /* ── 2×2 grid — fills remaining height ── */
       .s1-flow {
-        flex-direction:column !important;
-        align-items:stretch !important;
+        display:grid !important;
+        grid-template-columns:1fr 1fr !important;
+        grid-auto-rows:1fr !important;
+        gap:12px !important;
         width:100% !important;
-        max-width:100% !important;
-        gap:0 !important;
+        flex:1 !important;
+        align-content:stretch !important;
       }
-      /* each card becomes a full-width horizontal row */
+      .s1-arrow { display:none !important; }
       .s1-card {
-        width:100% !important; min-height:auto !important;
-        flex-direction:row !important; gap:12px !important;
-        padding:10px 14px !important;
-        justify-content:flex-start !important;
+        width:auto !important; height:auto !important;
+        min-height:0 !important; align-self:stretch !important;
+        flex-direction:column !important;
         align-items:center !important;
-        border-radius:10px !important;
-        margin-bottom:4px !important;
+        justify-content:center !important;
+        gap:10px !important;
+        padding:16px 10px !important;
+        border-radius:12px !important;
       }
-      /* badge floated above card → pull into the row as a small pill */
       .s1-badge {
         position:static !important; transform:none !important;
-        flex-shrink:0 !important;
-        width:26px !important; height:26px !important;
-        font-size:0.72rem !important;
+        width:30px !important; height:30px !important;
+        font-size:0.8rem !important;
       }
-      .s1-icon { font-size:1.5rem !important; flex-shrink:0 !important; }
+      .s1-icon { font-size:2.2rem !important; }
       .s1-label {
-        font-size:0.8rem !important; text-align:left !important;
-        flex:1 !important; line-height:1.35 !important;
+        font-size:0.82rem !important; text-align:center !important;
+        line-height:1.4 !important;
       }
-      /* arrows between cards — point downward */
-      .s1-arrow {
-        display:block !important; text-align:center !important;
-        font-size:0.9rem !important; padding:1px 0 !important;
-        transform:rotate(90deg) !important;
-        line-height:1 !important;
-      }
-      .danger-arrows { font-size:0.9rem !important; gap:2px !important; justify-content:center !important; }
-      .rupee { font-size:1.4rem !important; }
+      .danger-arrows { display:none !important; }
+      .rupee { font-size:1.6rem !important; }
 
       /* ────── SLIDE 2 ────── */
       #slide2 {
