@@ -692,6 +692,26 @@
     .lang-btn.active { background:rgba(0,140,255,0.28); color:#fff; text-shadow:0 0 8px rgba(0,180,255,0.5); }
     .lang-btn:hover:not(.active) { color:rgba(255,255,255,0.75); }
 
+    /* ═══ VOICE BUTTON ═══ */
+    .voice-btn {
+      position:fixed; bottom:18px; right:18px; z-index:9999;
+      width:36px; height:36px; border-radius:50%;
+      background:rgba(0,0,0,0.55); border:1px solid rgba(255,255,255,0.15);
+      display:flex; align-items:center; justify-content:center;
+      font-size:1rem; cursor:pointer; color:rgba(255,255,255,0.65);
+      backdrop-filter:blur(10px); box-shadow:0 2px 12px rgba(0,0,0,0.4);
+      transition:all 0.2s;
+    }
+    .voice-btn:hover { background:rgba(0,120,255,0.35); color:#fff; border-color:rgba(0,180,255,0.4); }
+    .voice-btn.speaking {
+      background:rgba(0,180,80,0.3); color:#4ade80;
+      border-color:rgba(0,200,100,0.5);
+      animation:voicePulse 1.2s ease-in-out infinite;
+    }
+    @keyframes voicePulse {
+      0%,100%{ box-shadow:0 0 0 0 rgba(0,200,100,0.4); }
+      50%    { box-shadow:0 0 0 8px rgba(0,200,100,0); }
+    }
 
     /* ════════════════════════════════════════════════
        MOBILE RESPONSIVE  (max-width: 599px)
@@ -1693,6 +1713,9 @@
   <button class="lang-btn" id="btnTe" onclick="switchLang('te')">TE</button>
 </div>
 
+<!-- voice button -->
+<button class="voice-btn" id="voiceBtn" onclick="speakCurrentSlide()" title="Audio summary">🔊</button>
+
 <!-- progress bar + invisible pause button -->
 <div class="s-progress" id="progressBar"></div>
 <button class="s-pause-btn" id="pauseBtn" onclick="togglePause()" title="Pause / Resume"></button>
@@ -2098,6 +2121,12 @@
      SLIDE NAVIGATION
   ══════════════════════════════════════════ */
   function goTo(idx) {
+    // stop any voice when navigating
+    if (window.speechSynthesis && window.speechSynthesis.speaking) {
+      window.speechSynthesis.cancel();
+      const vb = document.getElementById('voiceBtn');
+      if (vb) vb.classList.remove('speaking');
+    }
     slides[current].classList.remove('active');
     current = (idx + slides.length) % slides.length;
     slides[current].classList.add('active');
@@ -2223,6 +2252,62 @@
   // Init
   applyTranslations('en');
   startTimer();
+
+  /* ══════════════════════════════════════════
+     VOICE / AUDIO SUMMARIES
+  ══════════════════════════════════════════ */
+  const voiceTexts = {
+    en: [
+      /* Slide 1 */ "Every day, movies are being recorded in theatres and shared online within hours. Piracy costs filmmakers crores of rupees in the very first week of release.",
+      /* Slide 2 */ "",
+      /* Slide 3 */ "",
+      /* Slide 4 */ "",
+      /* Slide 5 */ "",
+      /* Slide 6 */ "",
+      /* Slide 7 */ "",
+      /* Slide 8 */ "",
+      /* Slide 9 */ "",
+      /* Slide 10 */ "",
+      /* Slide 11 */ ""
+    ],
+    te: [
+      /* Slide 1 */ "ప్రతిరోజూ సినిమాలు థియేటర్లలో రికార్డ్ చేయబడి గంటల వ్యవధిలో ఆన్‌లైన్‌లో వైరల్ అవుతున్నాయి. పైరసీ వల్ల నిర్మాతలకు విడుదలైన మొదటి వారంలోనే కోట్ల రూపాయల నష్టం జరుగుతోంది.",
+      /* Slide 2 */ "",
+      /* Slide 3 */ "",
+      /* Slide 4 */ "",
+      /* Slide 5 */ "",
+      /* Slide 6 */ "",
+      /* Slide 7 */ "",
+      /* Slide 8 */ "",
+      /* Slide 9 */ "",
+      /* Slide 10 */ "",
+      /* Slide 11 */ ""
+    ]
+  };
+
+  function speakCurrentSlide() {
+    const btn = document.getElementById('voiceBtn');
+    // If already speaking — stop
+    if (window.speechSynthesis.speaking) {
+      window.speechSynthesis.cancel();
+      btn.classList.remove('speaking');
+      return;
+    }
+    const lang = document.getElementById('btnEn').classList.contains('active') ? 'en' : 'te';
+    const text = voiceTexts[lang][current];
+    if (!text) return;
+
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang  = lang === 'en' ? 'en-US' : 'te-IN';
+    utter.rate  = 0.92;
+    utter.pitch = 1;
+
+    btn.classList.add('speaking');
+    utter.onend = utter.onerror = () => btn.classList.remove('speaking');
+    window.speechSynthesis.speak(utter);
+  }
+
+
 </script>
 
 </body>
