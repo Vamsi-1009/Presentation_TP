@@ -670,6 +670,20 @@
     #slide11.active .s11-center       { animation:countUp   0.6s 1.0s ease both; }
     #slide11.active .s11-panel.after  { animation:slideLeft  0.6s 0.8s ease both; }
     #slide11.active .s11-banner       { animation:fadeUp    0.5s 1.4s ease both; }
+    /* ═══ LANGUAGE TOGGLE ═══ */
+    .lang-toggle {
+      position:fixed; top:14px; right:18px; z-index:9999;
+      display:flex; background:rgba(0,0,0,0.55);
+      border:1px solid rgba(255,255,255,0.13); border-radius:22px; overflow:hidden;
+      backdrop-filter:blur(10px); box-shadow:0 2px 12px rgba(0,0,0,0.4);
+    }
+    .lang-btn {
+      padding:6px 16px; font-size:0.68rem; font-weight:800; letter-spacing:0.1em;
+      cursor:pointer; border:none; background:transparent; color:rgba(255,255,255,0.4);
+      transition:all 0.25s; font-family:inherit;
+    }
+    .lang-btn.active { background:rgba(0,140,255,0.28); color:#fff; text-shadow:0 0 8px rgba(0,180,255,0.5); }
+    .lang-btn:hover:not(.active) { color:rgba(255,255,255,0.75); }
   </style>
 </head>
 <body>
@@ -1364,6 +1378,12 @@
 </div>
 </div>
 
+<!-- language toggle -->
+<div class="lang-toggle">
+  <button class="lang-btn active" id="btnEn" onclick="switchLang('en')">EN</button>
+  <button class="lang-btn" id="btnTe" onclick="switchLang('te')">TE</button>
+</div>
+
 <!-- progress bar + invisible pause button -->
 <div class="s-progress" id="progressBar"></div>
 <button class="s-pause-btn" id="pauseBtn" onclick="togglePause()" title="Pause / Resume"></button>
@@ -1371,17 +1391,403 @@
 <script>
   const slides   = document.querySelectorAll('.slide');
   const bar      = document.getElementById('progressBar');
-
   const durations = [6000,6000,6000,10000,7000,7000,7000,7000,7000,7000,8000];
+  let current=0, paused=false, timer=null, barAnim=null, elapsed=0, slideStart=0;
 
-  let current   = 0;
-  let paused    = false;
-  let timer     = null;
-  let barAnim   = null;
-  let elapsed   = 0;      // ms already spent on current slide
-  let pausedAt  = 0;      // performance.now() when paused
-  let slideStart = 0;     // performance.now() when slide started
+  /* ══════════════════════════════════════════
+     TRANSLATIONS
+  ══════════════════════════════════════════ */
+  const translations = {
+    en: {
+      slide1: {
+        title: 'Your film is being <span class="highlight">stolen</span> every day.',
+        labels: [
+          'Recorded<br>in theatre',
+          'Shared across<br>Social Media',
+          'Goes viral<br>online',
+          'Crores Lost<br><span style="color:#ffaaaa;font-size:0.82rem;font-weight:600;">in 1 week</span>'
+        ]
+      },
+      slide2: {
+        line1: 'No control.',
+        line2: '<span class="red">No revenue.</span> No hope.',
+        points: [
+          '<span class="red">60–80%</span> revenue gone',
+          'No control over piracy',
+          'Manual work — days wasted',
+          'No court evidence',
+          'Distributors lose trust'
+        ],
+        revenueLabel: 'Revenue Loss'
+      },
+      slide3: {
+        badge: 'THE SOLUTION',
+        t1: 'Movie Anti-Piracy',
+        t2: 'Protection System',
+        subtitle: 'Finds, proves and removes piracy without you lifting a finger.'
+      },
+      slide4: {
+        titles: ['IR Detection','Takedown System','TPVM','Watermarking'],
+        descs: [
+          '940nm IR LEDs flood the screen — invisible to humans, any camera gets overexposed into white glare.',
+          'Scans YouTube, Telegram &amp; torrent sites 24/7 — auto-files DMCA takedowns with zero manual effort.',
+          'Adds 7 invisible layers per frame — audience sees perfectly, any recording captures only distorted noise.',
+          'Invisible fingerprint per screen &amp; showtime — any leaked copy instantly traces back to the exact source.'
+        ]
+      },
+      slide5: {
+        tag: 'Physical Deterrent',
+        title: 'IR <span class="s5-accent">Detection</span><br>System',
+        lead: '940nm infrared LEDs flood the theatre screen — invisible to the human eye, but completely overexpose any recording camera.',
+        stepTitles: ['IR LEDs Activated','Human Eye Unaffected','Camera Sensor Overloaded'],
+        stepDescs: [
+          'Arrays of 940nm IR LEDs mounted around the screen emit a continuous invisible flood of infrared light across the entire display area.',
+          '940nm is beyond the visible spectrum. The audience sees nothing — the movie plays perfectly as intended with no disturbance.',
+          'Phone cameras detect IR wavelengths. The sensor gets completely flooded — recording turns to pure white glare, totally unusable.'
+        ],
+        visLabel: 'What they see',
+        eyeTitles: ['Human Eye','Camera'],
+        screenLabels: ['Crystal Clear','White Glare'],
+        eyeStatuses: ['✓ Normal viewing','✗ Unusable footage'],
+        waveLabel: 'Wavelength', waveTag: 'Near-Infrared'
+      },
+      slide6: {
+        tag: 'Visual Disruption',
+        title: 'TPVM<br><span class="s6-accent">Technology</span>',
+        lead: 'Temporal Pixel Visual Masking adds 7 invisible layers to every movie frame — perfect for the audience, completely distorted for any recording camera.',
+        stepTitles: ['7 Invisible Layers Per Frame','Audience Sees Perfectly','Recording Becomes Unusable'],
+        stepDescs: [
+          'TPVM injects 7 imperceptible masking layers onto every frame of the movie in real time during projection.',
+          'Human persistence of vision merges the layers into a single clear image — the theatre experience is completely unaffected.',
+          'Camera sensors capture each layer separately, producing a distorted, flickering, unwatchable recording.'
+        ],
+        visLabel: 'What they see',
+        viewTitles: ['Human Eye','Camera'],
+        previewLabels: ['Crystal Clear','Distorted'],
+        viewStatuses: ['✓ Normal viewing','✗ Flickering &amp; unusable'],
+        statLabel: 'Masking Layers', statTag: 'Per Frame'
+      },
+      slide7: {
+        tag: 'Digital Forensics',
+        title: 'Digital<br><span class="s7-accent">Watermarking</span>',
+        lead: 'Every frame carries an invisible, unique fingerprint tied to a specific screen and showtime — if a pirated copy leaks, the source is identified instantly.',
+        stepTitles: ['Invisible Fingerprint Embedded','Unique to Screen &amp; Showtime','Instant Source Identification'],
+        stepDescs: [
+          'A unique watermark is embedded into every frame, invisible to the audience but detectable by forensic analysis tools.',
+          'Each watermark encodes the exact theatre, screen number, and showtime — making every print uniquely traceable.',
+          'When a pirated copy is found online, the watermark is extracted and the exact leaking source is identified immediately.'
+        ],
+        wmLabel: 'Watermarked frame — invisible to viewers',
+        traceTitle: '— Source Trace Report —',
+        traceKeys: ['Theatre','Showtime','Status'],
+        traceVals: ['PVR Phoenix, Screen 4','Fri 21:30 Show','✓ Source Identified']
+      },
+      slide8: {
+        tag: 'Automated Enforcement',
+        title: 'Takedown<br><span class="s8-accent">System</span>',
+        lead: 'An automated scanner continuously monitors YouTube, Telegram, torrent sites, and social media — detecting and removing pirated content with zero manual effort.',
+        stepTitles: ['24/7 Platform Scanning','Instant Detection','Auto DMCA Takedown'],
+        stepDescs: [
+          'Automated crawlers scan YouTube, Telegram, torrent trackers, and social media continuously for any pirated uploads.',
+          'AI-powered matching identifies pirated copies using watermark fingerprints and audio/video signatures within minutes of upload.',
+          'DMCA notices are automatically filed and content is removed — no manual effort, no delays, no missed pirated copies.'
+        ],
+        platNames: ['YouTube','Telegram','Facebook','Instagram','Torrent Sites'],
+        platStatuses: ['✓ Monitored','✓ Monitored','✓ Monitored','✓ Monitored','⟳ Scanning'],
+        counterLabel: 'Automated — No Manual Effort'
+      },
+      slide9: {
+        tag: 'Takedown System — Platform Authorization',
+        title: 'Platform<br><span class="s9-accent">API Access</span>',
+        lead: 'Platforms like YouTube, Telegram, and torrent networks only allow automated content removal through authorized API access. You must apply and get approved first.',
+        note: 'Without API access, every takedown must be filed manually — slow, limited, and easy to miss. API access makes removal instant and unlimited.',
+        gridLabel: 'Submit these to get API access →',
+        cardTitles: ['Copyright Certificate','Content ID','Metadata','Documentation'],
+        cardSubs: ['Legal ownership proof','Digital fingerprint system','Film identification data','Chain of title &amp; agreements'],
+        points: [
+          ['Registered certificate from Copyright Office confirming ownership of the film','Mandatory for filing DMCA claims on all major platforms','Covers screenplay, soundtrack, and visual content'],
+          ['YouTube Content ID fingerprint registered for video and audio tracks','Auto-matches any re-upload across the entire YouTube network','Enables instant claim, block, or monetise on matched content'],
+          ['Movie title, release date, ISAN number, production house details','Cast, crew, distributor, and territory licensing info','Used to cross-reference and verify pirated copies across platforms'],
+          ['Chain of title documents proving unbroken rights ownership','Distribution agreements and NOC from producers','Platform-specific takedown affidavits and legal declarations']
+        ],
+        resultText: 'API Access Granted → Automated Takedowns Enabled',
+        resultSub: 'Once approved, the system files DMCA notices instantly across all platforms — no manual work needed'
+      },
+      slide10: {
+        tag: 'Your Control Room',
+        title: 'Producer <span>Dashboard</span>',
+        statLabels: ['Piracy links found','Links removed','Still pending','Success rate'],
+        panelTitles: ['Platform Breakdown','Live Alerts'],
+        platNames: ['YouTube','Telegram','Facebook','Instagram','Websites'],
+        alertTexts: ['New link on YouTube','New link on Telegram','New link on Facebook','New link on Instagram','✓ Websites link removed'],
+        alertTimes: ['2 min ago','5 min ago','11 min ago','18 min ago','1 hour ago']
+      },
+      slide11: {
+        tag: '🛡 THE RESULT',
+        title: '<span class="s11-red">Piracy Controlled.</span> <span class="s11-blue">Producer Safe.</span>',
+        badges: ['BEFORE','AFTER'],
+        beforeItems: ['Revenue gone — 80% loss week 1','No control over piracy','Manual work — days wasted','No court evidence','Distributors lose trust'],
+        afterItems: ['Revenue protected from Day 1','Full control — 24/7 automation','Zero manual work needed','Court-ready evidence always ready','No movie upload — just documents'],
+        bannerText: 'Your film is protected from Day 1.'
+      }
+    },
 
+    te: {
+      slide1: {
+        title: 'మీ చిత్రం ప్రతిరోజూ <span class="highlight">దొంగిలించబడుతోంది</span>.',
+        labels: [
+          'థియేటర్‌లో<br>రికార్డింగ్',
+          'సోషల్ మీడియాలో<br>షేర్ చేయబడింది',
+          'ఆన్‌లైన్‌లో<br>వైరల్ అవుతోంది',
+          'కోట్లు నష్టం<br><span style="color:#ffaaaa;font-size:0.82rem;font-weight:600;">1 వారంలో</span>'
+        ]
+      },
+      slide2: {
+        line1: 'నియంత్రణ లేదు.',
+        line2: '<span class="red">ఆదాయం లేదు.</span> ఆశ లేదు.',
+        points: [
+          '<span class="red">60–80%</span> ఆదాయం పోయింది',
+          'పైరసీపై నియంత్రణ లేదు',
+          'మాన్యువల్ పని — రోజులు వృధా',
+          'న్యాయస్థాన ఆధారాలు లేవు',
+          'పంపిణీదారులు నమ్మకం కోల్పోతున్నారు'
+        ],
+        revenueLabel: 'ఆదాయ నష్టం'
+      },
+      slide3: {
+        badge: 'పరిష్కారం',
+        t1: 'మూవీ యాంటీ-పైరసీ',
+        t2: 'రక్షణ వ్యవస్థ',
+        subtitle: 'మీరు వేలు కూడా కదపకుండా పైరసీని కనుగొంటుంది, నిరూపిస్తుంది మరియు తొలగిస్తుంది.'
+      },
+      slide4: {
+        titles: ['IR డిటెక్షన్','తొలగింపు వ్యవస్థ','TPVM','వాటర్‌మార్కింగ్'],
+        descs: [
+          '940nm IR LEDs స్క్రీన్‌ను వెల్లివిరిసేటట్లు చేస్తాయి — మానవులకు అదృశ్యం, ఏ కెమెరాకైనా వైట్ గ్లేర్ అవుతుంది.',
+          'YouTube, Telegram &amp; టోరెంట్ సైట్లను 24/7 స్కాన్ చేస్తుంది — మాన్యువల్ పని లేకుండా DMCA తొలగింపులు ఆటోమేటిగ్గా.',
+          'ప్రతి ఫ్రేమ్‌కు 7 అదృశ్య లేయర్లు జోడిస్తుంది — ప్రేక్షకులు స్పష్టంగా చూస్తారు, రికార్డింగ్ వికృతంగా ఉంటుంది.',
+          'ప్రతి స్క్రీన్ &amp; షోటైమ్‌కు అదృశ్య వేలిముద్ర — లీక్ అయిన కాపీ వెంటనే మూలాన్ని గుర్తిస్తుంది.'
+        ]
+      },
+      slide5: {
+        tag: 'భౌతిక నిరోధకం',
+        title: 'IR <span class="s5-accent">డిటెక్షన్</span><br>సిస్టమ్',
+        lead: '940nm ఇన్‌ఫ్రారెడ్ LEDs థియేటర్ స్క్రీన్‌ను వెల్లివిరిసేటట్లు చేస్తాయి — మానవ కంటికి అదృశ్యం, కానీ ఏ రికార్డింగ్ కెమెరాను పూర్తిగా ఓవర్‌ఎక్స్‌పోజ్ చేస్తుంది.',
+        stepTitles: ['IR LEDs సక్రియం','మానవ కంటిపై ప్రభావం లేదు','కెమెరా సెన్సార్ ఓవర్‌లోడ్'],
+        stepDescs: [
+          'స్క్రీన్ చుట్టూ అమర్చిన 940nm IR LED శ్రేణులు మొత్తం డిస్‌ప్లే ప్రాంతంలో నిరంతరం అదృశ్య ఇన్‌ఫ్రారెడ్ కాంతిని వెదజల్లుతాయి.',
+          '940nm కనిపించే స్పెక్ట్రమ్‌కు మించినది. ప్రేక్షకులకు ఏమీ కనిపించదు — చిత్రం ఎటువంటి అంతరాయం లేకుండా పూర్తిగా ప్లే అవుతుంది.',
+          'ఫోన్ కెమెరాలు IR తరంగదైర్ఘ్యాలను గుర్తిస్తాయి. సెన్సార్ పూర్తిగా వెల్లివిరుస్తుంది — రికార్డింగ్ స్వచ్ఛమైన తెల్లటి మెరుపుగా మారుతుంది, వినియోగానికి పనికిరాదు.'
+        ],
+        visLabel: 'వారు ఏమి చూస్తారు',
+        eyeTitles: ['మానవ కంటి','కెమెరా'],
+        screenLabels: ['స్పష్టంగా','వైట్ గ్లేర్'],
+        eyeStatuses: ['✓ సాధారణ వీక్షణ','✗ వినియోగానికి పనికిరాదు'],
+        waveLabel: 'తరంగదైర్ఘ్యం', waveTag: 'నియర్-ఇన్‌ఫ్రారెడ్'
+      },
+      slide6: {
+        tag: 'దృశ్య అంతరాయం',
+        title: 'TPVM<br><span class="s6-accent">టెక్నాలజీ</span>',
+        lead: 'టెంపోరల్ పిక్సెల్ విజువల్ మాస్కింగ్ ప్రతి మూవీ ఫ్రేమ్‌కు 7 అదృశ్య లేయర్లు జోడిస్తుంది — ప్రేక్షకులకు పరిపూర్ణం, ఏ రికార్డింగ్ కెమెరాకైనా పూర్తిగా వికృతంగా ఉంటుంది.',
+        stepTitles: ['ప్రతి ఫ్రేమ్‌కు 7 అదృశ్య లేయర్లు','ప్రేక్షకులు స్పష్టంగా చూస్తారు','రికార్డింగ్ పనికిరాకుండా అవుతుంది'],
+        stepDescs: [
+          'TPVM ప్రొజెక్షన్ సమయంలో రియల్ టైమ్‌లో ప్రతి ఫ్రేమ్‌పై 7 మాస్కింగ్ లేయర్లను ఇంజెక్ట్ చేస్తుంది.',
+          'మానవ దృష్టి నిలకడ లేయర్లను ఒకే స్పష్టమైన చిత్రంలో విలీనం చేస్తుంది — థియేటర్ అనుభవం పూర్తిగా ప్రభావితం కాదు.',
+          'కెమెరా సెన్సార్లు ప్రతి లేయర్‌ను వేర్వేరుగా క్యాప్చర్ చేస్తాయి, వికృతమైన, మెరుపు, చూడలేని రికార్డింగ్‌ను తయారు చేస్తాయి.'
+        ],
+        visLabel: 'వారు ఏమి చూస్తారు',
+        viewTitles: ['మానవ కంటి','కెమెరా'],
+        previewLabels: ['స్పష్టంగా','వికృతం'],
+        viewStatuses: ['✓ సాధారణ వీక్షణ','✗ మెరుపు &amp; పనికిరాదు'],
+        statLabel: 'మాస్కింగ్ లేయర్లు', statTag: 'ప్రతి ఫ్రేమ్'
+      },
+      slide7: {
+        tag: 'డిజిటల్ ఫోరెన్సిక్స్',
+        title: 'డిజిటల్<br><span class="s7-accent">వాటర్‌మార్కింగ్</span>',
+        lead: 'ప్రతి ఫ్రేమ్ ఒక నిర్దిష్ట స్క్రీన్ మరియు షోటైమ్‌తో అనుసంధానించిన అదృశ్య, ప్రత్యేక వేలిముద్రను కలిగి ఉంటుంది — పైరేటెడ్ కాపీ లీక్ అయినప్పుడు మూలాన్ని వెంటనే గుర్తిస్తారు.',
+        stepTitles: ['అదృశ్య వేలిముద్ర పొందుపరచబడింది','స్క్రీన్ &amp; షోటైమ్‌కు ప్రత్యేకమైనది','తక్షణ మూల గుర్తింపు'],
+        stepDescs: [
+          'ప్రత్యేకమైన వాటర్‌మార్క్ ప్రతి ఫ్రేమ్‌లో పొందుపరచబడింది, ప్రేక్షకులకు అదృశ్యం కానీ ఫోరెన్సిక్ విశ్లేషణ సాధనాల ద్వారా గుర్తించగలిగేది.',
+          'ప్రతి వాటర్‌మార్క్ ఖచ్చితమైన థియేటర్, స్క్రీన్ నంబర్ మరియు షోటైమ్‌ను ఎన్‌కోడ్ చేస్తుంది — ప్రతి ప్రింట్‌ను ప్రత్యేకంగా ట్రేస్ చేయగలిగేలా చేస్తుంది.',
+          'ఆన్‌లైన్‌లో పైరేటెడ్ కాపీ కనుగొన్నప్పుడు, వాటర్‌మార్క్ సేకరించి లీక్ అయిన ఖచ్చితమైన మూలాన్ని వెంటనే గుర్తిస్తారు.'
+        ],
+        wmLabel: 'వాటర్‌మార్క్ చేయబడిన ఫ్రేమ్ — వీక్షకులకు అదృశ్యం',
+        traceTitle: '— మూల ట్రేస్ నివేదిక —',
+        traceKeys: ['థియేటర్','షోటైమ్','స్థితి'],
+        traceVals: ['PVR Phoenix, స్క్రీన్ 4','శుక్ర 21:30 షో','✓ మూలం గుర్తించబడింది']
+      },
+      slide8: {
+        tag: 'ఆటోమేటెడ్ అమలు',
+        title: 'తొలగింపు<br><span class="s8-accent">వ్యవస్థ</span>',
+        lead: 'ఒక ఆటోమేటెడ్ స్కానర్ YouTube, Telegram, టోరెంట్ సైట్లు మరియు సోషల్ మీడియాను నిరంతరం పర్యవేక్షిస్తుంది — మాన్యువల్ పని లేకుండా పైరేటెడ్ కంటెంట్‌ను గుర్తించి తొలగిస్తుంది.',
+        stepTitles: ['24/7 ప్లాట్‌ఫారం స్కానింగ్','తక్షణ గుర్తింపు','ఆటో DMCA తొలగింపు'],
+        stepDescs: [
+          'ఆటోమేటెడ్ క్రాలర్లు YouTube, Telegram, టోరెంట్ ట్రాకర్లు మరియు సోషల్ మీడియాను పైరేటెడ్ అప్‌లోడ్ల కోసం నిరంతరం స్కాన్ చేస్తాయి.',
+          'AI-ఆధారిత మ్యాచింగ్ వాటర్‌మార్క్ ఫింగర్‌ప్రింట్లు మరియు ఆడియో/వీడియో సిగ్నేచర్లను ఉపయోగించి అప్‌లోడ్ అయిన నిమిషాల్లోనే పైరేటెడ్ కాపీలను గుర్తిస్తుంది.',
+          'DMCA నోటీసులు ఆటోమేటిగ్గా ఫైల్ చేయబడి కంటెంట్ తొలగించబడుతుంది — మాన్యువల్ పని లేదు, ఆలస్యం లేదు, పైరేటెడ్ కాపీలు మిస్ అవ్వవు.'
+        ],
+        platNames: ['YouTube','Telegram','Facebook','Instagram','టోరెంట్ సైట్లు'],
+        platStatuses: ['✓ పర్యవేక్షించబడింది','✓ పర్యవేక్షించబడింది','✓ పర్యవేక్షించబడింది','✓ పర్యవేక్షించబడింది','⟳ స్కానింగ్'],
+        counterLabel: 'ఆటోమేటెడ్ — మాన్యువల్ పని లేదు'
+      },
+      slide9: {
+        tag: 'తొలగింపు వ్యవస్థ — ప్లాట్‌ఫారం అనుమతి',
+        title: 'ప్లాట్‌ఫారం<br><span class="s9-accent">API యాక్సెస్</span>',
+        lead: 'YouTube, Telegram మరియు టోరెంట్ నెట్‌వర్క్‌లు వంటి ప్లాట్‌ఫారమ్‌లు అధికారిక API యాక్సెస్ ద్వారా మాత్రమే ఆటోమేటెడ్ కంటెంట్ తొలగింపుకు అనుమతిస్తాయి. మీరు ముందుగా అర్జీ పెట్టి ఆమోదం పొందాలి.',
+        note: 'API యాక్సెస్ లేకుండా, ప్రతి తొలగింపు మాన్యువల్‌గా ఫైల్ చేయాలి — నెమ్మది, పరిమితమైనది మరియు మిస్ అవ్వడం సులభం. API యాక్సెస్ తొలగింపును తక్షణ మరియు అపరిమితంగా చేస్తుంది.',
+        gridLabel: 'API యాక్సెస్ కోసం ఇవి సమర్పించండి →',
+        cardTitles: ['కాపీరైట్ సర్టిఫికేట్','కంటెంట్ ID','మెటాడేటా','డాక్యుమెంటేషన్'],
+        cardSubs: ['చట్టపరమైన యాజమాన్య రుజువు','డిజిటల్ ఫింగర్‌ప్రింట్ సిస్టమ్','చలన చిత్ర గుర్తింపు డేటా','చైన్ ఆఫ్ టైటిల్ &amp; అగ్రిమెంట్లు'],
+        points: [
+          ['చలన చిత్రం యాజమాన్యాన్ని నిర్ధారించే కాపీరైట్ కార్యాలయం నుండి నమోదిత సర్టిఫికేట్','అన్ని ప్రధాన ప్లాట్‌ఫారమ్‌లపై DMCA క్లెయిమ్‌లు దాఖలు చేయడానికి తప్పనిసరి','స్క్రీన్‌ప్లే, సౌండ్‌ట్రాక్ మరియు దృశ్య కంటెంట్‌ను కవర్ చేస్తుంది'],
+          ['వీడియో మరియు ఆడియో ట్రాక్‌ల కోసం YouTube కంటెంట్ ID ఫింగర్‌ప్రింట్ నమోదు','మొత్తం YouTube నెట్‌వర్క్‌లో ఏ రీ-అప్‌లోడ్‌నైనా ఆటో-మ్యాచ్ చేస్తుంది','మ్యాచ్ అయిన కంటెంట్‌పై తక్షణ క్లెయిమ్, బ్లాక్ లేదా మొనటైజ్ చేయడానికి అనుమతిస్తుంది'],
+          ['మూవీ పేరు, విడుదల తేదీ, ISAN నంబర్, నిర్మాణ సంస్థ వివరాలు','నటుల, సిబ్బంది, పంపిణీదారు మరియు ప్రాంత లైసెన్సింగ్ సమాచారం','ప్లాట్‌ఫారమ్‌లలో పైరేటెడ్ కాపీలను క్రాస్-రెఫరెన్స్ మరియు ధృవీకరించడానికి ఉపయోగించబడుతుంది'],
+          ['అంతరాయం లేని హక్కుల యాజమాన్యాన్ని నిరూపించే చైన్ ఆఫ్ టైటిల్ పత్రాలు','పంపిణీ అగ్రిమెంట్లు మరియు నిర్మాతల నుండి NOC','ప్లాట్‌ఫారమ్-నిర్దిష్ట తొలగింపు అఫిడవిట్లు మరియు చట్టపరమైన ప్రకటనలు']
+        ],
+        resultText: 'API యాక్సెస్ మంజూరు → ఆటోమేటెడ్ తొలగింపులు సక్రియం',
+        resultSub: 'ఆమోదించిన తర్వాత, సిస్టమ్ అన్ని ప్లాట్‌ఫారమ్‌లలో DMCA నోటీసులను వెంటనే ఫైల్ చేస్తుంది — మాన్యువల్ పని అవసరం లేదు'
+      },
+      slide10: {
+        tag: 'మీ కంట్రోల్ రూమ్',
+        title: 'ప్రొడ్యూసర్ <span>డాష్‌బోర్డ్</span>',
+        statLabels: ['పైరసీ లింక్‌లు కనుగొన్నారు','లింక్‌లు తొలగించబడ్డాయి','ఇంకా పెండింగ్‌లో','విజయ రేటు'],
+        panelTitles: ['ప్లాట్‌ఫారం వివరణ','లైవ్ అలర్ట్లు'],
+        platNames: ['YouTube','Telegram','Facebook','Instagram','వెబ్‌సైట్లు'],
+        alertTexts: ['YouTube లో నూతన లింక్','Telegram లో నూతన లింక్','Facebook లో నూతన లింక్','Instagram లో నూతన లింక్','✓ వెబ్‌సైట్ లింక్ తొలగించబడింది'],
+        alertTimes: ['2 నిమి క్రితం','5 నిమి క్రితం','11 నిమి క్రితం','18 నిమి క్రితం','1 గంట క్రితం']
+      },
+      slide11: {
+        tag: '🛡 ఫలితం',
+        title: '<span class="s11-red">పైరసీ నియంత్రణలో ఉంది.</span> <span class="s11-blue">ప్రొడ్యూసర్ సురక్షితంగా.</span>',
+        badges: ['ముందు','తర్వాత'],
+        beforeItems: ['ఆదాయం పోయింది — 1వ వారంలో 80% నష్టం','పైరసీపై నియంత్రణ లేదు','మాన్యువల్ పని — రోజులు వృధా','న్యాయస్థాన ఆధారాలు లేవు','పంపిణీదారులు నమ్మకం కోల్పోతున్నారు'],
+        afterItems: ['మొదటి రోజు నుండి ఆదాయం రక్షించబడింది','పూర్ణ నియంత్రణ — 24/7 ఆటోమేషన్','మాన్యువల్ పని అవసరం లేదు','న్యాయస్థాన-సిద్ధమైన ఆధారాలు ఎల్లప్పుడూ సిద్ధంగా','మూవీ అప్‌లోడ్ లేదు — కేవలం పత్రాలు'],
+        bannerText: 'మీ చిత్రం మొదటి రోజు నుండి రక్షించబడింది.'
+      }
+    }
+  };
+
+  /* ══════════════════════════════════════════
+     APPLY TRANSLATIONS
+  ══════════════════════════════════════════ */
+  const q  = (s, ctx) => (ctx||document).querySelector(s);
+  const qa = (s, ctx) => (ctx||document).querySelectorAll(s);
+
+  function applyTranslations(lang) {
+    const t = translations[lang];
+
+    // Slide 1
+    q('#slide1 .s1-title').innerHTML = t.slide1.title;
+    qa('#slide1 .s1-label').forEach((el,i) => el.innerHTML = t.slide1.labels[i]);
+
+    // Slide 2
+    q('#slide2 .line1').innerHTML = t.slide2.line1;
+    q('#slide2 .line2').innerHTML = t.slide2.line2;
+    qa('#slide2 .s2-point-text').forEach((el,i) => el.innerHTML = t.slide2.points[i]);
+    q('#slide2 .s2-revenue-label').innerHTML = t.slide2.revenueLabel;
+
+    // Slide 3
+    q('#slide3 .s3-badge').innerHTML = '<div class="s3-badge-dot"></div>' + t.slide3.badge;
+    q('#slide3 .t1').innerHTML = t.slide3.t1;
+    q('#slide3 .t2').innerHTML = t.slide3.t2;
+    q('#slide3 .s3-subtitle').innerHTML = t.slide3.subtitle;
+
+    // Slide 4
+    qa('#slide4 .s4-card').forEach((card,i) => {
+      q('.s4-card-title', card).innerHTML = t.slide4.titles[i];
+      q('.s4-card-desc',  card).innerHTML = t.slide4.descs[i];
+    });
+
+    // Slide 5
+    q('#slide5 .s5-tag').innerHTML   = t.slide5.tag;
+    q('#slide5 .s5-title').innerHTML = t.slide5.title;
+    q('#slide5 .s5-lead').innerHTML  = t.slide5.lead;
+    qa('#slide5 .s5-step-title').forEach((el,i) => el.innerHTML = t.slide5.stepTitles[i]);
+    qa('#slide5 .s5-step-desc').forEach((el,i)  => el.innerHTML = t.slide5.stepDescs[i]);
+    q('#slide5 .s5-vis-label').innerHTML = t.slide5.visLabel;
+    qa('#slide5 .s5-eye-title').forEach((el,i)  => el.innerHTML = t.slide5.eyeTitles[i]);
+    qa('#slide5 .s5-film-text').forEach((el,i)  => el.innerHTML = t.slide5.screenLabels[i]);
+    qa('#slide5 .s5-eye-status').forEach((el,i) => el.innerHTML = t.slide5.eyeStatuses[i]);
+    q('#slide5 .s5-wave-label').innerHTML = t.slide5.waveLabel;
+    q('#slide5 .s5-wave-tag').innerHTML   = t.slide5.waveTag;
+
+    // Slide 6
+    q('#slide6 .s6-tag').innerHTML   = t.slide6.tag;
+    q('#slide6 .s6-title').innerHTML = t.slide6.title;
+    q('#slide6 .s6-lead').innerHTML  = t.slide6.lead;
+    qa('#slide6 .s6-step-title').forEach((el,i) => el.innerHTML = t.slide6.stepTitles[i]);
+    qa('#slide6 .s6-step-desc').forEach((el,i)  => el.innerHTML = t.slide6.stepDescs[i]);
+    q('#slide6 .s6-vis-label').innerHTML = t.slide6.visLabel;
+    qa('#slide6 .s6-view-title').forEach((el,i)   => el.innerHTML = t.slide6.viewTitles[i]);
+    qa('#slide6 .s6-preview-label').forEach((el,i)=> el.innerHTML = t.slide6.previewLabels[i]);
+    qa('#slide6 .s6-view-status').forEach((el,i)  => el.innerHTML = t.slide6.viewStatuses[i]);
+    q('#slide6 .s6-stat-label').innerHTML = t.slide6.statLabel;
+    q('#slide6 .s6-stat-tag').innerHTML   = t.slide6.statTag;
+
+    // Slide 7
+    q('#slide7 .s7-tag').innerHTML   = t.slide7.tag;
+    q('#slide7 .s7-title').innerHTML = t.slide7.title;
+    q('#slide7 .s7-lead').innerHTML  = t.slide7.lead;
+    qa('#slide7 .s7-step-title').forEach((el,i) => el.innerHTML = t.slide7.stepTitles[i]);
+    qa('#slide7 .s7-step-desc').forEach((el,i)  => el.innerHTML = t.slide7.stepDescs[i]);
+    q('#slide7 .s7-wm-label').innerHTML   = t.slide7.wmLabel;
+    q('#slide7 .s7-trace-title').innerHTML= t.slide7.traceTitle;
+    qa('#slide7 .s7-trace-key').forEach((el,i) => el.innerHTML = t.slide7.traceKeys[i]);
+    qa('#slide7 .s7-trace-val').forEach((el,i) => el.innerHTML = t.slide7.traceVals[i]);
+
+    // Slide 8
+    q('#slide8 .s8-tag').innerHTML   = t.slide8.tag;
+    q('#slide8 .s8-title').innerHTML = t.slide8.title;
+    q('#slide8 .s8-lead').innerHTML  = t.slide8.lead;
+    qa('#slide8 .s8-step-title').forEach((el,i) => el.innerHTML = t.slide8.stepTitles[i]);
+    qa('#slide8 .s8-step-desc').forEach((el,i)  => el.innerHTML = t.slide8.stepDescs[i]);
+    qa('#slide8 .s8-plat-name').forEach((el,i)   => el.innerHTML = t.slide8.platNames[i]);
+    qa('#slide8 .s8-plat-status').forEach((el,i) => el.innerHTML = t.slide8.platStatuses[i]);
+    q('#slide8 .s8-counter-label').innerHTML = t.slide8.counterLabel;
+
+    // Slide 9
+    q('#slide9 .s9-tag').innerHTML       = t.slide9.tag;
+    q('#slide9 .s9-title').innerHTML     = t.slide9.title;
+    q('#slide9 .s9-lead').innerHTML      = t.slide9.lead;
+    q('#slide9 .s9-note').innerHTML      = t.slide9.note;
+    q('#slide9 .s9-grid-label').innerHTML= t.slide9.gridLabel;
+    qa('#slide9 .s9-card').forEach((card,ci) => {
+      q('.s9-card-title', card).innerHTML = t.slide9.cardTitles[ci];
+      q('.s9-card-sub',   card).innerHTML = t.slide9.cardSubs[ci];
+      qa('.s9-point', card).forEach((pt,pi) => pt.innerHTML = t.slide9.points[ci][pi]);
+    });
+    q('#slide9 .s9-result-text').innerHTML = t.slide9.resultText;
+    q('#slide9 .s9-result-sub').innerHTML  = t.slide9.resultSub;
+
+    // Slide 10
+    q('#slide10 .s10-tag').innerHTML = t.slide10.tag;
+    q('#slide10 .s10-h1').innerHTML  = t.slide10.title;
+    qa('#slide10 .s10-stat-label').forEach((el,i)  => el.innerHTML = t.slide10.statLabels[i]);
+    qa('#slide10 .s10-panel-title').forEach((el,i) => el.innerHTML = t.slide10.panelTitles[i]);
+    qa('#slide10 .s10-plat-name').forEach((el,i)   => el.innerHTML = t.slide10.platNames[i]);
+    qa('#slide10 .s10-alert-text').forEach((el,i)  => el.innerHTML = t.slide10.alertTexts[i]);
+    qa('#slide10 .s10-alert-time').forEach((el,i)  => el.innerHTML = t.slide10.alertTimes[i]);
+
+    // Slide 11
+    q('#slide11 .s11-tag').innerHTML   = t.slide11.tag;
+    q('#slide11 .s11-title').innerHTML = t.slide11.title;
+    qa('#slide11 .s11-badge').forEach((el,i) => el.innerHTML = t.slide11.badges[i]);
+    qa('#slide11 .s11-panel.before .s11-item-text').forEach((el,i) => el.innerHTML = t.slide11.beforeItems[i]);
+    qa('#slide11 .s11-panel.after  .s11-item-text').forEach((el,i) => el.innerHTML = t.slide11.afterItems[i]);
+    q('#slide11 .s11-banner-text').innerHTML = t.slide11.bannerText;
+
+    document.documentElement.lang = lang;
+  }
+
+  function switchLang(lang) {
+    applyTranslations(lang);
+    document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+    document.getElementById('btnTe').classList.toggle('active', lang === 'te');
+  }
+
+  /* ══════════════════════════════════════════
+     SLIDE NAVIGATION
+  ══════════════════════════════════════════ */
   function goTo(idx) {
     slides[current].classList.remove('active');
     current = (idx + slides.length) % slides.length;
@@ -1393,11 +1799,9 @@
   function startTimer() {
     clearTimeout(timer);
     cancelAnimationFrame(barAnim);
-
-    const dur  = durations[current] || 7000;
+    const dur = durations[current] || 7000;
     const remaining = dur - elapsed;
     slideStart = performance.now();
-
     function animBar(now) {
       const pct = Math.min((elapsed + (now - slideStart)) / dur * 100, 100);
       bar.style.width = pct + '%';
@@ -1421,9 +1825,7 @@
     startTimer();
   }
 
-  function togglePause() {
-    paused ? resume() : pause();
-  }
+  function togglePause() { paused ? resume() : pause(); }
 
   document.addEventListener('keydown', e => {
     if (e.key === ' ') { e.preventDefault(); togglePause(); }
@@ -1433,6 +1835,8 @@
     }
   });
 
+  // Init
+  applyTranslations('en');
   startTimer();
 </script>
 </body>
