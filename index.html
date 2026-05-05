@@ -8,8 +8,25 @@
     * { margin:0; padding:0; box-sizing:border-box; }
     body { font-family:'Segoe UI',sans-serif; background:#000; color:#fff; overflow:hidden; width:100vw; height:100vh; }
 
-    .slide { display:none; width:100vw; height:100vh; position:absolute; top:0; left:0; overflow:hidden; }
+    .slide { display:none; width:100vw; height:100vh; position:absolute; top:0; left:0; overflow:hidden; padding-bottom:84px; }
     .slide.active { display:flex; }
+
+    /* ── SLIDE NOTES (Telugu) ── */
+    .s-notes {
+      position:absolute; bottom:0; left:0; right:0; z-index:20;
+      padding:10px 48px 12px;
+      background:rgba(0,0,0,0.65);
+      border-top:1px solid rgba(255,255,255,0.07);
+      backdrop-filter:blur(6px);
+      display:flex; flex-direction:column; gap:2px;
+      opacity:0; pointer-events:none;
+    }
+    .slide.active .s-notes { animation:fadeIn 0.6s 1s ease both; }
+    .s-notes-line {
+      font-size:0.72rem; color:rgba(200,220,255,0.72);
+      line-height:1.65; font-family:'Segoe UI',sans-serif;
+    }
+    .s-notes-line::before { content:'▸ '; color:rgba(0,180,255,0.5); font-size:0.6rem; }
 
     /* progress bar */
     .s-progress { position:fixed; bottom:0; left:0; height:3px; background:rgba(0,180,255,0.7); width:0%; z-index:999; transition:none; box-shadow:0 0 8px rgba(0,200,255,0.6); }
@@ -705,6 +722,13 @@
   </div>
 </div>
 
+  <div class="s-notes">
+    <div class="s-notes-line">ప్రతి రోజు థియేటర్‌లో మీ సినిమా రహస్యంగా రికార్డ్ చేయబడుతోంది.</div>
+    <div class="s-notes-line">అది YouTube, Telegram, Instagram లాంటి సోషల్ మీడియాలో వేగంగా వైరల్ అవుతుంది.</div>
+    <div class="s-notes-line">మొదటి వారంలోనే కోట్ల రూపాయల రెవెన్యూ శాశ్వతంగా పోతుంది.</div>
+  </div>
+</div>
+
 <!-- ══════════ SLIDE 2 ══════════ -->
 <div class="slide" id="slide2">
   <div class="s2-left">
@@ -739,6 +763,11 @@
       </svg>
     </div>
   </div>
+  <div class="s-notes">
+    <div class="s-notes-line">పైరసీ వల్ల ప్రతి సినిమాకు 60–80% బాక్సాఫీస్ రెవెన్యూ నష్టపోతోంది.</div>
+    <div class="s-notes-line">ప్రస్తుతం పైరసీని ఆపే సాధనాలు లేవు — అన్నీ మాన్యువల్ వర్క్ మాత్రమే.</div>
+    <div class="s-notes-line">కోర్టు సాక్ష్యం లేదు, డిస్ట్రిబ్యూటర్ల నమ్మకం తగ్గిపోతోంది.</div>
+  </div>
 </div>
 
 <!-- ══════════ SLIDE 3 ══════════ -->
@@ -769,6 +798,11 @@
     <div class="t2">Protection System</div>
   </div>
   <div class="s3-subtitle">Finds, proves and removes piracy without you lifting a finger.</div>
+  <div class="s-notes">
+    <div class="s-notes-line">Movie Anti-Piracy Protection System ఒక పూర్తి స్వయంచాలక రక్షణ వ్యవస్థ.</div>
+    <div class="s-notes-line">పైరసీని కనుగొని, నిరూపించి, తొలగించే పని మీరు చేయకుండా జరుగుతుంది.</div>
+    <div class="s-notes-line">థియేటర్ నుండి ఆన్‌లైన్ వరకు మీ సినిమాను అన్ని వైపుల నుండి కాపాడుతుంది.</div>
+  </div>
 </div>
 
 <!-- ══════════ SLIDE 4 ══════════ -->
@@ -846,6 +880,11 @@
     </div>
 
   </div>
+  <div class="s-notes">
+    <div class="s-notes-line">మన సిస్టమ్‌లో 4 శక్తివంతమైన రక్షణ పొరలు ఉన్నాయి.</div>
+    <div class="s-notes-line">IR Detection, TPVM, Watermarking మరియు Takedown System కలిసి పనిచేస్తాయి.</div>
+    <div class="s-notes-line">ప్రతి స్థాయిలో పైరసీని అడ్డుకుంటూ సినిమాను సురక్షితంగా ఉంచుతాయి.</div>
+  </div>
 </div>
 
 <!-- ══════════ SLIDE 5: IR Detection ══════════ -->
@@ -906,6 +945,11 @@
       <span class="s5-wave-val">940 nm</span>
       <span class="s5-wave-tag">Near-Infrared</span>
     </div>
+  </div>
+  <div class="s-notes">
+    <div class="s-notes-line">940nm ఇన్‌ఫ్రారెడ్ LED లైట్లు స్క్రీన్‌పై మానవ కంటికి కనిపించకుండా ప్రసారం అవుతాయి.</div>
+    <div class="s-notes-line">ప్రేక్షకులకు థియేటర్ అనుభవంలో ఎటువంటి మార్పూ ఉండదు — కానీ ఏ కెమెరా పెట్టినా వైట్ గ్లేర్ వస్తుంది.</div>
+    <div class="s-notes-line">రికార్డింగ్ చేసే వ్యక్తికి తెలియకుండానే అతని వీడియో పూర్తిగా పాడుచేయబడుతుంది.</div>
   </div>
 </div>
 
@@ -969,6 +1013,11 @@
       <span class="s6-stat-tag">Per Frame</span>
     </div>
   </div>
+  <div class="s-notes">
+    <div class="s-notes-line">ప్రతి మూవీ ఫ్రేమ్‌లో 7 అదృశ్య పొరలు జోడించబడతాయి — థియేటర్‌లో చూసే ప్రేక్షకులకు తెలియదు.</div>
+    <div class="s-notes-line">కెమెరాతో రికార్డ్ చేస్తే స్క్రీన్ పూర్తిగా చెడిపోయిన వీడియో మాత్రమే వస్తుంది.</div>
+    <div class="s-notes-line">Temporal Pixel Visual Masking టెక్నాలజీ — ప్రేక్షకుల అనుభవానికి ఎటువంటి నష్టమూ లేదు.</div>
+  </div>
 </div>
 
 <!-- ══════════ SLIDE 7: Watermarking ══════════ -->
@@ -1023,6 +1072,11 @@
         <span class="s7-trace-val" style="color:#00dd77">✓ Source Identified</span>
       </div>
     </div>
+  </div>
+  <div class="s-notes">
+    <div class="s-notes-line">ప్రతి స్క్రీన్ మరియు ప్రతి షోటైమ్‌కు విడిగా అదృశ్య ఫింగర్‌ప్రింట్ ముద్రించబడుతుంది.</div>
+    <div class="s-notes-line">లీక్ అయిన వీడియో ఎక్కడ నుండి, ఎప్పుడు రికార్డ్ అయిందో వెంటనే తెలుసుకోవచ్చు.</div>
+    <div class="s-notes-line">కోర్టులో దాఖలు చేయగల బలమైన సాక్ష్యంగా ఈ వాటర్‌మార్క్ ఉపయోగపడుతుంది.</div>
   </div>
 </div>
 
@@ -1088,6 +1142,11 @@
       <div class="s8-counter-val">100%</div>
       <div class="s8-counter-label">Automated — No Manual Effort</div>
     </div>
+  </div>
+  <div class="s-notes">
+    <div class="s-notes-line">YouTube, Telegram, Facebook, Instagram, Torrent sites అన్నీ 24/7 స్కాన్ చేయబడతాయి.</div>
+    <div class="s-notes-line">పైరేటెడ్ కంటెంట్ కనుగొన్న వెంటనే ఆటోమేటిగ్గా DMCA takedown ఫైల్ చేయబడుతుంది.</div>
+    <div class="s-notes-line">మాన్యువల్ వర్క్ లేకుండా వేలాది లింక్‌లు రోజూ తొలగించబడతాయి.</div>
   </div>
 </div>
 
@@ -1180,6 +1239,11 @@
       </div>
     </div>
 
+  </div>
+  <div class="s-notes">
+    <div class="s-notes-line">Automated takedown కోసం YouTube, Telegram వంటి ప్లాట్‌ఫారమ్‌ల నుండి API అనుమతి తప్పనిసరి.</div>
+    <div class="s-notes-line">API access లేకుండా ప్రతి takedown మాన్యువల్‌గా ఫైల్ చేయాలి — ఇది చాలా నెమ్మదిగా ఉంటుంది.</div>
+    <div class="s-notes-line">మన సిస్టమ్ అన్ని ప్రధాన ప్లాట్‌ఫారమ్‌లతో API ద్వారా అనుసంధానమై తక్షణ తొలగింపు సాధిస్తుంది.</div>
   </div>
 </div>
 
@@ -1298,6 +1362,11 @@
       </div>
     </div>
   </div>
+  <div class="s-notes">
+    <div class="s-notes-line">ప్రొడ్యూసర్ ఒక్క డాష్‌బోర్డ్ నుండి అన్ని పైరసీ కార్యకలాపాలను నిజ సమయంలో చూడవచ్చు.</div>
+    <div class="s-notes-line">ఏ ప్లాట్‌ఫారమ్‌లో ఎంత పైరసీ జరిగిందో, ఏ లింక్‌లు తొలగించబడ్డాయో స్పష్టంగా కనిపిస్తుంది.</div>
+    <div class="s-notes-line">Live alerts ద్వారా కొత్త లీక్ వచ్చిన వెంటనే నోటిఫికేషన్ వస్తుంది.</div>
+  </div>
 </div>
 
 <!-- ══════════ SLIDE 11: The Result ══════════ -->
@@ -1349,6 +1418,11 @@
   <div class="s11-banner">
     <span class="s11-banner-icon">🛡️</span>
     <span class="s11-banner-text">Your film is protected from Day 1.</span>
+  </div>
+  <div class="s-notes">
+    <div class="s-notes-line">మన సిస్టమ్ తర్వాత — పైరసీ నియంత్రణలో ఉంటుంది, రెవెన్యూ రక్షించబడుతుంది.</div>
+    <div class="s-notes-line">కోర్టు సాక్ష్యం సిద్ధంగా ఉంటుంది, డిస్ట్రిబ్యూటర్ల నమ్మకం పెరుగుతుంది.</div>
+    <div class="s-notes-line">మీరు సినిమా తీయడంపై దృష్టి పెట్టండి — మిగతా రక్షణ మా బాధ్యత.</div>
   </div>
 </div>
 
