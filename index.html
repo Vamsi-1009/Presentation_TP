@@ -403,9 +403,11 @@
     .s7-step-title { font-size:0.87rem; font-weight:700; color:#6ee7b7; margin-bottom:4px; }
     .s7-step-desc  { font-size:0.78rem; color:rgba(195,195,195,0.7); line-height:1.5; }
 
-    .s7-wm-frame { width:220px; height:160px; position:relative; opacity:0; flex-shrink:0; }
-    .s7-wm-frame svg { width:100%; height:100%; }
-    .s7-wm-label { font-size:0.6rem; color:rgba(255,255,255,0.3); text-align:center; margin-top:2px; }
+    .s7-wm-frame { width:200px; height:130px; border-radius:10px; position:relative; overflow:hidden; background:linear-gradient(135deg,#0d3020 0%,#0a4030 50%,#0d3020 100%); border:1px solid rgba(16,185,129,0.25); opacity:0; }
+    .s7-wm-film  { position:absolute; inset:0; background:linear-gradient(90deg,rgba(10,80,50,0.7) 0%,rgba(20,100,60,0.7) 30%,rgba(40,80,40,0.7) 60%,rgba(10,90,50,0.7) 100%); }
+    .s7-wm-dots  { position:absolute; inset:0; background-image:radial-gradient(circle,rgba(16,185,129,0.55) 1px,transparent 1px); background-size:12px 12px; background-position:6px 6px; }
+    .s7-wm-badge { position:absolute; bottom:8px; right:8px; font-size:0.55rem; font-weight:800; letter-spacing:0.1em; color:#10b981; background:rgba(0,0,0,0.7); padding:2px 6px; border-radius:3px; border:1px solid rgba(16,185,129,0.4); }
+    .s7-wm-label { font-size:0.6rem; color:rgba(255,255,255,0.3); text-align:center; margin-top:-8px; }
 
     .s7-trace       { display:flex; flex-direction:column; gap:8px; width:220px; opacity:0; }
     .s7-trace-title { font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.25); text-align:center; }
@@ -1357,103 +1359,9 @@
   </div>
   <div class="s7-right">
     <div class="s7-wm-frame">
-      <svg viewBox="0 0 220 160" xmlns="http://www.w3.org/2000/svg">
-        <!-- Theatre building outline: flat base + peaked roof -->
-        <defs>
-          <radialGradient id="wmBg" cx="50%" cy="50%" r="60%">
-            <stop offset="0%" stop-color="#0d4a2a"/>
-            <stop offset="100%" stop-color="#071a0f"/>
-          </radialGradient>
-          <filter id="wmGlow">
-            <feGaussianBlur stdDeviation="2" result="blur"/>
-            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-          </filter>
-        </defs>
-
-        <!-- Building base rectangle -->
-        <rect x="4" y="36" width="212" height="120" rx="4" fill="url(#wmBg)" stroke="rgba(16,185,129,0.35)" stroke-width="1"/>
-
-        <!-- Peaked roof: triangle on top of building -->
-        <polygon points="110,4 10,38 210,38" fill="#0a3d1f" stroke="rgba(16,185,129,0.4)" stroke-width="1" stroke-linejoin="round"/>
-
-        <!-- Cinema name on roof peak -->
-        <text x="110" y="30" text-anchor="middle" font-size="7.5" fill="rgba(16,185,129,0.7)" font-family="monospace" font-weight="800" letter-spacing="2">CINEMA</text>
-
-        <!-- Screen (glowing white-green bar) -->
-        <rect x="22" y="48" width="176" height="14" rx="2" fill="rgba(16,185,129,0.18)" stroke="rgba(16,185,129,0.7)" stroke-width="1"/>
-        <rect x="24" y="50" width="172" height="10" rx="1" fill="rgba(200,255,220,0.12)"/>
-        <text x="110" y="59" text-anchor="middle" font-size="6" fill="rgba(16,185,129,0.9)" font-family="monospace" letter-spacing="3">▶  S C R E E N  ◀</text>
-
-        <!-- Seat rows — top-down view, row 1 closest to screen -->
-        <!-- Row 1: 9 seats -->
-        <g fill="rgba(16,185,129,0.45)" stroke="rgba(16,185,129,0.2)" stroke-width="0.5">
-          <rect x="18"  y="72" width="16" height="12" rx="3"/>
-          <rect x="38"  y="72" width="16" height="12" rx="3"/>
-          <rect x="58"  y="72" width="16" height="12" rx="3"/>
-          <rect x="78"  y="72" width="16" height="12" rx="3"/>
-          <rect x="98"  y="72" width="16" height="12" rx="3"/>
-          <rect x="118" y="72" width="16" height="12" rx="3"/>
-          <rect x="138" y="72" width="16" height="12" rx="3"/>
-          <rect x="158" y="72" width="16" height="12" rx="3"/>
-          <rect x="178" y="72" width="16" height="12" rx="3"/>
-        </g>
-        <!-- Row 2: 10 seats -->
-        <g fill="rgba(16,185,129,0.38)" stroke="rgba(16,185,129,0.2)" stroke-width="0.5">
-          <rect x="8"   y="90" width="16" height="12" rx="3"/>
-          <rect x="28"  y="90" width="16" height="12" rx="3"/>
-          <rect x="48"  y="90" width="16" height="12" rx="3"/>
-          <rect x="68"  y="90" width="16" height="12" rx="3"/>
-          <rect x="88"  y="90" width="16" height="12" rx="3"/>
-          <rect x="108" y="90" width="16" height="12" rx="3"/>
-          <rect x="128" y="90" width="16" height="12" rx="3"/>
-          <rect x="148" y="90" width="16" height="12" rx="3"/>
-          <rect x="168" y="90" width="16" height="12" rx="3"/>
-          <rect x="188" y="90" width="16" height="12" rx="3"/>
-        </g>
-        <!-- Row 3: 10 seats -->
-        <g fill="rgba(16,185,129,0.3)" stroke="rgba(16,185,129,0.15)" stroke-width="0.5">
-          <rect x="8"   y="108" width="16" height="12" rx="3"/>
-          <rect x="28"  y="108" width="16" height="12" rx="3"/>
-          <rect x="48"  y="108" width="16" height="12" rx="3"/>
-          <rect x="68"  y="108" width="16" height="12" rx="3"/>
-          <rect x="88"  y="108" width="16" height="12" rx="3"/>
-          <rect x="108" y="108" width="16" height="12" rx="3"/>
-          <rect x="128" y="108" width="16" height="12" rx="3"/>
-          <rect x="148" y="108" width="16" height="12" rx="3"/>
-          <rect x="168" y="108" width="16" height="12" rx="3"/>
-          <rect x="188" y="108" width="16" height="12" rx="3"/>
-        </g>
-        <!-- Row 4: 11 seats (back row) -->
-        <g fill="rgba(16,185,129,0.22)" stroke="rgba(16,185,129,0.12)" stroke-width="0.5">
-          <rect x="4"   y="126" width="16" height="12" rx="3"/>
-          <rect x="22"  y="126" width="16" height="12" rx="3"/>
-          <rect x="40"  y="126" width="16" height="12" rx="3"/>
-          <rect x="58"  y="126" width="16" height="12" rx="3"/>
-          <rect x="76"  y="126" width="16" height="12" rx="3"/>
-          <rect x="94"  y="126" width="16" height="12" rx="3"/>
-          <rect x="112" y="126" width="16" height="12" rx="3"/>
-          <rect x="130" y="126" width="16" height="12" rx="3"/>
-          <rect x="148" y="126" width="16" height="12" rx="3"/>
-          <rect x="166" y="126" width="16" height="12" rx="3"/>
-          <rect x="184" y="126" width="16" height="12" rx="3"/>
-        </g>
-
-        <!-- Watermark dot overlay (sparse, semi-transparent) -->
-        <g fill="rgba(16,185,129,0.22)">
-          <circle cx="44"  cy="78"  r="1.5"/><circle cx="80"  cy="78"  r="1.5"/>
-          <circle cx="116" cy="78"  r="1.5"/><circle cx="152" cy="78"  r="1.5"/>
-          <circle cx="62"  cy="96"  r="1.5"/><circle cx="98"  cy="96"  r="1.5"/>
-          <circle cx="134" cy="96"  r="1.5"/><circle cx="170" cy="96"  r="1.5"/>
-          <circle cx="44"  cy="114" r="1.5"/><circle cx="80"  cy="114" r="1.5"/>
-          <circle cx="116" cy="114" r="1.5"/><circle cx="152" cy="114" r="1.5"/>
-          <circle cx="62"  cy="132" r="1.5"/><circle cx="110" cy="132" r="1.5"/>
-          <circle cx="158" cy="132" r="1.5"/>
-        </g>
-
-        <!-- WM badge bottom right -->
-        <rect x="142" y="143" width="68" height="13" rx="3" fill="rgba(0,0,0,0.75)" stroke="rgba(16,185,129,0.5)" stroke-width="0.8"/>
-        <text x="176" y="153" text-anchor="middle" font-size="6.5" fill="#10b981" font-family="monospace" font-weight="800" letter-spacing="0.5">WM#4F2A9C</text>
-      </svg>
+      <div class="s7-wm-film"></div>
+      <div class="s7-wm-dots"></div>
+      <div class="s7-wm-badge">WM#4F2A9C</div>
     </div>
     <div class="s7-wm-label">Watermarked frame — invisible to viewers</div>
     <div class="s7-trace">
