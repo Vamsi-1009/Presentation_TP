@@ -329,20 +329,19 @@
     #slide6::before { content:''; position:absolute; inset:0; background-image:radial-gradient(circle,rgba(140,40,255,0.04) 1px,transparent 1px); background-size:36px 36px; pointer-events:none; }
     #slide6::after  { content:''; position:absolute; top:-120px; left:-120px; width:600px; height:600px; background:radial-gradient(circle,rgba(120,30,240,0.06) 0%,transparent 65%); pointer-events:none; }
 
-    .s6-left  { flex:0 0 54%; padding:50px 36px 50px 60px; display:flex; flex-direction:column; justify-content:center; gap:18px; position:relative; z-index:1; }
+    .s6-left  { flex:0 0 56%; padding:36px 32px 36px 56px; display:flex; flex-direction:column; justify-content:center; gap:14px; position:relative; z-index:1; }
     .s6-left::after { content:''; position:absolute; right:0; top:8%; bottom:8%; width:1px; background:linear-gradient(to bottom,transparent,rgba(140,60,255,0.25),transparent); }
-    .s6-right { flex:0 0 46%; padding:40px 50px 40px 36px; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:22px; position:relative; z-index:1; }
+    .s6-right { flex:0 0 44%; padding:28px 40px 28px 28px; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:16px; position:relative; z-index:1; }
 
     .s6-tag   { font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; color:#a855f7; border:1px solid rgba(168,85,247,0.3); display:inline-block; padding:4px 12px; border-radius:4px; background:rgba(140,50,255,0.08); width:fit-content; opacity:0; }
     .s6-title { font-size:3rem; font-weight:900; line-height:1.1; opacity:0; }
     .s6-title .s6-accent { color:#a855f7; }
     .s6-lead  { font-size:0.93rem; color:rgba(215,215,215,0.8); line-height:1.65; max-width:430px; opacity:0; }
-    .s6-steps { display:flex; flex-direction:column; gap:12px; }
-    .s6-step  { display:flex; gap:14px; align-items:flex-start; padding:12px 16px; border-radius:10px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); opacity:0; transition:background 0.3s,border-color 0.3s; }
-    .s6-step:hover { background:rgba(140,50,255,0.06); border-color:rgba(160,80,255,0.22); }
-    .s6-step-num   { font-size:1.35rem; font-weight:900; color:rgba(168,85,247,0.45); line-height:1; flex-shrink:0; width:28px; }
-    .s6-step-title { font-size:0.87rem; font-weight:700; color:#d8b4fe; margin-bottom:4px; }
-    .s6-step-desc  { font-size:0.78rem; color:rgba(195,195,195,0.7); line-height:1.5; }
+    .s6-blocks { display:flex; flex-direction:column; gap:8px; }
+    .s6-block  { padding:10px 14px; border-radius:10px; background:rgba(168,85,247,0.04); border:1px solid rgba(168,85,247,0.12); opacity:0; transition:background 0.3s,border-color 0.3s; }
+    .s6-block:hover { background:rgba(168,85,247,0.09); border-color:rgba(168,85,247,0.28); }
+    .s6-block-heading { font-size:0.88rem; font-weight:800; color:#d8b4fe; margin-bottom:4px; letter-spacing:0.01em; }
+    .s6-block-desc    { font-size:0.74rem; color:rgba(200,200,200,0.72); line-height:1.5; }
 
     .s6-vis-label { font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.3); opacity:0; }
     .s6-compare   { display:flex; gap:14px; align-items:center; opacity:0; }
@@ -372,9 +371,10 @@
     #slide6.active .s6-tag { animation:fadeUp 1.0s 0.4s cubic-bezier(0.22,1,0.36,1) both; }
     #slide6.active .s6-title { animation:fadeUp 1.0s 1.6s cubic-bezier(0.22,1,0.36,1) both; }
     #slide6.active .s6-lead { animation:fadeUp 1.0s 2.9s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide6.active .s6-step:nth-child(1) { animation:s2PointIn 1.0s 4.2s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide6.active .s6-step:nth-child(2) { animation:s2PointIn 1.0s 5.5s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide6.active .s6-step:nth-child(3) { animation:s2PointIn 1.0s 6.8s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide6.active .s6-block:nth-child(1) { animation:s2PointIn 0.9s 4.2s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide6.active .s6-block:nth-child(2) { animation:s2PointIn 0.9s 5.4s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide6.active .s6-block:nth-child(3) { animation:s2PointIn 0.9s 6.6s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide6.active .s6-block:nth-child(4) { animation:s2PointIn 0.9s 7.8s cubic-bezier(0.22,1,0.36,1) both; }
     #slide6.active .s6-vis-label { animation:fadeIn 0.9s 0.4s cubic-bezier(0.22,1,0.36,1) both; }
     #slide6.active .s6-compare { animation:fadeUp 1.0s 2.2s cubic-bezier(0.22,1,0.36,1) both; }
     #slide6.active .s6-stat { animation:fadeUp 1.0s 8.2s cubic-bezier(0.22,1,0.36,1) both; }
@@ -912,9 +912,9 @@
       .s6-right { flex:none !important; width:100% !important; padding:0 !important; gap:14px !important; align-items:flex-start !important; }
       .s6-title { font-size:1.6rem !important; }
       .s6-lead  { font-size:0.8rem !important; }
-      .s6-step { padding:8px 10px !important; }
-      .s6-step-title { font-size:0.8rem !important; }
-      .s6-step-desc  { font-size:0.72rem !important; }
+      .s6-block { padding:8px 10px !important; }
+      .s6-block-heading { font-size:0.8rem !important; }
+      .s6-block-desc    { font-size:0.72rem !important; }
       .s6-compare { flex-direction:row !important; gap:10px !important; }
       .s6-view-box { width:110px !important; padding:10px !important; }
       .s6-preview { width:88px !important; height:56px !important; }
@@ -1298,28 +1298,23 @@
   <div class="s6-left">
     <div class="s6-tag">Visual Disruption</div>
     <h2 class="s6-title">TPVM<br><span class="s6-accent">Technology</span></h2>
-    <p class="s6-lead">Temporal Pixel Visual Masking adds 7 invisible layers to every movie frame — perfect for the audience, completely distorted for any recording camera.</p>
-    <div class="s6-steps">
-      <div class="s6-step">
-        <div class="s6-step-num">01</div>
-        <div class="s6-step-body">
-          <div class="s6-step-title">7 Invisible Layers Per Frame</div>
-          <div class="s6-step-desc">TPVM injects 7 imperceptible masking layers onto every frame of the movie in real time during projection.</div>
-        </div>
+    <p class="s6-lead">Your film plays perfectly in the theatre. Every person in the hall sees a flawless picture. But every phone pointed at that screen records nothing but flickering, distorted, unwatchable noise. That is TPVM — and no camera in the world can defeat it.</p>
+    <div class="s6-blocks">
+      <div class="s6-block">
+        <div class="s6-block-heading">7 Invisible Layers. Every Frame.</div>
+        <div class="s6-block-desc">TPVM injects 7 imperceptible masking layers into every frame, in real time, during projection. Seven layers operating simultaneously — invisible to the naked eye, lethal to any recording sensor.</div>
       </div>
-      <div class="s6-step">
-        <div class="s6-step-num">02</div>
-        <div class="s6-step-body">
-          <div class="s6-step-title">Audience Sees Perfectly</div>
-          <div class="s6-step-desc">Human persistence of vision merges the layers into a single clear image — the theatre experience is completely unaffected.</div>
-        </div>
+      <div class="s6-block">
+        <div class="s6-block-heading">Your Audience Sees Everything. Clearly.</div>
+        <div class="s6-block-desc">Human persistence of vision fuses all 7 layers into a single, perfect image. The audience experiences your film exactly as intended. The theatre experience is completely unaffected.</div>
       </div>
-      <div class="s6-step">
-        <div class="s6-step-num">03</div>
-        <div class="s6-step-body">
-          <div class="s6-step-title">Recording Becomes Unusable</div>
-          <div class="s6-step-desc">Camera sensors capture each layer separately, producing a distorted, flickering, unwatchable recording.</div>
-        </div>
+      <div class="s6-block">
+        <div class="s6-block-heading">Any Camera Gets Destroyed.</div>
+        <div class="s6-block-desc">A camera sensor cannot do what the human eye does. It captures each layer separately — and the result is a flickering, distorted, unwatchable mess. There is no camera on earth that defeats this.</div>
+      </div>
+      <div class="s6-block">
+        <div class="s6-block-heading">No App. No Filter. No Fix.</div>
+        <div class="s6-block-desc">The distortion is not software-based. It is physical — built into the optics of the projection itself. No app, no filter, no post-processing can clean it up. What a pirate records is permanently broken.</div>
       </div>
     </div>
   </div>
@@ -1854,12 +1849,13 @@
       slide6: {
         tag: 'Visual Disruption',
         title: 'TPVM<br><span class="s6-accent">Technology</span>',
-        lead: 'Temporal Pixel Visual Masking adds 7 invisible layers to every movie frame — perfect for the audience, completely distorted for any recording camera.',
-        stepTitles: ['7 Invisible Layers Per Frame','Audience Sees Perfectly','Recording Becomes Unusable'],
-        stepDescs: [
-          'TPVM injects 7 imperceptible masking layers onto every frame of the movie in real time during projection.',
-          'Human persistence of vision merges the layers into a single clear image — the theatre experience is completely unaffected.',
-          'Camera sensors capture each layer separately, producing a distorted, flickering, unwatchable recording.'
+        lead: 'Your film plays perfectly in the theatre. Every person in the hall sees a flawless picture. But every phone pointed at that screen records nothing but flickering, distorted, unwatchable noise. That is TPVM — and no camera in the world can defeat it.',
+        blockHeadings: ['7 Invisible Layers. Every Frame.','Your Audience Sees Everything. Clearly.','Any Camera Gets Destroyed.','No App. No Filter. No Fix.'],
+        blockDescs: [
+          'TPVM injects 7 imperceptible masking layers into every frame, in real time, during projection. Seven layers operating simultaneously — invisible to the naked eye, lethal to any recording sensor.',
+          'Human persistence of vision fuses all 7 layers into a single, perfect image. The audience experiences your film exactly as intended. The theatre experience is completely unaffected.',
+          'A camera sensor cannot do what the human eye does. It captures each layer separately — and the result is a flickering, distorted, unwatchable mess. There is no camera on earth that defeats this.',
+          'The distortion is not software-based. It is physical — built into the optics of the projection itself. No app, no filter, no post-processing can clean it up. What a pirate records is permanently broken.'
         ],
         visLabel: 'What they see',
         viewTitles: ['Human Eye','Camera'],
@@ -1994,12 +1990,13 @@
       slide6: {
         tag: 'దృశ్య అంతరాయం',
         title: 'TPVM<br><span class="s6-accent">టెక్నాలజీ</span>',
-        lead: 'టెంపోరల్ పిక్సెల్ విజువల్ మాస్కింగ్ ప్రతి మూవీ ఫ్రేమ్‌కు 7 అదృశ్య లేయర్లు జోడిస్తుంది — ప్రేక్షకులకు పరిపూర్ణం, ఏ రికార్డింగ్ కెమెరాకైనా పూర్తిగా వికృతంగా ఉంటుంది.',
-        stepTitles: ['ప్రతి ఫ్రేమ్‌కు 7 అదృశ్య లేయర్లు','ప్రేక్షకులు స్పష్టంగా చూస్తారు','రికార్డింగ్ పనికిరాకుండా అవుతుంది'],
-        stepDescs: [
-          'TPVM ప్రొజెక్షన్ సమయంలో రియల్ టైమ్‌లో ప్రతి ఫ్రేమ్‌పై 7 మాస్కింగ్ లేయర్లను ఇంజెక్ట్ చేస్తుంది.',
-          'మానవ దృష్టి నిలకడ లేయర్లను ఒకే స్పష్టమైన చిత్రంలో విలీనం చేస్తుంది — థియేటర్ అనుభవం పూర్తిగా ప్రభావితం కాదు.',
-          'కెమెరా సెన్సార్లు ప్రతి లేయర్‌ను వేర్వేరుగా క్యాప్చర్ చేస్తాయి, వికృతమైన, మెరుపు, చూడలేని రికార్డింగ్‌ను తయారు చేస్తాయి.'
+        lead: 'మీ చిత్రం థియేటర్‌లో పర్‌ఫెక్ట్‌గా ప్లే అవుతుంది. హాల్‌లో ఉన్న ప్రతి వ్యక్తి స్పష్టమైన చిత్రాన్ని చూస్తాడు. కానీ ఆ స్క్రీన్ వైపు పెట్టిన ప్రతి ఫోన్ వణుకుతున్న, వికృతమైన, చూడలేని శబ్దాన్ని మాత్రమే రికార్డ్ చేస్తుంది. అదే TPVM — ప్రపంచంలో ఏ కెమెరా అయినా దీన్ని ఓడించలేదు.',
+        blockHeadings: ['7 అదృశ్య లేయర్లు. ప్రతి ఫ్రేమ్.','మీ ప్రేక్షకులు ప్రతీదీ చూస్తారు. స్పష్టంగా.','ఏ కెమెరా అయినా నాశనమవుతుంది.','యాప్ లేదు. ఫిల్టర్ లేదు. పరిష్కారం లేదు.'],
+        blockDescs: [
+          'TPVM ప్రొజెక్షన్ సమయంలో రియల్ టైమ్‌లో ప్రతి ఫ్రేమ్‌లో 7 మాస్కింగ్ లేయర్లను ఇంజెక్ట్ చేస్తుంది. ఏడు లేయర్లు ఒకేసారి పని చేస్తాయి — నగ్న కంటికి అదృశ్యం, ఏ రికార్డింగ్ సెన్సార్‌కైనా ప్రాణాంతకం.',
+          'మానవ దృష్టి నిలకడ 7 లేయర్లన్నింటినీ ఒకే, పర్‌ఫెక్ట్ చిత్రంలో కలుపుతుంది. ప్రేక్షకులు మీ చిత్రాన్ని ఉద్దేశించిన విధంగా అనుభవిస్తారు. థియేటర్ అనుభవం పూర్తిగా ప్రభావితం కాదు.',
+          'కెమెరా సెన్సార్ మానవ కంటి చేసేది చేయలేదు. అది ప్రతి లేయర్‌ను వేర్వేరుగా క్యాప్చర్ చేస్తుంది — ఫలితం మెరుపు, వికృతం, చూడలేని రికార్డింగ్. దీన్ని ఓడించే కెమెరా భూమిపై ఏదీ లేదు.',
+          'వికృతత సాఫ్ట్‌వేర్-ఆధారితం కాదు. అది భౌతికం — ప్రొజెక్షన్ యొక్క ఆప్టిక్స్‌లోనే నిర్మించబడింది. ఏ యాప్ అయినా, ఫిల్టర్ అయినా, పోస్ట్-ప్రాసెసింగ్ అయినా దాన్ని శుభ్రపరచలేదు. పైరేట్ రికార్డ్ చేసేది శాశ్వతంగా పాడైపోతుంది.'
         ],
         visLabel: 'వారు ఏమి చూస్తారు',
         viewTitles: ['మానవ కంటి','కెమెరా'],
@@ -2127,8 +2124,8 @@
     q('#slide6 .s6-tag').innerHTML   = t.slide6.tag;
     q('#slide6 .s6-title').innerHTML = t.slide6.title;
     q('#slide6 .s6-lead').innerHTML  = t.slide6.lead;
-    qa('#slide6 .s6-step-title').forEach((el,i) => el.innerHTML = t.slide6.stepTitles[i]);
-    qa('#slide6 .s6-step-desc').forEach((el,i)  => el.innerHTML = t.slide6.stepDescs[i]);
+    qa('#slide6 .s6-block-heading').forEach((el,i) => el.innerHTML = t.slide6.blockHeadings[i]);
+    qa('#slide6 .s6-block-desc').forEach((el,i)    => el.innerHTML = t.slide6.blockDescs[i]);
     q('#slide6 .s6-vis-label').innerHTML = t.slide6.visLabel;
     qa('#slide6 .s6-view-title').forEach((el,i)   => el.innerHTML = t.slide6.viewTitles[i]);
     qa('#slide6 .s6-preview-label').forEach((el,i)=> el.innerHTML = t.slide6.previewLabels[i]);
