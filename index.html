@@ -471,6 +471,19 @@
     #slide8.active .s8-platforms { animation:fadeUp 1.0s 2.2s cubic-bezier(0.22,1,0.36,1) both; }
     #slide8.active .s8-counter { animation:fadeUp 1.0s 8.2s cubic-bezier(0.22,1,0.36,1) both,tdPulse 2s 9.4s ease-in-out infinite; }
 
+    /* ── Slide 8 new platform timing cards ── */
+    .s8-plat-new-grid { display:flex; flex-direction:column; gap:10px; width:100%; }
+    .s8-plat-card { padding:14px 16px; border-radius:12px; background:rgba(255,255,255,0.03); border:1px solid rgba(249,115,22,0.15); display:flex; flex-direction:column; gap:8px; transition:border-color 0.3s,background 0.3s; }
+    .s8-plat-card:hover { background:rgba(249,115,22,0.06); border-color:rgba(249,115,22,0.3); }
+    .s8-plat-head { display:flex; align-items:center; gap:12px; }
+    .s8-plat-logo-wrap { width:36px; height:36px; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .s8-plat-card .s8-plat-name { font-size:0.92rem; font-weight:800; color:#fff; flex:1; }
+    .s8-time-chip { font-size:0.8rem; font-weight:900; padding:4px 14px; border-radius:20px; white-space:nowrap; flex-shrink:0; }
+    .s8-time-chip.fast   { color:#4ade80; background:rgba(0,200,80,0.12);   border:1px solid rgba(0,200,80,0.25); }
+    .s8-time-chip.medium { color:#fbbf24; background:rgba(240,160,0,0.12);  border:1px solid rgba(240,160,0,0.25); }
+    .s8-time-chip.slow   { color:#f97316; background:rgba(249,115,22,0.12); border:1px solid rgba(249,115,22,0.25); }
+    .s8-plat-action { font-size:0.76rem; color:rgba(200,200,200,0.65); line-height:1.55; padding-left:48px; }
+
     /* ════ SLIDE 9 — Takedown Requirements ════ */
     #slide9 {
       background:radial-gradient(ellipse at 40% 50%,#0a0d1a 0%,#000 75%);
@@ -927,6 +940,9 @@
       .s8-step { padding:8px 10px !important; }
       .s8-step-title { font-size:0.8rem !important; }
       .s8-step-desc  { font-size:0.72rem !important; }
+      .s8-plat-card  { padding:10px 12px !important; }
+      .s8-time-chip  { font-size:0.7rem !important; padding:3px 10px !important; }
+      .s8-plat-action{ font-size:0.68rem !important; padding-left:0 !important; }
 
       /* ────── SLIDE 9 ────── */
       #slide9 {
@@ -1414,56 +1430,56 @@
     </div>
   </div>
   <div class="s8-right">
-    <div class="s8-platforms">
-      <div class="s8-platform hit">
-        <div class="s8-plat-icon">
-          <svg viewBox="0 0 24 24" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
-            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="#FF0000"/>
-          </svg>
+    <div class="s8-plat-new-grid">
+
+      <!-- YouTube -->
+      <div class="s8-plat-card">
+        <div class="s8-plat-head">
+          <div class="s8-plat-logo-wrap" style="background:rgba(255,0,0,0.12);border:1px solid rgba(255,0,0,0.25);">
+            <svg viewBox="0 0 24 24" width="22" height="22"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="#FF0000"/></svg>
+          </div>
+          <div class="s8-plat-name">YouTube</div>
+          <div class="s8-time-chip fast">⚡ 10 minutes</div>
         </div>
-        <div class="s8-plat-name">YouTube</div>
-        <div class="s8-plat-status done">✓ Monitored</div>
+        <div class="s8-plat-action">Content ID fingerprint — auto-blocked. Every re-upload caught instantly.</div>
       </div>
-      <div class="s8-platform hit">
-        <div class="s8-plat-icon">
-          <svg viewBox="0 0 24 24" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
-            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" fill="#2CA5E0"/>
-          </svg>
+
+      <!-- Instagram & Facebook -->
+      <div class="s8-plat-card">
+        <div class="s8-plat-head">
+          <div class="s8-plat-logo-wrap" style="background:rgba(225,48,108,0.12);border:1px solid rgba(225,48,108,0.25);">
+            <svg viewBox="0 0 24 24" width="22" height="22"><defs><radialGradient id="ig8n" cx="30%" cy="107%" r="150%"><stop offset="0%" stop-color="#fdf497"/><stop offset="45%" stop-color="#fd5949"/><stop offset="60%" stop-color="#d6249f"/><stop offset="90%" stop-color="#285AEB"/></radialGradient></defs><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" fill="url(#ig8n)"/></svg>
+          </div>
+          <div class="s8-plat-name">Instagram &amp; Facebook</div>
+          <div class="s8-time-chip medium">⚡ 1 hour</div>
         </div>
-        <div class="s8-plat-name">Telegram</div>
-        <div class="s8-plat-status done">✓ Monitored</div>
+        <div class="s8-plat-action">Rights Manager — caught during upload itself. Auto-removed within 1 hour.</div>
       </div>
-      <div class="s8-platform hit">
-        <div class="s8-plat-icon">
-          <svg viewBox="0 0 24 24" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
-            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="#1877F2"/>
-          </svg>
+
+      <!-- Telegram -->
+      <div class="s8-plat-card">
+        <div class="s8-plat-head">
+          <div class="s8-plat-logo-wrap" style="background:rgba(44,165,224,0.12);border:1px solid rgba(44,165,224,0.25);">
+            <svg viewBox="0 0 24 24" width="22" height="22"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" fill="#2CA5E0"/></svg>
+          </div>
+          <div class="s8-plat-name">Telegram</div>
+          <div class="s8-time-chip slow">⏱ 24–48 hours</div>
         </div>
-        <div class="s8-plat-name">Facebook</div>
-        <div class="s8-plat-status done">✓ Monitored</div>
+        <div class="s8-plat-action">24/7 bot monitoring — DMCA auto-filed. Every re-upload on new channels tracked and removed.</div>
       </div>
-      <div class="s8-platform hit">
-        <div class="s8-plat-icon">
-          <svg viewBox="0 0 24 24" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <radialGradient id="ig8g" cx="30%" cy="107%" r="150%">
-                <stop offset="0%" stop-color="#fdf497"/>
-                <stop offset="45%" stop-color="#fd5949"/>
-                <stop offset="60%" stop-color="#d6249f"/>
-                <stop offset="90%" stop-color="#285AEB"/>
-              </radialGradient>
-            </defs>
-            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" fill="url(#ig8g)"/>
-          </svg>
+
+      <!-- Torrent Sites -->
+      <div class="s8-plat-card">
+        <div class="s8-plat-head">
+          <div class="s8-plat-logo-wrap" style="background:rgba(200,150,0,0.12);border:1px solid rgba(200,150,0,0.25);">
+            <span style="font-size:1.2rem;">🌐</span>
+          </div>
+          <div class="s8-plat-name">Torrent Sites</div>
+          <div class="s8-time-chip slow">⏱ 48–72 hours</div>
         </div>
-        <div class="s8-plat-name">Instagram</div>
-        <div class="s8-plat-status done">✓ Monitored</div>
+        <div class="s8-plat-action">Automated DMCA notices filed continuously — tracked until removed.</div>
       </div>
-      <div class="s8-platform hit">
-        <div class="s8-plat-icon">🌐</div>
-        <div class="s8-plat-name">Torrent Sites</div>
-        <div class="s8-plat-status scanning">⟳ Scanning</div>
-      </div>
+
     </div>
     <div class="s8-counter">
       <div class="s8-counter-val">100%</div>
@@ -1857,15 +1873,20 @@
       slide8: {
         tag: 'Automated Enforcement',
         title: 'Takedown<br><span class="s8-accent">System</span>',
-        lead: 'An automated scanner continuously monitors YouTube, Telegram, torrent sites, and social media — detecting and removing pirated content with zero manual effort.',
-        stepTitles: ['24/7 Platform Scanning','Instant Detection','Auto DMCA Takedown'],
+        lead: 'No pirated copy of your film survives more than 48 hours online. Our system watches every platform 24/7 and removes piracy automatically — before it spreads.',
+        stepTitles: ['24/7 Platform Scanning','AI-Powered Detection','Instant Auto Removal'],
         stepDescs: [
-          'Automated crawlers scan YouTube, Telegram, torrent trackers, and social media continuously for any pirated uploads.',
-          'AI-powered matching identifies pirated copies using watermark fingerprints and audio/video signatures within minutes of upload.',
-          'DMCA notices are automatically filed and content is removed — no manual effort, no delays, no missed pirated copies.'
+          'Our bots continuously scan YouTube, Telegram, Facebook, Instagram and torrent sites — every minute of every day.',
+          'Using your film\'s watermark fingerprint, AI identifies pirated copies within minutes — even a 3-second clip is caught.',
+          'DMCA notices filed automatically. Content removed. No phone calls. No legal team. No manual work needed.'
         ],
-        platNames: ['YouTube','Telegram','Facebook','Instagram','Torrent Sites'],
-        platStatuses: ['✓ Monitored','✓ Monitored','✓ Monitored','✓ Monitored','⟳ Scanning'],
+        platNames: ['YouTube','Instagram &amp; Facebook','Telegram','Torrent Sites'],
+        platActions: [
+          'Content ID fingerprint — auto-blocked. Every re-upload caught instantly.',
+          'Rights Manager — caught during upload itself. Auto-removed within 1 hour.',
+          '24/7 bot monitoring — DMCA auto-filed. Every re-upload on new channels tracked and removed.',
+          'Automated DMCA notices filed continuously — tracked until removed.'
+        ],
         counterLabel: 'Automated — No Manual Effort'
       },
       slide9: {
@@ -1991,15 +2012,20 @@
       slide8: {
         tag: 'ఆటోమేటెడ్ అమలు',
         title: 'తొలగింపు<br><span class="s8-accent">వ్యవస్థ</span>',
-        lead: 'ఒక ఆటోమేటెడ్ స్కానర్ YouTube, Telegram, టోరెంట్ సైట్లు మరియు సోషల్ మీడియాను నిరంతరం పర్యవేక్షిస్తుంది — మాన్యువల్ పని లేకుండా పైరేటెడ్ కంటెంట్‌ను గుర్తించి తొలగిస్తుంది.',
-        stepTitles: ['24/7 ప్లాట్‌ఫారం స్కానింగ్','తక్షణ గుర్తింపు','ఆటో DMCA తొలగింపు'],
+        lead: 'మీ చిత్రం పైరేటెడ్ కాపీ 48 గంటలకు మించి ఆన్‌లైన్‌లో మనజాలదు. మా వ్యవస్థ ప్రతి ప్లాట్‌ఫారమ్‌ను 24/7 పర్యవేక్షిస్తుంది — వ్యాప్తి చెందే ముందే పైరసీని తొలగిస్తుంది.',
+        stepTitles: ['24/7 ప్లాట్‌ఫారం స్కానింగ్','AI-ఆధారిత గుర్తింపు','తక్షణ ఆటో తొలగింపు'],
         stepDescs: [
-          'ఆటోమేటెడ్ క్రాలర్లు YouTube, Telegram, టోరెంట్ ట్రాకర్లు మరియు సోషల్ మీడియాను పైరేటెడ్ అప్‌లోడ్ల కోసం నిరంతరం స్కాన్ చేస్తాయి.',
-          'AI-ఆధారిత మ్యాచింగ్ వాటర్‌మార్క్ ఫింగర్‌ప్రింట్లు మరియు ఆడియో/వీడియో సిగ్నేచర్లను ఉపయోగించి అప్‌లోడ్ అయిన నిమిషాల్లోనే పైరేటెడ్ కాపీలను గుర్తిస్తుంది.',
-          'DMCA నోటీసులు ఆటోమేటిగ్గా ఫైల్ చేయబడి కంటెంట్ తొలగించబడుతుంది — మాన్యువల్ పని లేదు, ఆలస్యం లేదు, పైరేటెడ్ కాపీలు మిస్ అవ్వవు.'
+          'మా బాట్లు YouTube, Telegram, Facebook, Instagram మరియు టోరెంట్ సైట్లను నిరంతరం స్కాన్ చేస్తాయి — ప్రతి రోజూ ప్రతి నిమిషం.',
+          'మీ చిత్రం వాటర్‌మార్క్ ఫింగర్‌ప్రింట్ ఉపయోగించి AI నిమిషాల్లోనే పైరేటెడ్ కాపీలను గుర్తిస్తుంది — 3 సెకన్ల క్లిప్ కూడా పట్టుబడుతుంది.',
+          'DMCA నోటీసులు ఆటోమేటిగ్గా ఫైల్ అవుతాయి. కంటెంట్ తొలగించబడుతుంది. ఫోన్ కాల్స్ అవసరం లేదు. మాన్యువల్ పని లేదు.'
         ],
-        platNames: ['YouTube','Telegram','Facebook','Instagram','టోరెంట్ సైట్లు'],
-        platStatuses: ['✓ పర్యవేక్షించబడింది','✓ పర్యవేక్షించబడింది','✓ పర్యవేక్షించబడింది','✓ పర్యవేక్షించబడింది','⟳ స్కానింగ్'],
+        platNames: ['YouTube','Instagram &amp; Facebook','Telegram','టోరెంట్ సైట్లు'],
+        platActions: [
+          'Content ID ఫింగర్‌ప్రింట్ — ఆటో-బ్లాక్ అవుతుంది. ప్రతి రీ-అప్‌లోడ్ తక్షణమే పట్టుబడుతుంది.',
+          'Rights Manager — అప్‌లోడ్ సమయంలోనే పట్టుబడుతుంది. 1 గంటలోపు ఆటో-తొలగించబడుతుంది.',
+          '24/7 బాట్ పర్యవేక్షణ — DMCA ఆటో-ఫైల్ అవుతుంది. కొత్త ఛానల్లలో ప్రతి రీ-అప్‌లోడ్ ట్రాక్ చేయబడి తొలగించబడుతుంది.',
+          'ఆటోమేటెడ్ DMCA నోటీసులు నిరంతరం ఫైల్ చేయబడుతాయి — తొలగించబడే వరకు ట్రాక్ చేయబడుతాయి.'
+        ],
         counterLabel: 'ఆటోమేటెడ్ — మాన్యువల్ పని లేదు'
       },
       slide9: {
@@ -2114,7 +2140,7 @@
     qa('#slide8 .s8-step-title').forEach((el,i) => el.innerHTML = t.slide8.stepTitles[i]);
     qa('#slide8 .s8-step-desc').forEach((el,i)  => el.innerHTML = t.slide8.stepDescs[i]);
     qa('#slide8 .s8-plat-name').forEach((el,i)   => el.innerHTML = t.slide8.platNames[i]);
-    qa('#slide8 .s8-plat-status').forEach((el,i) => el.innerHTML = t.slide8.platStatuses[i]);
+    qa('#slide8 .s8-plat-action').forEach((el,i) => el.innerHTML = t.slide8.platActions[i]);
     q('#slide8 .s8-counter-label').innerHTML = t.slide8.counterLabel;
 
     // Slide 9
