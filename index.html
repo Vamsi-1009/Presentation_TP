@@ -216,8 +216,8 @@
       pointer-events:none;
     }
     .s5-left {
-      flex:0 0 54%; padding:50px 36px 50px 60px;
-      display:flex; flex-direction:column; justify-content:center; gap:18px;
+      flex:0 0 54%; padding:28px 32px 28px 56px;
+      display:flex; flex-direction:column; justify-content:center; gap:10px;
       position:relative; z-index:1;
     }
     .s5-left::after {
@@ -241,17 +241,11 @@
       font-size:0.93rem; color:rgba(215,215,215,0.8); line-height:1.65;
       max-width:430px; opacity:0;
     }
-    .s5-steps { display:flex; flex-direction:column; gap:12px; }
-    .s5-step {
-      display:flex; gap:14px; align-items:flex-start; padding:12px 16px;
-      border-radius:10px; background:rgba(255,255,255,0.02);
-      border:1px solid rgba(255,255,255,0.06); opacity:0;
-      transition:background 0.3s,border-color 0.3s;
-    }
-    .s5-step:hover { background:rgba(255,60,0,0.06); border-color:rgba(255,80,0,0.22); }
-    .s5-step-num { font-size:1.35rem; font-weight:900; color:rgba(255,60,0,0.45); line-height:1; flex-shrink:0; width:28px; }
-    .s5-step-title { font-size:0.87rem; font-weight:700; color:#ffccbb; margin-bottom:4px; }
-    .s5-step-desc  { font-size:0.78rem; color:rgba(195,195,195,0.7); line-height:1.5; }
+    .s5-blocks { display:flex; flex-direction:column; gap:8px; }
+    .s5-block  { padding:8px 14px; border-radius:10px; background:rgba(255,60,0,0.04); border:1px solid rgba(255,60,0,0.12); opacity:0; transition:background 0.3s,border-color 0.3s; }
+    .s5-block:hover { background:rgba(255,60,0,0.09); border-color:rgba(255,80,0,0.28); }
+    .s5-block-heading { font-size:0.88rem; font-weight:800; color:#ffccbb; margin-bottom:4px; letter-spacing:0.01em; }
+    .s5-block-desc    { font-size:0.74rem; color:rgba(200,200,200,0.72); line-height:1.5; }
     .s5-vis-label {
       font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase;
       color:rgba(255,255,255,0.3); opacity:0;
@@ -313,9 +307,10 @@
     #slide5.active .s5-tag { animation:fadeUp 1.0s 0.4s cubic-bezier(0.22,1,0.36,1) both; }
     #slide5.active .s5-title { animation:fadeUp 1.0s 1.6s cubic-bezier(0.22,1,0.36,1) both; }
     #slide5.active .s5-lead { animation:fadeUp 1.0s 2.9s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide5.active .s5-step:nth-child(1) { animation:s2PointIn 1.0s 4.2s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide5.active .s5-step:nth-child(2) { animation:s2PointIn 1.0s 5.5s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide5.active .s5-step:nth-child(3) { animation:s2PointIn 1.0s 6.8s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide5.active .s5-block:nth-child(1) { animation:s2PointIn 0.9s 4.2s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide5.active .s5-block:nth-child(2) { animation:s2PointIn 0.9s 5.4s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide5.active .s5-block:nth-child(3) { animation:s2PointIn 0.9s 6.6s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide5.active .s5-block:nth-child(4) { animation:s2PointIn 0.9s 7.8s cubic-bezier(0.22,1,0.36,1) both; }
     #slide5.active .s5-vis-label { animation:fadeIn 0.9s 0.4s cubic-bezier(0.22,1,0.36,1) both; }
     #slide5.active .s5-compare { animation:fadeUp 1.0s 2.2s cubic-bezier(0.22,1,0.36,1) both; }
     #slide5.active .s5-wavelength { animation:fadeUp 1.0s 8.2s cubic-bezier(0.22,1,0.36,1) both; }
@@ -329,7 +324,7 @@
     #slide6::before { content:''; position:absolute; inset:0; background-image:radial-gradient(circle,rgba(140,40,255,0.04) 1px,transparent 1px); background-size:36px 36px; pointer-events:none; }
     #slide6::after  { content:''; position:absolute; top:-120px; left:-120px; width:600px; height:600px; background:radial-gradient(circle,rgba(120,30,240,0.06) 0%,transparent 65%); pointer-events:none; }
 
-    .s6-left  { flex:0 0 56%; padding:36px 32px 36px 56px; display:flex; flex-direction:column; justify-content:center; gap:14px; position:relative; z-index:1; }
+    .s6-left  { flex:0 0 56%; padding:28px 32px 28px 56px; display:flex; flex-direction:column; justify-content:center; gap:10px; position:relative; z-index:1; }
     .s6-left::after { content:''; position:absolute; right:0; top:8%; bottom:8%; width:1px; background:linear-gradient(to bottom,transparent,rgba(140,60,255,0.25),transparent); }
     .s6-right { flex:0 0 44%; padding:28px 40px 28px 28px; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:16px; position:relative; z-index:1; }
 
@@ -425,8 +420,9 @@
     #slide7.active .s7-wm-frame { animation:fadeUp 1.0s 2.2s cubic-bezier(0.22,1,0.36,1) both,wmGlow 2s 3.4s ease-in-out infinite; }
     #slide7.active .s7-trace { animation:fadeUp 1.0s 9.2s cubic-bezier(0.22,1,0.36,1) both; }
     /* Laptop layout fix for slide 7 */
-    .s7-left  { flex:0 0 56%; padding:36px 32px 36px 56px; gap:14px; }
+    .s7-left  { flex:0 0 56%; padding:28px 32px 28px 56px; gap:10px; }
     .s7-right { flex:0 0 44%; padding:28px 40px 28px 28px; gap:16px; }
+    .s7-block { padding:8px 14px; }
 
     /* ════ SLIDE 8 — Takedown System ════ */
     #slide8 {
@@ -436,7 +432,7 @@
     #slide8::before { content:''; position:absolute; inset:0; background-image:radial-gradient(circle,rgba(240,100,0,0.04) 1px,transparent 1px); background-size:36px 36px; pointer-events:none; }
     #slide8::after  { content:''; position:absolute; top:-120px; left:-120px; width:600px; height:600px; background:radial-gradient(circle,rgba(240,80,0,0.06) 0%,transparent 65%); pointer-events:none; }
 
-    .s8-left  { flex:0 0 54%; padding:40px 36px 40px 60px; display:flex; flex-direction:column; justify-content:center; gap:16px; position:relative; z-index:1; }
+    .s8-left  { flex:0 0 54%; padding:28px 32px 28px 56px; display:flex; flex-direction:column; justify-content:center; gap:10px; position:relative; z-index:1; }
     .s8-left::after { content:''; position:absolute; right:0; top:8%; bottom:8%; width:1px; background:linear-gradient(to bottom,transparent,rgba(240,100,0,0.25),transparent); }
     .s8-right { flex:0 0 46%; padding:24px 40px 24px 32px; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:10px; position:relative; z-index:1; overflow:hidden; }
 
@@ -444,12 +440,12 @@
     .s8-title { font-size:3rem; font-weight:900; line-height:1.1; opacity:0; }
     .s8-title .s8-accent { color:#f97316; }
     .s8-lead  { font-size:0.93rem; color:rgba(215,215,215,0.8); line-height:1.65; max-width:430px; opacity:0; }
-    .s8-steps { display:flex; flex-direction:column; gap:12px; }
-    .s8-step  { display:flex; gap:14px; align-items:flex-start; padding:12px 16px; border-radius:10px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); opacity:0; transition:background 0.3s,border-color 0.3s; }
-    .s8-step:hover { background:rgba(240,90,0,0.06); border-color:rgba(249,115,22,0.22); }
-    .s8-step-num   { font-size:1.35rem; font-weight:900; color:rgba(249,115,22,0.45); line-height:1; flex-shrink:0; width:28px; }
-    .s8-step-title { font-size:0.87rem; font-weight:700; color:#fed7aa; margin-bottom:4px; }
-    .s8-step-desc  { font-size:0.78rem; color:rgba(195,195,195,0.7); line-height:1.5; }
+    .s8-lead2 { font-size:0.82rem; color:rgba(200,200,200,0.68); line-height:1.6; max-width:430px; opacity:0; }
+    .s8-blocks { display:flex; flex-direction:column; gap:8px; }
+    .s8-block  { padding:8px 14px; border-radius:10px; background:rgba(249,115,22,0.04); border:1px solid rgba(249,115,22,0.12); opacity:0; transition:background 0.3s,border-color 0.3s; }
+    .s8-block:hover { background:rgba(249,115,22,0.09); border-color:rgba(249,115,22,0.28); }
+    .s8-block-heading { font-size:0.88rem; font-weight:800; color:#fed7aa; margin-bottom:4px; letter-spacing:0.01em; }
+    .s8-block-desc    { font-size:0.74rem; color:rgba(200,200,200,0.72); line-height:1.5; }
 
     .s8-platforms { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; opacity:0; }
     .s8-platform  { display:flex; flex-direction:column; align-items:center; gap:6px; padding:12px 10px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:10px; min-width:100px; transition:border-color 0.3s; }
@@ -467,10 +463,11 @@
     @keyframes tdPulse { 0%,100%{box-shadow:0 0 16px rgba(249,115,22,0.2)} 50%{box-shadow:0 0 32px rgba(249,115,22,0.5)} }
     #slide8.active .s8-tag { animation:fadeUp 1.0s 0.4s cubic-bezier(0.22,1,0.36,1) both; }
     #slide8.active .s8-title { animation:fadeUp 1.0s 1.6s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide8.active .s8-lead { animation:fadeUp 1.0s 2.9s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide8.active .s8-step:nth-child(1) { animation:s2PointIn 1.0s 4.2s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide8.active .s8-step:nth-child(2) { animation:s2PointIn 1.0s 5.5s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide8.active .s8-step:nth-child(3) { animation:s2PointIn 1.0s 6.8s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide8.active .s8-lead  { animation:fadeUp 1.0s 2.9s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide8.active .s8-lead2 { animation:fadeUp 1.0s 3.6s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide8.active .s8-block:nth-child(1) { animation:s2PointIn 0.9s 4.2s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide8.active .s8-block:nth-child(2) { animation:s2PointIn 0.9s 5.4s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide8.active .s8-block:nth-child(3) { animation:s2PointIn 0.9s 6.6s cubic-bezier(0.22,1,0.36,1) both; }
     #slide8.active .s8-platforms { animation:fadeUp 1.0s 2.2s cubic-bezier(0.22,1,0.36,1) both; }
     #slide8.active .s8-counter { animation:fadeUp 1.0s 10.8s cubic-bezier(0.22,1,0.36,1) both,tdPulse 2s 12s ease-in-out infinite; }
 
@@ -505,7 +502,7 @@
     #slide9::before { content:''; position:absolute; inset:0; background-image:radial-gradient(circle,rgba(180,140,0,0.04) 1px,transparent 1px); background-size:36px 36px; pointer-events:none; }
     #slide9::after  { content:''; position:absolute; bottom:-100px; right:-100px; width:500px; height:500px; background:radial-gradient(circle,rgba(200,160,0,0.05) 0%,transparent 65%); pointer-events:none; }
 
-    .s9-left  { flex:0 0 38%; padding:50px 30px 50px 60px; display:flex; flex-direction:column; justify-content:center; gap:20px; position:relative; z-index:1; }
+    .s9-left  { flex:0 0 38%; padding:36px 30px 36px 56px; display:flex; flex-direction:column; justify-content:center; gap:14px; position:relative; z-index:1; }
     .s9-left::after { content:''; position:absolute; right:0; top:8%; bottom:8%; width:1px; background:linear-gradient(to bottom,transparent,rgba(200,160,0,0.25),transparent); }
     .s9-right { flex:0 0 62%; padding:36px 48px 36px 40px; display:flex; flex-direction:column; justify-content:center; gap:16px; position:relative; z-index:1; }
 
@@ -892,9 +889,9 @@
       .s5-right { flex:none !important; width:100% !important; padding:0 !important; gap:14px !important; align-items:flex-start !important; }
       .s5-title { font-size:1.6rem !important; }
       .s5-lead { font-size:0.8rem !important; }
-      .s5-step { padding:8px 10px !important; }
-      .s5-step-title { font-size:0.8rem !important; }
-      .s5-step-desc  { font-size:0.72rem !important; }
+      .s5-block { padding:6px 10px !important; }
+      .s5-block-heading { font-size:0.8rem !important; }
+      .s5-block-desc    { font-size:0.72rem !important; }
       .s5-compare { flex-direction:row !important; justify-content:flex-start !important; gap:10px !important; }
       .s5-eye-box { width:110px !important; padding:10px !important; }
       .s5-screen-preview { width:88px !important; height:56px !important; }
@@ -932,9 +929,9 @@
       .s7-right { flex:none !important; width:100% !important; padding:0 !important; gap:14px !important; align-items:flex-start !important; }
       .s7-title { font-size:1.6rem !important; }
       .s7-lead  { font-size:0.8rem !important; }
-      .s7-step { padding:8px 10px !important; }
-      .s7-step-title { font-size:0.8rem !important; }
-      .s7-step-desc  { font-size:0.72rem !important; }
+      .s7-block { padding:6px 10px !important; }
+      .s7-block-heading { font-size:0.8rem !important; }
+      .s7-block-desc    { font-size:0.72rem !important; }
       .s7-wm-frame { width:100% !important; height:100px !important; }
 
       /* ────── SLIDE 8 ────── */
@@ -949,10 +946,10 @@
       .s8-left::after { display:none !important; }
       .s8-right { flex:none !important; width:100% !important; padding:0 !important; gap:14px !important; align-items:flex-start !important; }
       .s8-title { font-size:1.6rem !important; }
-      .s8-lead  { font-size:0.8rem !important; }
-      .s8-step { padding:8px 10px !important; }
-      .s8-step-title { font-size:0.8rem !important; }
-      .s8-step-desc  { font-size:0.72rem !important; }
+      .s8-lead,.s8-lead2  { font-size:0.8rem !important; }
+      .s8-block { padding:6px 10px !important; }
+      .s8-block-heading { font-size:0.8rem !important; }
+      .s8-block-desc    { font-size:0.72rem !important; }
       .s8-plat-card  { padding:10px 12px !important; }
       .s8-time-chip  { font-size:0.7rem !important; padding:3px 10px !important; }
       .s8-plat-action{ font-size:0.68rem !important; padding-left:0 !important; }
@@ -1032,8 +1029,8 @@
       .s5-left,.s6-left,.s7-left,.s8-left { padding:0 20px 0 10px !important; gap:8px !important; }
       .s5-right,.s6-right,.s7-right,.s8-right { padding:0 10px 0 0 !important; gap:8px !important; }
       .s5-title,.s6-title,.s7-title,.s8-title { font-size:1.4rem !important; }
-      .s5-step,.s6-step,.s7-step,.s8-step { padding:5px 8px !important; }
-      .s5-lead,.s6-lead,.s7-lead,.s8-lead { font-size:0.72rem !important; line-height:1.4 !important; }
+      .s5-block,.s6-block,.s7-block,.s8-block { padding:5px 8px !important; }
+      .s5-lead,.s6-lead,.s7-lead,.s8-lead,.s8-lead2 { font-size:0.72rem !important; line-height:1.4 !important; }
       /* Slide 1 landscape */
       #slide1 { gap:8px !important; padding:8px 10px !important; }
       .s1-title { font-size:0.95rem !important; }
@@ -1163,7 +1160,7 @@
         <div class="s4-card-icon">📡</div>
         <div class="s4-card-title">IR Detection</div>
       </div>
-      <div class="s4-card-desc">940nm IR LEDs flood the screen — invisible to humans, any camera gets overexposed into white glare.</div>
+      <div class="s4-card-desc">940nm IR LEDs surround the screen — invisible to your audience. Any camera that points at the screen overexposes instantly into solid white. No device, no filter, no setting avoids it.</div>
     </div>
 
     <div class="s4-con-v top"></div>
@@ -1177,7 +1174,7 @@
           <div class="s4-card-icon">🚫</div>
           <div class="s4-card-title">Takedown System</div>
         </div>
-        <div class="s4-card-desc">Scans YouTube, Telegram &amp; torrent sites 24/7 — auto-files DMCA takedowns with zero manual effort.</div>
+        <div class="s4-card-desc">50+ platforms monitored every minute of every day. The moment your film appears online, AI flags it and DMCA notices are filed automatically. Removed before it spreads.</div>
       </div>
 
       <div class="s4-con-h rev left"></div>
@@ -1211,7 +1208,7 @@
           <div class="s4-card-icon">🖥️</div>
           <div class="s4-card-title">TPVM</div>
         </div>
-        <div class="s4-card-desc">Adds 7 invisible layers per frame — audience sees perfectly, any recording captures only distorted noise.</div>
+        <div class="s4-card-desc">7 invisible layers injected into every frame during projection. Your audience sees a perfect picture. Every camera in the hall records only distorted, unwatchable noise.</div>
       </div>
 
     </div>
@@ -1224,7 +1221,7 @@
         <div class="s4-card-icon">🔏</div>
         <div class="s4-card-title">Watermarking</div>
       </div>
-      <div class="s4-card-desc">Invisible fingerprint per screen &amp; showtime — any leaked copy instantly traces back to the exact source.</div>
+      <div class="s4-card-desc">Every print carries a unique invisible mark — different for each screen and showtime. The moment a pirated copy surfaces, we trace it to the exact theatre and show in minutes.</div>
     </div>
 
   </div>
@@ -1236,28 +1233,23 @@
   <div class="s5-left">
     <div class="s5-tag">Physical Deterrent</div>
     <h2 class="s5-title">IR <span class="s5-accent">Detection</span><br>System</h2>
-    <p class="s5-lead">940nm infrared LEDs flood the theatre screen — invisible to the human eye, but completely overexpose any recording camera.</p>
-    <div class="s5-steps">
-      <div class="s5-step">
-        <div class="s5-step-num">01</div>
-        <div class="s5-step-body">
-          <div class="s5-step-title">IR LEDs Activated</div>
-          <div class="s5-step-desc">Arrays of 940nm IR LEDs mounted around the screen emit a continuous invisible flood of infrared light across the entire display area.</div>
-        </div>
+    <p class="s5-lead">Your film is showing. The hall is packed. Somewhere in the dark, a phone is pointing at the screen. IR Detection sees it coming — and before a single frame is recorded, that phone is already blind.</p>
+    <div class="s5-blocks">
+      <div class="s5-block">
+        <div class="s5-block-heading">Invisible to the Eye. Lethal to Every Lens.</div>
+        <div class="s5-block-desc">940nm infrared LEDs surround the screen — a wavelength the human eye cannot detect. Your audience sees nothing different. But every camera sensor in the room is drowning in invisible light that makes any recording physically impossible.</div>
       </div>
-      <div class="s5-step">
-        <div class="s5-step-num">02</div>
-        <div class="s5-step-body">
-          <div class="s5-step-title">Human Eye Unaffected</div>
-          <div class="s5-step-desc">940nm is beyond the visible spectrum. The audience sees nothing — the movie plays perfectly as intended with no disturbance.</div>
-        </div>
+      <div class="s5-block">
+        <div class="s5-block-heading">The Screen Itself Becomes the Weapon.</div>
+        <div class="s5-block-desc">The infrared flood is built into the theatre — always active, always silent. The moment any lens points at the screen, the sensor overexposes instantly. The pirate sees nothing but white. Your film plays on.</div>
       </div>
-      <div class="s5-step">
-        <div class="s5-step-num">03</div>
-        <div class="s5-step-body">
-          <div class="s5-step-title">Camera Sensor Overloaded</div>
-          <div class="s5-step-desc">Phone cameras detect IR wavelengths. The sensor gets completely flooded — recording turns to pure white glare, totally unusable.</div>
-        </div>
+      <div class="s5-block">
+        <div class="s5-block-heading">No Filter. No App. No Camera Setting.</div>
+        <div class="s5-block-desc">Overexposure from 940nm infrared cannot be corrected. No colour grading removes it. No software recovers it. No camera brand, no lens quality, no recording mode avoids it. The physics of infrared makes every recording attempt permanently futile.</div>
+      </div>
+      <div class="s5-block">
+        <div class="s5-block-heading">Any Device. One Result.</div>
+        <div class="s5-block-desc">Budget smartphone. High-end DSLR. Professional camcorder. It makes no difference. Every imaging sensor responds the same way to infrared flood — complete whiteout. Your film cannot be captured. Not today. Not ever.</div>
       </div>
     </div>
   </div>
@@ -1407,28 +1399,20 @@
   <div class="s8-left">
     <div class="s8-tag">Automated Enforcement</div>
     <h2 class="s8-title">Takedown<br><span class="s8-accent">System</span></h2>
-    <p class="s8-lead">An automated scanner continuously monitors YouTube, Telegram, torrent sites, and social media — detecting and removing pirated content with zero manual effort.</p>
-    <div class="s8-steps">
-      <div class="s8-step">
-        <div class="s8-step-num">01</div>
-        <div class="s8-step-body">
-          <div class="s8-step-title">24/7 Platform Scanning</div>
-          <div class="s8-step-desc">Automated crawlers scan YouTube, Telegram, torrent trackers, and social media continuously for any pirated uploads.</div>
-        </div>
+    <p class="s8-lead">Your film releases. Piracy attempts start on day one. Our Takedown System is already running — scanning every platform, every minute, removing every copy before it spreads. You focus on your film. We handle the rest.</p>
+    <p class="s8-lead2">Every pirated copy online is direct box-office revenue walking out the door. The Takedown System stops it at the source — not after the damage spreads, but the moment it appears. Automated across 50+ platforms, your film's earnings are protected from the first hour of release to the last day of its run.</p>
+    <div class="s8-blocks">
+      <div class="s8-block">
+        <div class="s8-block-heading">24/7 Automated Surveillance.</div>
+        <div class="s8-block-desc">Our bots never sleep. YouTube, Telegram, Facebook, Instagram, and torrent sites — every platform is monitored every minute of every day. The moment any pirated copy of your film surfaces anywhere online, the system sees it before you do.</div>
       </div>
-      <div class="s8-step">
-        <div class="s8-step-num">02</div>
-        <div class="s8-step-body">
-          <div class="s8-step-title">Instant Detection</div>
-          <div class="s8-step-desc">AI-powered matching identifies pirated copies using watermark fingerprints and audio/video signatures within minutes of upload.</div>
-        </div>
+      <div class="s8-block">
+        <div class="s8-block-heading">AI Fingerprint Matching.</div>
+        <div class="s8-block-desc">Your film carries a unique watermark fingerprint in every frame. Our AI uses it to identify pirated copies anywhere — re-encoded, compressed, or screen-recorded. Even a 3-second clip from inside a dark cinema is enough to trigger an instant takedown.</div>
       </div>
-      <div class="s8-step">
-        <div class="s8-step-num">03</div>
-        <div class="s8-step-body">
-          <div class="s8-step-title">Auto DMCA Takedown</div>
-          <div class="s8-step-desc">DMCA notices are automatically filed and content is removed — no manual effort, no delays, no missed pirated copies.</div>
-        </div>
+      <div class="s8-block">
+        <div class="s8-block-heading">Instant DMCA. Instant Removal.</div>
+        <div class="s8-block-desc">The moment a match is confirmed, DMCA notices are filed automatically — no human involved, no delays. Content is removed from the platform. Every re-upload is blocked permanently. You receive a report. Your film is protected.</div>
       </div>
     </div>
   </div>
@@ -1444,23 +1428,27 @@
           <div class="s8-plat-name">YouTube</div>
           <div class="s8-time-chip fast">⚡ 10 minutes</div>
         </div>
-        <div class="s8-plat-action">We register your film's unique digital fingerprint with YouTube's Content ID system. The moment anyone uploads even a 10-second clip of your film — on any channel, anywhere in the world — YouTube automatically detects it and removes it within 10 minutes. Every re-upload is caught instantly. You do nothing.</div>
+        <div class="s8-plat-action">Your film's fingerprint is registered with YouTube Content ID. Any upload — even 10 seconds — is auto-detected and removed within 10 minutes.</div>
       </div>
 
       <!-- Meta (Instagram & Facebook) -->
       <div class="s8-plat-card">
         <div class="s8-plat-head">
           <div class="s8-plat-logo-wrap" style="background:rgba(0,122,255,0.12);border:1px solid rgba(0,122,255,0.25);">
-            <svg viewBox="0 0 36 36" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M18 3C9.716 3 3 9.716 3 18c0 8.284 6.716 15 15 15s15-6.716 15-15c0-8.284-6.716-15-15-15z" fill="url(#metaGrad)"/>
-              <defs><linearGradient id="metaGrad" x1="3" y1="3" x2="33" y2="33" gradientUnits="userSpaceOnUse"><stop stop-color="#0081FB"/><stop offset="1" stop-color="#0064E1"/></linearGradient></defs>
-              <text x="18" y="24" text-anchor="middle" font-size="18" font-weight="900" font-family="Arial,sans-serif" fill="white">M</text>
+            <svg viewBox="0 0 80 36" width="28" height="13" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="metaInfGrad" x1="0" y1="0" x2="80" y2="36" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#5AB0FF"/>
+                  <stop offset="1" stop-color="#0058D1"/>
+                </linearGradient>
+              </defs>
+              <path fill="url(#metaInfGrad)" d="M40 18C40 9.2 34 3 26 3C15 3 4 10.3 4 18C4 25.7 15 33 26 33C34 33 40 26.8 40 18ZM40 18C40 9.2 46 3 54 3C65 3 76 10.3 76 18C76 25.7 65 33 54 33C46 33 40 26.8 40 18Z"/>
             </svg>
           </div>
           <div class="s8-plat-name">Instagram &amp; Facebook</div>
           <div class="s8-time-chip medium">⚡ 1 hour</div>
         </div>
-        <div class="s8-plat-action">Meta's Rights Manager scans every video at the moment of upload. Before the pirated copy even goes live, our system flags it and blocks it automatically. If anything slips through, it is removed within 1 hour. Your film never stays up long enough to spread.</div>
+        <div class="s8-plat-action">Meta Rights Manager blocks pirated uploads before they go live. Anything that slips through is removed within 1 hour.</div>
       </div>
 
       <!-- Telegram -->
@@ -1472,7 +1460,7 @@
           <div class="s8-plat-name">Telegram</div>
           <div class="s8-time-chip slow">⏱ 24–48 hours</div>
         </div>
-        <div class="s8-plat-action">Our bots scan thousands of Telegram channels around the clock. The moment a pirated copy is found, a DMCA notice is automatically filed with Telegram's content team. The link is removed within 24 to 48 hours. If it reappears on a new channel, our system finds it again and files again — until it is gone.</div>
+        <div class="s8-plat-action">Bots scan thousands of Telegram channels around the clock. The moment a pirated link is found, a DMCA notice is auto-filed and removed within 24–48 hours. Re-appearances are caught and filed again.</div>
       </div>
 
       <!-- Torrent Sites -->
@@ -1484,7 +1472,7 @@
           <div class="s8-plat-name">Torrent Sites</div>
           <div class="s8-time-chip slow">⏱ 48–72 hours</div>
         </div>
-        <div class="s8-plat-action">Torrent sites are harder to control — but not impossible. We continuously file DMCA notices to hosting providers and indexing sites. Links are taken down within 48 to 72 hours. Our system keeps tracking and filing until every single copy is removed from every site.</div>
+        <div class="s8-plat-action">DMCA notices are filed automatically to hosting providers and indexing sites. Links removed within 48–72 hours. System keeps tracking and filing until every copy is gone.</div>
       </div>
 
     </div>
@@ -1501,9 +1489,9 @@
   <div class="s9-left">
     <div class="s9-tag">Takedown System — Platform Authorization</div>
     <h2 class="s9-title">Platform<br><span class="s9-accent">API Access</span></h2>
-    <p class="s9-lead">Platforms like YouTube, Telegram, and torrent networks only allow automated content removal through authorized API access. You must apply and get approved first.</p>
+    <p class="s9-lead">Platforms like YouTube, Telegram, and torrent networks will not accept automated removal requests from anyone without authorization. API access is not optional — it is the only legal pathway for removing pirated copies at scale. One-time approval. Permanent enforcement power.</p>
     <div class="s9-note">
-      Without API access, every takedown must be filed manually — slow, limited, and easy to miss. API access makes removal instant and unlimited.
+      Without API access, one DMCA filing covers one link, takes 2–5 days, and requires a lawyer every time. With API access, the system removes thousands of pirated links per hour — automatically, legally, across every platform. Once granted, it never expires.
     </div>
   </div>
   <div class="s9-right">
@@ -1522,7 +1510,7 @@
         <div class="s9-card-points">
           <div class="s9-point">Registered certificate from Copyright Office confirming ownership of the film</div>
           <div class="s9-point">Mandatory for filing DMCA claims on all major platforms</div>
-          <div class="s9-point">Covers screenplay, soundtrack, and visual content</div>
+          <div class="s9-point">Without this certificate, no platform will legally process a single removal request — it is the foundation of every takedown</div>
         </div>
       </div>
 
@@ -1537,7 +1525,7 @@
         </div>
         <div class="s9-card-points">
           <div class="s9-point">YouTube Content ID fingerprint registered for video and audio tracks</div>
-          <div class="s9-point">Auto-matches any re-upload across the entire YouTube network</div>
+          <div class="s9-point">Automatically flags any re-upload across YouTube's 800 hours of content uploaded every minute</div>
           <div class="s9-point">Enables instant claim, block, or monetise on matched content</div>
         </div>
       </div>
@@ -1552,9 +1540,9 @@
           </div>
         </div>
         <div class="s9-card-points">
-          <div class="s9-point">Movie title, release date, ISAN number, production house details</div>
-          <div class="s9-point">Cast, crew, distributor, and territory licensing info</div>
-          <div class="s9-point">Used to cross-reference and verify pirated copies across platforms</div>
+          <div class="s9-point">Film title, ISAN number, release date, and production house — official identification across all systems</div>
+          <div class="s9-point">Territory licensing data ensures only region-authorized copies are permitted — everything else is flagged</div>
+          <div class="s9-point">Used to verify and cross-reference pirated copies instantly across all platforms</div>
         </div>
       </div>
 
@@ -1568,9 +1556,9 @@
           </div>
         </div>
         <div class="s9-card-points">
-          <div class="s9-point">Chain of title documents proving unbroken rights ownership</div>
-          <div class="s9-point">Distribution agreements and NOC from producers</div>
-          <div class="s9-point">Platform-specific takedown affidavits and legal declarations</div>
+          <div class="s9-point">Chain of title documents proving you own the rights — from script to screen, unbroken</div>
+          <div class="s9-point">Distribution agreements and NOC confirming no other party can override your removal requests</div>
+          <div class="s9-point">Platform-specific affidavits giving API operators legal authority to remove content on your behalf</div>
         </div>
       </div>
 
@@ -1581,7 +1569,7 @@
       <div class="s9-result-icon">✅</div>
       <div>
         <div class="s9-result-text">API Access Granted → Automated Takedowns Enabled</div>
-        <div class="s9-result-sub">Once approved, the system files DMCA notices instantly across all platforms — no manual work needed</div>
+        <div class="s9-result-sub">Once approved, pirated copies are removed across all platforms within minutes — no calls, no lawyers, no waiting. Ever.</div>
       </div>
     </div>
 
@@ -1824,21 +1812,22 @@
       slide4: {
         titles: ['IR Detection','Takedown System','TPVM','Watermarking'],
         descs: [
-          '940nm IR LEDs flood the screen — invisible to humans, any camera gets overexposed into white glare.',
-          'Scans YouTube, Telegram &amp; torrent sites 24/7 — auto-files DMCA takedowns with zero manual effort.',
-          'Adds 7 invisible layers per frame — audience sees perfectly, any recording captures only distorted noise.',
-          'Invisible fingerprint per screen &amp; showtime — any leaked copy instantly traces back to the exact source.'
+          '940nm IR LEDs surround the screen — invisible to your audience. Any camera that points at the screen overexposes instantly into solid white. No device, no filter, no setting avoids it.',
+          '50+ platforms monitored every minute of every day. The moment your film appears online, AI flags it and DMCA notices are filed automatically. Removed before it spreads.',
+          '7 invisible layers injected into every frame during projection. Your audience sees a perfect picture. Every camera in the hall records only distorted, unwatchable noise.',
+          'Every print carries a unique invisible mark — different for each screen and showtime. The moment a pirated copy surfaces, we trace it to the exact theatre and show in minutes.'
         ]
       },
       slide5: {
         tag: 'Physical Deterrent',
         title: 'IR <span class="s5-accent">Detection</span><br>System',
-        lead: '940nm infrared LEDs flood the theatre screen — invisible to the human eye, but completely overexpose any recording camera.',
-        stepTitles: ['IR LEDs Activated','Human Eye Unaffected','Camera Sensor Overloaded'],
-        stepDescs: [
-          'Arrays of 940nm IR LEDs mounted around the screen emit a continuous invisible flood of infrared light across the entire display area.',
-          '940nm is beyond the visible spectrum. The audience sees nothing — the movie plays perfectly as intended with no disturbance.',
-          'Phone cameras detect IR wavelengths. The sensor gets completely flooded — recording turns to pure white glare, totally unusable.'
+        lead: 'Your film is showing. The hall is packed. Somewhere in the dark, a phone is pointing at the screen. IR Detection sees it coming — and before a single frame is recorded, that phone is already blind.',
+        blockHeadings: ['Invisible to the Eye. Lethal to Every Lens.','The Screen Itself Becomes the Weapon.','No Filter. No App. No Camera Setting.','Any Device. One Result.'],
+        blockDescs: [
+          '940nm infrared LEDs surround the screen — a wavelength the human eye cannot detect. Your audience sees nothing different. But every camera sensor in the room is drowning in invisible light that makes any recording physically impossible.',
+          'The infrared flood is built into the theatre — always active, always silent. The moment any lens points at the screen, the sensor overexposes instantly. The pirate sees nothing but white. Your film plays on.',
+          'Overexposure from 940nm infrared cannot be corrected. No colour grading removes it. No software recovers it. No camera brand, no lens quality, no recording mode avoids it. The physics of infrared makes every recording attempt permanently futile.',
+          'Budget smartphone. High-end DSLR. Professional camcorder. It makes no difference. Every imaging sensor responds the same way to infrared flood — complete whiteout. Your film cannot be captured. Not today. Not ever.'
         ],
         visLabel: 'What they see',
         eyeTitles: ['Human Eye','Camera'],
@@ -1882,38 +1871,39 @@
       slide8: {
         tag: 'Automated Enforcement',
         title: 'Takedown<br><span class="s8-accent">System</span>',
-        lead: 'No pirated copy of your film survives more than 48 hours online. Our system watches every platform 24/7 and removes piracy automatically — before it spreads.',
-        stepTitles: ['24/7 Platform Scanning','AI-Powered Detection','Instant Auto Removal'],
-        stepDescs: [
-          'Our bots continuously scan YouTube, Telegram, Facebook, Instagram and torrent sites — every minute of every day.',
-          'Using your film\'s watermark fingerprint, AI identifies pirated copies within minutes — even a 3-second clip is caught.',
-          'DMCA notices filed automatically. Content removed. No phone calls. No legal team. No manual work needed.'
+        lead: 'Your film releases. Piracy attempts start on day one. Our Takedown System is already running — scanning every platform, every minute, removing every copy before it spreads. You focus on your film. We handle the rest.',
+        lead2: 'Every pirated copy online is direct box-office revenue walking out the door. The Takedown System stops it at the source — not after the damage spreads, but the moment it appears. Automated across 50+ platforms, your film\'s earnings are protected from the first hour of release to the last day of its run.',
+        blockHeadings: ['24/7 Automated Surveillance.','AI Fingerprint Matching.','Instant DMCA. Instant Removal.'],
+        blockDescs: [
+          'Our bots never sleep. YouTube, Telegram, Facebook, Instagram, and torrent sites — every platform is monitored every minute of every day. The moment any pirated copy of your film surfaces anywhere online, the system sees it before you do.',
+          'Your film carries a unique watermark fingerprint in every frame. Our AI uses it to identify pirated copies anywhere — re-encoded, compressed, or screen-recorded. Even a 3-second clip from inside a dark cinema is enough to trigger an instant takedown.',
+          'The moment a match is confirmed, DMCA notices are filed automatically — no human involved, no delays. Content is removed from the platform. Every re-upload is blocked permanently. You receive a report. Your film is protected.'
         ],
         platNames: ['YouTube','Instagram &amp; Facebook','Telegram','Torrent Sites'],
         platActions: [
-          'We register your film\'s unique digital fingerprint with YouTube\'s Content ID system. The moment anyone uploads even a 10-second clip of your film — on any channel, anywhere in the world — YouTube automatically detects it and removes it within 10 minutes. Every re-upload is caught instantly. You do nothing.',
-          'Meta\'s Rights Manager scans every video at the moment of upload. Before the pirated copy even goes live, our system flags it and blocks it automatically. If anything slips through, it is removed within 1 hour. Your film never stays up long enough to spread.',
-          'Our bots scan thousands of Telegram channels around the clock. The moment a pirated copy is found, a DMCA notice is automatically filed with Telegram\'s content team. The link is removed within 24 to 48 hours. If it reappears on a new channel, our system finds it again and files again — until it is gone.',
-          'Torrent sites are harder to control — but not impossible. We continuously file DMCA notices to hosting providers and indexing sites. Links are taken down within 48 to 72 hours. Our system keeps tracking and filing until every single copy is removed from every site.'
+          'Your film\'s fingerprint is registered with YouTube Content ID. Any upload — even 10 seconds — is auto-detected and removed within 10 minutes.',
+          'Meta Rights Manager blocks pirated uploads before they go live. Anything that slips through is removed within 1 hour.',
+          'Bots scan thousands of Telegram channels around the clock. The moment a pirated link is found, a DMCA notice is auto-filed and removed within 24–48 hours.',
+          'DMCA notices are filed automatically to hosting providers and indexing sites. Links removed within 48–72 hours.'
         ],
         counterLabel: 'Automated — No Manual Effort'
       },
       slide9: {
         tag: 'Takedown System — Platform Authorization',
         title: 'Platform<br><span class="s9-accent">API Access</span>',
-        lead: 'Platforms like YouTube, Telegram, and torrent networks only allow automated content removal through authorized API access. You must apply and get approved first.',
-        note: 'Without API access, every takedown must be filed manually — slow, limited, and easy to miss. API access makes removal instant and unlimited.',
+        lead: 'Platforms like YouTube, Telegram, and torrent networks will not accept automated removal requests from anyone without authorization. API access is not optional — it is the only legal pathway for removing pirated copies at scale. One-time approval. Permanent enforcement power.',
+        note: 'Without API access, one DMCA filing covers one link, takes 2–5 days, and requires a lawyer every time. With API access, the system removes thousands of pirated links per hour — automatically, legally, across every platform. Once granted, it never expires.',
         gridLabel: 'Submit these to get API access →',
         cardTitles: ['Digital Rights Certificate','Content ID','Metadata','Documentation'],
         cardSubs: ['Legal ownership proof','Digital fingerprint system','Film identification data','Chain of title &amp; agreements'],
         points: [
-          ['Registered certificate from Copyright Office confirming ownership of the film','Mandatory for filing DMCA claims on all major platforms','Covers screenplay, soundtrack, and visual content'],
-          ['YouTube Content ID fingerprint registered for video and audio tracks','Auto-matches any re-upload across the entire YouTube network','Enables instant claim, block, or monetise on matched content'],
-          ['Movie title, release date, ISAN number, production house details','Cast, crew, distributor, and territory licensing info','Used to cross-reference and verify pirated copies across platforms'],
-          ['Chain of title documents proving unbroken rights ownership','Distribution agreements and NOC from producers','Platform-specific takedown affidavits and legal declarations']
+          ['Registered certificate from Copyright Office confirming ownership of the film','Mandatory for filing DMCA claims on all major platforms','Without this certificate, no platform will legally process a single removal request — it is the foundation of every takedown'],
+          ['YouTube Content ID fingerprint registered for video and audio tracks','Automatically flags any re-upload across YouTube\'s 800 hours of content uploaded every minute','Enables instant claim, block, or monetise on matched content'],
+          ['Film title, ISAN number, release date, and production house — official identification across all systems','Territory licensing data ensures only region-authorized copies are permitted — everything else is flagged','Used to verify and cross-reference pirated copies instantly across all platforms'],
+          ['Chain of title documents proving you own the rights — from script to screen, unbroken','Distribution agreements and NOC confirming no other party can override your removal requests','Platform-specific affidavits giving API operators legal authority to remove content on your behalf']
         ],
         resultText: 'API Access Granted → Automated Takedowns Enabled',
-        resultSub: 'Once approved, the system files DMCA notices instantly across all platforms — no manual work needed'
+        resultSub: 'Once approved, pirated copies are removed across all platforms within minutes — no calls, no lawyers, no waiting. Ever.'
       },
       slide10: {
         tag: 'Your Control Room',
@@ -1965,21 +1955,22 @@
       slide4: {
         titles: ['IR డిటెక్షన్','తొలగింపు వ్యవస్థ','TPVM','వాటర్‌మార్కింగ్'],
         descs: [
-          '940nm IR LEDs స్క్రీన్‌ను వెల్లివిరిసేటట్లు చేస్తాయి — మానవులకు అదృశ్యం, ఏ కెమెరాకైనా వైట్ గ్లేర్ అవుతుంది.',
-          'YouTube, Telegram &amp; టోరెంట్ సైట్లను 24/7 స్కాన్ చేస్తుంది — మాన్యువల్ పని లేకుండా DMCA తొలగింపులు ఆటోమేటిగ్గా.',
-          'ప్రతి ఫ్రేమ్‌కు 7 అదృశ్య లేయర్లు జోడిస్తుంది — ప్రేక్షకులు స్పష్టంగా చూస్తారు, రికార్డింగ్ వికృతంగా ఉంటుంది.',
-          'ప్రతి స్క్రీన్ &amp; షోటైమ్‌కు అదృశ్య వేలిముద్ర — లీక్ అయిన కాపీ వెంటనే మూలాన్ని గుర్తిస్తుంది.'
+          '940nm IR LEDలు స్క్రీన్ చుట్టూ ఉంటాయి — మీ ప్రేక్షకులకు అదృశ్యం. స్క్రీన్ వైపు పెట్టిన ఏ కెమెరా అయినా తక్షణమే తెల్లని వెలుతురుతో overexpose అవుతుంది. ఏ డివైస్, ఏ ఫిల్టర్, ఏ సెట్టింగ్ అయినా దాన్ని నివారించలేదు.',
+          'ప్రతి రోజూ ప్రతి నిమిషమూ 50+ ప్లాట్‌ఫారమ్‌లు పర్యవేక్షించబడతాయి. మీ చిత్రం ఆన్‌లైన్‌లో కనిపించిన క్షణమే AI గుర్తించి DMCA నోటీసులు ఆటోమేటిగ్గా దాఖలు చేస్తుంది. వ్యాపించే ముందే తొలగించబడుతుంది.',
+          'ప్రొజెక్షన్ సమయంలో ప్రతి ఫ్రేమ్‌లో 7 అదృశ్య లేయర్లు జోడించబడతాయి. మీ ప్రేక్షకులు పర్‌ఫెక్ట్ చిత్రాన్ని చూస్తారు. హాల్‌లో ప్రతి కెమెరా వికృతమైన, చూడలేని శబ్దాన్ని మాత్రమే రికార్డ్ చేస్తుంది.',
+          'ప్రతి ప్రింట్ ఒక ప్రత్యేక అదృశ్య వాటర్‌మార్క్‌ను కలిగి ఉంటుంది — ప్రతి స్క్రీన్‌కు మరియు షోటైమ్‌కు వేర్వేరుగా. పైరేటెడ్ కాపీ కనిపించిన క్షణమే, మేము ఖచ్చితమైన థియేటర్ మరియు షోని నిమిషాల్లో గుర్తిస్తాము.'
         ]
       },
       slide5: {
         tag: 'భౌతిక నిరోధకం',
         title: 'IR <span class="s5-accent">డిటెక్షన్</span><br>సిస్టమ్',
-        lead: '940nm ఇన్‌ఫ్రారెడ్ LEDs థియేటర్ స్క్రీన్‌ను వెల్లివిరిసేటట్లు చేస్తాయి — మానవ కంటికి అదృశ్యం, కానీ ఏ రికార్డింగ్ కెమెరాను పూర్తిగా ఓవర్‌ఎక్స్‌పోజ్ చేస్తుంది.',
-        stepTitles: ['IR LEDs సక్రియం','మానవ కంటిపై ప్రభావం లేదు','కెమెరా సెన్సార్ ఓవర్‌లోడ్'],
-        stepDescs: [
-          'స్క్రీన్ చుట్టూ అమర్చిన 940nm IR LED శ్రేణులు మొత్తం డిస్‌ప్లే ప్రాంతంలో నిరంతరం అదృశ్య ఇన్‌ఫ్రారెడ్ కాంతిని వెదజల్లుతాయి.',
-          '940nm కనిపించే స్పెక్ట్రమ్‌కు మించినది. ప్రేక్షకులకు ఏమీ కనిపించదు — చిత్రం ఎటువంటి అంతరాయం లేకుండా పూర్తిగా ప్లే అవుతుంది.',
-          'ఫోన్ కెమెరాలు IR తరంగదైర్ఘ్యాలను గుర్తిస్తాయి. సెన్సార్ పూర్తిగా వెల్లివిరుస్తుంది — రికార్డింగ్ స్వచ్ఛమైన తెల్లటి మెరుపుగా మారుతుంది, వినియోగానికి పనికిరాదు.'
+        lead: 'మీ చిత్రం చూపిస్తున్నారు. హాల్ నిండిపోయింది. చీకటిలో ఎక్కడో ఒక ఫోన్ స్క్రీన్ వైపు పెట్టబడింది. IR Detection దాన్ని గుర్తిస్తుంది — ఒక్క ఫ్రేమ్ రికార్డ్ కాకముందే, ఆ ఫోన్ ఇప్పటికే అంధంగా అవుతుంది.',
+        blockHeadings: ['కంటికి అదృశ్యం. ప్రతి లెన్స్‌కు ప్రాణాంతకం.','స్క్రీనే ఆయుధంగా మారుతుంది.','ఫిల్టర్ లేదు. యాప్ లేదు. కెమెరా సెట్టింగ్ లేదు.','ఏ డివైస్ అయినా. ఒకే ఫలితం.'],
+        blockDescs: [
+          '940nm ఇన్‌ఫ్రారెడ్ LEDలు స్క్రీన్ చుట్టూ ఉన్నాయి — మానవ కంటికి గుర్తించలేని తరంగదైర్ఘ్యం. మీ ప్రేక్షకులకు ఏమీ మారదు. కానీ ఆ గదిలోని ప్రతి కెమెరా సెన్సార్ అదృశ్య కాంతిలో మునిగిపోతుంది, ఏ రికార్డింగ్‌నూ భౌతికంగా అసాధ్యం చేస్తుంది.',
+          'ఇన్‌ఫ్రారెడ్ ఫ్లడ్ థియేటర్‌లో నిర్మించబడింది — ఎల్లప్పుడూ యాక్టివ్, ఎల్లప్పుడూ నిశ్శబ్దంగా. ఏ లెన్స్ అయినా స్క్రీన్ వైపు చూసిన క్షణమే, సెన్సార్ తక్షణమే అతిగా ఎక్స్‌పోజ్ అవుతుంది. పైరేట్‌కు తెల్లగా మాత్రమే కనిపిస్తుంది. మీ చిత్రం నిరాఘాటంగా ఆడుతూనే ఉంటుంది.',
+          '940nm ఇన్‌ఫ్రారెడ్ నుండి అతిగా ఎక్స్‌పోజ్‌ను సరిచేయలేరు. ఏ కలర్ గ్రేడింగ్ అయినా దాన్ని తీసివేయలేదు. ఏ సాఫ్ట్‌వేర్ అయినా దాన్ని రికవర్ చేయలేదు. ఇన్‌ఫ్రారెడ్ కాంతి భౌతిక శాస్త్రం ప్రతి రికార్డింగ్ ప్రయత్నాన్ని శాశ్వతంగా వ్యర్థం చేస్తుంది.',
+          'బడ్జెట్ స్మార్ట్‌ఫోన్. హై-ఎండ్ DSLR. ప్రొఫెషనల్ కామ్‌కార్డర్. తేడా లేదు. ప్రతి ఇమేజింగ్ సెన్సార్ ఒకే విధంగా స్పందిస్తుంది — పూర్తి వైట్‌అవుట్. మీ చిత్రాన్ని రికార్డ్ చేయలేరు. ఈ రోజు కాదు. ఎన్నటికీ కాదు.'
         ],
         visLabel: 'వారు ఏమి చూస్తారు',
         eyeTitles: ['మానవ కంటి','కెమెరా'],
@@ -2023,38 +2014,39 @@
       slide8: {
         tag: 'ఆటోమేటెడ్ అమలు',
         title: 'తొలగింపు<br><span class="s8-accent">వ్యవస్థ</span>',
-        lead: 'మీ చిత్రం పైరేటెడ్ కాపీ 48 గంటలకు మించి ఆన్‌లైన్‌లో మనజాలదు. మా వ్యవస్థ ప్రతి ప్లాట్‌ఫారమ్‌ను 24/7 పర్యవేక్షిస్తుంది — వ్యాప్తి చెందే ముందే పైరసీని తొలగిస్తుంది.',
-        stepTitles: ['24/7 ప్లాట్‌ఫారం స్కానింగ్','AI-ఆధారిత గుర్తింపు','తక్షణ ఆటో తొలగింపు'],
-        stepDescs: [
-          'మా బాట్లు YouTube, Telegram, Facebook, Instagram మరియు టోరెంట్ సైట్లను నిరంతరం స్కాన్ చేస్తాయి — ప్రతి రోజూ ప్రతి నిమిషం.',
-          'మీ చిత్రం వాటర్‌మార్క్ ఫింగర్‌ప్రింట్ ఉపయోగించి AI నిమిషాల్లోనే పైరేటెడ్ కాపీలను గుర్తిస్తుంది — 3 సెకన్ల క్లిప్ కూడా పట్టుబడుతుంది.',
-          'DMCA నోటీసులు ఆటోమేటిగ్గా ఫైల్ అవుతాయి. కంటెంట్ తొలగించబడుతుంది. ఫోన్ కాల్స్ అవసరం లేదు. మాన్యువల్ పని లేదు.'
+        lead: 'మీ చిత్రం విడుదలవుతుంది. మొదటి రోజే పైరసీ ప్రయత్నాలు మొదలవుతాయి. మా తొలగింపు వ్యవస్థ ఇప్పటికే నడుస్తోంది — ప్రతి ప్లాట్‌ఫారమ్‌ను, ప్రతి నిమిషమూ స్కాన్ చేస్తూ, వ్యాపించే ముందే ప్రతి కాపీని తొలగిస్తోంది. మీరు మీ చిత్రంపై దృష్టి పెట్టండి. మిగతాది మేము చూసుకుంటాం.',
+        lead2: 'ఆన్‌లైన్‌లో ఉన్న ప్రతి పైరేటెడ్ కాపీ అంటే నేరుగా బాక్స్-ఆఫీస్ ఆదాయం పోవడమే. తొలగింపు వ్యవస్థ దాన్ని మూలం వద్దే ఆపుతుంది — నష్టం వ్యాపించిన తర్వాత కాదు, కనిపించిన క్షణమే. 50+ ప్లాట్‌ఫారమ్‌లలో ఆటోమేటెడ్‌గా పని చేస్తూ, విడుదల మొదటి గంట నుండి చివరి రోజు వరకు మీ చిత్రం ఆదాయాన్ని కాపాడుతుంది.',
+        blockHeadings: ['24/7 ఆటోమేటెడ్ నిఘా.','AI ఫింగర్‌ప్రింట్ మ్యాచింగ్.','తక్షణ DMCA. తక్షణ తొలగింపు.'],
+        blockDescs: [
+          'మా బాట్లు ఎప్పుడూ నిద్రపోవు. YouTube, Telegram, Facebook, Instagram మరియు టోరెంట్ సైట్లు — ప్రతి ప్లాట్‌ఫారమ్‌ను రోజులో ప్రతి నిమిషమూ పర్యవేక్షిస్తాయి. ఆన్‌లైన్‌లో ఎక్కడైనా మీ చిత్రం పైరేటెడ్ కాపీ కనిపించిన క్షణమే, సిస్టమ్ మీకంటే ముందే గుర్తిస్తుంది.',
+          'మీ చిత్రంలో ప్రతి ఫ్రేమ్‌లో ఒక ప్రత్యేకమైన వాటర్‌మార్క్ ఫింగర్‌ప్రింట్ ఉంటుంది. మా AI దాన్ని ఉపయోగించి ఎక్కడైనా పైరేటెడ్ కాపీలను గుర్తిస్తుంది — రీ-ఎన్‌కోడ్ అయినా, కంప్రెస్ అయినా, స్క్రీన్ రికార్డింగ్ అయినా. చీకటి హాలు నుండి 3-సెకన్ల క్లిప్ కూడా తక్షణ తొలగింపుకు సరిపోతుంది.',
+          'మ్యాచ్ నిర్ధారణ అయిన వెంటనే DMCA నోటీసులు ఆటోమేటిగ్గా దాఖలవుతాయి — ఏ మనిషీ జోక్యం లేదు, ఆలస్యం లేదు. ప్లాట్‌ఫారమ్ నుండి కంటెంట్ తొలగించబడుతుంది. ప్రతి రీ-అప్‌లోడ్ శాశ్వతంగా బ్లాక్ అవుతుంది. మీకు రిపోర్ట్ వస్తుంది. మీ చిత్రం సురక్షితం.'
         ],
         platNames: ['YouTube','Instagram &amp; Facebook','Telegram','టోరెంట్ సైట్లు'],
         platActions: [
-          'మేము మీ చిత్రం యొక్క ప్రత్యేక డిజిటల్ ఫింగర్‌ప్రింట్‌ను YouTube\'s Content ID సిస్టమ్‌లో నమోదు చేస్తాము. ఎవరైనా మీ చిత్రం 10 సెకన్ల క్లిప్ అయినా అప్‌లోడ్ చేసిన క్షణమే — ప్రపంచంలో ఏ ఛానల్‌లో అయినా — YouTube ఆటోమేటిగ్గా గుర్తించి 10 నిమిషాల్లోపు తొలగిస్తుంది. ప్రతి రీ-అప్‌లోడ్ తక్షణమే పట్టుబడుతుంది. మీరు ఏమీ చేయనవసరం లేదు.',
-          'Meta\'s Rights Manager అప్‌లోడ్ జరిగే సమయంలోనే ప్రతి వీడియోను స్కాన్ చేస్తుంది. పైరేటెడ్ కాపీ లైవ్ అవ్వకముందే మా వ్యవస్థ దాన్ని గుర్తించి ఆటోమేటిగ్గా బ్లాక్ చేస్తుంది. ఏదైనా తప్పించుకుంటే 1 గంటలోపు తొలగించబడుతుంది. మీ చిత్రం వ్యాపించేంత సేపు అక్కడ ఉండదు.',
-          'మా బాట్లు వేలాది Telegram ఛానల్లను గంటల తరబడి స్కాన్ చేస్తాయి. పైరేటెడ్ కాపీ కనుగొన్న క్షణమే Telegram కంటెంట్ టీమ్‌కు DMCA నోటీసు ఆటోమేటిగ్గా దాఖలు చేయబడుతుంది. 24 నుండి 48 గంటల్లో లింక్ తొలగించబడుతుంది. కొత్త ఛానల్‌లో మళ్ళీ కనిపిస్తే మా వ్యవస్థ మళ్ళీ కనుగొంటుంది మళ్ళీ దాఖలు చేస్తుంది — పూర్తిగా పోయే వరకు.',
-          'టోరెంట్ సైట్లను నియంత్రించడం కష్టం — కానీ అసాధ్యం కాదు. మేము హోస్టింగ్ ప్రొవైడర్లు మరియు ఇండెక్సింగ్ సైట్లకు నిరంతరం DMCA నోటీసులు దాఖలు చేస్తాము. 48 నుండి 72 గంటల్లో లింక్‌లు తొలగించబడతాయి. మా వ్యవస్థ ప్రతి సైట్‌లో ప్రతి కాపీ తొలగించబడే వరకు ట్రాక్ చేస్తూ దాఖలు చేస్తూనే ఉంటుంది.'
+          'మీ చిత్రం ఫింగర్‌ప్రింట్ YouTube Content ID లో నమోదు చేయబడింది. ఏ అప్‌లోడ్ అయినా — 10 సెకన్లు అయినా — ఆటోమేటిగ్గా గుర్తించి 10 నిమిషాల్లో తొలగించబడుతుంది.',
+          'Meta Rights Manager అప్‌లోడ్ సమయంలోనే పైరేటెడ్ కాపీలను బ్లాక్ చేస్తుంది. తప్పించుకున్నది 1 గంటలోపు తొలగించబడుతుంది.',
+          'బాట్లు వేలాది Telegram ఛానల్లను నిరంతరం స్కాన్ చేస్తాయి. పైరేటెడ్ లింక్ కనుగొన్న క్షణమే DMCA నోటీసు ఆటోమేటిగ్గా దాఖలు అవుతుంది, 24–48 గంటల్లో తొలగించబడుతుంది.',
+          'హోస్టింగ్ ప్రొవైడర్లు మరియు ఇండెక్సింగ్ సైట్లకు DMCA నోటీసులు ఆటోమేటిగ్గా దాఖలు చేయబడతాయి. 48–72 గంటల్లో తొలగించబడుతుంది.'
         ],
         counterLabel: 'ఆటోమేటెడ్ — మాన్యువల్ పని లేదు'
       },
       slide9: {
         tag: 'తొలగింపు వ్యవస్థ — ప్లాట్‌ఫారం అనుమతి',
         title: 'ప్లాట్‌ఫారం<br><span class="s9-accent">API యాక్సెస్</span>',
-        lead: 'YouTube, Telegram మరియు టోరెంట్ నెట్‌వర్క్‌లు వంటి ప్లాట్‌ఫారమ్‌లు అధికారిక API యాక్సెస్ ద్వారా మాత్రమే ఆటోమేటెడ్ కంటెంట్ తొలగింపుకు అనుమతిస్తాయి. మీరు ముందుగా అర్జీ పెట్టి ఆమోదం పొందాలి.',
-        note: 'API యాక్సెస్ లేకుండా, ప్రతి తొలగింపు మాన్యువల్‌గా ఫైల్ చేయాలి — నెమ్మది, పరిమితమైనది మరియు మిస్ అవ్వడం సులభం. API యాక్సెస్ తొలగింపును తక్షణ మరియు అపరిమితంగా చేస్తుంది.',
+        lead: 'YouTube, Telegram మరియు టోరెంట్ నెట్‌వర్క్‌లు అనుమతి లేకుండా ఎవరి నుండి అయినా ఆటోమేటెడ్ తొలగింపు అభ్యర్థనలను అంగీకరించవు. API యాక్సెస్ ఐచ్ఛికం కాదు — పెద్ద ఎత్తున పైరేటెడ్ కాపీలను తొలగించడానికి ఇది ఏకైక చట్టపరమైన మార్గం. ఒకసారి ఆమోదించబడింది. శాశ్వత అమలు శక్తి.',
+        note: 'API యాక్సెస్ లేకుండా, ఒక DMCA ఫైలింగ్ ఒక లింక్‌ను మాత్రమే కవర్ చేస్తుంది, 2–5 రోజులు పడుతుంది మరియు ప్రతిసారీ లాయర్ అవసరం. API యాక్సెస్‌తో, సిస్టమ్ గంటకు వేల పైరేటెడ్ లింక్‌లను తొలగిస్తుంది — ఆటోమేటిగ్గా, చట్టబద్ధంగా, ప్రతి ప్లాట్‌ఫారమ్‌లో. ఒకసారి మంజూరు అయిన తర్వాత, ఇది ఎన్నటికీ expire కాదు.',
         gridLabel: 'API యాక్సెస్ కోసం ఇవి సమర్పించండి →',
         cardTitles: ['డిజిటల్ రైట్స్ సర్టిఫికేట్','కంటెంట్ ID','మెటాడేటా','డాక్యుమెంటేషన్'],
         cardSubs: ['చట్టపరమైన యాజమాన్య రుజువు','డిజిటల్ ఫింగర్‌ప్రింట్ సిస్టమ్','చలన చిత్ర గుర్తింపు డేటా','చైన్ ఆఫ్ టైటిల్ &amp; అగ్రిమెంట్లు'],
         points: [
-          ['చలన చిత్రం యాజమాన్యాన్ని నిర్ధారించే కాపీరైట్ కార్యాలయం నుండి నమోదిత సర్టిఫికేట్','అన్ని ప్రధాన ప్లాట్‌ఫారమ్‌లపై DMCA క్లెయిమ్‌లు దాఖలు చేయడానికి తప్పనిసరి','స్క్రీన్‌ప్లే, సౌండ్‌ట్రాక్ మరియు దృశ్య కంటెంట్‌ను కవర్ చేస్తుంది'],
-          ['వీడియో మరియు ఆడియో ట్రాక్‌ల కోసం YouTube కంటెంట్ ID ఫింగర్‌ప్రింట్ నమోదు','మొత్తం YouTube నెట్‌వర్క్‌లో ఏ రీ-అప్‌లోడ్‌నైనా ఆటో-మ్యాచ్ చేస్తుంది','మ్యాచ్ అయిన కంటెంట్‌పై తక్షణ క్లెయిమ్, బ్లాక్ లేదా మొనటైజ్ చేయడానికి అనుమతిస్తుంది'],
-          ['మూవీ పేరు, విడుదల తేదీ, ISAN నంబర్, నిర్మాణ సంస్థ వివరాలు','నటుల, సిబ్బంది, పంపిణీదారు మరియు ప్రాంత లైసెన్సింగ్ సమాచారం','ప్లాట్‌ఫారమ్‌లలో పైరేటెడ్ కాపీలను క్రాస్-రెఫరెన్స్ మరియు ధృవీకరించడానికి ఉపయోగించబడుతుంది'],
-          ['అంతరాయం లేని హక్కుల యాజమాన్యాన్ని నిరూపించే చైన్ ఆఫ్ టైటిల్ పత్రాలు','పంపిణీ అగ్రిమెంట్లు మరియు నిర్మాతల నుండి NOC','ప్లాట్‌ఫారమ్-నిర్దిష్ట తొలగింపు అఫిడవిట్లు మరియు చట్టపరమైన ప్రకటనలు']
+          ['చలన చిత్రం యాజమాన్యాన్ని నిర్ధారించే కాపీరైట్ కార్యాలయం నుండి నమోదిత సర్టిఫికేట్','అన్ని ప్రధాన ప్లాట్‌ఫారమ్‌లపై DMCA క్లెయిమ్‌లు దాఖలు చేయడానికి తప్పనిసరి','ఈ సర్టిఫికేట్ లేకుండా, ఏ ప్లాట్‌ఫారమ్ అయినా ఒక్క తొలగింపు అభ్యర్థనను కూడా చట్టపరంగా ప్రాసెస్ చేయదు — ఇది ప్రతి తొలగింపుకు పునాది'],
+          ['వీడియో మరియు ఆడియో ట్రాక్‌ల కోసం YouTube కంటెంట్ ID ఫింగర్‌ప్రింట్ నమోదు','ప్రతి నిమిషం అప్‌లోడ్ అయ్యే YouTube యొక్క 800 గంటల కంటెంట్‌లో ఏ రీ-అప్‌లోడ్‌నైనా ఆటోమేటిగ్గా గుర్తిస్తుంది','మ్యాచ్ అయిన కంటెంట్‌పై తక్షణ క్లెయిమ్, బ్లాక్ లేదా మొనటైజ్ చేయడానికి అనుమతిస్తుంది'],
+          ['చిత్రం పేరు, ISAN నంబర్, విడుదల తేదీ మరియు నిర్మాణ సంస్థ — అన్ని సిస్టమ్‌లలో అధికారిక గుర్తింపు','ప్రాంత లైసెన్సింగ్ డేటా అనుమతి లేని కాపీలను గుర్తించి అన్నింటినీ ఫ్లాగ్ చేస్తుంది','అన్ని ప్లాట్‌ఫారమ్‌లలో పైరేటెడ్ కాపీలను వెంటనే ధృవీకరించడానికి మరియు క్రాస్-రెఫరెన్స్ చేయడానికి ఉపయోగించబడుతుంది'],
+          ['స్క్రిప్ట్ నుండి స్క్రీన్ వరకు మీకు హక్కులు ఉన్నాయని నిరూపించే చైన్ ఆఫ్ టైటిల్ పత్రాలు','పంపిణీ అగ్రిమెంట్లు మరియు NOC — మీ తొలగింపు అభ్యర్థనలను వేరే పక్షం override చేయలేదని నిర్ధారిస్తాయి','API ఆపరేటర్లకు మీ తరఫున కంటెంట్‌ను తొలగించే చట్టపరమైన అధికారం ఇచ్చే ప్లాట్‌ఫారమ్-నిర్దిష్ట అఫిడవిట్లు']
         ],
         resultText: 'API యాక్సెస్ మంజూరు → ఆటోమేటెడ్ తొలగింపులు సక్రియం',
-        resultSub: 'ఆమోదించిన తర్వాత, సిస్టమ్ అన్ని ప్లాట్‌ఫారమ్‌లలో DMCA నోటీసులను వెంటనే ఫైల్ చేస్తుంది — మాన్యువల్ పని అవసరం లేదు'
+        resultSub: 'ఆమోదించిన తర్వాత, పైరేటెడ్ కాపీలు నిమిషాల్లో అన్ని ప్లాట్‌ఫారమ్‌లలో తొలగించబడతాయి — ఫోన్ కాల్స్ లేవు, లాయర్లు లేరు, వేచి ఉండటం లేదు. ఎన్నటికీ.'
       },
       slide10: {
         tag: 'మీ కంట్రోల్ రూమ్',
@@ -2111,8 +2103,8 @@
     q('#slide5 .s5-tag').innerHTML   = t.slide5.tag;
     q('#slide5 .s5-title').innerHTML = t.slide5.title;
     q('#slide5 .s5-lead').innerHTML  = t.slide5.lead;
-    qa('#slide5 .s5-step-title').forEach((el,i) => el.innerHTML = t.slide5.stepTitles[i]);
-    qa('#slide5 .s5-step-desc').forEach((el,i)  => el.innerHTML = t.slide5.stepDescs[i]);
+    qa('#slide5 .s5-block-heading').forEach((el,i) => el.innerHTML = t.slide5.blockHeadings[i]);
+    qa('#slide5 .s5-block-desc').forEach((el,i)    => el.innerHTML = t.slide5.blockDescs[i]);
     q('#slide5 .s5-vis-label').innerHTML = t.slide5.visLabel;
     qa('#slide5 .s5-eye-title').forEach((el,i)  => el.innerHTML = t.slide5.eyeTitles[i]);
     qa('#slide5 .s5-film-text').forEach((el,i)  => el.innerHTML = t.slide5.screenLabels[i]);
@@ -2145,11 +2137,12 @@
     qa('#slide7 .s7-trace-val').forEach((el,i) => el.innerHTML = t.slide7.traceVals[i]);
 
     // Slide 8
-    q('#slide8 .s8-tag').innerHTML   = t.slide8.tag;
-    q('#slide8 .s8-title').innerHTML = t.slide8.title;
-    q('#slide8 .s8-lead').innerHTML  = t.slide8.lead;
-    qa('#slide8 .s8-step-title').forEach((el,i) => el.innerHTML = t.slide8.stepTitles[i]);
-    qa('#slide8 .s8-step-desc').forEach((el,i)  => el.innerHTML = t.slide8.stepDescs[i]);
+    q('#slide8 .s8-tag').innerHTML    = t.slide8.tag;
+    q('#slide8 .s8-title').innerHTML  = t.slide8.title;
+    q('#slide8 .s8-lead').innerHTML   = t.slide8.lead;
+    q('#slide8 .s8-lead2').innerHTML  = t.slide8.lead2;
+    qa('#slide8 .s8-block-heading').forEach((el,i) => el.innerHTML = t.slide8.blockHeadings[i]);
+    qa('#slide8 .s8-block-desc').forEach((el,i)    => el.innerHTML = t.slide8.blockDescs[i]);
     qa('#slide8 .s8-plat-name').forEach((el,i)   => el.innerHTML = t.slide8.platNames[i]);
     qa('#slide8 .s8-plat-action').forEach((el,i) => el.innerHTML = t.slide8.platActions[i]);
     q('#slide8 .s8-counter-label').innerHTML = t.slide8.counterLabel;
