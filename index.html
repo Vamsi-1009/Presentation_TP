@@ -502,7 +502,7 @@
     #slide9::before { content:''; position:absolute; inset:0; background-image:radial-gradient(circle,rgba(180,140,0,0.04) 1px,transparent 1px); background-size:36px 36px; pointer-events:none; }
     #slide9::after  { content:''; position:absolute; bottom:-100px; right:-100px; width:500px; height:500px; background:radial-gradient(circle,rgba(200,160,0,0.05) 0%,transparent 65%); pointer-events:none; }
 
-    .s9-left  { flex:0 0 38%; padding:50px 30px 50px 60px; display:flex; flex-direction:column; justify-content:center; gap:20px; position:relative; z-index:1; }
+    .s9-left  { flex:0 0 38%; padding:36px 30px 36px 56px; display:flex; flex-direction:column; justify-content:center; gap:14px; position:relative; z-index:1; }
     .s9-left::after { content:''; position:absolute; right:0; top:8%; bottom:8%; width:1px; background:linear-gradient(to bottom,transparent,rgba(200,160,0,0.25),transparent); }
     .s9-right { flex:0 0 62%; padding:36px 48px 36px 40px; display:flex; flex-direction:column; justify-content:center; gap:16px; position:relative; z-index:1; }
 
@@ -1489,9 +1489,9 @@
   <div class="s9-left">
     <div class="s9-tag">Takedown System — Platform Authorization</div>
     <h2 class="s9-title">Platform<br><span class="s9-accent">API Access</span></h2>
-    <p class="s9-lead">Platforms like YouTube, Telegram, and torrent networks only allow automated content removal through authorized API access. You must apply and get approved first.</p>
+    <p class="s9-lead">Platforms like YouTube, Telegram, and torrent networks will not accept automated removal requests from anyone without authorization. API access is not optional — it is the only legal pathway for removing pirated copies at scale. One-time approval. Permanent enforcement power.</p>
     <div class="s9-note">
-      Without API access, every takedown must be filed manually — slow, limited, and easy to miss. API access makes removal instant and unlimited.
+      Without API access, one DMCA filing covers one link, takes 2–5 days, and requires a lawyer every time. With API access, the system removes thousands of pirated links per hour — automatically, legally, across every platform. Once granted, it never expires.
     </div>
   </div>
   <div class="s9-right">
@@ -1510,7 +1510,7 @@
         <div class="s9-card-points">
           <div class="s9-point">Registered certificate from Copyright Office confirming ownership of the film</div>
           <div class="s9-point">Mandatory for filing DMCA claims on all major platforms</div>
-          <div class="s9-point">Covers screenplay, soundtrack, and visual content</div>
+          <div class="s9-point">Without this certificate, no platform will legally process a single removal request — it is the foundation of every takedown</div>
         </div>
       </div>
 
@@ -1525,7 +1525,7 @@
         </div>
         <div class="s9-card-points">
           <div class="s9-point">YouTube Content ID fingerprint registered for video and audio tracks</div>
-          <div class="s9-point">Auto-matches any re-upload across the entire YouTube network</div>
+          <div class="s9-point">Automatically flags any re-upload across YouTube's 800 hours of content uploaded every minute</div>
           <div class="s9-point">Enables instant claim, block, or monetise on matched content</div>
         </div>
       </div>
@@ -1540,9 +1540,9 @@
           </div>
         </div>
         <div class="s9-card-points">
-          <div class="s9-point">Movie title, release date, ISAN number, production house details</div>
-          <div class="s9-point">Cast, crew, distributor, and territory licensing info</div>
-          <div class="s9-point">Used to cross-reference and verify pirated copies across platforms</div>
+          <div class="s9-point">Film title, ISAN number, release date, and production house — official identification across all systems</div>
+          <div class="s9-point">Territory licensing data ensures only region-authorized copies are permitted — everything else is flagged</div>
+          <div class="s9-point">Used to verify and cross-reference pirated copies instantly across all platforms</div>
         </div>
       </div>
 
@@ -1556,9 +1556,9 @@
           </div>
         </div>
         <div class="s9-card-points">
-          <div class="s9-point">Chain of title documents proving unbroken rights ownership</div>
-          <div class="s9-point">Distribution agreements and NOC from producers</div>
-          <div class="s9-point">Platform-specific takedown affidavits and legal declarations</div>
+          <div class="s9-point">Chain of title documents proving you own the rights — from script to screen, unbroken</div>
+          <div class="s9-point">Distribution agreements and NOC confirming no other party can override your removal requests</div>
+          <div class="s9-point">Platform-specific affidavits giving API operators legal authority to remove content on your behalf</div>
         </div>
       </div>
 
@@ -1569,7 +1569,7 @@
       <div class="s9-result-icon">✅</div>
       <div>
         <div class="s9-result-text">API Access Granted → Automated Takedowns Enabled</div>
-        <div class="s9-result-sub">Once approved, the system files DMCA notices instantly across all platforms — no manual work needed</div>
+        <div class="s9-result-sub">Once approved, pirated copies are removed across all platforms within minutes — no calls, no lawyers, no waiting. Ever.</div>
       </div>
     </div>
 
@@ -1891,19 +1891,19 @@
       slide9: {
         tag: 'Takedown System — Platform Authorization',
         title: 'Platform<br><span class="s9-accent">API Access</span>',
-        lead: 'Platforms like YouTube, Telegram, and torrent networks only allow automated content removal through authorized API access. You must apply and get approved first.',
-        note: 'Without API access, every takedown must be filed manually — slow, limited, and easy to miss. API access makes removal instant and unlimited.',
+        lead: 'Platforms like YouTube, Telegram, and torrent networks will not accept automated removal requests from anyone without authorization. API access is not optional — it is the only legal pathway for removing pirated copies at scale. One-time approval. Permanent enforcement power.',
+        note: 'Without API access, one DMCA filing covers one link, takes 2–5 days, and requires a lawyer every time. With API access, the system removes thousands of pirated links per hour — automatically, legally, across every platform. Once granted, it never expires.',
         gridLabel: 'Submit these to get API access →',
         cardTitles: ['Digital Rights Certificate','Content ID','Metadata','Documentation'],
         cardSubs: ['Legal ownership proof','Digital fingerprint system','Film identification data','Chain of title &amp; agreements'],
         points: [
-          ['Registered certificate from Copyright Office confirming ownership of the film','Mandatory for filing DMCA claims on all major platforms','Covers screenplay, soundtrack, and visual content'],
-          ['YouTube Content ID fingerprint registered for video and audio tracks','Auto-matches any re-upload across the entire YouTube network','Enables instant claim, block, or monetise on matched content'],
-          ['Movie title, release date, ISAN number, production house details','Cast, crew, distributor, and territory licensing info','Used to cross-reference and verify pirated copies across platforms'],
-          ['Chain of title documents proving unbroken rights ownership','Distribution agreements and NOC from producers','Platform-specific takedown affidavits and legal declarations']
+          ['Registered certificate from Copyright Office confirming ownership of the film','Mandatory for filing DMCA claims on all major platforms','Without this certificate, no platform will legally process a single removal request — it is the foundation of every takedown'],
+          ['YouTube Content ID fingerprint registered for video and audio tracks','Automatically flags any re-upload across YouTube\'s 800 hours of content uploaded every minute','Enables instant claim, block, or monetise on matched content'],
+          ['Film title, ISAN number, release date, and production house — official identification across all systems','Territory licensing data ensures only region-authorized copies are permitted — everything else is flagged','Used to verify and cross-reference pirated copies instantly across all platforms'],
+          ['Chain of title documents proving you own the rights — from script to screen, unbroken','Distribution agreements and NOC confirming no other party can override your removal requests','Platform-specific affidavits giving API operators legal authority to remove content on your behalf']
         ],
         resultText: 'API Access Granted → Automated Takedowns Enabled',
-        resultSub: 'Once approved, the system files DMCA notices instantly across all platforms — no manual work needed'
+        resultSub: 'Once approved, pirated copies are removed across all platforms within minutes — no calls, no lawyers, no waiting. Ever.'
       },
       slide10: {
         tag: 'Your Control Room',
@@ -2034,19 +2034,19 @@
       slide9: {
         tag: 'తొలగింపు వ్యవస్థ — ప్లాట్‌ఫారం అనుమతి',
         title: 'ప్లాట్‌ఫారం<br><span class="s9-accent">API యాక్సెస్</span>',
-        lead: 'YouTube, Telegram మరియు టోరెంట్ నెట్‌వర్క్‌లు వంటి ప్లాట్‌ఫారమ్‌లు అధికారిక API యాక్సెస్ ద్వారా మాత్రమే ఆటోమేటెడ్ కంటెంట్ తొలగింపుకు అనుమతిస్తాయి. మీరు ముందుగా అర్జీ పెట్టి ఆమోదం పొందాలి.',
-        note: 'API యాక్సెస్ లేకుండా, ప్రతి తొలగింపు మాన్యువల్‌గా ఫైల్ చేయాలి — నెమ్మది, పరిమితమైనది మరియు మిస్ అవ్వడం సులభం. API యాక్సెస్ తొలగింపును తక్షణ మరియు అపరిమితంగా చేస్తుంది.',
+        lead: 'YouTube, Telegram మరియు టోరెంట్ నెట్‌వర్క్‌లు అనుమతి లేకుండా ఎవరి నుండి అయినా ఆటోమేటెడ్ తొలగింపు అభ్యర్థనలను అంగీకరించవు. API యాక్సెస్ ఐచ్ఛికం కాదు — పెద్ద ఎత్తున పైరేటెడ్ కాపీలను తొలగించడానికి ఇది ఏకైక చట్టపరమైన మార్గం. ఒకసారి ఆమోదించబడింది. శాశ్వత అమలు శక్తి.',
+        note: 'API యాక్సెస్ లేకుండా, ఒక DMCA ఫైలింగ్ ఒక లింక్‌ను మాత్రమే కవర్ చేస్తుంది, 2–5 రోజులు పడుతుంది మరియు ప్రతిసారీ లాయర్ అవసరం. API యాక్సెస్‌తో, సిస్టమ్ గంటకు వేల పైరేటెడ్ లింక్‌లను తొలగిస్తుంది — ఆటోమేటిగ్గా, చట్టబద్ధంగా, ప్రతి ప్లాట్‌ఫారమ్‌లో. ఒకసారి మంజూరు అయిన తర్వాత, ఇది ఎన్నటికీ expire కాదు.',
         gridLabel: 'API యాక్సెస్ కోసం ఇవి సమర్పించండి →',
         cardTitles: ['డిజిటల్ రైట్స్ సర్టిఫికేట్','కంటెంట్ ID','మెటాడేటా','డాక్యుమెంటేషన్'],
         cardSubs: ['చట్టపరమైన యాజమాన్య రుజువు','డిజిటల్ ఫింగర్‌ప్రింట్ సిస్టమ్','చలన చిత్ర గుర్తింపు డేటా','చైన్ ఆఫ్ టైటిల్ &amp; అగ్రిమెంట్లు'],
         points: [
-          ['చలన చిత్రం యాజమాన్యాన్ని నిర్ధారించే కాపీరైట్ కార్యాలయం నుండి నమోదిత సర్టిఫికేట్','అన్ని ప్రధాన ప్లాట్‌ఫారమ్‌లపై DMCA క్లెయిమ్‌లు దాఖలు చేయడానికి తప్పనిసరి','స్క్రీన్‌ప్లే, సౌండ్‌ట్రాక్ మరియు దృశ్య కంటెంట్‌ను కవర్ చేస్తుంది'],
-          ['వీడియో మరియు ఆడియో ట్రాక్‌ల కోసం YouTube కంటెంట్ ID ఫింగర్‌ప్రింట్ నమోదు','మొత్తం YouTube నెట్‌వర్క్‌లో ఏ రీ-అప్‌లోడ్‌నైనా ఆటో-మ్యాచ్ చేస్తుంది','మ్యాచ్ అయిన కంటెంట్‌పై తక్షణ క్లెయిమ్, బ్లాక్ లేదా మొనటైజ్ చేయడానికి అనుమతిస్తుంది'],
-          ['మూవీ పేరు, విడుదల తేదీ, ISAN నంబర్, నిర్మాణ సంస్థ వివరాలు','నటుల, సిబ్బంది, పంపిణీదారు మరియు ప్రాంత లైసెన్సింగ్ సమాచారం','ప్లాట్‌ఫారమ్‌లలో పైరేటెడ్ కాపీలను క్రాస్-రెఫరెన్స్ మరియు ధృవీకరించడానికి ఉపయోగించబడుతుంది'],
-          ['అంతరాయం లేని హక్కుల యాజమాన్యాన్ని నిరూపించే చైన్ ఆఫ్ టైటిల్ పత్రాలు','పంపిణీ అగ్రిమెంట్లు మరియు నిర్మాతల నుండి NOC','ప్లాట్‌ఫారమ్-నిర్దిష్ట తొలగింపు అఫిడవిట్లు మరియు చట్టపరమైన ప్రకటనలు']
+          ['చలన చిత్రం యాజమాన్యాన్ని నిర్ధారించే కాపీరైట్ కార్యాలయం నుండి నమోదిత సర్టిఫికేట్','అన్ని ప్రధాన ప్లాట్‌ఫారమ్‌లపై DMCA క్లెయిమ్‌లు దాఖలు చేయడానికి తప్పనిసరి','ఈ సర్టిఫికేట్ లేకుండా, ఏ ప్లాట్‌ఫారమ్ అయినా ఒక్క తొలగింపు అభ్యర్థనను కూడా చట్టపరంగా ప్రాసెస్ చేయదు — ఇది ప్రతి తొలగింపుకు పునాది'],
+          ['వీడియో మరియు ఆడియో ట్రాక్‌ల కోసం YouTube కంటెంట్ ID ఫింగర్‌ప్రింట్ నమోదు','ప్రతి నిమిషం అప్‌లోడ్ అయ్యే YouTube యొక్క 800 గంటల కంటెంట్‌లో ఏ రీ-అప్‌లోడ్‌నైనా ఆటోమేటిగ్గా గుర్తిస్తుంది','మ్యాచ్ అయిన కంటెంట్‌పై తక్షణ క్లెయిమ్, బ్లాక్ లేదా మొనటైజ్ చేయడానికి అనుమతిస్తుంది'],
+          ['చిత్రం పేరు, ISAN నంబర్, విడుదల తేదీ మరియు నిర్మాణ సంస్థ — అన్ని సిస్టమ్‌లలో అధికారిక గుర్తింపు','ప్రాంత లైసెన్సింగ్ డేటా అనుమతి లేని కాపీలను గుర్తించి అన్నింటినీ ఫ్లాగ్ చేస్తుంది','అన్ని ప్లాట్‌ఫారమ్‌లలో పైరేటెడ్ కాపీలను వెంటనే ధృవీకరించడానికి మరియు క్రాస్-రెఫరెన్స్ చేయడానికి ఉపయోగించబడుతుంది'],
+          ['స్క్రిప్ట్ నుండి స్క్రీన్ వరకు మీకు హక్కులు ఉన్నాయని నిరూపించే చైన్ ఆఫ్ టైటిల్ పత్రాలు','పంపిణీ అగ్రిమెంట్లు మరియు NOC — మీ తొలగింపు అభ్యర్థనలను వేరే పక్షం override చేయలేదని నిర్ధారిస్తాయి','API ఆపరేటర్లకు మీ తరఫున కంటెంట్‌ను తొలగించే చట్టపరమైన అధికారం ఇచ్చే ప్లాట్‌ఫారమ్-నిర్దిష్ట అఫిడవిట్లు']
         ],
         resultText: 'API యాక్సెస్ మంజూరు → ఆటోమేటెడ్ తొలగింపులు సక్రియం',
-        resultSub: 'ఆమోదించిన తర్వాత, సిస్టమ్ అన్ని ప్లాట్‌ఫారమ్‌లలో DMCA నోటీసులను వెంటనే ఫైల్ చేస్తుంది — మాన్యువల్ పని అవసరం లేదు'
+        resultSub: 'ఆమోదించిన తర్వాత, పైరేటెడ్ కాపీలు నిమిషాల్లో అన్ని ప్లాట్‌ఫారమ్‌లలో తొలగించబడతాయి — ఫోన్ కాల్స్ లేవు, లాయర్లు లేరు, వేచి ఉండటం లేదు. ఎన్నటికీ.'
       },
       slide10: {
         tag: 'మీ కంట్రోల్ రూమ్',
