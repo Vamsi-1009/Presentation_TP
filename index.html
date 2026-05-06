@@ -129,7 +129,7 @@
     .s4-head {
       font-size:0.95rem; font-weight:700; letter-spacing:0.16em;
       text-transform:uppercase; color:rgba(100,190,255,0.55);
-      margin-bottom:22px; opacity:0;
+      margin-bottom:10px; opacity:0;
     }
     .s4-layout { display:flex; flex-direction:column; align-items:center; }
     .s4-middle { display:flex; flex-direction:row; align-items:center; }
@@ -144,13 +144,13 @@
     .s4-lock { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:2.3rem; padding-bottom:10px; z-index:3; }
 
     .s4-con-v {
-      width:2px; height:48px; align-self:center;
+      width:2px; height:32px; align-self:center;
       background:linear-gradient(to bottom,rgba(0,170,255,0.8),rgba(0,170,255,0.25));
       transform-origin:top center; opacity:0;
     }
     .s4-con-v.bottom { background:linear-gradient(to top,rgba(0,170,255,0.8),rgba(0,170,255,0.25)); transform-origin:bottom center; }
     .s4-con-h {
-      width:52px; height:2px;
+      width:44px; height:2px;
       background:linear-gradient(to right,rgba(0,170,255,0.25),rgba(0,170,255,0.8));
       transform-origin:left center; opacity:0;
     }
@@ -160,9 +160,9 @@
     }
 
     .s4-card {
-      position:relative; width:205px;
+      position:relative; width:210px;
       background:rgba(0,12,45,0.92); border:1.5px solid rgba(0,120,240,0.45);
-      border-radius:14px; padding:14px 14px 13px;
+      border-radius:14px; padding:10px 12px 10px;
       backdrop-filter:blur(8px); box-shadow:0 0 22px rgba(0,80,200,0.22);
       opacity:0; overflow:hidden;
       transition:box-shadow 0.3s,border-color 0.3s;
@@ -172,7 +172,7 @@
     .s4-card-header { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
     .s4-card-icon { width:34px; height:34px; border-radius:8px; background:rgba(0,70,180,0.35); border:1px solid rgba(0,120,255,0.3); display:flex; align-items:center; justify-content:center; font-size:1.05rem; flex-shrink:0; }
     .s4-card-title { font-size:0.88rem; font-weight:800; color:#4dccff; }
-    .s4-card-desc  { font-size:0.79rem; color:rgba(170,205,255,0.85); line-height:1.55; }
+    .s4-card-desc  { font-size:0.67rem; color:rgba(170,205,255,0.85); line-height:1.5; }
     .s4-card-layer { font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(0,170,255,0.45); margin-bottom:5px; }
 
     @keyframes shieldBlueGlow {
@@ -216,8 +216,8 @@
       pointer-events:none;
     }
     .s5-left {
-      flex:0 0 54%; padding:28px 32px 28px 56px;
-      display:flex; flex-direction:column; justify-content:center; gap:10px;
+      flex:0 0 54%; padding:36px 32px 20px 56px;
+      display:flex; flex-direction:column; justify-content:flex-start; gap:10px;
       position:relative; z-index:1;
     }
     .s5-left::after {
@@ -225,8 +225,8 @@
       width:1px; background:linear-gradient(to bottom,transparent,rgba(255,60,0,0.25),transparent);
     }
     .s5-right {
-      flex:0 0 46%; padding:40px 50px 40px 36px;
-      display:flex; flex-direction:column; justify-content:center; align-items:center; gap:22px;
+      flex:0 0 46%; padding:40px 50px 20px 36px;
+      display:flex; flex-direction:column; justify-content:flex-start; align-items:center; gap:22px;
       position:relative; z-index:1;
     }
     .s5-tag {
@@ -324,9 +324,9 @@
     #slide6::before { content:''; position:absolute; inset:0; background-image:radial-gradient(circle,rgba(140,40,255,0.04) 1px,transparent 1px); background-size:36px 36px; pointer-events:none; }
     #slide6::after  { content:''; position:absolute; top:-120px; left:-120px; width:600px; height:600px; background:radial-gradient(circle,rgba(120,30,240,0.06) 0%,transparent 65%); pointer-events:none; }
 
-    .s6-left  { flex:0 0 56%; padding:28px 32px 28px 56px; display:flex; flex-direction:column; justify-content:center; gap:10px; position:relative; z-index:1; }
+    .s6-left  { flex:0 0 56%; padding:36px 32px 20px 56px; display:flex; flex-direction:column; justify-content:flex-start; gap:10px; position:relative; z-index:1; }
     .s6-left::after { content:''; position:absolute; right:0; top:8%; bottom:8%; width:1px; background:linear-gradient(to bottom,transparent,rgba(140,60,255,0.25),transparent); }
-    .s6-right { flex:0 0 44%; padding:28px 40px 28px 28px; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:16px; position:relative; z-index:1; }
+    .s6-right { flex:0 0 44%; padding:36px 40px 20px 28px; display:flex; flex-direction:column; justify-content:flex-start; align-items:center; gap:16px; position:relative; z-index:1; }
 
     .s6-tag   { font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; color:#a855f7; border:1px solid rgba(168,85,247,0.3); display:inline-block; padding:4px 12px; border-radius:4px; background:rgba(140,50,255,0.08); width:fit-content; opacity:0; }
     .s6-title { font-size:3rem; font-weight:900; line-height:1.1; opacity:0; }
@@ -420,8 +420,8 @@
     #slide7.active .s7-wm-frame { animation:fadeUp 1.0s 2.2s cubic-bezier(0.22,1,0.36,1) both,wmGlow 2s 3.4s ease-in-out infinite; }
     #slide7.active .s7-trace { animation:fadeUp 1.0s 9.2s cubic-bezier(0.22,1,0.36,1) both; }
     /* Laptop layout fix for slide 7 */
-    .s7-left  { flex:0 0 56%; padding:28px 32px 28px 56px; gap:10px; }
-    .s7-right { flex:0 0 44%; padding:28px 40px 28px 28px; gap:16px; }
+    .s7-left  { flex:0 0 56%; padding:36px 32px 20px 56px; gap:10px; justify-content:flex-start; }
+    .s7-right { flex:0 0 44%; padding:36px 40px 20px 28px; gap:16px; justify-content:flex-start; }
     .s7-block { padding:8px 14px; }
 
     /* ════ SLIDE 8 — Takedown System ════ */
@@ -432,9 +432,9 @@
     #slide8::before { content:''; position:absolute; inset:0; background-image:radial-gradient(circle,rgba(240,100,0,0.04) 1px,transparent 1px); background-size:36px 36px; pointer-events:none; }
     #slide8::after  { content:''; position:absolute; top:-120px; left:-120px; width:600px; height:600px; background:radial-gradient(circle,rgba(240,80,0,0.06) 0%,transparent 65%); pointer-events:none; }
 
-    .s8-left  { flex:0 0 54%; padding:28px 32px 28px 56px; display:flex; flex-direction:column; justify-content:center; gap:10px; position:relative; z-index:1; }
+    .s8-left  { flex:0 0 54%; padding:36px 32px 20px 56px; display:flex; flex-direction:column; justify-content:flex-start; gap:10px; position:relative; z-index:1; }
     .s8-left::after { content:''; position:absolute; right:0; top:8%; bottom:8%; width:1px; background:linear-gradient(to bottom,transparent,rgba(240,100,0,0.25),transparent); }
-    .s8-right { flex:0 0 46%; padding:24px 40px 24px 32px; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:10px; position:relative; z-index:1; overflow:hidden; }
+    .s8-right { flex:0 0 46%; padding:28px 40px 20px 32px; display:flex; flex-direction:column; justify-content:flex-start; align-items:center; gap:10px; position:relative; z-index:1; overflow:hidden; }
 
     .s8-tag   { font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; color:#f97316; border:1px solid rgba(249,115,22,0.3); display:inline-block; padding:4px 12px; border-radius:4px; background:rgba(240,90,0,0.08); width:fit-content; opacity:0; }
     .s8-title { font-size:3rem; font-weight:900; line-height:1.1; opacity:0; }
@@ -502,9 +502,9 @@
     #slide9::before { content:''; position:absolute; inset:0; background-image:radial-gradient(circle,rgba(180,140,0,0.04) 1px,transparent 1px); background-size:36px 36px; pointer-events:none; }
     #slide9::after  { content:''; position:absolute; bottom:-100px; right:-100px; width:500px; height:500px; background:radial-gradient(circle,rgba(200,160,0,0.05) 0%,transparent 65%); pointer-events:none; }
 
-    .s9-left  { flex:0 0 38%; padding:36px 30px 36px 56px; display:flex; flex-direction:column; justify-content:center; gap:14px; position:relative; z-index:1; }
+    .s9-left  { flex:0 0 38%; padding:40px 30px 20px 56px; display:flex; flex-direction:column; justify-content:flex-start; gap:14px; position:relative; z-index:1; }
     .s9-left::after { content:''; position:absolute; right:0; top:8%; bottom:8%; width:1px; background:linear-gradient(to bottom,transparent,rgba(200,160,0,0.25),transparent); }
-    .s9-right { flex:0 0 62%; padding:36px 48px 36px 40px; display:flex; flex-direction:column; justify-content:center; gap:16px; position:relative; z-index:1; }
+    .s9-right { flex:0 0 62%; padding:40px 48px 20px 40px; display:flex; flex-direction:column; justify-content:flex-start; gap:16px; position:relative; z-index:1; }
 
     .s9-tag   { font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; color:#d4a017; border:1px solid rgba(212,160,23,0.3); display:inline-block; padding:4px 12px; border-radius:4px; background:rgba(200,150,0,0.08); width:fit-content; opacity:0; }
     .s9-title { font-size:2.6rem; font-weight:900; line-height:1.1; opacity:0; }
@@ -2300,10 +2300,10 @@
       return;
     }
 
-    // Tablet/desktop: letterbox-fit scaling
-    const scale   = Math.min(vw / DESIGN_W, vh / DESIGN_H);
-    const offsetX = Math.round((vw - DESIGN_W * scale) / 2);
-    const offsetY = Math.round((vh - DESIGN_H * scale) / 2);
+    // Tablet/desktop: fill viewport width — no side gaps
+    const scale   = vw / DESIGN_W;
+    const offsetX = 0;
+    const offsetY = Math.max(0, Math.round((vh - DESIGN_H * scale) / 2));
     wrapper.style.transform = `scale(${scale})`;
     wrapper.style.left = offsetX + 'px';
     wrapper.style.top  = offsetY + 'px';
