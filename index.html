@@ -2355,7 +2355,7 @@
 
   function speakCurrentSlide() {
     const btn = document.getElementById('voiceBtn');
-    // If already playing — stop
+    // If already playing — stop audio, keep slide paused
     if (_audioObj && !_audioObj.paused) {
       stopAudio();
       return;
@@ -2366,13 +2366,25 @@
 
     _audioObj = new Audio(src);
     btn.classList.add('speaking');
-    _audioObj.onended = _audioObj.onerror = () => {
+
+    // Pause slide timer while audio plays
+    pause();
+
+    _audioObj.onended = () => {
       _audioObj = null;
       btn.classList.remove('speaking');
+      // Resume progress bar after audio finishes naturally
+      resume();
+    };
+    _audioObj.onerror = () => {
+      _audioObj = null;
+      btn.classList.remove('speaking');
+      resume();
     };
     _audioObj.play().catch(() => {
       _audioObj = null;
       btn.classList.remove('speaking');
+      resume();
     });
   }
 
