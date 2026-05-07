@@ -2180,20 +2180,27 @@
   /* ══════════════════════════════════════════
      SLIDE NAVIGATION
   ══════════════════════════════════════════ */
+  function formatNum(n) {
+    return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+
   function animateCountUp() {
-    qa('#slide10 .s10-stat-val').forEach(el => {
+    qa('#slide10 .s10-stat-val').forEach((el, i) => {
       const target = parseInt(el.dataset.target);
       const suffix = el.dataset.suffix || '';
-      const duration = 2000;
-      const startTime = performance.now();
-      function tick(now) {
-        const t = Math.min((now - startTime) / duration, 1);
-        const ease = 1 - Math.pow(1 - t, 3);
-        const val = Math.round(ease * target);
-        el.textContent = val.toLocaleString() + suffix;
-        if (t < 1) requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
+      const duration = 2500;
+      const delay = i * 300;
+      setTimeout(() => {
+        const startTime = performance.now();
+        function tick(now) {
+          const t = Math.min((now - startTime) / duration, 1);
+          const ease = 1 - Math.pow(1 - t, 4);
+          const val = Math.round(ease * target);
+          el.textContent = formatNum(val) + suffix;
+          if (t < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      }, delay);
     });
   }
 
@@ -2208,7 +2215,7 @@
       qa('#slide10 .s10-stat-val').forEach(el => {
         el.textContent = '0' + (el.dataset.suffix || '');
       });
-      setTimeout(animateCountUp, 600);
+      setTimeout(animateCountUp, 2800);
     }
   }
 
