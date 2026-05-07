@@ -2300,9 +2300,9 @@
       return;
     }
 
-    // Tablet/desktop: fill viewport width — no side gaps
-    const scale   = vw / DESIGN_W;
-    const offsetX = 0;
+    // Tablet/desktop: fit both width and height — no content cut, body #000 hides side bars
+    const scale   = Math.min(vw / DESIGN_W, vh / DESIGN_H);
+    const offsetX = Math.max(0, Math.round((vw - DESIGN_W * scale) / 2));
     const offsetY = Math.max(0, Math.round((vh - DESIGN_H * scale) / 2));
     wrapper.style.transform = `scale(${scale})`;
     wrapper.style.left = offsetX + 'px';
