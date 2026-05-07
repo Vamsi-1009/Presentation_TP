@@ -2374,8 +2374,8 @@
     _audioObj.onended = () => {
       _audioObj = null;
       btn.classList.remove('speaking');
-      // Advance to next slide after audio finishes
-      goTo(current + 1);
+      // Resume progress bar; it will advance slide when complete
+      resume();
     };
     _audioObj.onerror = () => {
       _audioObj = null;
