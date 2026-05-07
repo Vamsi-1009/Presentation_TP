@@ -13,6 +13,11 @@ const PORT = 9999;
 // Exact durations from audio files (ms)
 const SLIDE_MS = [18456, 14064, 13512, 17952, 16128, 17856, 17112, 18528, 18408, 15720, 21048];
 
+// English subtitle text per slide
+const EN_SCRIPTS = JSON.parse(
+  fs.readFileSync(path.join(__dirname, 'audio_scripts_en.json'), 'utf8')
+).slides;
+
 /* ── simple static file server ── */
 function startServer() {
   const mime = { '.html':'text/html','.css':'text/css','.js':'application/javascript',
@@ -25,6 +30,61 @@ function startServer() {
     fs.createReadStream(file).pipe(res);
   });
   return new Promise(r => server.listen(PORT, () => { console.log(`Server → http://localhost:${PORT}`); r(server); }));
+}
+
+/* ── split text into chunks of ~90 chars at word boundaries ── */
+function chunkText(text, maxLen = 90) {
+  const words = text.split(' ');
+  const chunks = [];
+  let line = '';
+  for (const w of words) {
+    const candidate = line ? line + ' ' + w : w;
+    if (candidate.length > maxLen && line) {
+      chunks.push(line);
+      line = w;
+    } else {
+      line = candidate;
+    }
+  }
+  if (line) chunks.push(line);
+  return chunks;
+}
+
+/* ── build SRT subtitle file ── */
+function msToSRT(ms) {
+  const h  = Math.floor(ms / 3600000);
+  const m  = Math.floor((ms % 3600000) / 60000);
+  const s  = Math.floor((ms % 60000) / 1000);
+  const ms2 = ms % 1000;
+  return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')},${String(ms2).padStart(3,'0')}`;
+}
+
+function buildSRT(scripts, slideMs) {
+  let srt = '';
+  let idx = 1;
+  let timeMs = 0;
+
+  for (let i = 0; i < slideMs.length; i++) {
+    const num    = String(i + 1).padStart(2, '0');
+    const text   = scripts[num] || '';
+    const dur    = slideMs[i];
+    const chunks = chunkText(text);
+    // Group into pairs (2 lines per subtitle card)
+    const pairs  = [];
+    for (let c = 0; c < chunks.length; c += 2)
+      pairs.push(chunks.slice(c, c + 2).join('\n'));
+
+    const pairDur = Math.floor(dur / pairs.length);
+    for (let p = 0; p < pairs.length; p++) {
+      const start = timeMs + p * pairDur;
+      const end   = timeMs + (p + 1) * pairDur - 80;
+      srt += `${idx}\n${msToSRT(start)} --> ${msToSRT(end)}\n${pairs[p]}\n\n`;
+      idx++;
+    }
+
+    timeMs += dur;
+  }
+  return srt;
 }
 
 async function main() {
@@ -47,13 +107,17 @@ async function main() {
   const page = await browser.newPage();
   await page.goto(`http://localhost:${PORT}`, { waitUntil: 'networkidle0' });
 
-  // Stop auto-advance, apply English
+  // Stop auto-advance, apply English, hide UI buttons not needed in video
   await page.evaluate(() => {
     clearTimeout(window.timer);
     cancelAnimationFrame(window.barAnim);
     applyTranslations('en');
-    document.getElementById('btnEn').classList.add('active');
-    document.getElementById('btnTe').classList.remove('active');
+
+    // Hide EN/TE toggle and voice button
+    const toggle = document.querySelector('.lang-toggle');
+    if (toggle) toggle.style.display = 'none';
+    const voiceBtn = document.getElementById('voiceBtn');
+    if (voiceBtn) voiceBtn.style.display = 'none';
   });
   await new Promise(r => setTimeout(r, 600));
 
@@ -83,7 +147,6 @@ async function main() {
       document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
       const slide = document.getElementById(`slide${idx + 1}`);
       slide.classList.add('active');
-      // Trigger count-up for slide 10
       if (idx === 9) {
         document.querySelectorAll('#slide10 .s10-stat-val').forEach(el => {
           el.textContent = '0' + (el.dataset.suffix || '');
@@ -118,12 +181,22 @@ async function main() {
   const concatAudio = path.join(FRAMES, 'concat_audio.txt');
   fs.writeFileSync(concatAudio, audioLines);
 
-  /* ── encode video ── */
+  /* ── write SRT subtitle file ── */
+  const srtPath = path.join(FRAMES, 'subtitles.srt');
+  fs.writeFileSync(srtPath, buildSRT(EN_SCRIPTS, SLIDE_MS), 'utf8');
+
+  /* ── encode video with burned-in subtitles ── */
   const videoOnly = path.join(FRAMES, 'video_only.mp4');
-  console.log('\nEncoding video…');
+  // Use forward-slash path for ffmpeg subtitles filter (Windows requirement)
+  const srtForFFmpeg = srtPath.replace(/\\/g, '/').replace(/^([A-Za-z]):/, '$1\\:');
+  console.log('\nEncoding video with subtitles…');
   execSync(
     `ffmpeg -y -f concat -safe 0 -i "${concatVideo}" ` +
-    `-vf "scale=${W}:${H}:flags=lanczos" ` +
+    `-vf "scale=${W}:${H}:flags=lanczos,` +
+    `subtitles='${srtForFFmpeg}':force_style='` +
+    `FontName=Arial,FontSize=26,Bold=1,` +
+    `PrimaryColour=&H00ffffff,OutlineColour=&H00000000,` +
+    `Outline=2,Shadow=1,Alignment=2,MarginV=28'" ` +
     `-c:v libx264 -pix_fmt yuv420p -crf 18 -preset fast "${videoOnly}"`,
     { stdio: 'inherit' }
   );
