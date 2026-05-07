@@ -187,16 +187,16 @@
     @keyframes popCard   { from{opacity:0;transform:scale(0.82)} to{opacity:1;transform:scale(1)} }
     @keyframes lineInH   { from{opacity:0;transform:scaleX(0)} to{opacity:1;transform:scaleX(1)} }
 
-    #slide4.active .s4-head                              { animation:fadeUp    0.8s 0.3s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide4.active .s4-shield-wrap                       { animation:countUp   1.0s 0.6s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide4.active .s4-shield                            { animation:shieldBlueGlow 3s 1s ease-in-out infinite; }
-    #slide4.active .s4-orbit-ring.spin                   { animation:orbitSpin 12s linear infinite; }
+    #slide4.active .s4-head                               { animation:fadeUp    0.8s 0.3s  cubic-bezier(0.22,1,0.36,1) both; }
+    #slide4.active .s4-shield-wrap                        { animation:countUp   1.0s 1.0s  cubic-bezier(0.22,1,0.36,1) both; }
+    #slide4.active .s4-shield                             { animation:shieldBlueGlow 3s 1.6s ease-in-out infinite; }
+    #slide4.active .s4-orbit-ring.spin                    { animation:orbitSpin 12s linear infinite; }
     #slide4.active .s4-center-col::before,
-    #slide4.active .s4-center-col::after                 { animation:lineInH   0.6s 1.0s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide4.active .s4-col.left-col  .s4-card:nth-child(1){ animation:slideRight 0.8s 1.2s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide4.active .s4-col.right-col .s4-card:nth-child(1){ animation:slideLeft  0.8s 1.2s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide4.active .s4-col.left-col  .s4-card:nth-child(2){ animation:slideRight 0.8s 1.9s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide4.active .s4-col.right-col .s4-card:nth-child(2){ animation:slideLeft  0.8s 1.9s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide4.active .s4-center-col::after                  { animation:lineInH   0.6s 1.6s  cubic-bezier(0.22,1,0.36,1) both; }
+    #slide4.active .s4-col.left-col  .s4-card:nth-child(1){ animation:slideRight 0.8s 2.2s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide4.active .s4-col.right-col .s4-card:nth-child(1){ animation:slideLeft  0.8s 3.0s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide4.active .s4-col.left-col  .s4-card:nth-child(2){ animation:slideRight 0.8s 3.8s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide4.active .s4-col.right-col .s4-card:nth-child(2){ animation:slideLeft  0.8s 4.6s cubic-bezier(0.22,1,0.36,1) both; }
     /* ════ SLIDE 5 — IR Detection ════ */
     #slide5 {
       background:radial-gradient(ellipse at 30% 50%,#1a0404 0%,#000 70%);
