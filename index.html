@@ -172,26 +172,6 @@
       max-width:560px; opacity:0;
     }
 
-    .s4-cards-row {
-      display:grid; grid-template-columns:repeat(4,1fr); gap:14px;
-      width:100%; max-width:1120px; padding:0 48px;
-      position:relative; z-index:1;
-    }
-    .s4-feat {
-      padding:20px 16px; border-radius:14px;
-      background:rgba(0,12,45,0.9); border:1.5px solid rgba(0,120,240,0.3);
-      backdrop-filter:blur(8px); box-shadow:0 0 20px rgba(0,60,180,0.18);
-      opacity:0; transition:box-shadow 0.3s,border-color 0.3s;
-      position:relative; overflow:hidden;
-    }
-    .s4-feat::before {
-      content:''; position:absolute; top:0; left:0; right:0; height:2px;
-      background:linear-gradient(90deg,transparent,#4dccff,transparent);
-    }
-    .s4-feat:hover { box-shadow:0 0 34px rgba(0,160,255,0.4); border-color:rgba(0,180,255,0.6); }
-    .s4-feat-icon  { font-size:1.5rem; margin-bottom:10px; }
-    .s4-feat-title { font-size:0.88rem; font-weight:800; color:#4dccff; margin-bottom:6px; }
-    .s4-feat-desc  { font-size:0.75rem; color:rgba(170,205,255,0.82); line-height:1.55; }
 
     @keyframes s4Spotlight {
       from { opacity:0; }
@@ -216,21 +196,11 @@
       72% { transform:scale(1.018); }
       100%{ opacity:1; transform:scale(1); }
     }
-    @keyframes s4FeatIn {
-      0%  { opacity:0; transform:translateY(40px) scale(0.84); filter:blur(4px); }
-      62% { filter:blur(0); transform:translateY(-4px) scale(1.02); }
-      100%{ opacity:1; transform:none; }
-    }
-
     #slide4.active::before                { animation:s4Spotlight 1.6s 0.2s ease-out both; }
     #slide4.active .s4-introducing        { animation:s4TrackIn   0.95s 0.55s cubic-bezier(0.22,1,0.36,1) both; }
     #slide4.active .s4-brand-icon         { animation:s4IconGlow  1.1s  1.15s cubic-bezier(0.22,1,0.36,1) both,s4GlowLoop 2.6s 2.4s ease-in-out infinite; }
     #slide4.active .s4-brand-title        { animation:s4BrandHit  1.0s  1.9s  cubic-bezier(0.22,1,0.36,1) both; }
     #slide4.active .s4-brand-tagline      { animation:fadeUp      0.8s  2.95s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide4.active .s4-feat:nth-child(1)  { animation:s4FeatIn    0.65s 3.6s  cubic-bezier(0.22,1,0.36,1) both; }
-    #slide4.active .s4-feat:nth-child(2)  { animation:s4FeatIn    0.65s 4.1s  cubic-bezier(0.22,1,0.36,1) both; }
-    #slide4.active .s4-feat:nth-child(3)  { animation:s4FeatIn    0.65s 4.6s  cubic-bezier(0.22,1,0.36,1) both; }
-    #slide4.active .s4-feat:nth-child(4)  { animation:s4FeatIn    0.65s 5.1s  cubic-bezier(0.22,1,0.36,1) both; }
     /* ════ SLIDE 5 — Takedown System ════ */
     #slide5 {
       background:radial-gradient(ellipse at 30% 50%,#140a00 0%,#000 70%);
@@ -780,11 +750,6 @@
       .s4-brand-icon   { font-size:2.4rem !important; }
       .s4-brand-title  { font-size:1.75rem !important; }
       .s4-brand-tagline{ font-size:0.74rem !important; max-width:100% !important; }
-      .s4-cards-row    { grid-template-columns:1fr 1fr !important; padding:0 !important; gap:10px !important; }
-      .s4-feat         { padding:12px 10px !important; }
-      .s4-feat-icon    { font-size:1.2rem !important; margin-bottom:6px !important; }
-      .s4-feat-title   { font-size:0.76rem !important; }
-      .s4-feat-desc    { font-size:0.66rem !important; }
 
       /* ────── SLIDE 5 ────── */
       #slide5 {
@@ -1103,28 +1068,6 @@
     <div class="s4-brand-icon">🛡️</div>
     <h2 class="s4-brand-title">The Takedown<br><span class="s4-accent">System</span></h2>
     <p class="s4-brand-tagline">A fully automated piracy removal engine — monitoring 50+ platforms 24/7, filing DMCA notices in seconds, removing every pirated copy before the damage spreads.</p>
-  </div>
-  <div class="s4-cards-row">
-    <div class="s4-feat">
-      <div class="s4-feat-icon">👁️</div>
-      <div class="s4-feat-title">24/7 Surveillance</div>
-      <div class="s4-feat-desc">Our bots scan YouTube, Telegram, Instagram, Facebook, torrent sites — every platform, every minute, every day. Nothing slips past.</div>
-    </div>
-    <div class="s4-feat">
-      <div class="s4-feat-icon">🧬</div>
-      <div class="s4-feat-title">AI Fingerprint Match</div>
-      <div class="s4-feat-desc">Every frame carries a unique watermark. Our AI identifies pirated copies instantly — even re-encoded, compressed, or partial clips.</div>
-    </div>
-    <div class="s4-feat">
-      <div class="s4-feat-icon">⚖️</div>
-      <div class="s4-feat-title">Auto DMCA Filing</div>
-      <div class="s4-feat-desc">The moment a match is confirmed, a legally valid DMCA notice is filed automatically. No lawyer. No delay. Seconds to submission.</div>
-    </div>
-    <div class="s4-feat">
-      <div class="s4-feat-icon">🌐</div>
-      <div class="s4-feat-title">Platform Removal</div>
-      <div class="s4-feat-desc">YouTube: 10 min. Instagram: before it goes live. Telegram: 24–48 hrs. Torrents: 48–72 hrs. Every re-upload blocked forever.</div>
-    </div>
   </div>
 </div>
 </div>
@@ -1702,14 +1645,7 @@
       slide4: {
         tag: 'We Are Introducing',
         title: 'The Takedown<br><span class="s4-accent">System</span>',
-        lead: 'A fully automated piracy removal engine that monitors 50+ platforms 24/7, files DMCA notices in seconds, and removes pirated copies before the damage spreads — with zero manual effort from you.',
-        featTitles: ['24/7 Surveillance','AI Fingerprint Match','Auto DMCA Filing','Platform Removal'],
-        featDescs: [
-          'Our bots scan YouTube, Telegram, Instagram, Facebook, torrent sites — every platform, every minute, every day. Nothing slips past.',
-          'Every frame of your film carries a unique watermark. Our AI identifies pirated copies instantly — even re-encoded, compressed, or partial recordings.',
-          'The moment a match is confirmed, a legally valid DMCA notice is filed automatically. No lawyer, no delay, no manual step — seconds to submission.',
-          'YouTube removes in 10 minutes. Instagram blocks before it goes live. Telegram in 24–48 hrs. Torrents in 48–72 hrs. Every re-upload permanently blocked.'
-        ]
+        lead: 'A fully automated piracy removal engine that monitors 50+ platforms 24/7, files DMCA notices in seconds, and removes pirated copies before the damage spreads — with zero manual effort from you.'
       },
       slide5: {
         tag: 'Automated Enforcement',
@@ -1821,13 +1757,6 @@
         tag: 'మేము పరిచయం చేస్తున్నాం',
         title: 'తొలగింపు<br><span class="s4-accent">వ్యవస్థ</span>',
         lead: '50+ ప్లాట్‌ఫారమ్‌లను 24/7 పర్యవేక్షించి, సెకన్లలో DMCA నోటీసులు దాఖలు చేసి, నష్టం వ్యాపించే ముందే పైరేటెడ్ కాపీలను తొలగించే పూర్తి ఆటోమేటెడ్ వ్యవస్థ — మీ వంతు పని శూన్యం.',
-        featTitles: ['24/7 నిఘా','AI ఫింగర్‌ప్రింట్ మ్యాచ్','ఆటో DMCA దాఖలు','ప్లాట్‌ఫారం తొలగింపు'],
-        featDescs: [
-          'మా బాట్లు YouTube, Telegram, Instagram, Facebook, టోరెంట్ సైట్లను — ప్రతి ప్లాట్‌ఫారమ్‌ను, ప్రతి నిమిషమూ, రోజంతా స్కాన్ చేస్తాయి. ఏదీ తప్పించుకోదు.',
-          'మీ చిత్రం ప్రతి ఫ్రేమ్‌లో ఒక ప్రత్యేక వాటర్‌మార్క్ ఉంటుంది. మా AI పైరేటెడ్ కాపీలను తక్షణమే గుర్తిస్తుంది — రీ-ఎన్‌కోడ్ అయినా, కంప్రెస్ అయినా, పాక్షిక రికార్డింగ్ అయినా.',
-          'మ్యాచ్ నిర్ధారణ అయిన వెంటనే చట్టబద్ధమైన DMCA నోటీసు ఆటోమేటిగ్గా దాఖలవుతుంది. లాయర్ అవసరం లేదు, ఆలస్యం లేదు, మాన్యువల్ స్టెప్ లేదు — సెకన్లలో సమర్పణ.',
-          'YouTube 10 నిమిషాల్లో తొలగిస్తుంది. Instagram లైవ్‌కు ముందే బ్లాక్ చేస్తుంది. Telegram 24–48 గంటల్లో. టోరెంట్లు 48–72 గంటల్లో. ప్రతి రీ-అప్‌లోడ్ శాశ్వతంగా బ్లాక్.'
-        ]
       },
       slide5: {
         tag: 'ఆటోమేటెడ్ అమలు',
@@ -1937,10 +1866,6 @@
     q('#slide4 .s4-introducing').innerHTML  = t.slide4.tag;
     q('#slide4 .s4-brand-title').innerHTML  = t.slide4.title;
     q('#slide4 .s4-brand-tagline').innerHTML = t.slide4.lead;
-    qa('#slide4 .s4-feat').forEach((feat,i) => {
-      q('.s4-feat-title', feat).innerHTML = t.slide4.featTitles[i];
-      q('.s4-feat-desc',  feat).innerHTML = t.slide4.featDescs[i];
-    });
 
     // Slide 5 (Takedown System)
     q('#slide5 .s8-tag').innerHTML    = t.slide5.tag;
