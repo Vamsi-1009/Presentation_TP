@@ -293,58 +293,78 @@
     #slide5.active .s8-block:nth-child(2){ animation:s5BlockIn 0.7s 2.7s cubic-bezier(0.34,1.56,0.64,1) both; }
     #slide5.active .s8-block:nth-child(3){ animation:s5BlockIn 0.7s 3.4s cubic-bezier(0.34,1.56,0.64,1) both; }
 
-    /* ════ SLIDE 6 — Animated Pipeline + Terminal Log ════ */
-    #slide6 { flex-direction:column; align-items:center; justify-content:flex-start; padding:18px 48px 16px; gap:14px; position:relative; overflow:hidden; }
-    .s6-header { display:flex; flex-direction:column; align-items:center; gap:4px; position:relative; z-index:1; }
+    /* ════ SLIDE 6 — Live CI/CD Pipeline State Machine ════ */
+    @keyframes spin { to { transform:rotate(360deg); } }
+    @keyframes s6CardIn { 0%{opacity:0;transform:translateY(22px) scale(0.94)} 100%{opacity:1;transform:none} }
+    @keyframes s6Packet { from{left:-10px;opacity:1} to{left:calc(100% + 4px);opacity:1} }
+    @keyframes s6GlowPulse { 0%,100%{box-shadow:0 0 0 3px rgba(37,99,235,0.12),var(--sh2)} 50%{box-shadow:0 0 0 5px rgba(37,99,235,0.2),var(--sh3)} }
+    @keyframes s6CheckIn { 0%{transform:scale(0) rotate(-20deg)} 70%{transform:scale(1.2) rotate(4deg)} 100%{transform:scale(1) rotate(0)} }
+
+    #slide6 { flex-direction:column; align-items:center; justify-content:flex-start; padding:16px 36px 14px; gap:10px; }
+    .s6-header { display:flex; flex-direction:column; align-items:center; gap:4px; }
     .s6-tag    { display:inline-flex; align-items:center; font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--blue); border:1.5px solid rgba(37,99,235,0.22); padding:5px 14px; border-radius:100px; background:var(--blue-l); width:fit-content; opacity:0; }
     .s6-title  { font-size:1.9rem; font-weight:900; line-height:1.1; text-align:center; opacity:0; color:var(--text); letter-spacing:-0.02em; }
     .s6-accent { color:var(--blue); }
     .s6-lead   { font-size:0.8rem; color:var(--text3); text-align:center; max-width:700px; opacity:0; }
-
-    /* ── Pipeline ── */
-    .s6-pipeline { width:100%; position:relative; flex-shrink:0; height:148px; }
-    .s6-track-bg   { position:absolute; top:38px; left:calc(100%/12); right:calc(100%/12); height:4px; background:var(--border2); border-radius:2px; }
-    .s6-track-fill { position:absolute; top:38px; left:calc(100%/12); right:calc(100%/12); height:4px; background:linear-gradient(90deg,var(--blue) 0%,var(--purple) 55%,var(--green) 100%); border-radius:2px; clip-path:inset(0 100% 0 0 round 2px); z-index:1; }
-    @keyframes s6TrackGrow { to { clip-path:inset(0 0% 0 0 round 2px); } }
-    #slide6.active .s6-track-fill { animation:s6TrackGrow 2.2s 1.0s cubic-bezier(0.4,0,0.2,1) both; }
-
-    .s6-nodes { display:grid; grid-template-columns:repeat(6,1fr); width:100%; position:relative; z-index:2; }
-    .s6-node  { display:flex; flex-direction:column; align-items:center; gap:9px; }
-    .s6-node-wrap { position:relative; width:76px; height:76px; display:flex; align-items:center; justify-content:center; }
-    .s6-node-ring { position:absolute; inset:-7px; border-radius:50%; border:2.5px solid rgba(37,99,235,0.3); opacity:0; transform:scale(1); }
-    .s6-node:last-child .s6-node-ring { border-color:rgba(22,163,74,0.4); }
-    @keyframes s6Ring { 0%{transform:scale(1);opacity:0.7} 100%{transform:scale(1.55);opacity:0} }
-    .s6-node-circle { width:76px; height:76px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:2rem; background:var(--surface); border:2px solid var(--border2); box-shadow:var(--sh2); opacity:0; }
-    .s6-node:last-child .s6-node-circle { border-color:rgba(22,163,74,0.3); background:rgba(240,253,244,0.97); }
-    @keyframes s6NodeIn { 0%{opacity:0;transform:scale(0.35) translateY(18px)} 65%{transform:scale(1.1) translateY(-3px)} 100%{opacity:1;transform:scale(1) translateY(0)} }
-    .s6-node-info { display:flex; flex-direction:column; align-items:center; gap:4px; opacity:0; }
-    .s6-node-badge { font-size:0.56rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; padding:2px 9px; border-radius:100px; background:var(--blue-l); color:var(--blue); border:1px solid rgba(37,99,235,0.2); }
-    .s6-node:last-child .s6-node-badge { background:var(--green-l); color:var(--green); border-color:rgba(22,163,74,0.2); }
-    .s6-node-title { font-size:0.78rem; font-weight:800; color:var(--text); text-align:center; line-height:1.2; }
-    .s6-node-time  { font-size:0.62rem; color:var(--text3); background:var(--surface2); border:1px solid var(--border); border-radius:5px; padding:1px 7px; }
-    /* Staggered node animations */
-    #slide6.active .s6-node:nth-child(1) .s6-node-circle { animation:s6NodeIn 0.6s 1.0s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide6.active .s6-node:nth-child(2) .s6-node-circle { animation:s6NodeIn 0.6s 1.5s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide6.active .s6-node:nth-child(3) .s6-node-circle { animation:s6NodeIn 0.6s 2.0s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide6.active .s6-node:nth-child(4) .s6-node-circle { animation:s6NodeIn 0.6s 2.5s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide6.active .s6-node:nth-child(5) .s6-node-circle { animation:s6NodeIn 0.6s 3.0s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide6.active .s6-node:nth-child(6) .s6-node-circle { animation:s6NodeIn 0.6s 3.5s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide6.active .s6-node:nth-child(1) .s6-node-ring { animation:s6Ring 0.9s 1.7s ease-out both; }
-    #slide6.active .s6-node:nth-child(2) .s6-node-ring { animation:s6Ring 0.9s 2.2s ease-out both; }
-    #slide6.active .s6-node:nth-child(3) .s6-node-ring { animation:s6Ring 0.9s 2.7s ease-out both; }
-    #slide6.active .s6-node:nth-child(4) .s6-node-ring { animation:s6Ring 0.9s 3.2s ease-out both; }
-    #slide6.active .s6-node:nth-child(5) .s6-node-ring { animation:s6Ring 0.9s 3.7s ease-out both; }
-    #slide6.active .s6-node:nth-child(6) .s6-node-ring { animation:s6Ring 0.9s 4.2s ease-out both; }
-    #slide6.active .s6-node:nth-child(1) .s6-node-info { animation:riseUpFast 0.5s 1.4s ease both; }
-    #slide6.active .s6-node:nth-child(2) .s6-node-info { animation:riseUpFast 0.5s 1.9s ease both; }
-    #slide6.active .s6-node:nth-child(3) .s6-node-info { animation:riseUpFast 0.5s 2.4s ease both; }
-    #slide6.active .s6-node:nth-child(4) .s6-node-info { animation:riseUpFast 0.5s 2.9s ease both; }
-    #slide6.active .s6-node:nth-child(5) .s6-node-info { animation:riseUpFast 0.5s 3.4s ease both; }
-    #slide6.active .s6-node:nth-child(6) .s6-node-info { animation:riseUpFast 0.5s 3.9s ease both; }
-    /* Header */
     #slide6.active .s6-tag   { animation:riseUpFast 0.6s 0.2s ease both; }
     #slide6.active .s6-title { animation:riseUp     0.7s 0.5s cubic-bezier(0.34,1.56,0.64,1) both; }
     #slide6.active .s6-lead  { animation:riseUpFast 0.6s 0.9s ease both; }
+
+    /* ── Pipeline row ── */
+    .s6-pipe { display:flex; align-items:center; width:100%; flex-shrink:0; }
+
+    /* ── Step card base ── */
+    .s6-sc {
+      flex:1; min-width:0; display:flex; flex-direction:column;
+      background:var(--surface); border-radius:12px;
+      border:1.5px solid var(--border2); box-shadow:var(--sh1);
+      overflow:hidden; opacity:0; transform:translateY(20px) scale(0.95);
+      transition:border-color 0.35s ease, box-shadow 0.45s ease;
+    }
+    /* JS adds .in to make card appear */
+    .s6-sc.in { animation:s6CardIn 0.55s cubic-bezier(0.34,1.56,0.64,1) forwards; }
+    /* running state — blue glow */
+    .s6-sc.run { border-color:rgba(37,99,235,0.55); animation:s6GlowPulse 1.4s ease-in-out infinite; }
+    /* done state — green border */
+    .s6-sc.done { border-color:rgba(22,163,74,0.5); box-shadow:0 0 0 3px rgba(22,163,74,0.08),var(--sh2); animation:none; opacity:1; transform:none; }
+
+    /* ── Card header bar ── */
+    .s6-sc-bar { padding:6px 10px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--border); background:var(--surface2); flex-shrink:0; transition:background 0.3s, border-color 0.3s; }
+    .s6-sc.run  .s6-sc-bar { background:rgba(37,99,235,0.07); border-color:rgba(37,99,235,0.18); }
+    .s6-sc.done .s6-sc-bar { background:rgba(22,163,74,0.06); border-color:rgba(22,163,74,0.14); }
+    .s6-sc-num { font-size:0.5rem; font-weight:800; letter-spacing:0.12em; color:var(--text4); text-transform:uppercase; }
+    /* Status indicator circle */
+    .s6-sc-spin { width:14px; height:14px; border-radius:50%; background:var(--border2); flex-shrink:0; transition:background 0.3s; }
+    .s6-sc.run  .s6-sc-spin { background:transparent; border:2px solid rgba(37,99,235,0.22); border-top-color:var(--blue); animation:spin 0.65s linear infinite; }
+    .s6-sc.done .s6-sc-spin { background:var(--green); border:none; animation:s6CheckIn 0.45s cubic-bezier(0.34,1.56,0.64,1) both; display:flex; align-items:center; justify-content:center; }
+    .s6-sc.done .s6-sc-spin::after { content:'✓'; font-size:0.5rem; color:#fff; font-weight:900; line-height:1; }
+
+    /* ── Card body ── */
+    .s6-sc-body { padding:10px 8px 8px; display:flex; flex-direction:column; align-items:center; gap:4px; flex:1; }
+    .s6-sc-icon { font-size:2rem; line-height:1; filter:grayscale(0.3); transition:filter 0.4s; }
+    .s6-sc.run  .s6-sc-icon { filter:grayscale(0); }
+    .s6-sc.done .s6-sc-icon { filter:grayscale(0); }
+    .s6-sc-name { font-size:0.72rem; font-weight:800; color:var(--text); text-align:center; line-height:1.2; }
+    .s6-sc-time { font-size:0.56rem; color:var(--text4); }
+    /* Result metric — appears on done */
+    .s6-sc-res {
+      font-size:0.58rem; font-weight:700; color:var(--green);
+      background:rgba(22,163,74,0.1); border:1px solid rgba(22,163,74,0.22);
+      padding:2px 7px; border-radius:5px; text-align:center; line-height:1.4;
+      opacity:0; transform:scale(0.75) translateY(5px);
+      transition:opacity 0.4s 0.15s ease, transform 0.4s 0.15s cubic-bezier(0.34,1.56,0.64,1);
+      margin-top:2px;
+    }
+    .s6-sc.done .s6-sc-res { opacity:1; transform:none; }
+
+    /* ── Connector between cards ── */
+    .s6-conn { flex-shrink:0; width:26px; height:6px; background:var(--border2); border-radius:3px; position:relative; overflow:hidden; }
+    /* fill bar that sweeps left→right */
+    .s6-conn-fill { position:absolute; inset:0; background:linear-gradient(90deg,var(--blue),var(--green)); border-radius:3px; transform:scaleX(0); transform-origin:left; transition:transform 0.5s cubic-bezier(0.4,0,0.2,1); }
+    .s6-conn.go .s6-conn-fill { transform:scaleX(1); }
+    /* glowing packet dot */
+    .s6-conn-dot { position:absolute; top:50%; width:10px; height:10px; border-radius:50%; background:#fff; box-shadow:0 0 6px 2px rgba(37,99,235,0.7); transform:translateY(-50%); opacity:0; left:-10px; }
+    .s6-conn.go .s6-conn-dot { animation:s6Packet 0.42s ease-in-out 0.05s forwards; }
 
     /* ── Terminal Log ── */
     .s6-log { flex:1; width:100%; border-radius:var(--r1); overflow:hidden; border:1.5px solid var(--border2); box-shadow:var(--sh3); display:flex; flex-direction:column; min-height:0; }
@@ -354,8 +374,10 @@
     .s6-log-title { font-size:0.68rem; font-weight:600; color:var(--text3); margin-left:8px; font-family:'SF Mono','Fira Code','Consolas',monospace; }
     .s6-log-live  { margin-left:auto; font-size:0.6rem; font-weight:700; color:var(--green); letter-spacing:0.08em; display:flex; align-items:center; gap:5px; }
     .s6-log-live::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--green); animation:voicePulse 1.2s ease-in-out infinite; }
-    .s6-log-body { flex:1; padding:12px 18px; display:flex; flex-direction:column; gap:9px; background:#f8fafc; font-family:'SF Mono','Fira Code','Consolas',monospace; overflow:hidden; }
-    .s6-ll { display:flex; align-items:center; gap:10px; opacity:0; }
+    .s6-log-body { flex:1; padding:10px 16px; display:flex; flex-direction:column; gap:8px; background:#f8fafc; font-family:'SF Mono','Fira Code','Consolas',monospace; overflow:hidden; }
+    /* Log lines: JS adds .show class instead of CSS animation so timing syncs with state machine */
+    .s6-ll { display:flex; align-items:center; gap:10px; opacity:0; transform:translateX(-10px); transition:opacity 0.4s ease, transform 0.4s cubic-bezier(0.34,1.56,0.64,1); }
+    .s6-ll.show { opacity:1; transform:none; }
     .s6-lt { font-size:0.64rem; color:var(--text4); flex-shrink:0; width:56px; }
     .s6-li { font-size:0.95rem; flex-shrink:0; width:20px; text-align:center; line-height:1; }
     .s6-ltag { font-size:0.58rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; padding:2px 8px; border-radius:4px; flex-shrink:0; width:52px; text-align:center; }
@@ -370,13 +392,6 @@
     .s6-hi-b { color:var(--blue);   font-weight:700; }
     .s6-hi-a { color:var(--amber);  font-weight:700; }
     .s6-hi-g { color:var(--green);  font-weight:700; }
-    /* Log lines appear sequentially after their node */
-    #slide6.active .s6-ll:nth-child(1) { animation:riseUpFast 0.5s 2.0s ease both; }
-    #slide6.active .s6-ll:nth-child(2) { animation:riseUpFast 0.5s 2.8s ease both; }
-    #slide6.active .s6-ll:nth-child(3) { animation:riseUpFast 0.5s 3.6s ease both; }
-    #slide6.active .s6-ll:nth-child(4) { animation:riseUpFast 0.5s 4.4s ease both; }
-    #slide6.active .s6-ll:nth-child(5) { animation:riseUpFast 0.5s 5.2s ease both; }
-    #slide6.active .s6-ll:nth-child(6) { animation:riseUpFast 0.5s 6.0s ease both; }
 
     /* ════ SLIDE 7 — Platform Coverage ════ */
     /* ════ SLIDE 7 — Platform Coverage (3+2 layout) ════ */
@@ -798,50 +813,51 @@
       .s5-eye-box { width:110px !important; padding:10px !important; }
       .s5-screen-preview { width:88px !important; height:56px !important; }
 
-      /* ────── SLIDE 6 — Mobile pipeline + terminal ────── */
+      /* ────── SLIDE 6 — Mobile CI/CD pipeline ────── */
       #slide6 {
         flex-direction:column !important;
         align-items:center !important;
         justify-content:flex-start !important;
         overflow-y:auto !important;
-        padding:48px 12px 16px !important;
+        padding:48px 12px 14px !important;
         gap:10px !important;
       }
-      #slide6 .s6-header { margin-bottom:4px !important; gap:3px !important; }
+      #slide6 .s6-header { gap:3px !important; }
       #slide6 .s6-title  { font-size:1.35rem !important; }
-      #slide6 .s6-lead   { font-size:0.72rem !important; }
-      /* Pipeline: horizontal scroll on mobile */
-      #slide6 .s6-pipeline {
-        height:120px !important;
+      #slide6 .s6-lead   { font-size:0.7rem !important; }
+      /* Pipeline: horizontal scroll */
+      #slide6 .s6-pipe {
         width:100% !important;
         overflow-x:auto !important;
         overflow-y:visible !important;
-        min-width:0 !important;
+        padding-bottom:4px !important;
+        flex-shrink:0 !important;
       }
-      #slide6 .s6-nodes {
-        min-width:480px !important;
+      #slide6 .s6-sc {
+        min-width:88px !important;
+        flex:0 0 88px !important;
       }
-      #slide6 .s6-node-circle {
-        width:52px !important; height:52px !important;
-        font-size:1.4rem !important;
-      }
-      #slide6 .s6-node-ring {
-        width:52px !important; height:52px !important;
-      }
-      #slide6 .s6-node-badge { font-size:0.52rem !important; padding:1px 5px !important; }
-      #slide6 .s6-node-title { font-size:0.7rem !important; }
-      #slide6 .s6-node-time  { font-size:0.6rem !important; }
-      /* Terminal: show only first 4 lines */
+      #slide6 .s6-sc-bar { padding:5px 7px !important; }
+      #slide6 .s6-sc-num { font-size:0.44rem !important; }
+      #slide6 .s6-sc-spin { width:11px !important; height:11px !important; }
+      #slide6 .s6-sc-body { padding:7px 5px 6px !important; gap:3px !important; }
+      #slide6 .s6-sc-icon { font-size:1.5rem !important; }
+      #slide6 .s6-sc-name { font-size:0.62rem !important; }
+      #slide6 .s6-sc-time { font-size:0.5rem !important; }
+      #slide6 .s6-sc-res  { font-size:0.5rem !important; padding:1px 5px !important; }
+      #slide6 .s6-conn { width:14px !important; }
+      /* Terminal: 4 lines max */
       #slide6 .s6-log {
-        width:100% !important;
-        flex:none !important;
-        max-height:168px !important;
-        overflow:hidden !important;
+        width:100% !important; flex:none !important;
+        max-height:160px !important; overflow:hidden !important;
       }
-      #slide6 .s6-log-body { font-size:0.62rem !important; gap:4px !important; padding:8px !important; }
+      #slide6 .s6-log-body { padding:7px 10px !important; gap:5px !important; }
+      #slide6 .s6-lm { font-size:0.62rem !important; }
+      #slide6 .s6-lt { font-size:0.56rem !important; width:46px !important; }
+      #slide6 .s6-ltag { font-size:0.5rem !important; width:44px !important; }
       #slide6 .s6-ll:nth-child(n+5) { display:none !important; }
-      #slide6 .s6-log-title { font-size:0.68rem !important; }
-      #slide6 .s6-log-live  { font-size:0.6rem !important; padding:2px 6px !important; }
+      #slide6 .s6-log-title { font-size:0.64rem !important; }
+      #slide6 .s6-log-live  { font-size:0.58rem !important; }
 
       /* ────── SLIDE 7 — Platform Coverage (mobile single-column) ────── */
       #slide7 {
@@ -1011,18 +1027,7 @@
       .s11-banner-text { font-size:0.78rem !important; }
       .s11-banner { padding:8px 16px !important; }
 
-      /* ────── Mobile one-by-one slide-in animations: Slide 6 ────── */
-      @keyframes s6CardIn {
-        0%   { opacity:0; transform:translateX(-32px) scale(0.96); }
-        60%  { transform:translateX(4px) scale(1.01); }
-        100% { opacity:1; transform:translateX(0) scale(1); }
-      }
-      #slide6.active .s6-step:nth-child(1)  { animation:s6CardIn 0.55s 0.35s cubic-bezier(0.22,1,0.36,1) both !important; }
-      #slide6.active .s6-step:nth-child(3)  { animation:s6CardIn 0.55s 0.75s cubic-bezier(0.22,1,0.36,1) both !important; }
-      #slide6.active .s6-step:nth-child(5)  { animation:s6CardIn 0.55s 1.15s cubic-bezier(0.22,1,0.36,1) both !important; }
-      #slide6.active .s6-step:nth-child(7)  { animation:s6CardIn 0.55s 1.55s cubic-bezier(0.22,1,0.36,1) both !important; }
-      #slide6.active .s6-step:nth-child(9)  { animation:s6CardIn 0.55s 1.95s cubic-bezier(0.22,1,0.36,1) both !important; }
-      #slide6.active .s6-step:nth-child(11) { animation:s6CardIn 0.55s 2.35s cubic-bezier(0.22,1,0.36,1) both !important; }
+      /* Slide 6 mobile card animations handled by JS state machine (startSlide6) */
 
       /* ────── Mobile one-by-one animations: Slide 7 cards ────── */
       #slide7.active .s7-plat-card:nth-child(1) { animation:fadeUp 0.6s 0.4s cubic-bezier(0.22,1,0.36,1) both !important; }
@@ -1237,58 +1242,65 @@
     <p class="s6-lead">Zero humans. Zero delays. Six automated steps from detection to removal.</p>
   </div>
 
-  <!-- Pipeline visualization -->
-  <div class="s6-pipeline">
-    <div class="s6-track-bg"></div>
-    <div class="s6-track-fill"></div>
-    <div class="s6-nodes">
-      <div class="s6-node">
-        <div class="s6-node-wrap"><div class="s6-node-ring"></div><div class="s6-node-circle">🔍</div></div>
-        <div class="s6-node-info">
-          <div class="s6-node-badge">STEP 1</div>
-          <div class="s6-node-title">Detect</div>
-          <div class="s6-node-time">&lt; 1 min</div>
-        </div>
+  <!-- CI/CD Pipeline cards -->
+  <div class="s6-pipe">
+    <div class="s6-sc">
+      <div class="s6-sc-bar"><span class="s6-sc-num">STEP 01</span><div class="s6-sc-spin"></div></div>
+      <div class="s6-sc-body">
+        <div class="s6-sc-icon">🔍</div>
+        <div class="s6-sc-name">Detect</div>
+        <div class="s6-sc-time">Every minute</div>
+        <div class="s6-sc-res">247 copies<br>found</div>
       </div>
-      <div class="s6-node">
-        <div class="s6-node-wrap"><div class="s6-node-ring"></div><div class="s6-node-circle">🧬</div></div>
-        <div class="s6-node-info">
-          <div class="s6-node-badge">STEP 2</div>
-          <div class="s6-node-title">Verify</div>
-          <div class="s6-node-time">&lt; 2 min</div>
-        </div>
+    </div>
+    <div class="s6-conn"><div class="s6-conn-fill"></div><div class="s6-conn-dot"></div></div>
+    <div class="s6-sc">
+      <div class="s6-sc-bar"><span class="s6-sc-num">STEP 02</span><div class="s6-sc-spin"></div></div>
+      <div class="s6-sc-body">
+        <div class="s6-sc-icon">🧬</div>
+        <div class="s6-sc-name">Verify</div>
+        <div class="s6-sc-time">AI fingerprint</div>
+        <div class="s6-sc-res">99.8%<br>confidence</div>
       </div>
-      <div class="s6-node">
-        <div class="s6-node-wrap"><div class="s6-node-ring"></div><div class="s6-node-circle">⚖️</div></div>
-        <div class="s6-node-info">
-          <div class="s6-node-badge">STEP 3</div>
-          <div class="s6-node-title">File DMCA</div>
-          <div class="s6-node-time">&lt; 30 sec</div>
-        </div>
+    </div>
+    <div class="s6-conn"><div class="s6-conn-fill"></div><div class="s6-conn-dot"></div></div>
+    <div class="s6-sc">
+      <div class="s6-sc-bar"><span class="s6-sc-num">STEP 03</span><div class="s6-sc-spin"></div></div>
+      <div class="s6-sc-body">
+        <div class="s6-sc-icon">⚖️</div>
+        <div class="s6-sc-name">File DMCA</div>
+        <div class="s6-sc-time">&lt; 30 seconds</div>
+        <div class="s6-sc-res">Case filed<br>auto</div>
       </div>
-      <div class="s6-node">
-        <div class="s6-node-wrap"><div class="s6-node-ring"></div><div class="s6-node-circle">🗑️</div></div>
-        <div class="s6-node-info">
-          <div class="s6-node-badge">STEP 4</div>
-          <div class="s6-node-title">Remove</div>
-          <div class="s6-node-time">10 min–72 hr</div>
-        </div>
+    </div>
+    <div class="s6-conn"><div class="s6-conn-fill"></div><div class="s6-conn-dot"></div></div>
+    <div class="s6-sc">
+      <div class="s6-sc-bar"><span class="s6-sc-num">STEP 04</span><div class="s6-sc-spin"></div></div>
+      <div class="s6-sc-body">
+        <div class="s6-sc-icon">🗑️</div>
+        <div class="s6-sc-name">Remove</div>
+        <div class="s6-sc-time">10 min – 72 hr</div>
+        <div class="s6-sc-res">Content<br>deleted ✓</div>
       </div>
-      <div class="s6-node">
-        <div class="s6-node-wrap"><div class="s6-node-ring"></div><div class="s6-node-circle">🚫</div></div>
-        <div class="s6-node-info">
-          <div class="s6-node-badge">STEP 5</div>
-          <div class="s6-node-title">Block</div>
-          <div class="s6-node-time">Permanent</div>
-        </div>
+    </div>
+    <div class="s6-conn"><div class="s6-conn-fill"></div><div class="s6-conn-dot"></div></div>
+    <div class="s6-sc">
+      <div class="s6-sc-bar"><span class="s6-sc-num">STEP 05</span><div class="s6-sc-spin"></div></div>
+      <div class="s6-sc-body">
+        <div class="s6-sc-icon">🚫</div>
+        <div class="s6-sc-name">Block</div>
+        <div class="s6-sc-time">Permanent</div>
+        <div class="s6-sc-res">Re-upload<br>blocked ✓</div>
       </div>
-      <div class="s6-node">
-        <div class="s6-node-wrap"><div class="s6-node-ring"></div><div class="s6-node-circle">📊</div></div>
-        <div class="s6-node-info">
-          <div class="s6-node-badge">STEP 6</div>
-          <div class="s6-node-title">Notify</div>
-          <div class="s6-node-time">Real-time</div>
-        </div>
+    </div>
+    <div class="s6-conn"><div class="s6-conn-fill"></div><div class="s6-conn-dot"></div></div>
+    <div class="s6-sc">
+      <div class="s6-sc-bar"><span class="s6-sc-num">STEP 06</span><div class="s6-sc-spin"></div></div>
+      <div class="s6-sc-body">
+        <div class="s6-sc-icon">📊</div>
+        <div class="s6-sc-name">Notify</div>
+        <div class="s6-sc-time">Real-time</div>
+        <div class="s6-sc-res">Report<br>delivered ✓</div>
       </div>
     </div>
   </div>
@@ -1301,12 +1313,12 @@
       <span class="s6-log-live">PROCESSING</span>
     </div>
     <div class="s6-log-body">
-      <div class="s6-ll"><span class="s6-lt">00:00:01</span><span class="s6-li">🔍</span><span class="s6-ltag sc">SCAN</span><span class="s6-lm">Scanning 50+ platforms every minute → <span class="s6-hi-r">FOUND: 2 piracy copies on YouTube</span></span></div>
+      <div class="s6-ll"><span class="s6-lt">00:00:01</span><span class="s6-li">🔍</span><span class="s6-ltag sc">SCAN</span><span class="s6-lm">Scanning 50+ platforms every minute → <span class="s6-hi-r">FOUND: 247 piracy copies across platforms</span></span></div>
       <div class="s6-ll"><span class="s6-lt">00:00:47</span><span class="s6-li">🧬</span><span class="s6-ltag ve">VERIFY</span><span class="s6-lm">AI fingerprint match: <span class="s6-hi-b">99.8% confidence</span> — piracy confirmed</span></div>
-      <div class="s6-ll"><span class="s6-lt">00:01:12</span><span class="s6-li">⚖️</span><span class="s6-ltag dm">DMCA</span><span class="s6-lm">Legal notice auto-prepared and filed → Case <span class="s6-hi-a">#2024-078234</span> submitted</span></div>
-      <div class="s6-ll"><span class="s6-lt">00:11:34</span><span class="s6-li">🗑️</span><span class="s6-ltag rm">REMOVE</span><span class="s6-lm">YouTube processed the notice → <span class="s6-hi-g">2 copies DELETED ✓</span></span></div>
+      <div class="s6-ll"><span class="s6-lt">00:01:12</span><span class="s6-li">⚖️</span><span class="s6-ltag dm">DMCA</span><span class="s6-lm">Legal notice auto-filed → Case <span class="s6-hi-a">#2024-078234</span> submitted to platform</span></div>
+      <div class="s6-ll"><span class="s6-lt">00:11:34</span><span class="s6-li">🗑️</span><span class="s6-ltag rm">REMOVE</span><span class="s6-lm">Platform processed notice → <span class="s6-hi-g">247 copies DELETED ✓</span></span></div>
       <div class="s6-ll"><span class="s6-lt">00:11:35</span><span class="s6-li">🚫</span><span class="s6-ltag bl">BLOCK</span><span class="s6-lm">Content ID activated → <span class="s6-hi-g">Permanent re-upload block ENABLED ✓</span></span></div>
-      <div class="s6-ll"><span class="s6-lt">00:11:36</span><span class="s6-li">📊</span><span class="s6-ltag no">NOTIFY</span><span class="s6-lm">Dashboard updated → <span class="s6-hi-g">Producer notified. Full report ready ✓</span></span></div>
+      <div class="s6-ll"><span class="s6-lt">00:11:36</span><span class="s6-li">📊</span><span class="s6-ltag no">NOTIFY</span><span class="s6-lm">Dashboard updated → <span class="s6-hi-g">Producer notified. Full report delivered ✓</span></span></div>
     </div>
   </div>
 </div>
@@ -2071,8 +2083,6 @@
     q('#slide6 .s6-tag').innerHTML = t.slide6.tag;
     q('#slide6 .s6-title').innerHTML = t.slide6.title;
     q('#slide6 .s6-lead').innerHTML = t.slide6.lead;
-    qa('#slide6 .s6-step-title').forEach((el,i) => el.innerHTML = t.slide6.stepTitles[i]);
-    qa('#slide6 .s6-step-desc').forEach((el,i)  => el.innerHTML = t.slide6.stepDescs[i]);
 
     // Slide 7 (Platform Coverage — new)
     q('#slide7 .s7-tag').innerHTML = t.slide7.tag;
@@ -2155,6 +2165,47 @@
   }
 
   /* ── Slide 4 typewriter ── */
+  /* ── Slide 6 pipeline state machine ── */
+  let _s6Timers = [];
+  function clearSlide6() { _s6Timers.forEach(clearTimeout); _s6Timers = []; }
+  function startSlide6() {
+    clearSlide6();
+    const cards = [...document.querySelectorAll('#slide6 .s6-sc')];
+    const conns = [...document.querySelectorAll('#slide6 .s6-conn')];
+    const lines = [...document.querySelectorAll('#slide6 .s6-ll')];
+    // Full reset
+    cards.forEach(c => { c.className = 's6-sc'; });
+    conns.forEach(c => { c.className = 's6-conn'; c.querySelector('.s6-conn-dot').style.animation = 'none'; });
+    lines.forEach(l => l.classList.remove('show'));
+
+    // [appear_ms, run_ms, done_ms]
+    const seq = [
+      [280,  900,  2100],
+      [420,  2200, 3400],
+      [560,  3500, 4700],
+      [700,  4800, 7000],
+      [840,  7100, 8300],
+      [980,  8400, 9600],
+    ];
+    seq.forEach(([appear, run, done], i) => {
+      _s6Timers.push(setTimeout(() => cards[i].classList.add('in'), appear));
+      _s6Timers.push(setTimeout(() => { cards[i].classList.add('run'); }, run));
+      _s6Timers.push(setTimeout(() => {
+        cards[i].classList.remove('run');
+        cards[i].classList.add('done');
+        if (conns[i]) {
+          // Reset animation so it fires fresh
+          const dot = conns[i].querySelector('.s6-conn-dot');
+          dot.style.animation = 'none';
+          void dot.offsetWidth; // reflow
+          dot.style.animation = '';
+          conns[i].classList.add('go');
+        }
+        if (lines[i]) lines[i].classList.add('show');
+      }, done));
+    });
+  }
+
   let _s4TypeTimer = null, _s4TypeInterval = null;
   function startSlide4Typewriter() {
     clearTimeout(_s4TypeTimer); clearInterval(_s4TypeInterval);
@@ -2180,6 +2231,7 @@
 
   function goTo(idx) {
     clearTimeout(_s4TypeTimer); clearInterval(_s4TypeInterval);
+    clearSlide6();
     stopAudio();
     slides[current].classList.remove('active');
     current = (idx + slides.length) % slides.length;
@@ -2187,6 +2239,7 @@
     elapsed = 0;
     startTimer();
     if (current === 3) startSlide4Typewriter();
+    if (current === 5) startSlide6();
     if (current === 8) {
       qa('#slide9 .s10-stat-val').forEach(el => {
         el.textContent = '0' + (el.dataset.suffix || '');
