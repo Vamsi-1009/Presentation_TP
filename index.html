@@ -334,55 +334,103 @@
     #slide6.active .s6-step:nth-child(11)  { animation:s6StepIn 0.65s 4.65s cubic-bezier(0.22,1,0.36,1) both, s6DonePulse 2s 5.5s ease-in-out infinite; }
 
     /* ════ SLIDE 7 — Platform Coverage ════ */
+    /* ════ SLIDE 7 — Platform Coverage ════ */
     #slide7 {
       background:radial-gradient(ellipse at 60% 40%,#050a15 0%,#000 75%);
       flex-direction:column; align-items:center; justify-content:flex-start;
-      padding:28px 48px 24px; position:relative; overflow:hidden;
+      padding:28px 48px 20px; position:relative; overflow:hidden;
     }
     #slide7::before { content:''; position:absolute; inset:0; background-image:radial-gradient(circle,rgba(50,120,255,0.03) 1px,transparent 1px); background-size:40px 40px; pointer-events:none; }
 
-    .s7-header { display:flex; flex-direction:column; align-items:center; gap:6px; margin-bottom:20px; }
+    .s7-header { display:flex; flex-direction:column; align-items:center; gap:6px; margin-bottom:18px; }
     .s7-tag    { font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:#3b82f6; border:1px solid rgba(59,130,246,0.3); display:inline-block; padding:4px 12px; border-radius:4px; background:rgba(59,130,246,0.07); width:fit-content; opacity:0; }
     .s7-title  { font-size:2.2rem; font-weight:900; line-height:1.1; text-align:center; opacity:0; }
     .s7-title .s7-accent { color:#3b82f6; }
     .s7-lead   { font-size:0.82rem; color:rgba(200,200,200,0.7); text-align:center; max-width:700px; opacity:0; }
 
-    .s7-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; width:100%; }
+    .s7-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; width:100%; align-items:stretch; }
     .s7-plat-card {
       background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.07);
-      border-radius:4px; padding:16px 12px; display:flex; flex-direction:column; gap:8px;
-      opacity:0; transition:background 0.3s,border-color 0.3s,transform 0.3s,box-shadow 0.3s;
-      aspect-ratio:1/1; overflow:hidden;
+      border-radius:8px; padding:18px 14px 16px; display:flex; flex-direction:column; gap:10px;
+      opacity:0; position:relative; overflow:hidden;
+      transition:background 0.3s,border-color 0.3s,transform 0.35s cubic-bezier(0.22,1,0.36,1),box-shadow 0.35s;
     }
-    .s7-plat-card:nth-child(1):hover { background:rgba(255,0,0,0.05);     border-color:rgba(255,0,0,0.3);     transform:translateY(-6px); box-shadow:0 10px 28px rgba(255,0,0,0.18); }
-    .s7-plat-card:nth-child(2):hover { background:rgba(225,48,108,0.05);  border-color:rgba(225,48,108,0.3);  transform:translateY(-6px); box-shadow:0 10px 28px rgba(225,48,108,0.18); }
-    .s7-plat-card:nth-child(3):hover { background:rgba(0,136,204,0.05);   border-color:rgba(0,136,204,0.3);   transform:translateY(-6px); box-shadow:0 10px 28px rgba(0,136,204,0.18); }
-    .s7-plat-card:nth-child(4):hover { background:rgba(136,136,136,0.05); border-color:rgba(136,136,136,0.3); transform:translateY(-6px); box-shadow:0 10px 28px rgba(136,136,136,0.14); }
-    .s7-plat-card:nth-child(5):hover { background:rgba(59,130,246,0.05);  border-color:rgba(59,130,246,0.3);  transform:translateY(-6px); box-shadow:0 10px 28px rgba(59,130,246,0.18); }
-    .s7-plat-card:nth-child(1) { border-top:2px solid #ff0000; }
-    .s7-plat-card:nth-child(2) { border-top:2px solid #e1306c; }
-    .s7-plat-card:nth-child(3) { border-top:2px solid #0088cc; }
-    .s7-plat-card:nth-child(4) { border-top:2px solid #888; }
-    .s7-plat-card:nth-child(5) { border-top:2px solid #3b82f6; }
+    .s7-plat-card::after {
+      content:''; position:absolute; inset:0; opacity:0; transition:opacity 0.3s;
+      background:linear-gradient(135deg,rgba(255,255,255,0.04) 0%,transparent 60%);
+      pointer-events:none;
+    }
+    .s7-plat-card:hover { transform:translateY(-8px); }
+    .s7-plat-card:hover::after { opacity:1; }
+    .s7-plat-card:nth-child(1) { border-top:3px solid #ff0000; }
+    .s7-plat-card:nth-child(2) { border-top:3px solid #0082fb; }
+    .s7-plat-card:nth-child(3) { border-top:3px solid #0088cc; }
+    .s7-plat-card:nth-child(4) { border-top:3px solid #888; }
+    .s7-plat-card:nth-child(5) { border-top:3px solid #3b82f6; }
+    .s7-plat-card:nth-child(1):hover { background:rgba(255,0,0,0.06);     border-color:rgba(255,0,0,0.35);     box-shadow:0 18px 42px rgba(255,0,0,0.18); }
+    .s7-plat-card:nth-child(2):hover { background:rgba(0,130,251,0.06);   border-color:rgba(0,130,251,0.35);   box-shadow:0 18px 42px rgba(0,130,251,0.18); }
+    .s7-plat-card:nth-child(3):hover { background:rgba(0,136,204,0.06);   border-color:rgba(0,136,204,0.35);   box-shadow:0 18px 42px rgba(0,136,204,0.18); }
+    .s7-plat-card:nth-child(4):hover { background:rgba(136,136,136,0.06); border-color:rgba(136,136,136,0.35); box-shadow:0 18px 42px rgba(136,136,136,0.14); }
+    .s7-plat-card:nth-child(5):hover { background:rgba(59,130,246,0.06);  border-color:rgba(59,130,246,0.35);  box-shadow:0 18px 42px rgba(59,130,246,0.18); }
 
-    .s7-plat-icon  { font-size:1.6rem; }
-    .s7-plat-name  { font-size:0.82rem; font-weight:900; color:#fff; }
+    /* Mobile-only elements — hidden on desktop */
+    .s7-mob-badge { display:none; }
+    .s7-mob-desc  { display:none; }
+
+    /* Card header */
+    .s7-card-head  { display:flex; align-items:center; gap:10px; }
+    .s7-plat-icon  { font-size:1.8rem; line-height:1; flex-shrink:0; width:32px; height:32px; display:flex; align-items:center; justify-content:center; }
+    .s7-yt-icon    { width:32px; height:22px; flex-shrink:0; }
+    .s7-meta-logo  { height:14px; width:auto; display:block; filter:brightness(1.15) saturate(1.1); }
+    .s7-ig-fb-wrap { display:flex; gap:4px; flex-shrink:0; align-items:center; }
+    .s7-ig-icon    { width:24px; height:24px; }
+    .s7-fb-icon    { width:24px; height:24px; }
+    .s7-head-text  { display:flex; flex-direction:column; gap:2px; }
+    .s7-plat-name  { font-size:0.84rem; font-weight:900; color:#fff; line-height:1.2; }
+    .s7-plat-powered { font-size:0.56rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:rgba(255,255,255,0.28); }
+
+    /* Divider */
+    .s7-card-divider { height:1px; background:linear-gradient(90deg,rgba(255,255,255,0.1),transparent); flex-shrink:0; }
+
+    /* Rows */
     .s7-plat-row   { display:flex; flex-direction:column; gap:3px; }
-    .s7-plat-label { font-size:0.6rem; letter-spacing:0.08em; text-transform:uppercase; color:rgba(255,255,255,0.3); }
-    .s7-plat-method { font-size:0.68rem; font-weight:600; color:rgba(200,200,200,0.8); line-height:1.4; }
-    .s7-plat-speed  { font-size:0.72rem; font-weight:800; color:#4ade80; }
-    .s7-plat-reup   { font-size:0.65rem; color:rgba(180,180,180,0.65); line-height:1.4; }
+    .s7-plat-label { font-size:0.57rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.28); }
+    .s7-plat-method { font-size:0.7rem; font-weight:600; color:rgba(210,210,210,0.9); line-height:1.4; }
+    .s7-plat-detail { font-size:0.63rem; color:rgba(140,180,255,0.6); line-height:1.35; margin-top:1px; font-style:italic; }
+    .s7-plat-reup   { font-size:0.65rem; color:rgba(180,180,180,0.58); line-height:1.35; }
 
+    /* Speed badge */
+    .s7-speed-badge {
+      display:flex; align-items:center; gap:8px;
+      background:rgba(74,222,128,0.07); border:1px solid rgba(74,222,128,0.18);
+      border-radius:6px; padding:7px 10px;
+    }
+    .s7-speed-bolt  { font-size:1rem; flex-shrink:0; }
+    .s7-speed-inner { display:flex; flex-direction:column; gap:1px; }
+    .s7-plat-speed  { font-size:0.88rem; font-weight:900; color:#4ade80; line-height:1; }
+    .s7-speed-label { font-size:0.5rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(74,222,128,0.45); }
+
+    @keyframes s7CardSlide {
+      0%   { opacity:0; transform:translateY(40px) scale(0.9); filter:blur(4px); }
+      60%  { filter:blur(0); }
+      80%  { transform:translateY(-5px) scale(1.015); }
+      100% { opacity:1; transform:translateY(0) scale(1); filter:blur(0); }
+    }
+    @keyframes s7SpeedPulse {
+      0%,100% { border-color:rgba(74,222,128,0.18); box-shadow:0 0 0 rgba(74,222,128,0); }
+      50%     { border-color:rgba(74,222,128,0.5);  box-shadow:0 0 12px rgba(74,222,128,0.2); }
+    }
     #slide7.active .s7-tag   { animation:fadeUp 0.8s 0.3s cubic-bezier(0.22,1,0.36,1) both; }
     #slide7.active .s7-title { animation:fadeUp 0.8s 0.7s cubic-bezier(0.22,1,0.36,1) both; }
     #slide7.active .s7-lead  { animation:fadeUp 0.8s 1.1s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide7.active .s7-plat-card:nth-child(1) { animation:s7CardIn 0.7s 1.4s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide7.active .s7-plat-card:nth-child(2) { animation:s7CardIn 0.7s 2.0s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide7.active .s7-plat-card:nth-child(3) { animation:s7CardIn 0.7s 2.6s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide7.active .s7-plat-card:nth-child(4) { animation:s7CardIn 0.7s 3.2s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide7.active .s7-plat-card:nth-child(5) { animation:s7CardIn 0.7s 3.8s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide7.active .s7-plat-card:nth-child(1) { animation:s7CardSlide 0.75s 1.4s  cubic-bezier(0.22,1,0.36,1) both; }
+    #slide7.active .s7-plat-card:nth-child(2) { animation:s7CardSlide 0.75s 1.85s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide7.active .s7-plat-card:nth-child(3) { animation:s7CardSlide 0.75s 2.3s  cubic-bezier(0.22,1,0.36,1) both; }
+    #slide7.active .s7-plat-card:nth-child(4) { animation:s7CardSlide 0.75s 2.75s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide7.active .s7-plat-card:nth-child(5) { animation:s7CardSlide 0.75s 3.2s  cubic-bezier(0.22,1,0.36,1) both; }
+    #slide7.active .s7-speed-badge { animation:s7SpeedPulse 2.5s 5s ease-in-out infinite; }
 
-    /* ════ SLIDE 9 — Takedown Requirements ════ */
+    /* ════ SLIDE 8 — Takedown Requirements ════ */
     #slide8 {
       background:radial-gradient(ellipse at 40% 50%,#0a0d1a 0%,#000 75%);
       align-items:stretch; justify-content:center; position:relative; overflow:hidden;
@@ -848,34 +896,87 @@
         align-self:start !important;
       }
 
-      /* ────── SLIDE 7 — Platform Coverage ────── */
+      /* ────── SLIDE 7 — Platform Coverage (mobile single-column) ────── */
       #slide7 {
         flex-direction:column !important;
         align-items:center !important;
         justify-content:flex-start !important;
         overflow-y:auto !important;
-        padding:44px 14px 20px !important;
+        padding:44px 14px 24px !important;
       }
       #slide7 .s7-header { margin-bottom:14px !important; }
       #slide7 .s7-title  { font-size:1.5rem !important; }
       #slide7 .s7-lead   { font-size:0.75rem !important; }
       #slide7 .s7-grid {
-        grid-template-columns:1fr 1fr !important;
+        grid-template-columns:1fr !important;
         gap:10px !important;
         width:100% !important;
       }
       #slide7 .s7-plat-card {
-        aspect-ratio:auto !important;
-        overflow:visible !important;
-        padding:12px 10px !important;
-        gap:6px !important;
+        padding:14px 14px !important;
+        gap:0 !important;
+        border-radius:10px !important;
+        border-top:none !important;
+        border-left:3px solid !important;
       }
-      #slide7 .s7-plat-icon  { font-size:1.3rem !important; }
-      #slide7 .s7-plat-name  { font-size:0.75rem !important; }
-      #slide7 .s7-plat-label { font-size:0.55rem !important; }
-      #slide7 .s7-plat-method{ font-size:0.6rem !important; }
-      #slide7 .s7-plat-speed { font-size:0.65rem !important; }
-      #slide7 .s7-plat-reup  { font-size:0.58rem !important; }
+      /* Left accent border per platform on mobile */
+      #slide7 .s7-plat-card:nth-child(1) { border-left-color:#ff0000 !important; }
+      #slide7 .s7-plat-card:nth-child(2) { border-left-color:#0082fb !important; }
+      #slide7 .s7-plat-card:nth-child(3) { border-left-color:#2CA5E0 !important; }
+      #slide7 .s7-plat-card:nth-child(4) { border-left-color:#888 !important; }
+      #slide7 .s7-plat-card:nth-child(5) { border-left-color:#3b82f6 !important; }
+
+      /* Show mobile-only elements */
+      #slide7 .s7-mob-badge { display:flex !important; align-items:center !important; }
+      #slide7 .s7-mob-desc  { display:block !important; }
+
+      /* Hide desktop-only elements */
+      #slide7 .s7-card-divider,
+      #slide7 .s7-plat-row,
+      #slide7 .s7-speed-badge,
+      #slide7 .s7-plat-powered { display:none !important; }
+
+      /* Mobile card header row */
+      #slide7 .s7-card-head {
+        flex-direction:row !important;
+        align-items:center !important;
+        gap:12px !important;
+        margin-bottom:10px !important;
+        width:100% !important;
+      }
+      #slide7 .s7-head-text { flex:1 !important; min-width:0 !important; }
+      #slide7 .s7-plat-name { font-size:0.92rem !important; font-weight:900 !important; white-space:nowrap !important; }
+      #slide7 .s7-plat-icon { font-size:1.6rem !important; width:40px !important; height:40px !important; flex-shrink:0 !important; }
+      #slide7 .s7-yt-icon    { width:44px !important; height:30px !important; flex-shrink:0 !important; }
+      #slide7 .s7-meta-logo  { height:20px !important; flex-shrink:0 !important; }
+      #slide7 .s7-ig-fb-wrap { gap:5px !important; flex-shrink:0 !important; }
+      #slide7 .s7-ig-icon,
+      #slide7 .s7-fb-icon    { width:30px !important; height:30px !important; }
+
+      /* Mobile badge (top-right pill) */
+      #slide7 .s7-mob-badge {
+        margin-left:auto !important;
+        flex-shrink:0 !important;
+        border-radius:20px !important;
+        padding:4px 10px !important;
+        font-size:0.7rem !important;
+        font-weight:700 !important;
+        border:1px solid !important;
+        white-space:nowrap !important;
+      }
+      #slide7 .s7-plat-card:nth-child(1) .s7-mob-badge { color:#4ade80; background:rgba(74,222,128,0.1);   border-color:rgba(74,222,128,0.4)   !important; }
+      #slide7 .s7-plat-card:nth-child(2) .s7-mob-badge { color:#fbbf24; background:rgba(251,191,36,0.1);   border-color:rgba(251,191,36,0.4)   !important; }
+      #slide7 .s7-plat-card:nth-child(3) .s7-mob-badge { color:#fb923c; background:rgba(251,146,60,0.1);   border-color:rgba(251,146,60,0.4)   !important; }
+      #slide7 .s7-plat-card:nth-child(4) .s7-mob-badge { color:#f97316; background:rgba(249,115,22,0.1);   border-color:rgba(249,115,22,0.4)   !important; }
+      #slide7 .s7-plat-card:nth-child(5) .s7-mob-badge { color:#ef4444; background:rgba(239,68,68,0.1);    border-color:rgba(239,68,68,0.4)    !important; }
+
+      /* Mobile description text */
+      #slide7 .s7-mob-desc {
+        font-size:0.8rem !important;
+        color:rgba(200,200,200,0.82) !important;
+        line-height:1.55 !important;
+        margin:0 !important;
+      }
 
       /* ────── SLIDE 5 (mobile single-column) ────── */
       #slide5 {
@@ -1222,87 +1323,182 @@
   </div>
   <div class="s7-grid">
 
+    <!-- YouTube -->
     <div class="s7-plat-card">
-      <div class="s7-plat-icon">▶️</div>
-      <div class="s7-plat-name">YouTube</div>
+      <div class="s7-card-head">
+        <svg class="s7-yt-icon" viewBox="0 0 90 64" xmlns="http://www.w3.org/2000/svg">
+          <path d="M88.1 10a11.3 11.3 0 0 0-8-8C73.5 0 45 0 45 0S16.5 0 9.9 2C6.2 3 3 6.2 1.9 10 0 16.6 0 32 0 32s0 15.4 1.9 22c1.1 3.8 4.3 7 8 8C16.5 64 45 64 45 64s28.5 0 35.1-2c3.7-1 6.9-4.2 8-8C90 47.4 90 32 90 32s0-15.4-1.9-22z" fill="#FF0000"/>
+          <path d="M36 45.6L59.4 32 36 18.4v27.2z" fill="#fff"/>
+        </svg>
+        <div class="s7-head-text">
+          <div class="s7-plat-name">YouTube</div>
+          <div class="s7-plat-powered">Content ID System</div>
+        </div>
+        <div class="s7-mob-badge">⚡ 10 minutes</div>
+      </div>
+      <p class="s7-mob-desc">Your film's fingerprint is registered with YouTube Content ID. Any upload — even 10 seconds — is auto-detected and removed within 10 minutes.</p>
+      <div class="s7-card-divider"></div>
       <div class="s7-plat-row">
-        <div class="s7-plat-label">Method</div>
+        <div class="s7-plat-label">⚙ How We Detect</div>
         <div class="s7-plat-method">Content ID Fingerprint — matches any copy, any length</div>
+        <div class="s7-plat-detail">Scans 800 hrs of content uploaded every minute</div>
+      </div>
+      <div class="s7-speed-badge">
+        <span class="s7-speed-bolt">⚡</span>
+        <div class="s7-speed-inner">
+          <div class="s7-plat-speed">&lt; 10 min</div>
+          <div class="s7-speed-label">Removal Time</div>
+        </div>
       </div>
       <div class="s7-plat-row">
-        <div class="s7-plat-label">Removal Speed</div>
-        <div class="s7-plat-speed">&lt; 10 minutes</div>
-      </div>
-      <div class="s7-plat-row">
-        <div class="s7-plat-label">Re-Upload</div>
+        <div class="s7-plat-label">🔒 Re-Upload Blocked</div>
         <div class="s7-plat-reup">Auto-blocked permanently by Content ID</div>
       </div>
     </div>
 
+    <!-- Instagram & Facebook -->
     <div class="s7-plat-card">
-      <div class="s7-plat-icon">📸</div>
-      <div class="s7-plat-name">Instagram &amp; Facebook</div>
+      <div class="s7-card-head">
+        <div class="s7-ig-fb-wrap">
+          <!-- Instagram -->
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="s7-ig-icon">
+            <defs>
+              <linearGradient id="igGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#f09433"/>
+                <stop offset="25%" stop-color="#e6683c"/>
+                <stop offset="50%" stop-color="#dc2743"/>
+                <stop offset="75%" stop-color="#cc2366"/>
+                <stop offset="100%" stop-color="#bc1888"/>
+              </linearGradient>
+            </defs>
+            <rect width="32" height="32" rx="8" fill="url(#igGrad)"/>
+            <circle cx="16" cy="16" r="6" fill="none" stroke="#fff" stroke-width="2.2"/>
+            <circle cx="22.5" cy="9.5" r="1.8" fill="#fff"/>
+            <rect x="5" y="5" width="22" height="22" rx="6" fill="none" stroke="#fff" stroke-width="2"/>
+          </svg>
+          <!-- Facebook -->
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="s7-fb-icon">
+            <rect width="32" height="32" rx="6" fill="#1877F2"/>
+            <path d="M21 16h-3v-2c0-1 .4-1.5 1.5-1.5H21V9.2C20.3 9.1 19.3 9 18.2 9 15.1 9 13 10.9 13 14.4V16h-3v4h3v9h4v-9h3l.5-4z" fill="#fff"/>
+          </svg>
+        </div>
+        <div class="s7-head-text">
+          <div class="s7-plat-name">Instagram &amp; Facebook</div>
+          <div class="s7-plat-powered">Meta Rights Manager</div>
+        </div>
+        <div class="s7-mob-badge">⚡ 1 hour</div>
+      </div>
+      <p class="s7-mob-desc">Meta Rights Manager blocks pirated uploads before they go live. Anything that slips through is removed within 1 hour.</p>
+      <div class="s7-card-divider"></div>
       <div class="s7-plat-row">
-        <div class="s7-plat-label">Method</div>
+        <div class="s7-plat-label">⚙ How We Detect</div>
         <div class="s7-plat-method">Meta Rights Manager — blocks before going live</div>
+        <div class="s7-plat-detail">Fingerprint checked before content is published</div>
+      </div>
+      <div class="s7-speed-badge">
+        <span class="s7-speed-bolt">⚡</span>
+        <div class="s7-speed-inner">
+          <div class="s7-plat-speed">&lt; 1 hr</div>
+          <div class="s7-speed-label">Removal Time</div>
+        </div>
       </div>
       <div class="s7-plat-row">
-        <div class="s7-plat-label">Removal Speed</div>
-        <div class="s7-plat-speed">Removed in 1 hr</div>
-      </div>
-      <div class="s7-plat-row">
-        <div class="s7-plat-label">Re-Upload</div>
+        <div class="s7-plat-label">🔒 Re-Upload Blocked</div>
         <div class="s7-plat-reup">Auto-blocked by Rights Manager across both platforms</div>
       </div>
     </div>
 
+    <!-- Telegram -->
     <div class="s7-plat-card">
-      <div class="s7-plat-icon">✈️</div>
-      <div class="s7-plat-name">Telegram</div>
+      <div class="s7-card-head">
+        <svg class="s7-plat-icon" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+          <circle cx="120" cy="120" r="120" fill="#2CA5E0"/>
+          <path d="M81.2 166.3c-3 0-2.5-1.1-3.5-4l-8.8-29 67.6-40" fill="#C8DAEA"/>
+          <path d="M81.2 166.3c2.3 0 3.3-1 4.6-2.3l12.3-12-15.3-9.2" fill="#A9C9DD"/>
+          <path d="M82.8 142.8l37 28.1c4.2 2.3 7.3 1.1 8.4-3.9l15.2-71.6c1.5-6-2.3-8.7-6.2-6.9l-86 33.2c-5.8 2.3-5.8 5.6-.9 7l22.1 6.9 51.1-32.2c2.4-1.5 4.6-.7 2.8 1" fill="#F6FBFE"/>
+        </svg>
+        <div class="s7-head-text">
+          <div class="s7-plat-name">Telegram</div>
+          <div class="s7-plat-powered">Bot Network Scanner</div>
+        </div>
+        <div class="s7-mob-badge">⏰ 24–48 hours</div>
+      </div>
+      <p class="s7-mob-desc">Bots scan thousands of Telegram channels around the clock. The moment a pirated link is found, a DMCA notice is auto-filed and removed within 24–48 hours.</p>
+      <div class="s7-card-divider"></div>
       <div class="s7-plat-row">
-        <div class="s7-plat-label">Method</div>
+        <div class="s7-plat-label">⚙ How We Detect</div>
         <div class="s7-plat-method">Dedicated bot network scans thousands of channels 24/7</div>
+        <div class="s7-plat-detail">Every group &amp; channel checked every minute</div>
+      </div>
+      <div class="s7-speed-badge">
+        <span class="s7-speed-bolt">⚡</span>
+        <div class="s7-speed-inner">
+          <div class="s7-plat-speed">24–48 hrs</div>
+          <div class="s7-speed-label">Removal Time</div>
+        </div>
       </div>
       <div class="s7-plat-row">
-        <div class="s7-plat-label">Removal Speed</div>
-        <div class="s7-plat-speed">24–48 hours</div>
-      </div>
-      <div class="s7-plat-row">
-        <div class="s7-plat-label">Re-Upload</div>
+        <div class="s7-plat-label">🔒 Re-Upload Blocked</div>
         <div class="s7-plat-reup">Each re-share detected and re-filed automatically</div>
       </div>
     </div>
 
+    <!-- Torrent Sites -->
     <div class="s7-plat-card">
-      <div class="s7-plat-icon">🏴‍☠️</div>
-      <div class="s7-plat-name">Torrent Sites</div>
+      <div class="s7-card-head">
+        <span class="s7-plat-icon">🏴‍☠️</span>
+        <div class="s7-head-text">
+          <div class="s7-plat-name">Torrent Sites</div>
+          <div class="s7-plat-powered">DMCA Enforcement</div>
+        </div>
+        <div class="s7-mob-badge">⏰ 48–72 hours</div>
+      </div>
+      <p class="s7-mob-desc">DMCA notices are filed automatically to hosting providers and indexing sites. Links removed within 48–72 hours.</p>
+      <div class="s7-card-divider"></div>
       <div class="s7-plat-row">
-        <div class="s7-plat-label">Method</div>
+        <div class="s7-plat-label">⚙ How We Detect</div>
         <div class="s7-plat-method">DMCA to hosting providers and indexing sites</div>
+        <div class="s7-plat-detail">Crawls 500+ torrent indexes continuously</div>
+      </div>
+      <div class="s7-speed-badge">
+        <span class="s7-speed-bolt">⚡</span>
+        <div class="s7-speed-inner">
+          <div class="s7-plat-speed">48–72 hrs</div>
+          <div class="s7-speed-label">Removal Time</div>
+        </div>
       </div>
       <div class="s7-plat-row">
-        <div class="s7-plat-label">Removal Speed</div>
-        <div class="s7-plat-speed">48–72 hours</div>
-      </div>
-      <div class="s7-plat-row">
-        <div class="s7-plat-label">Re-Upload</div>
+        <div class="s7-plat-label">🔒 Re-Upload Blocked</div>
         <div class="s7-plat-reup">Re-indexed links continuously re-targeted with DMCA</div>
       </div>
     </div>
 
+    <!-- Direct Websites -->
     <div class="s7-plat-card">
-      <div class="s7-plat-icon">🌐</div>
-      <div class="s7-plat-name">Direct Websites</div>
+      <div class="s7-card-head">
+        <span class="s7-plat-icon">🌐</span>
+        <div class="s7-head-text">
+          <div class="s7-plat-name">Direct Websites</div>
+          <div class="s7-plat-powered">Hosting Provider DMCA</div>
+        </div>
+        <div class="s7-mob-badge">⏰ 72 hours</div>
+      </div>
+      <p class="s7-mob-desc">DMCA filed directly to hosting providers and domain registrars. Pirated sites are fully taken down within 72 hours.</p>
+      <div class="s7-card-divider"></div>
       <div class="s7-plat-row">
-        <div class="s7-plat-label">Method</div>
+        <div class="s7-plat-label">⚙ How We Detect</div>
         <div class="s7-plat-method">Direct DMCA to hosting provider and domain registrar</div>
+        <div class="s7-plat-detail">AI crawlers scan piracy sites around the clock</div>
+      </div>
+      <div class="s7-speed-badge">
+        <span class="s7-speed-bolt">⚡</span>
+        <div class="s7-speed-inner">
+          <div class="s7-plat-speed">72 hrs</div>
+          <div class="s7-speed-label">Removal Time</div>
+        </div>
       </div>
       <div class="s7-plat-row">
-        <div class="s7-plat-label">Removal Speed</div>
-        <div class="s7-plat-speed">72 hours</div>
-      </div>
-      <div class="s7-plat-row">
-        <div class="s7-plat-label">Re-Upload</div>
+        <div class="s7-plat-label">🔒 Re-Upload Blocked</div>
         <div class="s7-plat-reup">New hosting provider targeted instantly on detection</div>
       </div>
     </div>
@@ -1329,7 +1525,7 @@
         <div class="s9-card-top">
           <div class="s9-card-icon gold">📜</div>
           <div>
-            <div class="s9-card-title">Digital Rights for YouTube &amp; Meta</div>
+            <div class="s9-card-title">Digital Right for YouTube and Meta</div>
             <div class="s9-card-sub">YouTube &amp; Meta API credential</div>
           </div>
         </div>
@@ -1670,9 +1866,18 @@
         title: 'Where We<br><span class="s7-accent">Watch</span>',
         lead: 'Every major platform where piracy happens is monitored — in real time, around the clock. Here is exactly how we handle each one.',
         platNames: ['YouTube','Instagram &amp; Facebook','Telegram','Torrent Sites','Direct Websites'],
-        platMethods: ['Content ID Fingerprint','Meta Rights Manager','Dedicated Bot Network','DMCA to Hosters &amp; Indexers','Direct Hosting Provider DMCA'],
-        platSpeeds: ['Removed in &lt; 10 min','Removed in 1 hr','Removed in 24–48 hrs','Links removed in 48–72 hrs','Taken down in 72 hrs'],
-        platReups: ['Auto-blocked permanently','Auto-blocked by Rights Manager','Each re-share re-filed automatically','Re-indexed links re-DMCA\'d continuously','New hosting re-targeted instantly']
+        platMethods: ['Content ID Fingerprint — matches any copy, any length','Meta Rights Manager — blocks before going live','Dedicated bot network scans thousands of channels 24/7','DMCA to hosting providers and indexing sites','Direct DMCA to hosting provider and domain registrar'],
+        platDetails: ['Scans 800 hrs of content uploaded every minute','Fingerprint checked before content is published','Every group &amp; channel checked every minute','Crawls 500+ torrent indexes continuously','AI crawlers scan piracy sites around the clock'],
+        platSpeeds: ['&lt; 10 min','&lt; 1 hr','24–48 hrs','48–72 hrs','72 hrs'],
+        platReups: ['Auto-blocked permanently by Content ID','Auto-blocked by Rights Manager across both platforms','Each re-share detected and re-filed automatically','Re-indexed links continuously re-targeted with DMCA','New hosting provider targeted instantly on detection'],
+        platMobBadges: ['⚡ 10 minutes','⚡ 1 hour','⏰ 24–48 hours','⏰ 48–72 hours','⏰ 72 hours'],
+        platMobDescs: [
+          "Your film's fingerprint is registered with YouTube Content ID. Any upload — even 10 seconds — is auto-detected and removed within 10 minutes.",
+          "Meta Rights Manager blocks pirated uploads before they go live. Anything that slips through is removed within 1 hour.",
+          "Bots scan thousands of Telegram channels around the clock. The moment a pirated link is found, a DMCA notice is auto-filed and removed within 24–48 hours.",
+          "DMCA notices are filed automatically to hosting providers and indexing sites. Links removed within 48–72 hours.",
+          "DMCA filed directly to hosting providers and domain registrars. Pirated sites are fully taken down within 72 hours."
+        ]
       },
       slide8: {
         tag: 'Takedown System — Platform Authorization',
@@ -1680,7 +1885,7 @@
         lead: 'Platforms like YouTube, Telegram, and torrent networks will not accept automated removal requests from anyone without authorization. API access is not optional — it is the only legal pathway for removing pirated copies at scale. One-time approval. Permanent enforcement power.',
         note: 'Without API access, one DMCA filing covers one link, takes 2–5 days, and requires a lawyer every time. With API access, the system removes thousands of pirated links per hour — automatically, legally, across every platform. Once granted, it never expires.',
         gridLabel: 'Submit these to get API access →',
-        cardTitles: ['Digital Rights for YouTube &amp; Meta','Content ID','Metadata','Documentation'],
+        cardTitles: ['Digital Right for YouTube and Meta','Content ID','Metadata','Documentation'],
         cardSubs: ['YouTube &amp; Meta API credential','Digital fingerprint system','Film identification data','Chain of title &amp; agreements'],
         points: [
           ['Registered certificate from Copyright Office confirming ownership of the film','Mandatory for filing DMCA claims on all major platforms','Without this certificate, no platform will legally process a single removal request — it is the foundation of every takedown'],
@@ -1773,9 +1978,18 @@
         title: 'మేము ఎక్కడ<br><span class="s7-accent">నిఘా పెడతాం</span>',
         lead: 'పైరసీ జరిగే ప్రతి ప్రధాన ప్లాట్‌ఫారమ్‌ని పర్యవేక్షిస్తాం — రియల్ టైమ్‌లో, 24/7. ప్రతి ప్లాట్‌ఫారమ్‌ను మేము ఎలా హ్యాండిల్ చేస్తామో ఇక్కడ ఉంది.',
         platNames: ['YouTube','Instagram &amp; Facebook','Telegram','టోరెంట్ సైట్లు','నేరుగా వెబ్‌సైట్లు'],
-        platMethods: ['Content ID ఫింగర్‌ప్రింట్','Meta Rights Manager','డెడికేటెడ్ బాట్ నెట్‌వర్క్','హోస్టర్లు &amp; ఇండెక్సర్లకు DMCA','నేరుగా హోస్టింగ్ DMCA'],
-        platSpeeds: ['&lt; 10 నిమి లో తొలగింపు','1 గంటలో తొలగింపు','24–48 గంటల్లో తొలగింపు','48–72 గంటల్లో లింక్‌లు తొలగింపు','72 గంటల్లో తొలగించబడుతుంది'],
-        platReups: ['ఆటోమేటిగ్గా శాశ్వతంగా బ్లాక్','Rights Manager ద్వారా ఆటో-బ్లాక్','ప్రతి రీ-షేర్ తిరిగి DMCA','రీ-ఇండెక్స్ లింక్‌లు నిరంతరం DMCA','కొత్త హోస్టింగ్ తక్షణం టార్గెట్']
+        platMethods: ['Content ID ఫింగర్‌ప్రింట్ — ఏ కాపీ అయినా, ఏ పొడవు అయినా','Meta Rights Manager — లైవ్‌కు ముందే బ్లాక్ చేస్తుంది','డెడికేటెడ్ బాట్ నెట్‌వర్క్ వేల ఛానెళ్లను 24/7 స్కాన్ చేస్తుంది','హోస్టింగ్ ప్రొవైడర్లు &amp; ఇండెక్సింగ్ సైట్లకు DMCA','హోస్టింగ్ ప్రొవైడర్ &amp; డొమైన్ రిజిస్ట్రార్‌కు నేరుగా DMCA'],
+        platDetails: ['ప్రతి నిమిషం అప్‌లోడ్ అయ్యే 800 గంటల కంటెంట్‌ను స్కాన్ చేస్తుంది','కంటెంట్ పబ్లిష్ అవ్వడానికి ముందే ఫింగర్‌ప్రింట్ చెక్ అవుతుంది','ప్రతి గ్రూప్ &amp; ఛానెల్ ప్రతి నిమిషం చెక్ చేయబడుతుంది','500+ టోరెంట్ ఇండెక్స్‌లను నిరంతరం క్రాల్ చేస్తుంది','AI క్రాలర్లు పైరసీ సైట్లను 24/7 స్కాన్ చేస్తాయి'],
+        platSpeeds: ['&lt; 10 నిమి','&lt; 1 గంట','24–48 గంటలు','48–72 గంటలు','72 గంటలు'],
+        platReups: ['Content ID ద్వారా ఆటోమేటిగ్గా శాశ్వతంగా బ్లాక్','రెండు ప్లాట్‌ఫారమ్‌లలో Rights Manager ద్వారా ఆటో-బ్లాక్','ప్రతి రీ-షేర్ గుర్తించబడి ఆటోమేటిగ్గా తిరిగి DMCA దాఖలు','రీ-ఇండెక్స్ లింక్‌లు నిరంతరం తిరిగి DMCA చేయబడతాయి','కొత్త హోస్టింగ్ ప్రొవైడర్ గుర్తించిన వెంటనే టార్గెట్ అవుతుంది'],
+        platMobBadges: ['⚡ 10 నిమిషాలు','⚡ 1 గంట','⏰ 24–48 గంటలు','⏰ 48–72 గంటలు','⏰ 72 గంటలు'],
+        platMobDescs: [
+          "మీ చిత్రం ఫింగర్‌ప్రింట్ YouTube Content IDలో రిజిస్టర్ అవుతుంది. ఏ అప్‌లోడ్ అయినా — 10 సెకన్లు కూడా — 10 నిమిషాల్లో ఆటో-డిటెక్ట్ అయి తొలగించబడుతుంది.",
+          "Meta Rights Manager పైరేటెడ్ అప్‌లోడ్‌లను లైవ్‌కు ముందే బ్లాక్ చేస్తుంది. తప్పించుకున్నదేదైనా 1 గంటలో తొలగించబడుతుంది.",
+          "బాట్లు వేలాది Telegram ఛానెళ్లను 24/7 స్కాన్ చేస్తాయి. పైరేటెడ్ లింక్ కనుగొనిన క్షణమే DMCA నోటీసు ఆటో-ఫైల్ అయి 24–48 గంటల్లో తొలగించబడుతుంది.",
+          "హోస్టింగ్ ప్రొవైడర్లు మరియు ఇండెక్సింగ్ సైట్లకు DMCA నోటీసులు ఆటోమేటిగ్గా దాఖలవుతాయి. లింక్‌లు 48–72 గంటల్లో తొలగించబడతాయి.",
+          "హోస్టింగ్ ప్రొవైడర్లు మరియు డొమైన్ రిజిస్ట్రార్లకు నేరుగా DMCA దాఖలు చేయబడుతుంది. పైరేటెడ్ సైట్లు 72 గంటల్లో తొలగించబడతాయి."
+        ]
       },
       slide8: {
         tag: 'తొలగింపు వ్యవస్థ — ప్లాట్‌ఫారం అనుమతి',
@@ -1783,7 +1997,7 @@
         lead: 'YouTube, Telegram మరియు టోరెంట్ నెట్‌వర్క్‌లు అనుమతి లేకుండా ఎవరి నుండి అయినా ఆటోమేటెడ్ తొలగింపు అభ్యర్థనలను అంగీకరించవు. API యాక్సెస్ ఐచ్ఛికం కాదు — పెద్ద ఎత్తున పైరేటెడ్ కాపీలను తొలగించడానికి ఇది ఏకైక చట్టపరమైన మార్గం. ఒకసారి ఆమోదించబడింది. శాశ్వత అమలు శక్తి.',
         note: 'API యాక్సెస్ లేకుండా, ఒక DMCA ఫైలింగ్ ఒక లింక్‌ను మాత్రమే కవర్ చేస్తుంది, 2–5 రోజులు పడుతుంది మరియు ప్రతిసారీ లాయర్ అవసరం. API యాక్సెస్‌తో, సిస్టమ్ గంటకు వేల పైరేటెడ్ లింక్‌లను తొలగిస్తుంది — ఆటోమేటిగ్గా, చట్టబద్ధంగా, ప్రతి ప్లాట్‌ఫారమ్‌లో. ఒకసారి మంజూరు అయిన తర్వాత, ఇది ఎన్నటికీ expire కాదు.',
         gridLabel: 'API యాక్సెస్ కోసం ఇవి సమర్పించండి →',
-        cardTitles: ['YouTube &amp; Meta డిజిటల్ రైట్స్','కంటెంట్ ID','మెటాడేటా','డాక్యుమెంటేషన్'],
+        cardTitles: ['YouTube మరియు Meta డిజిటల్ రైట్','కంటెంట్ ID','మెటాడేటా','డాక్యుమెంటేషన్'],
         cardSubs: ['YouTube &amp; Meta API క్రెడెన్షియల్','డిజిటల్ ఫింగర్‌ప్రింట్ సిస్టమ్','చలన చిత్ర గుర్తింపు డేటా','చైన్ ఆఫ్ టైటిల్ &amp; అగ్రిమెంట్లు'],
         points: [
           ['చలన చిత్రం యాజమాన్యాన్ని నిర్ధారించే కాపీరైట్ కార్యాలయం నుండి నమోదిత సర్టిఫికేట్','అన్ని ప్రధాన ప్లాట్‌ఫారమ్‌లపై DMCA క్లెయిమ్‌లు దాఖలు చేయడానికి తప్పనిసరి','ఈ సర్టిఫికేట్ లేకుండా, ఏ ప్లాట్‌ఫారమ్ అయినా ఒక్క తొలగింపు అభ్యర్థనను కూడా చట్టపరంగా ప్రాసెస్ చేయదు — ఇది ప్రతి తొలగింపుకు పునాది'],
@@ -1864,8 +2078,11 @@
     q('#slide7 .s7-lead').innerHTML = t.slide7.lead;
     qa('#slide7 .s7-plat-name').forEach((el,i)   => el.innerHTML = t.slide7.platNames[i]);
     qa('#slide7 .s7-plat-method').forEach((el,i) => el.innerHTML = t.slide7.platMethods[i]);
-    qa('#slide7 .s7-plat-speed').forEach((el,i)  => el.innerHTML = t.slide7.platSpeeds[i]);
-    qa('#slide7 .s7-plat-reup').forEach((el,i)   => el.innerHTML = t.slide7.platReups[i]);
+    qa('#slide7 .s7-plat-detail').forEach((el,i)   => el.innerHTML = t.slide7.platDetails[i]);
+    qa('#slide7 .s7-plat-speed').forEach((el,i)    => el.innerHTML = t.slide7.platSpeeds[i]);
+    qa('#slide7 .s7-plat-reup').forEach((el,i)     => el.innerHTML = t.slide7.platReups[i]);
+    qa('#slide7 .s7-mob-badge').forEach((el,i)     => el.innerHTML = t.slide7.platMobBadges[i]);
+    qa('#slide7 .s7-mob-desc').forEach((el,i)      => el.innerHTML = t.slide7.platMobDescs[i]);
 
     // Slide 8 (API Access)
     q('#slide8 .s9-tag').innerHTML       = t.slide8.tag;
