@@ -304,7 +304,7 @@
       flex:1; display:flex; flex-direction:column; align-items:center; gap:8px;
       padding:14px 8px 12px; position:relative; opacity:0;
       background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07);
-      border-radius:12px; transition:border-color 0.3s;
+      border-radius:4px; transition:border-color 0.3s; aspect-ratio:1/1; overflow:hidden;
     }
     .s6-step-num {
       width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center;
@@ -356,8 +356,9 @@
     .s7-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; width:100%; }
     .s7-plat-card {
       background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.07);
-      border-radius:12px; padding:16px 12px; display:flex; flex-direction:column; gap:10px;
+      border-radius:4px; padding:16px 12px; display:flex; flex-direction:column; gap:8px;
       opacity:0; transition:background 0.3s,border-color 0.3s,transform 0.3s,box-shadow 0.3s;
+      aspect-ratio:1/1; overflow:hidden;
     }
     .s7-plat-card:nth-child(1):hover { background:rgba(255,0,0,0.05);     border-color:rgba(255,0,0,0.3);     transform:translateY(-6px); box-shadow:0 10px 28px rgba(255,0,0,0.18); }
     .s7-plat-card:nth-child(2):hover { background:rgba(225,48,108,0.05);  border-color:rgba(225,48,108,0.3);  transform:translateY(-6px); box-shadow:0 10px 28px rgba(225,48,108,0.18); }
@@ -409,11 +410,11 @@
       background:rgba(212,160,23,0.05); border-radius:0 6px 6px 0; opacity:0;
     }
 
-    .s9-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .s9-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
     .s9-card {
       background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.07);
-      border-radius:12px; padding:18px 16px; display:flex; flex-direction:column; gap:10px;
-      opacity:0; transition:background 0.3s,border-color 0.3s;
+      border-radius:4px; padding:14px 12px; display:flex; flex-direction:column; gap:8px;
+      opacity:0; transition:background 0.3s,border-color 0.3s; aspect-ratio:1/1; overflow:hidden;
     }
     .s9-card:hover { background:rgba(200,150,0,0.06); border-color:rgba(212,160,23,0.25); }
     .s9-card-top  { display:flex; align-items:center; gap:10px; }
@@ -438,10 +439,10 @@
     #slide8.active .s9-title { animation:fadeUp 1.0s 1.6s cubic-bezier(0.22,1,0.36,1) both; }
     #slide8.active .s9-lead { animation:fadeUp 1.0s 2.9s cubic-bezier(0.22,1,0.36,1) both; }
     #slide8.active .s9-note { animation:fadeUp 1.0s 4.2s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide8.active .s9-card:nth-child(1) { animation:s2NumIn 1.0s 1.4s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide8.active .s9-card:nth-child(2) { animation:s2NumIn 1.0s 2.6s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide8.active .s9-card:nth-child(3) { animation:s2NumIn 1.0s 3.8s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide8.active .s9-card:nth-child(4) { animation:s2NumIn 1.0s 5.0s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide8.active .s9-card:nth-child(1) { animation:s7CardIn 0.7s 1.4s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide8.active .s9-card:nth-child(2) { animation:s7CardIn 0.7s 2.0s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide8.active .s9-card:nth-child(3) { animation:s7CardIn 0.7s 2.6s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide8.active .s9-card:nth-child(4) { animation:s7CardIn 0.7s 3.2s cubic-bezier(0.22,1,0.36,1) both; }
 
     /* s9 extras for API result row */
     .s9-result {
@@ -454,7 +455,7 @@
     .s9-result-sub   { font-size:0.68rem; color:rgba(150,220,170,0.65); margin-top:2px; }
     .s9-grid-label   { font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.25); opacity:0; }
     #slide8.active .s9-grid-label { animation:fadeIn 0.9s 0.4s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide8.active .s9-result { animation:fadeUp 1.0s 6.8s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide8.active .s9-result { animation:fadeUp 1.0s 4.4s cubic-bezier(0.22,1,0.36,1) both; }
 
     /* ════ SLIDE 10 — Producer Dashboard ════ */
     #slide9 {
@@ -1296,7 +1297,7 @@
       </div>
       <div class="s7-plat-row">
         <div class="s7-plat-label">Removal Speed</div>
-        <div class="s7-plat-speed">Blocked before live / 1 hr fallback</div>
+        <div class="s7-plat-speed">Removed in 1 hr</div>
       </div>
       <div class="s7-plat-row">
         <div class="s7-plat-label">Re-Upload</div>
@@ -1377,8 +1378,8 @@
         <div class="s9-card-top">
           <div class="s9-card-icon gold">📜</div>
           <div>
-            <div class="s9-card-title">Digital Rights Certificate</div>
-            <div class="s9-card-sub">Legal ownership proof</div>
+            <div class="s9-card-title">Digital Rights for YouTube &amp; Meta</div>
+            <div class="s9-card-sub">YouTube &amp; Meta API credential</div>
           </div>
         </div>
         <div class="s9-card-points">
@@ -1732,7 +1733,7 @@
         lead: 'Every major platform where piracy happens is monitored — in real time, around the clock. Here is exactly how we handle each one.',
         platNames: ['YouTube','Instagram &amp; Facebook','Telegram','Torrent Sites','Direct Websites'],
         platMethods: ['Content ID Fingerprint','Meta Rights Manager','Dedicated Bot Network','DMCA to Hosters &amp; Indexers','Direct Hosting Provider DMCA'],
-        platSpeeds: ['Removed in &lt; 10 min','Blocked before going live','Removed in 24–48 hrs','Links removed in 48–72 hrs','Taken down in 72 hrs'],
+        platSpeeds: ['Removed in &lt; 10 min','Removed in 1 hr','Removed in 24–48 hrs','Links removed in 48–72 hrs','Taken down in 72 hrs'],
         platReups: ['Auto-blocked permanently','Auto-blocked by Rights Manager','Each re-share re-filed automatically','Re-indexed links re-DMCA\'d continuously','New hosting re-targeted instantly']
       },
       slide8: {
@@ -1741,8 +1742,8 @@
         lead: 'Platforms like YouTube, Telegram, and torrent networks will not accept automated removal requests from anyone without authorization. API access is not optional — it is the only legal pathway for removing pirated copies at scale. One-time approval. Permanent enforcement power.',
         note: 'Without API access, one DMCA filing covers one link, takes 2–5 days, and requires a lawyer every time. With API access, the system removes thousands of pirated links per hour — automatically, legally, across every platform. Once granted, it never expires.',
         gridLabel: 'Submit these to get API access →',
-        cardTitles: ['Digital Rights Certificate','Content ID','Metadata','Documentation'],
-        cardSubs: ['Legal ownership proof','Digital fingerprint system','Film identification data','Chain of title &amp; agreements'],
+        cardTitles: ['Digital Rights for YouTube &amp; Meta','Content ID','Metadata','Documentation'],
+        cardSubs: ['YouTube &amp; Meta API credential','Digital fingerprint system','Film identification data','Chain of title &amp; agreements'],
         points: [
           ['Registered certificate from Copyright Office confirming ownership of the film','Mandatory for filing DMCA claims on all major platforms','Without this certificate, no platform will legally process a single removal request — it is the foundation of every takedown'],
           ['YouTube Content ID fingerprint registered for video and audio tracks','Automatically flags any re-upload across YouTube\'s 800 hours of content uploaded every minute','Enables instant claim, block, or monetise on matched content'],
@@ -1848,7 +1849,7 @@
         lead: 'పైరసీ జరిగే ప్రతి ప్రధాన ప్లాట్‌ఫారమ్‌ని పర్యవేక్షిస్తాం — రియల్ టైమ్‌లో, 24/7. ప్రతి ప్లాట్‌ఫారమ్‌ను మేము ఎలా హ్యాండిల్ చేస్తామో ఇక్కడ ఉంది.',
         platNames: ['YouTube','Instagram &amp; Facebook','Telegram','టోరెంట్ సైట్లు','నేరుగా వెబ్‌సైట్లు'],
         platMethods: ['Content ID ఫింగర్‌ప్రింట్','Meta Rights Manager','డెడికేటెడ్ బాట్ నెట్‌వర్క్','హోస్టర్లు &amp; ఇండెక్సర్లకు DMCA','నేరుగా హోస్టింగ్ DMCA'],
-        platSpeeds: ['&lt; 10 నిమి లో తొలగింపు','లైవ్‌కు ముందే బ్లాక్','24–48 గంటల్లో తొలగింపు','48–72 గంటల్లో లింక్‌లు తొలగింపు','72 గంటల్లో తొలగించబడుతుంది'],
+        platSpeeds: ['&lt; 10 నిమి లో తొలగింపు','1 గంటలో తొలగింపు','24–48 గంటల్లో తొలగింపు','48–72 గంటల్లో లింక్‌లు తొలగింపు','72 గంటల్లో తొలగించబడుతుంది'],
         platReups: ['ఆటోమేటిగ్గా శాశ్వతంగా బ్లాక్','Rights Manager ద్వారా ఆటో-బ్లాక్','ప్రతి రీ-షేర్ తిరిగి DMCA','రీ-ఇండెక్స్ లింక్‌లు నిరంతరం DMCA','కొత్త హోస్టింగ్ తక్షణం టార్గెట్']
       },
       slide8: {
@@ -1857,8 +1858,8 @@
         lead: 'YouTube, Telegram మరియు టోరెంట్ నెట్‌వర్క్‌లు అనుమతి లేకుండా ఎవరి నుండి అయినా ఆటోమేటెడ్ తొలగింపు అభ్యర్థనలను అంగీకరించవు. API యాక్సెస్ ఐచ్ఛికం కాదు — పెద్ద ఎత్తున పైరేటెడ్ కాపీలను తొలగించడానికి ఇది ఏకైక చట్టపరమైన మార్గం. ఒకసారి ఆమోదించబడింది. శాశ్వత అమలు శక్తి.',
         note: 'API యాక్సెస్ లేకుండా, ఒక DMCA ఫైలింగ్ ఒక లింక్‌ను మాత్రమే కవర్ చేస్తుంది, 2–5 రోజులు పడుతుంది మరియు ప్రతిసారీ లాయర్ అవసరం. API యాక్సెస్‌తో, సిస్టమ్ గంటకు వేల పైరేటెడ్ లింక్‌లను తొలగిస్తుంది — ఆటోమేటిగ్గా, చట్టబద్ధంగా, ప్రతి ప్లాట్‌ఫారమ్‌లో. ఒకసారి మంజూరు అయిన తర్వాత, ఇది ఎన్నటికీ expire కాదు.',
         gridLabel: 'API యాక్సెస్ కోసం ఇవి సమర్పించండి →',
-        cardTitles: ['డిజిటల్ రైట్స్ సర్టిఫికేట్','కంటెంట్ ID','మెటాడేటా','డాక్యుమెంటేషన్'],
-        cardSubs: ['చట్టపరమైన యాజమాన్య రుజువు','డిజిటల్ ఫింగర్‌ప్రింట్ సిస్టమ్','చలన చిత్ర గుర్తింపు డేటా','చైన్ ఆఫ్ టైటిల్ &amp; అగ్రిమెంట్లు'],
+        cardTitles: ['YouTube &amp; Meta డిజిటల్ రైట్స్','కంటెంట్ ID','మెటాడేటా','డాక్యుమెంటేషన్'],
+        cardSubs: ['YouTube &amp; Meta API క్రెడెన్షియల్','డిజిటల్ ఫింగర్‌ప్రింట్ సిస్టమ్','చలన చిత్ర గుర్తింపు డేటా','చైన్ ఆఫ్ టైటిల్ &amp; అగ్రిమెంట్లు'],
         points: [
           ['చలన చిత్రం యాజమాన్యాన్ని నిర్ధారించే కాపీరైట్ కార్యాలయం నుండి నమోదిత సర్టిఫికేట్','అన్ని ప్రధాన ప్లాట్‌ఫారమ్‌లపై DMCA క్లెయిమ్‌లు దాఖలు చేయడానికి తప్పనిసరి','ఈ సర్టిఫికేట్ లేకుండా, ఏ ప్లాట్‌ఫారమ్ అయినా ఒక్క తొలగింపు అభ్యర్థనను కూడా చట్టపరంగా ప్రాసెస్ చేయదు — ఇది ప్రతి తొలగింపుకు పునాది'],
           ['వీడియో మరియు ఆడియో ట్రాక్‌ల కోసం YouTube కంటెంట్ ID ఫింగర్‌ప్రింట్ నమోదు','ప్రతి నిమిషం అప్‌లోడ్ అయ్యే YouTube యొక్క 800 గంటల కంటెంట్‌లో ఏ రీ-అప్‌లోడ్‌నైనా ఆటోమేటిగ్గా గుర్తిస్తుంది','మ్యాచ్ అయిన కంటెంట్‌పై తక్షణ క్లెయిమ్, బ్లాక్ లేదా మొనటైజ్ చేయడానికి అనుమతిస్తుంది'],
