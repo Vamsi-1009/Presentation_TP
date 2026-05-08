@@ -2206,9 +2206,10 @@
 
   function speakCurrentSlide() {
     const btn = document.getElementById('voiceBtn');
-    // If already playing — stop audio, keep slide paused
+    // If already playing — stop and resume slide
     if (_audioObj && !_audioObj.paused) {
       stopAudio();
+      resume();
       return;
     }
     const lang = document.getElementById('btnEn').classList.contains('active') ? 'en' : 'te';
@@ -2222,15 +2223,24 @@
     btn.classList.add('speaking');
     pause();
 
-    function onEnd() {
-      if (_audioObj !== ao) return; // manual stop already handled
+    ao.addEventListener('ended', () => {
+      if (_audioObj !== ao) return;
+      _audioObj = null;
+      btn.classList.remove('speaking');
+      goTo(current + 1); // audio finished → advance to next slide
+    });
+    ao.addEventListener('error', () => {
+      if (_audioObj !== ao) return;
+      _audioObj = null;
+      btn.classList.remove('speaking');
+      resume(); // on error just resume current slide
+    });
+    ao.play().catch(() => {
+      if (_audioObj !== ao) return;
       _audioObj = null;
       btn.classList.remove('speaking');
       resume();
-    }
-    ao.addEventListener('ended', onEnd);
-    ao.addEventListener('error', onEnd);
-    ao.play().catch(onEnd);
+    });
   }
 
 
