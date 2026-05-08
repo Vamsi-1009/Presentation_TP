@@ -293,105 +293,118 @@
     #slide5.active .s8-block:nth-child(2){ animation:s5BlockIn 0.7s 2.7s cubic-bezier(0.34,1.56,0.64,1) both; }
     #slide5.active .s8-block:nth-child(3){ animation:s5BlockIn 0.7s 3.4s cubic-bezier(0.34,1.56,0.64,1) both; }
 
-    /* ════ SLIDE 6 — Takedown Process Flow ════ */
-    #slide6 { flex-direction:column; align-items:center; justify-content:flex-start; padding:28px 48px 20px; position:relative; overflow:hidden; }
-    .s6-header { display:flex; flex-direction:column; align-items:center; gap:7px; margin-bottom:20px; position:relative; z-index:1; }
-    .s6-tag    { display:inline-flex; align-items:center; font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--blue); border:1.5px solid rgba(37,99,235,0.22); padding:5px 14px; border-radius:100px; background:var(--blue-l); width:fit-content; opacity:0; }
-    .s6-title  { font-size:2rem; font-weight:900; line-height:1.1; text-align:center; opacity:0; color:var(--text); letter-spacing:-0.02em; }
-    .s6-accent { color:var(--blue); }
-    .s6-lead   { font-size:0.8rem; color:var(--text3); text-align:center; max-width:680px; opacity:0; }
-    .s6-flow { display:flex; align-items:flex-start; gap:0; width:100%; position:relative; z-index:1; }
+    /* ════ SLIDE 6 — Takedown Process (2-row snake) ════ */
+    #slide6 { flex-direction:column; align-items:center; justify-content:flex-start; padding:20px 44px 14px; position:relative; overflow:hidden; }
+    .s6-header { display:flex; flex-direction:column; align-items:center; gap:5px; margin-bottom:14px; position:relative; z-index:1; }
+    .s6-tag   { display:inline-flex; align-items:center; font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--blue); border:1.5px solid rgba(37,99,235,0.22); padding:5px 14px; border-radius:100px; background:var(--blue-l); width:fit-content; opacity:0; }
+    .s6-title { font-size:2rem; font-weight:900; line-height:1.1; text-align:center; opacity:0; color:var(--text); letter-spacing:-0.02em; }
+    .s6-accent{ color:var(--blue); }
+    .s6-lead  { font-size:0.82rem; color:var(--text3); text-align:center; max-width:700px; opacity:0; }
+
+    .s6-flow { display:flex; flex-direction:column; gap:6px; width:100%; position:relative; z-index:1; }
+    .s6-row  { display:flex; align-items:stretch; gap:0; width:100%; }
+
     .s6-step {
-      flex:1; display:flex; flex-direction:column; align-items:center; gap:9px;
-      padding:16px 10px 14px; position:relative; opacity:0;
+      flex:1; display:flex; flex-direction:column; align-items:center; gap:10px;
+      padding:20px 14px 18px; position:relative; opacity:0;
       background:var(--surface); border:1.5px solid var(--border2);
       border-radius:var(--r2); box-shadow:var(--sh1);
-      transition:transform 0.25s,box-shadow 0.25s; aspect-ratio:1/1; overflow:hidden;
+      transition:transform 0.25s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.25s; overflow:hidden;
     }
-    .s6-step:hover { transform:translateY(-5px); box-shadow:var(--sh2); }
-    .s6-step::before { content:''; position:absolute; top:0; left:10%; right:10%; height:3px; background:linear-gradient(90deg,var(--blue),var(--purple)); border-radius:0 0 3px 3px; }
-    .s6-step:nth-child(11)::before { background:linear-gradient(90deg,var(--green),#22c55e); }
-    .s6-step-num {
-      width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center;
-      font-size:0.82rem; font-weight:900; flex-shrink:0; z-index:1;
-    }
-    .s6-step:not(:nth-child(11)) .s6-step-num { background:var(--blue-l); border:2px solid rgba(37,99,235,0.3); color:var(--blue); }
-    .s6-step:nth-child(11)       .s6-step-num { background:var(--green-l); border:2px solid rgba(22,163,74,0.3); color:var(--green); }
-    .s6-arrow { flex-shrink:0; width:20px; display:flex; align-items:flex-start; padding-top:22px; color:var(--text4); font-size:1rem; justify-content:center; opacity:0; }
-    .s6-step-icon  { font-size:1.3rem; }
-    .s6-step-title { font-size:0.7rem; font-weight:800; text-align:center; color:var(--text); line-height:1.3; }
-    .s6-step-desc  { font-size:0.58rem; color:var(--text3); text-align:center; line-height:1.45; }
-    @keyframes s6CardIn { from{opacity:0;transform:translateY(30px) scale(0.88)} 70%{transform:translateY(-4px) scale(1.01)} to{opacity:1;transform:translateY(0) scale(1)} }
-    @keyframes s6DonePulse { 0%,100%{box-shadow:var(--sh1)} 50%{box-shadow:0 0 20px rgba(22,163,74,0.25)} }
+    .s6-step:hover { transform:translateY(-6px); box-shadow:var(--sh3); }
+    .s6-step::before { content:''; position:absolute; top:0; left:8%; right:8%; height:3px; background:linear-gradient(90deg,var(--blue),var(--purple)); border-radius:0 0 3px 3px; }
+    .s6-step.done { border-color:rgba(22,163,74,0.2); background:rgba(240,253,244,0.97); }
+    .s6-step.done::before { background:linear-gradient(90deg,var(--green),#22c55e); }
+    .s6-step-num { width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.9rem; font-weight:900; background:var(--blue-l); border:2px solid rgba(37,99,235,0.25); color:var(--blue); flex-shrink:0; }
+    .s6-step.done .s6-step-num { background:var(--green-l); border-color:rgba(22,163,74,0.25); color:var(--green); }
+    .s6-step-icon  { font-size:1.9rem; line-height:1; }
+    .s6-step-title { font-size:0.9rem; font-weight:800; text-align:center; color:var(--text); line-height:1.3; }
+    .s6-step-desc  { font-size:0.74rem; color:var(--text3); text-align:center; line-height:1.5; }
+    .s6-arrow { flex-shrink:0; width:24px; display:flex; align-items:center; justify-content:center; color:var(--text4); font-size:1.4rem; opacity:0; }
+
+    /* Connector between rows — right-aligned arrow */
+    .s6-bend { display:flex; align-items:center; justify-content:flex-end; padding-right:calc(33.33% - 13px); gap:8px; opacity:0; }
+    .s6-bend-dashes { flex:0 0 48px; height:2px; background:repeating-linear-gradient(90deg,var(--blue) 0,var(--blue) 6px,transparent 6px,transparent 10px); border-radius:1px; }
+    .s6-bend-icon { width:34px; height:34px; border-radius:50%; background:var(--purple-l); border:1.5px solid rgba(124,58,237,0.25); display:flex; align-items:center; justify-content:center; font-size:1rem; color:var(--purple); flex-shrink:0; }
+
+    @keyframes s6CardIn { from{opacity:0;transform:translateY(28px) scale(0.9)} 70%{transform:translateY(-4px) scale(1.01)} to{opacity:1;transform:translateY(0) scale(1)} }
+    @keyframes s6DonePulse { 0%,100%{box-shadow:var(--sh1)} 50%{box-shadow:0 0 22px rgba(22,163,74,0.22)} }
     #slide6.active .s6-tag   { animation:riseUpFast 0.6s 0.3s ease both; }
     #slide6.active .s6-title { animation:riseUp     0.7s 0.6s cubic-bezier(0.34,1.56,0.64,1) both; }
     #slide6.active .s6-lead  { animation:riseUpFast 0.6s 1.0s ease both; }
-    #slide6.active .s6-step:nth-child(1)   { animation:s6CardIn  0.6s 1.3s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide6.active .s6-arrow:nth-child(2)  { animation:riseUpFast 0.3s 1.8s ease both; }
-    #slide6.active .s6-step:nth-child(3)   { animation:s6CardIn  0.6s 1.9s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide6.active .s6-arrow:nth-child(4)  { animation:riseUpFast 0.3s 2.4s ease both; }
-    #slide6.active .s6-step:nth-child(5)   { animation:s6CardIn  0.6s 2.5s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide6.active .s6-arrow:nth-child(6)  { animation:riseUpFast 0.3s 3.0s ease both; }
-    #slide6.active .s6-step:nth-child(7)   { animation:s6CardIn  0.6s 3.1s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide6.active .s6-arrow:nth-child(8)  { animation:riseUpFast 0.3s 3.6s ease both; }
-    #slide6.active .s6-step:nth-child(9)   { animation:s6CardIn  0.6s 3.7s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide6.active .s6-arrow:nth-child(10) { animation:riseUpFast 0.3s 4.2s ease both; }
-    #slide6.active .s6-step:nth-child(11)  { animation:s6CardIn  0.6s 4.3s cubic-bezier(0.34,1.56,0.64,1) both, s6DonePulse 2s 5.3s ease-in-out infinite; }
+    #slide6.active .s6-row:first-child .s6-step:nth-child(1) { animation:s6CardIn 0.6s 1.3s cubic-bezier(0.34,1.56,0.64,1) both; }
+    #slide6.active .s6-row:first-child .s6-arrow:nth-child(2){ animation:riseUpFast 0.3s 1.8s ease both; }
+    #slide6.active .s6-row:first-child .s6-step:nth-child(3) { animation:s6CardIn 0.6s 1.9s cubic-bezier(0.34,1.56,0.64,1) both; }
+    #slide6.active .s6-row:first-child .s6-arrow:nth-child(4){ animation:riseUpFast 0.3s 2.4s ease both; }
+    #slide6.active .s6-row:first-child .s6-step:nth-child(5) { animation:s6CardIn 0.6s 2.5s cubic-bezier(0.34,1.56,0.64,1) both; }
+    #slide6.active .s6-bend  { animation:riseUpFast 0.4s 3.0s ease both; }
+    #slide6.active .s6-row:last-child .s6-step:nth-child(1)  { animation:s6CardIn 0.6s 3.2s cubic-bezier(0.34,1.56,0.64,1) both; }
+    #slide6.active .s6-row:last-child .s6-arrow:nth-child(2) { animation:riseUpFast 0.3s 3.7s ease both; }
+    #slide6.active .s6-row:last-child .s6-step:nth-child(3)  { animation:s6CardIn 0.6s 3.8s cubic-bezier(0.34,1.56,0.64,1) both; }
+    #slide6.active .s6-row:last-child .s6-arrow:nth-child(4) { animation:riseUpFast 0.3s 4.3s ease both; }
+    #slide6.active .s6-row:last-child .s6-step:nth-child(5)  { animation:s6CardIn 0.6s 4.4s cubic-bezier(0.34,1.56,0.64,1) both, s6DonePulse 2s 5.5s ease-in-out infinite; }
 
     /* ════ SLIDE 7 — Platform Coverage ════ */
-    #slide7 { flex-direction:column; align-items:center; justify-content:flex-start; padding:24px 40px 18px; position:relative; overflow:hidden; }
-    .s7-header { display:flex; flex-direction:column; align-items:center; gap:6px; margin-bottom:16px; position:relative; z-index:1; }
+    /* ════ SLIDE 7 — Platform Coverage (3+2 layout) ════ */
+    #slide7 { flex-direction:column; align-items:center; justify-content:flex-start; padding:20px 44px 14px; position:relative; overflow:hidden; }
+    .s7-header { display:flex; flex-direction:column; align-items:center; gap:5px; margin-bottom:14px; position:relative; z-index:1; }
     .s7-tag    { display:inline-flex; align-items:center; font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--blue); border:1.5px solid rgba(37,99,235,0.22); padding:5px 14px; border-radius:100px; background:var(--blue-l); width:fit-content; opacity:0; }
     .s7-title  { font-size:2rem; font-weight:900; line-height:1.1; text-align:center; opacity:0; color:var(--text); letter-spacing:-0.02em; }
     .s7-accent { color:var(--blue); }
-    .s7-lead   { font-size:0.8rem; color:var(--text3); text-align:center; max-width:700px; opacity:0; }
-    .s7-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; width:100%; align-items:stretch; position:relative; z-index:1; }
+    .s7-lead   { font-size:0.82rem; color:var(--text3); text-align:center; max-width:700px; opacity:0; }
+
+    /* 3-row top + 2-row bottom centered grid */
+    .s7-grid  { display:flex; flex-direction:column; gap:14px; width:100%; position:relative; z-index:1; }
+    .s7-row1  { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    .s7-row2  { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; width:66.67%; margin:0 auto; }
+
     .s7-plat-card {
       background:var(--surface); border:1.5px solid var(--border2); border-radius:var(--r1);
-      padding:18px 14px 16px; display:flex; flex-direction:column; gap:10px;
+      padding:20px 18px 18px; display:flex; flex-direction:column; gap:12px;
       opacity:0; position:relative; overflow:hidden; box-shadow:var(--sh1);
       transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.3s;
     }
-    .s7-plat-card:hover { transform:translateY(-8px); box-shadow:var(--sh3); }
-    .s7-plat-card:nth-child(1) { border-top:3px solid #ff0000; }
-    .s7-plat-card:nth-child(2) { border-top:3px solid #1877F2; }
-    .s7-plat-card:nth-child(3) { border-top:3px solid #2CA5E0; }
-    .s7-plat-card:nth-child(4) { border-top:3px solid #888; }
-    .s7-plat-card:nth-child(5) { border-top:3px solid var(--blue); }
+    .s7-plat-card:hover { transform:translateY(-7px); box-shadow:var(--sh3); }
+    .s7-row1 .s7-plat-card:nth-child(1) { border-top:3px solid #ff0000; }
+    .s7-row1 .s7-plat-card:nth-child(2) { border-top:3px solid #1877F2; }
+    .s7-row1 .s7-plat-card:nth-child(3) { border-top:3px solid #2CA5E0; }
+    .s7-row2 .s7-plat-card:nth-child(1) { border-top:3px solid #888; }
+    .s7-row2 .s7-plat-card:nth-child(2) { border-top:3px solid var(--blue); }
+
     .s7-mob-badge { display:none; }
     .s7-mob-desc  { display:none; }
-    .s7-card-head  { display:flex; align-items:center; gap:10px; }
-    .s7-plat-icon  { font-size:1.8rem; line-height:1; flex-shrink:0; width:32px; height:32px; display:flex; align-items:center; justify-content:center; }
-    .s7-yt-icon    { width:32px; height:22px; flex-shrink:0; }
-    .s7-meta-logo  { height:14px; width:auto; display:block; }
-    .s7-ig-fb-wrap { display:flex; gap:4px; flex-shrink:0; align-items:center; }
-    .s7-ig-icon    { width:24px; height:24px; }
-    .s7-fb-icon    { width:24px; height:24px; }
-    .s7-head-text  { display:flex; flex-direction:column; gap:2px; }
-    .s7-plat-name  { font-size:0.84rem; font-weight:900; color:var(--text); line-height:1.2; }
-    .s7-plat-powered { font-size:0.55rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text4); }
-    .s7-card-divider { height:1px; background:var(--border); flex-shrink:0; }
-    .s7-plat-row   { display:flex; flex-direction:column; gap:3px; }
-    .s7-plat-label { font-size:0.56rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text4); }
-    .s7-plat-method { font-size:0.68rem; font-weight:600; color:var(--text2); line-height:1.4; }
-    .s7-plat-detail { font-size:0.61rem; color:var(--text3); line-height:1.35; margin-top:1px; font-style:italic; }
-    .s7-plat-reup   { font-size:0.63rem; color:var(--text3); line-height:1.35; }
-    .s7-speed-badge { display:flex; align-items:center; gap:8px; background:var(--green-l); border:1.5px solid rgba(22,163,74,0.2); border-radius:var(--r3); padding:8px 10px; }
-    .s7-speed-bolt  { font-size:1rem; flex-shrink:0; }
+    .s7-card-head   { display:flex; align-items:center; gap:12px; }
+    .s7-plat-icon   { font-size:2rem; line-height:1; flex-shrink:0; width:36px; height:36px; display:flex; align-items:center; justify-content:center; }
+    .s7-yt-icon     { width:38px; height:26px; flex-shrink:0; }
+    .s7-ig-fb-wrap  { display:flex; gap:5px; flex-shrink:0; align-items:center; }
+    .s7-ig-icon     { width:28px; height:28px; }
+    .s7-fb-icon     { width:28px; height:28px; }
+    .s7-head-text   { display:flex; flex-direction:column; gap:2px; }
+    .s7-plat-name   { font-size:0.95rem; font-weight:900; color:var(--text); line-height:1.2; }
+    .s7-plat-powered{ font-size:0.6rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text4); }
+    .s7-card-divider{ height:1px; background:var(--border); flex-shrink:0; }
+    .s7-plat-row    { display:flex; flex-direction:column; gap:4px; }
+    .s7-plat-label  { font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text4); }
+    .s7-plat-method { font-size:0.78rem; font-weight:600; color:var(--text2); line-height:1.4; }
+    .s7-plat-detail { font-size:0.7rem; color:var(--text3); line-height:1.4; font-style:italic; }
+    .s7-plat-reup   { font-size:0.72rem; color:var(--text3); line-height:1.4; }
+    .s7-speed-badge { display:flex; align-items:center; gap:10px; background:var(--green-l); border:1.5px solid rgba(22,163,74,0.2); border-radius:var(--r3); padding:10px 14px; }
+    .s7-speed-bolt  { font-size:1.1rem; flex-shrink:0; }
     .s7-speed-inner { display:flex; flex-direction:column; gap:1px; }
-    .s7-plat-speed  { font-size:0.88rem; font-weight:900; color:var(--green); line-height:1; }
-    .s7-speed-label { font-size:0.5rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(22,163,74,0.6); }
-    @keyframes s7CardIn { from{opacity:0;transform:translateY(38px) scale(0.9);filter:blur(3px)} 70%{filter:blur(0);transform:translateY(-4px) scale(1.01)} to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)} }
-    @keyframes s7SpeedPulse { 0%,100%{border-color:rgba(22,163,74,0.2)} 50%{border-color:rgba(22,163,74,0.5);box-shadow:0 0 10px rgba(22,163,74,0.15)} }
+    .s7-plat-speed  { font-size:1rem; font-weight:900; color:var(--green); line-height:1; }
+    .s7-speed-label { font-size:0.55rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(22,163,74,0.6); }
+
+    @keyframes s7CardIn { from{opacity:0;transform:translateY(36px) scale(0.91);filter:blur(3px)} 70%{filter:blur(0);transform:translateY(-4px) scale(1.01)} to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)} }
+    @keyframes s7SpeedPulse { 0%,100%{border-color:rgba(22,163,74,0.2)} 50%{border-color:rgba(22,163,74,0.5);box-shadow:0 0 12px rgba(22,163,74,0.15)} }
     #slide7.active .s7-tag   { animation:riseUpFast 0.6s 0.3s ease both; }
     #slide7.active .s7-title { animation:riseUp     0.7s 0.6s cubic-bezier(0.34,1.56,0.64,1) both; }
     #slide7.active .s7-lead  { animation:riseUpFast 0.6s 1.0s ease both; }
-    #slide7.active .s7-plat-card:nth-child(1) { animation:s7CardIn 0.7s 1.3s  cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide7.active .s7-plat-card:nth-child(2) { animation:s7CardIn 0.7s 1.75s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide7.active .s7-plat-card:nth-child(3) { animation:s7CardIn 0.7s 2.2s  cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide7.active .s7-plat-card:nth-child(4) { animation:s7CardIn 0.7s 2.65s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide7.active .s7-plat-card:nth-child(5) { animation:s7CardIn 0.7s 3.1s  cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide7.active .s7-speed-badge            { animation:s7SpeedPulse 2.5s 5s ease-in-out infinite; }
+    #slide7.active .s7-row1 .s7-plat-card:nth-child(1) { animation:s7CardIn 0.7s 1.3s  cubic-bezier(0.34,1.56,0.64,1) both; }
+    #slide7.active .s7-row1 .s7-plat-card:nth-child(2) { animation:s7CardIn 0.7s 1.75s cubic-bezier(0.34,1.56,0.64,1) both; }
+    #slide7.active .s7-row1 .s7-plat-card:nth-child(3) { animation:s7CardIn 0.7s 2.2s  cubic-bezier(0.34,1.56,0.64,1) both; }
+    #slide7.active .s7-row2 .s7-plat-card:nth-child(1) { animation:s7CardIn 0.7s 2.65s cubic-bezier(0.34,1.56,0.64,1) both; }
+    #slide7.active .s7-row2 .s7-plat-card:nth-child(2) { animation:s7CardIn 0.7s 3.1s  cubic-bezier(0.34,1.56,0.64,1) both; }
+    #slide7.active .s7-speed-badge { animation:s7SpeedPulse 2.5s 5s ease-in-out infinite; }
 
     /* ════ SLIDE 8 — API Access ════ */
     #slide8 { align-items:stretch; justify-content:center; position:relative; overflow:hidden; }
@@ -769,7 +782,9 @@
         gap:8px !important;
         width:100% !important;
       }
-      #slide6 .s6-arrow  { display:none !important; }
+      #slide6 .s6-row   { display:contents !important; }
+      #slide6 .s6-bend  { display:none !important; }
+      #slide6 .s6-arrow { display:none !important; }
       /* Rectangle card — horizontal grid layout */
       #slide6 .s6-step {
         display:grid !important;
@@ -823,10 +838,12 @@
       #slide7 .s7-title  { font-size:1.5rem !important; }
       #slide7 .s7-lead   { font-size:0.75rem !important; }
       #slide7 .s7-grid {
-        grid-template-columns:1fr !important;
+        flex-direction:column !important;
         gap:10px !important;
         width:100% !important;
       }
+      #slide7 .s7-row1,
+      #slide7 .s7-row2 { display:contents !important; }
       #slide7 .s7-plat-card {
         padding:14px 14px !important;
         gap:0 !important;
@@ -1200,55 +1217,62 @@
   <div class="s6-header">
     <div class="s6-tag">How It Works</div>
     <h2 class="s6-title">The Takedown <span class="s6-accent">Process</span></h2>
-    <p class="s6-lead">From the moment a pirated copy appears online to the moment it is removed — here is exactly what happens, step by step, without a single human involved.</p>
+    <p class="s6-lead">From the moment a pirated copy appears online to the moment it is removed — here is exactly what happens, step by step.</p>
   </div>
   <div class="s6-flow">
 
-    <div class="s6-step">
-      <div class="s6-step-num">1</div>
-      <div class="s6-step-icon">🔍</div>
-      <div class="s6-step-title">Piracy<br>Detected</div>
-      <div class="s6-step-desc">Bots scan 50+ platforms every minute. Pirated copy flagged instantly.</div>
+    <!-- Row 1: Steps 1–3 -->
+    <div class="s6-row">
+      <div class="s6-step">
+        <div class="s6-step-num">1</div>
+        <div class="s6-step-icon">🔍</div>
+        <div class="s6-step-title">Piracy Detected</div>
+        <div class="s6-step-desc">Bots scan 50+ platforms every minute. Pirated copy flagged instantly.</div>
+      </div>
+      <div class="s6-arrow">›</div>
+      <div class="s6-step">
+        <div class="s6-step-num">2</div>
+        <div class="s6-step-icon">🧬</div>
+        <div class="s6-step-title">Fingerprint Matched</div>
+        <div class="s6-step-desc">AI compares against your registered watermark. Verified in under 2 minutes.</div>
+      </div>
+      <div class="s6-arrow">›</div>
+      <div class="s6-step">
+        <div class="s6-step-num">3</div>
+        <div class="s6-step-icon">⚖️</div>
+        <div class="s6-step-title">DMCA Auto-Filed</div>
+        <div class="s6-step-desc">Legal notice prepared and submitted in seconds. No lawyer. No delay.</div>
+      </div>
     </div>
-    <div class="s6-arrow">›</div>
 
-    <div class="s6-step">
-      <div class="s6-step-num">2</div>
-      <div class="s6-step-icon">🧬</div>
-      <div class="s6-step-title">Fingerprint<br>Matched</div>
-      <div class="s6-step-desc">AI compares against your registered watermark. Verified in under 2 minutes.</div>
+    <!-- Connector -->
+    <div class="s6-bend">
+      <div class="s6-bend-dashes"></div>
+      <div class="s6-bend-icon">↓</div>
     </div>
-    <div class="s6-arrow">›</div>
 
-    <div class="s6-step">
-      <div class="s6-step-num">3</div>
-      <div class="s6-step-icon">⚖️</div>
-      <div class="s6-step-title">DMCA<br>Auto-Filed</div>
-      <div class="s6-step-desc">Legal notice prepared and submitted in seconds. No lawyer. No delay.</div>
-    </div>
-    <div class="s6-arrow">›</div>
-
-    <div class="s6-step">
-      <div class="s6-step-num">4</div>
-      <div class="s6-step-icon">🗑️</div>
-      <div class="s6-step-title">Platform<br>Removes</div>
-      <div class="s6-step-desc">YouTube in 10 min. Instagram before live. Telegram 24–48 hrs. Torrents 48–72 hrs.</div>
-    </div>
-    <div class="s6-arrow">›</div>
-
-    <div class="s6-step">
-      <div class="s6-step-num">5</div>
-      <div class="s6-step-icon">🚫</div>
-      <div class="s6-step-title">Re-Upload<br>Blocked</div>
-      <div class="s6-step-desc">Every re-upload of the same content is permanently blocked. Pirate cannot win.</div>
-    </div>
-    <div class="s6-arrow">›</div>
-
-    <div class="s6-step">
-      <div class="s6-step-num">✓</div>
-      <div class="s6-step-icon">📊</div>
-      <div class="s6-step-title">Producer<br>Notified</div>
-      <div class="s6-step-desc">Real-time alert and full report on your dashboard. You see everything.</div>
+    <!-- Row 2: Steps 4–6 -->
+    <div class="s6-row">
+      <div class="s6-step">
+        <div class="s6-step-num">4</div>
+        <div class="s6-step-icon">🗑️</div>
+        <div class="s6-step-title">Platform Removes</div>
+        <div class="s6-step-desc">YouTube in 10 min. Instagram before live. Telegram 24–48 hrs. Torrents 48–72 hrs.</div>
+      </div>
+      <div class="s6-arrow">›</div>
+      <div class="s6-step">
+        <div class="s6-step-num">5</div>
+        <div class="s6-step-icon">🚫</div>
+        <div class="s6-step-title">Re-Upload Blocked</div>
+        <div class="s6-step-desc">Every re-upload of the same content is permanently blocked. Pirate cannot win.</div>
+      </div>
+      <div class="s6-arrow">›</div>
+      <div class="s6-step done">
+        <div class="s6-step-num">✓</div>
+        <div class="s6-step-icon">📊</div>
+        <div class="s6-step-title">Producer Notified</div>
+        <div class="s6-step-desc">Real-time alert and full report on your dashboard. You see everything.</div>
+      </div>
     </div>
 
   </div>
@@ -1262,7 +1286,7 @@
     <p class="s7-lead">Every major platform where piracy happens is monitored — in real time, around the clock. Here is exactly how we handle each one.</p>
   </div>
   <div class="s7-grid">
-
+    <div class="s7-row1">
     <!-- YouTube -->
     <div class="s7-plat-card">
       <div class="s7-card-head">
@@ -1382,7 +1406,9 @@
         <div class="s7-plat-reup">Each re-share detected and re-filed automatically</div>
       </div>
     </div>
+    </div><!-- /s7-row1 -->
 
+    <div class="s7-row2">
     <!-- Torrent Sites -->
     <div class="s7-plat-card">
       <div class="s7-card-head">
@@ -1442,6 +1468,7 @@
         <div class="s7-plat-reup">New hosting provider targeted instantly on detection</div>
       </div>
     </div>
+    </div><!-- /s7-row2 -->
 
   </div>
 </div>
