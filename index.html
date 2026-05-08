@@ -237,17 +237,34 @@
     .s8-counter-val   { font-size:2.4rem; font-weight:900; color:#f97316; line-height:1; }
     .s8-counter-label { font-size:0.66rem; color:rgba(255,200,150,0.55); letter-spacing:0.08em; text-transform:uppercase; }
 
-    @keyframes tdPulse { 0%,100%{box-shadow:0 0 16px rgba(249,115,22,0.2)} 50%{box-shadow:0 0 32px rgba(249,115,22,0.5)} }
-    #slide5.active .s8-tag { animation:fadeUp 1.0s 0.4s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide5.active .s8-title { animation:fadeUp 1.0s 1.6s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide5.active .s8-lead  { animation:fadeUp 1.0s 2.9s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide5.active .s8-block:nth-child(1) { animation:s2PointIn 0.9s 4.2s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide5.active .s8-block:nth-child(2) { animation:s2PointIn 0.9s 5.4s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide5.active .s8-block:nth-child(3) { animation:s2PointIn 0.9s 6.6s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide5.active .s8-platforms { animation:fadeUp 1.0s 2.2s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide5.active .s8-counter { animation:fadeUp 1.0s 10.8s cubic-bezier(0.22,1,0.36,1) both,tdPulse 2s 12s ease-in-out infinite; }
+    /* ── Slide 5 single-column centered layout ── */
+    #slide5 { align-items:center; justify-content:center; }
+    .s5-content {
+      display:flex; flex-direction:column; gap:18px;
+      width:100%; max-width:800px; padding:48px 64px;
+      position:relative; z-index:1;
+    }
+    #slide5 .s8-tag   { opacity:0; }
+    #slide5 .s8-title { opacity:0; font-size:3.4rem; }
+    #slide5 .s8-lead  { opacity:0; }
+    #slide5 .s8-block { opacity:0; }
 
-    /* ── Slide 8 new platform timing cards ── */
+    @keyframes s5TagIn   { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes s5TitleIn { 0%{opacity:0;transform:translateX(-28px);filter:blur(6px)} 55%{filter:blur(0)} 100%{opacity:1;transform:translateX(0)} }
+    @keyframes s5LeadIn  { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes s5BlockIn {
+      0%   { opacity:0; transform:translateX(-20px) scaleX(0.94); }
+      55%  { transform:translateX(3px) scaleX(1.01); }
+      100% { opacity:1; transform:translateX(0) scaleX(1); }
+    }
+    #slide5.active .s8-tag              { animation:s5TagIn   0.7s 0.3s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide5.active .s8-title            { animation:s5TitleIn 0.9s 0.8s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide5.active .s8-lead             { animation:s5LeadIn  0.8s 1.6s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide5.active .s8-block:nth-child(1){ animation:s5BlockIn 0.8s 2.4s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide5.active .s8-block:nth-child(2){ animation:s5BlockIn 0.8s 3.2s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide5.active .s8-block:nth-child(3){ animation:s5BlockIn 0.8s 4.0s cubic-bezier(0.22,1,0.36,1) both; }
+
+    /* ── Slide 8 platform timing cards (kept for slide 8 only) ── */
     .s8-plat-new-grid { display:flex; flex-direction:column; gap:8px; width:100%; }
     .s8-plat-card { padding:10px 14px; border-radius:12px; background:rgba(255,255,255,0.03); border:1px solid rgba(249,115,22,0.15); display:flex; flex-direction:column; gap:6px; transition:border-color 0.3s,background 0.3s; opacity:0; }
     .s8-plat-card:hover { background:rgba(249,115,22,0.06); border-color:rgba(249,115,22,0.3); }
@@ -259,16 +276,8 @@
     .s8-time-chip.medium { color:#fbbf24; background:rgba(240,160,0,0.12);  border:1px solid rgba(240,160,0,0.25); }
     .s8-time-chip.slow   { color:#f97316; background:rgba(249,115,22,0.12); border:1px solid rgba(249,115,22,0.25); }
     .s8-plat-action { font-size:0.72rem; color:rgba(200,200,200,0.65); line-height:1.5; padding-left:46px; }
-    /* Platform card one-by-one animations */
-    #slide5.active .s8-plat-card:nth-child(1) { animation:s2PointIn 0.9s 1.8s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide5.active .s8-plat-card:nth-child(2) { animation:s2PointIn 0.9s 3.4s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide5.active .s8-plat-card:nth-child(3) { animation:s2PointIn 0.9s 5.0s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide5.active .s8-plat-card:nth-child(4) { animation:s2PointIn 0.9s 6.6s cubic-bezier(0.22,1,0.36,1) both; }
-    /* Laptop layout fix */
     .s8-right { overflow:visible; }
     .s8-counter { flex-shrink:0; padding:10px 22px; }
-    .s8-counter-val   { font-size:2rem; }
-    .s8-counter-label { font-size:0.62rem; }
 
     /* ════ SLIDE 6 — Takedown Process Flow ════ */
     #slide6 {
@@ -838,22 +847,28 @@
       #slide7 .s7-plat-speed { font-size:0.65rem !important; }
       #slide7 .s7-plat-reup  { font-size:0.58rem !important; }
 
-      /* ────── SLIDE 8 ────── */
+      /* ────── SLIDE 5 (mobile single-column) ────── */
       #slide5 {
-        flex-direction:column !important;
-        align-items:flex-start !important;
-        justify-content:flex-start !important;
+        align-items:center !important;
+        justify-content:center !important;
         overflow-y:auto !important;
-        padding:44px 16px 20px !important;
+        padding:0 !important;
       }
+      #slide5 .s5-content {
+        padding:44px 18px 24px !important;
+        gap:14px !important;
+        max-width:100% !important;
+      }
+      #slide5 .s8-title { font-size:1.75rem !important; }
+      #slide5 .s8-lead  { font-size:0.8rem !important; }
+      #slide5 .s8-block { padding:8px 12px !important; }
+      #slide5 .s8-block-heading { font-size:0.82rem !important; }
+      #slide5 .s8-block-desc    { font-size:0.73rem !important; }
+      /* Slide 8 mobile (two-column → single column) */
       .s8-left { flex:none !important; width:100% !important; padding:0 0 16px !important; gap:12px !important; }
       .s8-left::after { display:none !important; }
       .s8-right { flex:none !important; width:100% !important; padding:0 !important; gap:14px !important; align-items:flex-start !important; }
-      .s8-title { font-size:1.6rem !important; }
       .s8-lead,.s8-lead2  { font-size:0.8rem !important; }
-      .s8-block { padding:6px 10px !important; }
-      .s8-block-heading { font-size:0.8rem !important; }
-      .s8-block-desc    { font-size:0.72rem !important; }
       .s8-plat-card  { padding:10px 12px !important; }
       .s8-time-chip  { font-size:0.7rem !important; padding:3px 10px !important; }
       .s8-plat-action{ font-size:0.68rem !important; padding-left:0 !important; }
@@ -1082,7 +1097,7 @@
 
 <!-- ══════════ SLIDE 5: Takedown System ══════════ -->
 <div class="slide" id="slide5">
-  <div class="s8-left">
+  <div class="s5-content">
     <div class="s8-tag">Automated Enforcement</div>
     <h2 class="s8-title">Takedown<br><span class="s8-accent">System</span></h2>
     <p class="s8-lead">Your film releases. Piracy attempts start on day one. Our Takedown System is already running — scanning every platform, every minute, removing every copy before it spreads. You focus on your film. We handle the rest.</p>
@@ -1099,71 +1114,6 @@
         <div class="s8-block-heading">Instant DMCA. Instant Removal.</div>
         <div class="s8-block-desc">The moment a match is confirmed, DMCA notices are filed automatically — no human involved, no delays. Content is removed from the platform. Every re-upload is blocked permanently. You receive a report. Your film is protected.</div>
       </div>
-    </div>
-  </div>
-  <div class="s8-right">
-    <div class="s8-plat-new-grid">
-
-      <!-- YouTube -->
-      <div class="s8-plat-card">
-        <div class="s8-plat-head">
-          <div class="s8-plat-logo-wrap" style="background:rgba(255,0,0,0.12);border:1px solid rgba(255,0,0,0.25);">
-            <svg viewBox="0 0 24 24" width="22" height="22"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="#FF0000"/></svg>
-          </div>
-          <div class="s8-plat-name">YouTube</div>
-          <div class="s8-time-chip fast">⚡ 10 minutes</div>
-        </div>
-        <div class="s8-plat-action">Your film's fingerprint is registered with YouTube Content ID. Any upload — even 10 seconds — is auto-detected and removed within 10 minutes.</div>
-      </div>
-
-      <!-- Meta (Instagram & Facebook) -->
-      <div class="s8-plat-card">
-        <div class="s8-plat-head">
-          <div class="s8-plat-logo-wrap" style="background:rgba(0,122,255,0.12);border:1px solid rgba(0,122,255,0.25);">
-            <svg viewBox="0 0 80 36" width="28" height="13" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="metaInfGrad" x1="0" y1="0" x2="80" y2="36" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#5AB0FF"/>
-                  <stop offset="1" stop-color="#0058D1"/>
-                </linearGradient>
-              </defs>
-              <path fill="url(#metaInfGrad)" d="M40 18C40 9.2 34 3 26 3C15 3 4 10.3 4 18C4 25.7 15 33 26 33C34 33 40 26.8 40 18ZM40 18C40 9.2 46 3 54 3C65 3 76 10.3 76 18C76 25.7 65 33 54 33C46 33 40 26.8 40 18Z"/>
-            </svg>
-          </div>
-          <div class="s8-plat-name">Instagram &amp; Facebook</div>
-          <div class="s8-time-chip medium">⚡ 1 hour</div>
-        </div>
-        <div class="s8-plat-action">Meta Rights Manager blocks pirated uploads before they go live. Anything that slips through is removed within 1 hour.</div>
-      </div>
-
-      <!-- Telegram -->
-      <div class="s8-plat-card">
-        <div class="s8-plat-head">
-          <div class="s8-plat-logo-wrap" style="background:rgba(44,165,224,0.12);border:1px solid rgba(44,165,224,0.25);">
-            <svg viewBox="0 0 24 24" width="22" height="22"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" fill="#2CA5E0"/></svg>
-          </div>
-          <div class="s8-plat-name">Telegram</div>
-          <div class="s8-time-chip slow">⏱ 24–48 hours</div>
-        </div>
-        <div class="s8-plat-action">Bots scan thousands of Telegram channels around the clock. The moment a pirated link is found, a DMCA notice is auto-filed and removed within 24–48 hours. Re-appearances are caught and filed again.</div>
-      </div>
-
-      <!-- Torrent Sites -->
-      <div class="s8-plat-card">
-        <div class="s8-plat-head">
-          <div class="s8-plat-logo-wrap" style="background:rgba(200,150,0,0.12);border:1px solid rgba(200,150,0,0.25);">
-            <span style="font-size:1.2rem;">🌐</span>
-          </div>
-          <div class="s8-plat-name">Torrent Sites</div>
-          <div class="s8-time-chip slow">⏱ 48–72 hours</div>
-        </div>
-        <div class="s8-plat-action">DMCA notices are filed automatically to hosting providers and indexing sites. Links removed within 48–72 hours. System keeps tracking and filing until every copy is gone.</div>
-      </div>
-
-    </div>
-    <div class="s8-counter">
-      <div class="s8-counter-val">100%</div>
-      <div class="s8-counter-label">Automated — No Manual Effort</div>
     </div>
   </div>
 </div>
@@ -1664,15 +1614,7 @@
           'Our bots never sleep. YouTube, Telegram, Facebook, Instagram, and torrent sites — every platform is monitored every minute of every day. The moment any pirated copy of your film surfaces anywhere online, the system sees it before you do.',
           'Your film carries a unique watermark fingerprint in every frame. Our AI uses it to identify pirated copies anywhere — re-encoded, compressed, or screen-recorded. Even a 3-second clip from inside a dark cinema is enough to trigger an instant takedown.',
           'The moment a match is confirmed, DMCA notices are filed automatically — no human involved, no delays. Content is removed from the platform. Every re-upload is blocked permanently. You receive a report. Your film is protected.'
-        ],
-        platNames: ['YouTube','Instagram &amp; Facebook','Telegram','Torrent Sites'],
-        platActions: [
-          'Your film\'s fingerprint is registered with YouTube Content ID. Any upload — even 10 seconds — is auto-detected and removed within 10 minutes.',
-          'Meta Rights Manager blocks pirated uploads before they go live. Anything that slips through is removed within 1 hour.',
-          'Bots scan thousands of Telegram channels around the clock. The moment a pirated link is found, a DMCA notice is auto-filed and removed within 24–48 hours.',
-          'DMCA notices are filed automatically to hosting providers and indexing sites. Links removed within 48–72 hours.'
-        ],
-        counterLabel: 'Automated — No Manual Effort'
+        ]
       },
       slide6: {
         tag: 'How It Works',
@@ -1775,15 +1717,7 @@
           'మా బాట్లు ఎప్పుడూ నిద్రపోవు. YouTube, Telegram, Facebook, Instagram మరియు టోరెంట్ సైట్లు — ప్రతి ప్లాట్‌ఫారమ్‌ను రోజులో ప్రతి నిమిషమూ పర్యవేక్షిస్తాయి. ఆన్‌లైన్‌లో ఎక్కడైనా మీ చిత్రం పైరేటెడ్ కాపీ కనిపించిన క్షణమే, సిస్టమ్ మీకంటే ముందే గుర్తిస్తుంది.',
           'మీ చిత్రంలో ప్రతి ఫ్రేమ్‌లో ఒక ప్రత్యేకమైన వాటర్‌మార్క్ ఫింగర్‌ప్రింట్ ఉంటుంది. మా AI దాన్ని ఉపయోగించి ఎక్కడైనా పైరేటెడ్ కాపీలను గుర్తిస్తుంది — రీ-ఎన్‌కోడ్ అయినా, కంప్రెస్ అయినా, స్క్రీన్ రికార్డింగ్ అయినా. చీకటి హాలు నుండి 3-సెకన్ల క్లిప్ కూడా తక్షణ తొలగింపుకు సరిపోతుంది.',
           'మ్యాచ్ నిర్ధారణ అయిన వెంటనే DMCA నోటీసులు ఆటోమేటిగ్గా దాఖలవుతాయి — ఏ మనిషీ జోక్యం లేదు, ఆలస్యం లేదు. ప్లాట్‌ఫారమ్ నుండి కంటెంట్ తొలగించబడుతుంది. ప్రతి రీ-అప్‌లోడ్ శాశ్వతంగా బ్లాక్ అవుతుంది. మీకు రిపోర్ట్ వస్తుంది. మీ చిత్రం సురక్షితం.'
-        ],
-        platNames: ['YouTube','Instagram &amp; Facebook','Telegram','టోరెంట్ సైట్లు'],
-        platActions: [
-          'మీ చిత్రం ఫింగర్‌ప్రింట్ YouTube Content ID లో నమోదు చేయబడింది. ఏ అప్‌లోడ్ అయినా — 10 సెకన్లు అయినా — ఆటోమేటిగ్గా గుర్తించి 10 నిమిషాల్లో తొలగించబడుతుంది.',
-          'Meta Rights Manager అప్‌లోడ్ సమయంలోనే పైరేటెడ్ కాపీలను బ్లాక్ చేస్తుంది. తప్పించుకున్నది 1 గంటలోపు తొలగించబడుతుంది.',
-          'బాట్లు వేలాది Telegram ఛానల్లను నిరంతరం స్కాన్ చేస్తాయి. పైరేటెడ్ లింక్ కనుగొన్న క్షణమే DMCA నోటీసు ఆటోమేటిగ్గా దాఖలు అవుతుంది, 24–48 గంటల్లో తొలగించబడుతుంది.',
-          'హోస్టింగ్ ప్రొవైడర్లు మరియు ఇండెక్సింగ్ సైట్లకు DMCA నోటీసులు ఆటోమేటిగ్గా దాఖలు చేయబడతాయి. 48–72 గంటల్లో తొలగించబడుతుంది.'
-        ],
-        counterLabel: 'ఆటోమేటెడ్ — మాన్యువల్ పని లేదు'
+        ]
       },
       slide6: {
         tag: 'ఎలా పని చేస్తుంది',
@@ -1881,9 +1815,6 @@
     q('#slide5 .s8-lead').innerHTML   = t.slide5.lead;
     qa('#slide5 .s8-block-heading').forEach((el,i) => el.innerHTML = t.slide5.blockHeadings[i]);
     qa('#slide5 .s8-block-desc').forEach((el,i)    => el.innerHTML = t.slide5.blockDescs[i]);
-    qa('#slide5 .s8-plat-name').forEach((el,i)   => el.innerHTML = t.slide5.platNames[i]);
-    qa('#slide5 .s8-plat-action').forEach((el,i) => el.innerHTML = t.slide5.platActions[i]);
-    q('#slide5 .s8-counter-label').innerHTML = t.slide5.counterLabel;
 
     // Slide 6 (Takedown Flow — new)
     q('#slide6 .s6-tag').innerHTML = t.slide6.tag;
