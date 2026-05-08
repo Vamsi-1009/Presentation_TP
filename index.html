@@ -89,6 +89,24 @@
       from { opacity:0; transform:scale(0.5); filter:blur(6px); }
       to   { opacity:1; transform:scale(1);   filter:blur(0); }
     }
+    @keyframes s6StepIn {
+      0%   { opacity:0; transform:translateY(32px) scale(0.85); filter:blur(4px); }
+      60%  { filter:blur(0); }
+      100% { opacity:1; transform:translateY(0) scale(1); filter:blur(0); }
+    }
+    @keyframes s6ArrowIn {
+      0%   { opacity:0; transform:scale(0.1) rotate(90deg); }
+      100% { opacity:1; transform:scale(1)   rotate(0deg); }
+    }
+    @keyframes s6DonePulse {
+      0%,100% { box-shadow:0 0 0 rgba(0,221,119,0); border-color:rgba(0,200,120,0.15); }
+      50%     { box-shadow:0 0 24px rgba(0,221,119,0.45); border-color:rgba(0,221,119,0.6); }
+    }
+    @keyframes s7CardIn {
+      0%   { opacity:0; transform:translateY(40px) scale(0.84); filter:blur(3px); }
+      65%  { filter:blur(0); transform:translateY(-5px) scale(1.02); }
+      100% { opacity:1; transform:translateY(0) scale(1); filter:blur(0); }
+    }
     .s2-title .line1,.s2-title .line2{ opacity:0; }
 
     /* ════ SLIDE 3 ════ */
@@ -285,6 +303,8 @@
     .s6-step {
       flex:1; display:flex; flex-direction:column; align-items:center; gap:8px;
       padding:14px 8px 12px; position:relative; opacity:0;
+      background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07);
+      border-radius:12px; transition:border-color 0.3s;
     }
     .s6-step-num {
       width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center;
@@ -298,7 +318,7 @@
     .s6-step:nth-child(11) .s6-step-num { background:rgba(0,200,120,0.15);  border:2px solid rgba(0,200,120,0.5);  color:#00dd77; }
     .s6-arrow {
       flex-shrink:0; width:20px; display:flex; align-items:flex-start; padding-top:22px;
-      color:rgba(249,115,22,0.4); font-size:1rem; justify-content:center;
+      color:rgba(249,115,22,0.4); font-size:1rem; justify-content:center; opacity:0;
     }
     .s6-step-icon  { font-size:1.3rem; }
     .s6-step-title { font-size:0.7rem; font-weight:800; text-align:center; color:#fff; line-height:1.3; }
@@ -307,12 +327,17 @@
     #slide6.active .s6-tag   { animation:fadeUp 0.8s 0.3s cubic-bezier(0.22,1,0.36,1) both; }
     #slide6.active .s6-title { animation:fadeUp 0.8s 0.7s cubic-bezier(0.22,1,0.36,1) both; }
     #slide6.active .s6-lead  { animation:fadeUp 0.8s 1.1s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide6.active .s6-step:nth-child(1)  { animation:s2NumIn 0.7s 1.6s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide6.active .s6-step:nth-child(3)  { animation:s2NumIn 0.7s 2.3s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide6.active .s6-step:nth-child(5)  { animation:s2NumIn 0.7s 3.0s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide6.active .s6-step:nth-child(7)  { animation:s2NumIn 0.7s 3.7s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide6.active .s6-step:nth-child(9)  { animation:s2NumIn 0.7s 4.4s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide6.active .s6-step:nth-child(11) { animation:s2NumIn 0.7s 5.1s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide6.active .s6-step:nth-child(1)   { animation:s6StepIn 0.65s 1.4s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide6.active .s6-arrow:nth-child(2)  { animation:s6ArrowIn 0.35s 1.95s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide6.active .s6-step:nth-child(3)   { animation:s6StepIn 0.65s 2.05s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide6.active .s6-arrow:nth-child(4)  { animation:s6ArrowIn 0.35s 2.6s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide6.active .s6-step:nth-child(5)   { animation:s6StepIn 0.65s 2.7s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide6.active .s6-arrow:nth-child(6)  { animation:s6ArrowIn 0.35s 3.25s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide6.active .s6-step:nth-child(7)   { animation:s6StepIn 0.65s 3.35s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide6.active .s6-arrow:nth-child(8)  { animation:s6ArrowIn 0.35s 3.9s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide6.active .s6-step:nth-child(9)   { animation:s6StepIn 0.65s 4.0s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide6.active .s6-arrow:nth-child(10) { animation:s6ArrowIn 0.35s 4.55s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide6.active .s6-step:nth-child(11)  { animation:s6StepIn 0.65s 4.65s cubic-bezier(0.22,1,0.36,1) both, s6DonePulse 2s 5.5s ease-in-out infinite; }
 
     /* ════ SLIDE 7 — Platform Coverage ════ */
     #slide7 {
@@ -332,9 +357,13 @@
     .s7-plat-card {
       background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.07);
       border-radius:12px; padding:16px 12px; display:flex; flex-direction:column; gap:10px;
-      opacity:0; transition:background 0.3s,border-color 0.3s;
+      opacity:0; transition:background 0.3s,border-color 0.3s,transform 0.3s,box-shadow 0.3s;
     }
-    .s7-plat-card:hover { background:rgba(59,130,246,0.06); border-color:rgba(59,130,246,0.2); }
+    .s7-plat-card:nth-child(1):hover { background:rgba(255,0,0,0.05);     border-color:rgba(255,0,0,0.3);     transform:translateY(-6px); box-shadow:0 10px 28px rgba(255,0,0,0.18); }
+    .s7-plat-card:nth-child(2):hover { background:rgba(225,48,108,0.05);  border-color:rgba(225,48,108,0.3);  transform:translateY(-6px); box-shadow:0 10px 28px rgba(225,48,108,0.18); }
+    .s7-plat-card:nth-child(3):hover { background:rgba(0,136,204,0.05);   border-color:rgba(0,136,204,0.3);   transform:translateY(-6px); box-shadow:0 10px 28px rgba(0,136,204,0.18); }
+    .s7-plat-card:nth-child(4):hover { background:rgba(136,136,136,0.05); border-color:rgba(136,136,136,0.3); transform:translateY(-6px); box-shadow:0 10px 28px rgba(136,136,136,0.14); }
+    .s7-plat-card:nth-child(5):hover { background:rgba(59,130,246,0.05);  border-color:rgba(59,130,246,0.3);  transform:translateY(-6px); box-shadow:0 10px 28px rgba(59,130,246,0.18); }
     .s7-plat-card:nth-child(1) { border-top:2px solid #ff0000; }
     .s7-plat-card:nth-child(2) { border-top:2px solid #e1306c; }
     .s7-plat-card:nth-child(3) { border-top:2px solid #0088cc; }
@@ -352,11 +381,11 @@
     #slide7.active .s7-tag   { animation:fadeUp 0.8s 0.3s cubic-bezier(0.22,1,0.36,1) both; }
     #slide7.active .s7-title { animation:fadeUp 0.8s 0.7s cubic-bezier(0.22,1,0.36,1) both; }
     #slide7.active .s7-lead  { animation:fadeUp 0.8s 1.1s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide7.active .s7-plat-card:nth-child(1) { animation:s2NumIn 0.8s 1.6s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide7.active .s7-plat-card:nth-child(2) { animation:s2NumIn 0.8s 2.4s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide7.active .s7-plat-card:nth-child(3) { animation:s2NumIn 0.8s 3.2s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide7.active .s7-plat-card:nth-child(4) { animation:s2NumIn 0.8s 4.0s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide7.active .s7-plat-card:nth-child(5) { animation:s2NumIn 0.8s 4.8s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide7.active .s7-plat-card:nth-child(1) { animation:s7CardIn 0.7s 1.4s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide7.active .s7-plat-card:nth-child(2) { animation:s7CardIn 0.7s 2.0s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide7.active .s7-plat-card:nth-child(3) { animation:s7CardIn 0.7s 2.6s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide7.active .s7-plat-card:nth-child(4) { animation:s7CardIn 0.7s 3.2s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide7.active .s7-plat-card:nth-child(5) { animation:s7CardIn 0.7s 3.8s cubic-bezier(0.22,1,0.36,1) both; }
 
     /* ════ SLIDE 9 — Takedown Requirements ════ */
     #slide8 {
