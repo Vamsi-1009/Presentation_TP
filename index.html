@@ -583,18 +583,18 @@
       0%,100% { filter:drop-shadow(0 0 18px rgba(0,180,255,0.8)) drop-shadow(0 0 36px rgba(0,100,255,0.5)); }
       50%     { filter:drop-shadow(0 0 32px rgba(0,210,255,1))   drop-shadow(0 0 56px rgba(0,140,255,0.8)); }
     }
-    #slide5.active .s11-shield-svg { animation:shieldResultGlow 3s 1.5s ease-in-out infinite; }
+    #slide10.active .s11-shield-svg { animation:shieldResultGlow 3s 1.5s ease-in-out infinite; }
 
     .s11-banner { display:flex; align-items:center; justify-content:center; gap:12px; padding:12px 36px; background:rgba(0,100,255,0.07); border:1px solid rgba(0,150,255,0.2); border-radius:40px; opacity:0; }
     .s11-banner-icon { font-size:1.1rem; }
     .s11-banner-text { font-size:0.98rem; font-weight:600; color:rgba(210,230,255,0.9); }
 
-    #slide5.active .s11-tag { animation:fadeUp 1.0s 0.4s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide5.active .s11-title { animation:fadeUp 1.0s 1.6s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide5.active .s11-panel.before { animation:slideRight 1.0s 3.0s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide5.active .s11-center { animation:s2NumIn 1.0s 3.6s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide5.active .s11-panel.after { animation:slideLeft 1.0s 3.0s cubic-bezier(0.22,1,0.36,1) both; }
-    #slide5.active .s11-banner { animation:fadeUp 1.0s 4.8s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide10.active .s11-tag { animation:fadeUp 1.0s 0.4s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide10.active .s11-title { animation:fadeUp 1.0s 1.6s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide10.active .s11-panel.before { animation:slideRight 1.0s 3.0s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide10.active .s11-center { animation:s2NumIn 1.0s 3.6s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide10.active .s11-panel.after { animation:slideLeft 1.0s 3.0s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide10.active .s11-banner { animation:fadeUp 1.0s 4.8s cubic-bezier(0.22,1,0.36,1) both; }
     /* ═══ PRESENTATION WRAPPER — responsive scale ═══ */
     .presentation-wrapper {
       width:1440px; height:810px;
@@ -791,43 +791,64 @@
       .s5-eye-box { width:110px !important; padding:10px !important; }
       .s5-screen-preview { width:88px !important; height:56px !important; }
 
-      /* ────── SLIDE 6 ────── */
-      #slide8 {
+      /* ────── SLIDE 6 — Takedown Process Flow ────── */
+      #slide6 {
         flex-direction:column !important;
-        align-items:flex-start !important;
+        align-items:center !important;
         justify-content:flex-start !important;
         overflow-y:auto !important;
-        padding:44px 16px 20px !important;
+        padding:44px 14px 20px !important;
+        gap:0 !important;
       }
-      .s6-left { flex:none !important; width:100% !important; padding:0 0 16px !important; gap:12px !important; }
-      .s6-left::after { display:none !important; }
-      .s6-right { flex:none !important; width:100% !important; padding:0 !important; gap:14px !important; align-items:flex-start !important; }
-      .s6-title { font-size:1.6rem !important; }
-      .s6-lead  { font-size:0.8rem !important; }
-      .s6-block { padding:8px 10px !important; }
-      .s6-block-heading { font-size:0.8rem !important; }
-      .s6-block-desc    { font-size:0.72rem !important; }
-      .s6-compare { flex-direction:row !important; gap:10px !important; }
-      .s6-view-box { width:110px !important; padding:10px !important; }
-      .s6-preview { width:88px !important; height:56px !important; }
+      #slide6 .s6-header { margin-bottom:14px !important; }
+      #slide6 .s6-title  { font-size:1.5rem !important; }
+      #slide6 .s6-lead   { font-size:0.75rem !important; }
+      #slide6 .s6-flow {
+        display:grid !important;
+        grid-template-columns:1fr 1fr !important;
+        gap:8px !important;
+        width:100% !important;
+      }
+      #slide6 .s6-arrow  { display:none !important; }
+      #slide6 .s6-step   {
+        aspect-ratio:auto !important;
+        overflow:visible !important;
+        padding:10px 8px !important;
+        gap:6px !important;
+      }
+      #slide6 .s6-step-num  { width:28px !important; height:28px !important; font-size:0.75rem !important; }
+      #slide6 .s6-step-icon { font-size:1.1rem !important; }
+      #slide6 .s6-step-title{ font-size:0.65rem !important; }
+      #slide6 .s6-step-desc  { font-size:0.56rem !important; }
 
-      /* ────── SLIDE 7 ────── */
-      #slide9 {
+      /* ────── SLIDE 7 — Platform Coverage ────── */
+      #slide7 {
         flex-direction:column !important;
-        align-items:flex-start !important;
+        align-items:center !important;
         justify-content:flex-start !important;
         overflow-y:auto !important;
-        padding:44px 16px 20px !important;
+        padding:44px 14px 20px !important;
       }
-      .s7-left { flex:none !important; width:100% !important; padding:0 0 16px !important; gap:12px !important; }
-      .s7-left::after { display:none !important; }
-      .s7-right { flex:none !important; width:100% !important; padding:0 !important; gap:14px !important; align-items:flex-start !important; }
-      .s7-title { font-size:1.6rem !important; }
-      .s7-lead  { font-size:0.8rem !important; }
-      .s7-block { padding:6px 10px !important; }
-      .s7-block-heading { font-size:0.8rem !important; }
-      .s7-block-desc    { font-size:0.72rem !important; }
-      .s7-wm-frame { width:100% !important; height:100px !important; }
+      #slide7 .s7-header { margin-bottom:14px !important; }
+      #slide7 .s7-title  { font-size:1.5rem !important; }
+      #slide7 .s7-lead   { font-size:0.75rem !important; }
+      #slide7 .s7-grid {
+        grid-template-columns:1fr 1fr !important;
+        gap:10px !important;
+        width:100% !important;
+      }
+      #slide7 .s7-plat-card {
+        aspect-ratio:auto !important;
+        overflow:visible !important;
+        padding:12px 10px !important;
+        gap:6px !important;
+      }
+      #slide7 .s7-plat-icon  { font-size:1.3rem !important; }
+      #slide7 .s7-plat-name  { font-size:0.75rem !important; }
+      #slide7 .s7-plat-label { font-size:0.55rem !important; }
+      #slide7 .s7-plat-method{ font-size:0.6rem !important; }
+      #slide7 .s7-plat-speed { font-size:0.65rem !important; }
+      #slide7 .s7-plat-reup  { font-size:0.58rem !important; }
 
       /* ────── SLIDE 8 ────── */
       #slide5 {
@@ -883,8 +904,8 @@
       .s10-stat-label { font-size:0.6rem !important; }
       .s10-panels { grid-template-columns:1fr !important; gap:10px !important; }
 
-      /* ────── SLIDE 11 ────── */
-      #slide5 {
+      /* ────── SLIDE 10 — The Result ────── */
+      #slide10 {
         flex-direction:column !important;
         align-items:center !important;
         justify-content:flex-start !important;
