@@ -252,13 +252,13 @@
     .s8-tag   { display:inline-flex; align-items:center; font-size:0.68rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; padding:5px 14px; border-radius:100px; border:1.5px solid rgba(37,99,235,0.22); background:var(--blue-l); color:var(--blue); width:fit-content; opacity:0; }
     .s8-title { font-size:3rem; font-weight:900; line-height:1.1; opacity:0; color:var(--text); letter-spacing:-0.02em; }
     .s8-accent { color:var(--blue); }
-    .s8-lead  { font-size:0.92rem; color:var(--text2); line-height:1.7; max-width:640px; opacity:0; }
-    .s8-lead2 { font-size:0.82rem; color:var(--text2); line-height:1.6; opacity:0; }
+    .s8-lead  { font-size:0.92rem; color:var(--text); font-weight:600; line-height:1.7; max-width:640px; opacity:0; }
+    .s8-lead2 { font-size:0.82rem; color:var(--text); font-weight:600; line-height:1.6; opacity:0; }
     .s8-blocks { display:flex; flex-direction:column; gap:10px; }
     .s8-block  { padding:14px 18px; border-radius:var(--r2); background:var(--surface); border:1.5px solid var(--border2); box-shadow:var(--sh1); opacity:0; transition:transform 0.25s,box-shadow 0.25s; }
     .s8-block:hover { transform:translateX(5px); box-shadow:var(--sh2); }
     .s8-block-heading { font-size:0.9rem; font-weight:800; color:var(--text); margin-bottom:5px; }
-    .s8-block-desc    { font-size:0.75rem; color:var(--text2); line-height:1.6; }
+    .s8-block-desc    { font-size:0.75rem; color:var(--text); font-weight:600; line-height:1.6; }
     /* kept for compat */
     .s8-left  { flex:0 0 54%; padding:28px 32px 28px 56px; display:flex; flex-direction:column; justify-content:center; gap:10px; position:relative; z-index:1; }
     .s8-left::after { content:''; position:absolute; right:0; top:8%; bottom:8%; width:1px; background:linear-gradient(to bottom,transparent,var(--border2),transparent); }
@@ -267,13 +267,13 @@
     .s8-platform  { display:flex; flex-direction:column; align-items:center; gap:6px; padding:12px 10px; background:var(--surface); border:1.5px solid var(--border2); border-radius:var(--r2); min-width:100px; box-shadow:var(--sh1); }
     .s8-platform.hit { border-color:rgba(37,99,235,0.3); background:var(--blue-l); }
     .s8-plat-icon   { font-size:1.4rem; }
-    .s8-plat-name   { font-size:0.68rem; font-weight:700; color:var(--text2); }
+    .s8-plat-name   { font-size:0.68rem; font-weight:700; color:var(--text); }
     .s8-plat-status { font-size:0.6rem; font-weight:700; padding:2px 6px; border-radius:3px; }
     .s8-plat-status.scanning { color:var(--amber); background:var(--amber-l); border:1px solid rgba(217,119,6,0.25); }
     .s8-plat-status.done     { color:var(--green); background:var(--green-l); border:1px solid rgba(22,163,74,0.25); }
     .s8-counter       { display:flex; flex-direction:column; align-items:center; gap:4px; padding:12px 28px; background:var(--blue-l); border:1.5px solid rgba(37,99,235,0.2); border-radius:var(--r2); opacity:0; flex-shrink:0; }
     .s8-counter-val   { font-size:2.4rem; font-weight:900; color:var(--blue); line-height:1; }
-    .s8-counter-label { font-size:0.66rem; color:var(--text2); letter-spacing:0.08em; text-transform:uppercase; }
+    .s8-counter-label { font-size:0.66rem; color:var(--text); font-weight:700; letter-spacing:0.08em; text-transform:uppercase; }
     .s8-plat-new-grid { display:flex; flex-direction:column; gap:8px; width:100%; }
     .s8-plat-card { padding:10px 14px; border-radius:var(--r2); background:var(--surface); border:1.5px solid var(--border2); display:flex; flex-direction:column; gap:6px; box-shadow:var(--sh1); transition:box-shadow 0.25s; opacity:0; }
     .s8-plat-card:hover { box-shadow:var(--sh2); }
@@ -284,7 +284,7 @@
     .s8-time-chip.fast   { color:var(--green); background:var(--green-l); border:1.5px solid rgba(22,163,74,0.25); }
     .s8-time-chip.medium { color:var(--amber); background:var(--amber-l); border:1.5px solid rgba(217,119,6,0.25); }
     .s8-time-chip.slow   { color:var(--red);   background:var(--red-l);   border:1.5px solid rgba(220,38,38,0.25); }
-    .s8-plat-action { font-size:0.72rem; color:var(--text2); line-height:1.5; padding-left:46px; }
+    .s8-plat-action { font-size:0.72rem; color:var(--text); font-weight:600; line-height:1.5; padding-left:46px; }
     @keyframes s5BlockIn { from{opacity:0;transform:translateX(-24px)} to{opacity:1;transform:translateX(0)} }
     #slide5.active .s8-tag              { animation:riseUpFast 0.6s 0.3s cubic-bezier(0.34,1.56,0.64,1) both; }
     #slide5.active .s8-title            { animation:fromLeft   0.9s 0.7s cubic-bezier(0.34,1.56,0.64,1) both; }
