@@ -393,7 +393,7 @@
     .s7-tag    { display:inline-flex; align-items:center; font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--blue); border:1.5px solid rgba(37,99,235,0.22); padding:5px 14px; border-radius:100px; background:var(--blue-l); width:fit-content; opacity:0; }
     .s7-title  { font-size:2rem; font-weight:900; line-height:1.1; text-align:center; opacity:0; color:var(--text); letter-spacing:-0.02em; }
     .s7-accent { color:var(--blue); }
-    .s7-lead   { font-size:0.82rem; color:var(--text2); text-align:center; max-width:700px; opacity:0; }
+    .s7-lead   { font-size:0.82rem; color:var(--text); font-weight:600; text-align:center; max-width:700px; opacity:0; }
 
     /* 3-row top + 2-row bottom centered grid */
     .s7-grid  { display:flex; flex-direction:column; gap:14px; width:100%; position:relative; z-index:1; }
@@ -423,18 +423,18 @@
     .s7-fb-icon     { width:28px; height:28px; }
     .s7-head-text   { display:flex; flex-direction:column; gap:2px; }
     .s7-plat-name   { font-size:0.95rem; font-weight:900; color:var(--text); line-height:1.2; }
-    .s7-plat-powered{ font-size:0.6rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text2); }
+    .s7-plat-powered{ font-size:0.6rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text); }
     .s7-card-divider{ height:1px; background:var(--border); flex-shrink:0; }
     .s7-plat-row    { display:flex; flex-direction:column; gap:4px; }
-    .s7-plat-label  { font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text2); }
-    .s7-plat-method { font-size:0.78rem; font-weight:600; color:var(--text2); line-height:1.4; }
-    .s7-plat-detail { font-size:0.7rem; color:var(--text2); line-height:1.4; font-style:italic; }
-    .s7-plat-reup   { font-size:0.72rem; color:var(--text2); line-height:1.4; }
+    .s7-plat-label  { font-size:0.62rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--text); }
+    .s7-plat-method { font-size:0.78rem; font-weight:700; color:var(--text); line-height:1.4; }
+    .s7-plat-detail { font-size:0.7rem; font-weight:600; color:var(--text); line-height:1.4; font-style:italic; }
+    .s7-plat-reup   { font-size:0.72rem; font-weight:600; color:var(--text); line-height:1.4; }
     .s7-speed-badge { display:flex; align-items:center; gap:10px; background:var(--green-l); border:1.5px solid rgba(22,163,74,0.2); border-radius:var(--r3); padding:10px 14px; }
     .s7-speed-bolt  { font-size:1.1rem; flex-shrink:0; }
     .s7-speed-inner { display:flex; flex-direction:column; gap:1px; }
     .s7-plat-speed  { font-size:1rem; font-weight:900; color:var(--green); line-height:1; }
-    .s7-speed-label { font-size:0.55rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(22,163,74,0.6); }
+    .s7-speed-label { font-size:0.55rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--green); }
 
     @keyframes s7CardIn { from{opacity:0;transform:translateY(36px) scale(0.91);filter:blur(3px)} 70%{filter:blur(0);transform:translateY(-4px) scale(1.01)} to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)} }
     @keyframes s7SpeedPulse { 0%,100%{border-color:rgba(22,163,74,0.2)} 50%{border-color:rgba(22,163,74,0.5);box-shadow:0 0 12px rgba(22,163,74,0.15)} }
