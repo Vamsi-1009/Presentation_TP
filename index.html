@@ -66,6 +66,17 @@
     @keyframes barGrow58 { to{width:58%} } @keyframes barGrow15 { to{width:15%} }
     @keyframes barGrow13 { to{width:13%} } @keyframes barGrow9  { to{width:9%}  }
     @keyframes barGrow5  { to{width:5%}  }
+    /* ════ ADVANCED SHARED KEYFRAMES (Slide-4 style) ════ */
+    @keyframes boomIn    { 0%{opacity:0;transform:scale(3.2) translateY(22px);filter:blur(10px)} 38%{filter:blur(0)} 62%{transform:scale(0.95) translateY(-5px)} 78%{transform:scale(1.02) translateY(3px)} 100%{opacity:1;transform:scale(1) translateY(0);filter:blur(0)} }
+    @keyframes slamDown  { 0%{opacity:0;transform:translateY(-380px) scale(1.6) rotate(-10deg);filter:blur(5px)} 52%{opacity:1;filter:blur(0);transform:translateY(16px) scale(0.92) rotate(3deg)} 70%{transform:translateY(-10px) scale(1.06) rotate(-2deg)} 84%{transform:translateY(7px) scale(0.98) rotate(1deg)} 93%{transform:translateY(-3px) scale(1.01)} 100%{opacity:1;transform:none;filter:blur(0)} }
+    @keyframes crashLeft { 0%{opacity:0;transform:translateX(-320px) rotate(-20deg) scale(0.5);filter:blur(8px)} 55%{filter:blur(0);transform:translateX(14px) rotate(4deg) scale(1.04)} 72%{transform:translateX(-7px) rotate(-2deg) scale(0.97)} 86%{transform:translateX(4px) rotate(1deg)} 100%{opacity:1;transform:none;filter:blur(0)} }
+    @keyframes crashRight{ 0%{opacity:0;transform:translateX(320px) rotate(20deg) scale(0.5);filter:blur(8px)} 55%{filter:blur(0);transform:translateX(-14px) rotate(-4deg) scale(1.04)} 72%{transform:translateX(7px) rotate(2deg) scale(0.97)} 86%{transform:translateX(-4px) rotate(-1deg)} 100%{opacity:1;transform:none;filter:blur(0)} }
+    @keyframes zoomShrink{ 0%{opacity:0;transform:scale(12) translateY(-10px);filter:blur(14px);letter-spacing:0.5em} 20%{opacity:1;filter:blur(0)} 100%{opacity:1;transform:scale(1) translateY(0);filter:blur(0)} }
+    @keyframes numberBoom{ 0%{opacity:0;transform:scale(0.15) rotate(-10deg);filter:blur(10px)} 50%{filter:blur(0);transform:scale(1.14) rotate(2.5deg)} 70%{transform:scale(0.95) rotate(-1deg)} 85%{transform:scale(1.04)} 100%{opacity:1;transform:scale(1) rotate(0);filter:blur(0)} }
+    @keyframes floatBob  { 0%,100%{transform:translateY(0) rotate(0deg)} 40%{transform:translateY(-10px) rotate(1deg)} 70%{transform:translateY(-4px) rotate(-0.5deg)} }
+    @keyframes shockRing { 0%{transform:translate(-50%,-50%) scale(0.3);opacity:0.85} 100%{transform:translate(-50%,-50%) scale(4.5);opacity:0} }
+    @keyframes statSlam  { 0%{opacity:0;transform:translateY(-260px) scale(1.4) rotate(-6deg);filter:blur(4px)} 55%{opacity:1;filter:blur(0);transform:translateY(10px) scale(0.93) rotate(2deg)} 72%{transform:translateY(-7px) scale(1.05) rotate(-1deg)} 86%{transform:translateY(4px) scale(0.98)} 100%{opacity:1;transform:none;filter:blur(0)} }
+    @keyframes panelCrash{ 0%{opacity:0;transform:translateY(80px) scale(0.88) rotate(2deg);filter:blur(6px)} 55%{filter:blur(0);transform:translateY(-8px) scale(1.02) rotate(-0.5deg)} 75%{transform:translateY(4px) scale(0.99)} 90%{transform:translateY(-2px)} 100%{opacity:1;transform:none;filter:blur(0)} }
     /* keep compat aliases */
     @keyframes fadeUp    { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
     @keyframes fadeIn    { from{opacity:0} to{opacity:1} }
@@ -77,10 +88,10 @@
     /* ════ SLIDE 1 ════ */
     #slide1 { flex-direction:column; align-items:center; justify-content:center; gap:44px; padding:48px 56px; position:relative; }
     #slide1::after { content:''; position:absolute; top:-60px; right:-60px; width:380px; height:380px; border-radius:50%; background:radial-gradient(circle,rgba(220,38,38,0.06) 0%,transparent 70%); pointer-events:none; z-index:0; }
-    #slide1.active .s1-title   { animation:riseUp 0.8s 0.2s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide1.active .s1-title .highlight::after { animation:drawLine 0.6s 1.1s ease both; }
-    #slide1.active .s1-divider { animation:drawLine 0.8s 0.8s ease both; }
-    #slide1.active .s1-flow    { animation:riseUp 0.7s 0.5s cubic-bezier(0.34,1.56,0.64,1) both; }
+    #slide1.active .s1-title   { animation:boomIn  1.05s 0.2s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide1.active .s1-title .highlight::after { animation:drawLine 0.6s 1.3s ease both; }
+    #slide1.active .s1-divider { animation:drawLine 0.8s 0.9s ease both; }
+    #slide1.active .s1-flow    { animation:slamDown 1.0s 0.7s cubic-bezier(0.34,1.56,0.64,1) both; }
     .s1-title { font-size:clamp(1.8rem,4vw,2.9rem); font-weight:900; text-align:center; position:relative; z-index:1; opacity:0; color:var(--text); letter-spacing:-0.02em; }
     .s1-title .highlight { color:var(--red); position:relative; display:inline-block; }
     .s1-title .highlight::after { content:''; position:absolute; bottom:-4px; left:0; height:3px; width:0; background:var(--red); border-radius:2px; }
@@ -120,18 +131,18 @@
     .chart-bars rect { fill:rgba(220,38,38,0.1); rx:4; }
     .chart-arrow { fill:none; stroke:var(--red); stroke-width:3; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:400; stroke-dashoffset:400; }
     .arrow-head { fill:var(--red); }
-    #slide2.active .s2-title .line1  { animation:fromLeft 0.9s 0.3s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide2.active .s2-title .line2  { animation:fromLeft 0.9s 0.7s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide2.active .s2-divider       { animation:drawLine 0.8s 1.2s ease both; }
-    #slide2.active .s2-point:nth-child(1){ animation:fromLeft 0.7s 1.4s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide2.active .s2-point:nth-child(2){ animation:fromLeft 0.7s 1.8s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide2.active .s2-point:nth-child(3){ animation:fromLeft 0.7s 2.2s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide2.active .s2-point:nth-child(4){ animation:fromLeft 0.7s 2.6s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide2.active .s2-point:nth-child(5){ animation:fromLeft 0.7s 3.0s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide2.active .s2-revenue-label { animation:riseUpFast 0.6s 1.2s ease both; }
-    #slide2.active .s2-revenue-number{ animation:stampIn    1.0s 1.8s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide2.active .s2-chart         { animation:riseUpFast 0.7s 3.0s ease both; }
-    #slide2.active .chart-arrow      { animation:drawStroke 2.0s 3.8s ease both; }
+    #slide2.active .s2-title .line1  { animation:crashLeft  1.0s 0.3s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide2.active .s2-title .line2  { animation:crashRight 1.0s 0.65s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide2.active .s2-divider       { animation:drawLine 0.8s 1.3s ease both; }
+    #slide2.active .s2-point:nth-child(1){ animation:crashLeft 0.85s 1.5s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide2.active .s2-point:nth-child(2){ animation:crashLeft 0.85s 1.85s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide2.active .s2-point:nth-child(3){ animation:crashLeft 0.85s 2.2s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide2.active .s2-point:nth-child(4){ animation:crashLeft 0.85s 2.55s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide2.active .s2-point:nth-child(5){ animation:crashLeft 0.85s 2.9s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide2.active .s2-revenue-label { animation:zoomShrink 1.2s 1.2s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide2.active .s2-revenue-number{ animation:numberBoom 1.1s 1.9s cubic-bezier(0.34,1.56,0.64,1) both, floatBob 3.5s 3.5s ease-in-out infinite; }
+    #slide2.active .s2-chart         { animation:panelCrash 0.9s 3.1s cubic-bezier(0.34,1.56,0.64,1) both; }
+    #slide2.active .chart-arrow      { animation:drawStroke 2.0s 4.0s ease both; }
     @keyframes s6StepIn {
       0%   { opacity:0; transform:translateY(32px) scale(0.85); filter:blur(4px); }
       60%  { filter:blur(0); }
@@ -168,11 +179,11 @@
     .s3-subtitle { font-size:1rem; color:var(--text); font-weight:700; text-align:center; position:relative; z-index:2; opacity:0; max-width:540px; }
     @keyframes s3RingPulse { from{transform:translate(-50%,-50%) scale(0.5);opacity:0.6} to{transform:translate(-50%,-50%) scale(2);opacity:0} }
     @keyframes s3ShieldFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
-    #slide3.active .s3-shield-wrap { animation:scaleIn   0.9s 0.1s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide3.active .s3-badge       { animation:riseUpFast 0.7s 0.5s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide3.active .s3-title-wrap  { animation:riseUp    1.0s 1.0s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide3.active .s3-subtitle    { animation:riseUpFast 0.8s 2.0s ease both; }
-    #slide3.active .s3-shield svg  { animation:s3ShieldFloat 4s 1s ease-in-out infinite; }
+    #slide3.active .s3-shield-wrap { animation:slamDown   1.1s 0.1s cubic-bezier(0.34,1.56,0.64,1) both; }
+    #slide3.active .s3-badge       { animation:zoomShrink 1.2s 0.8s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide3.active .s3-title-wrap  { animation:boomIn     1.05s 1.4s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide3.active .s3-subtitle    { animation:crashLeft  0.9s 2.3s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide3.active .s3-shield svg  { animation:s3ShieldFloat 4s 1.8s ease-in-out infinite; }
     #slide3.active .s3-radar-ring  { animation:s3RingPulse 3s 0.5s ease-out infinite; }
     #slide3.active .s3-radar-ring:nth-child(2){ animation-delay:1s; }
     #slide3.active .s3-radar-ring:nth-child(3){ animation-delay:1.8s; }
@@ -286,12 +297,12 @@
     .s8-time-chip.slow   { color:var(--red);   background:var(--red-l);   border:1.5px solid rgba(220,38,38,0.25); }
     .s8-plat-action { font-size:0.72rem; color:var(--text); font-weight:600; line-height:1.5; padding-left:46px; }
     @keyframes s5BlockIn { from{opacity:0;transform:translateX(-24px)} to{opacity:1;transform:translateX(0)} }
-    #slide5.active .s8-tag              { animation:riseUpFast 0.6s 0.3s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide5.active .s8-title            { animation:fromLeft   0.9s 0.7s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide5.active .s8-lead             { animation:riseUpFast 0.7s 1.4s ease both; }
-    #slide5.active .s8-block:nth-child(1){ animation:s5BlockIn 0.7s 2.0s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide5.active .s8-block:nth-child(2){ animation:s5BlockIn 0.7s 2.7s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide5.active .s8-block:nth-child(3){ animation:s5BlockIn 0.7s 3.4s cubic-bezier(0.34,1.56,0.64,1) both; }
+    #slide5.active .s8-tag              { animation:zoomShrink 1.2s 0.2s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide5.active .s8-title            { animation:boomIn     1.1s 0.8s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide5.active .s8-lead             { animation:crashLeft  0.9s 1.6s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide5.active .s8-block:nth-child(1){ animation:crashLeft 0.9s 2.2s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide5.active .s8-block:nth-child(2){ animation:crashRight 0.9s 2.8s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide5.active .s8-block:nth-child(3){ animation:crashLeft 0.9s 3.4s cubic-bezier(0.22,1,0.36,1) both; }
 
     /* ════ SLIDE 6 — Control Room (dark) ════ */
     @keyframes spin        { to { transform:rotate(360deg); } }
@@ -316,9 +327,9 @@
     .s6-title  { font-size:1.78rem; font-weight:900; line-height:1.1; text-align:center; opacity:0; color:var(--text); letter-spacing:-0.025em; }
     .s6-accent { color:var(--blue); }
     .s6-lead   { font-size:0.74rem; color:var(--text2); text-align:center; max-width:640px; margin:0 auto; opacity:0; }
-    #slide6.active .s6-tag   { animation:riseUpFast 0.6s 0.15s ease both; }
-    #slide6.active .s6-title { animation:riseUp     0.7s 0.4s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide6.active .s6-lead  { animation:riseUpFast 0.6s 0.8s ease both; }
+    #slide6.active .s6-tag   { animation:zoomShrink 1.2s 0.1s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide6.active .s6-title { animation:boomIn     1.0s 0.5s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide6.active .s6-lead  { animation:crashLeft  0.8s 1.0s cubic-bezier(0.22,1,0.36,1) both; }
 
     /* ── System status bar ── */
     .s6-sysbar { display:flex; align-items:center; gap:14px; flex-shrink:0; background:var(--surface); border:1.5px solid var(--border2); border-radius:10px; padding:7px 16px; box-shadow:var(--sh1); }
@@ -438,14 +449,14 @@
 
     @keyframes s7CardIn { from{opacity:0;transform:translateY(36px) scale(0.91);filter:blur(3px)} 70%{filter:blur(0);transform:translateY(-4px) scale(1.01)} to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)} }
     @keyframes s7SpeedPulse { 0%,100%{border-color:rgba(22,163,74,0.2)} 50%{border-color:rgba(22,163,74,0.5);box-shadow:0 0 12px rgba(22,163,74,0.15)} }
-    #slide7.active .s7-tag   { animation:riseUpFast 0.6s 0.3s ease both; }
-    #slide7.active .s7-title { animation:riseUp     0.7s 0.6s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide7.active .s7-lead  { animation:riseUpFast 0.6s 1.0s ease both; }
-    #slide7.active .s7-row1 .s7-plat-card:nth-child(1) { animation:s7CardIn 0.7s 1.3s  cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide7.active .s7-row1 .s7-plat-card:nth-child(2) { animation:s7CardIn 0.7s 1.75s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide7.active .s7-row1 .s7-plat-card:nth-child(3) { animation:s7CardIn 0.7s 2.2s  cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide7.active .s7-row2 .s7-plat-card:nth-child(1) { animation:s7CardIn 0.7s 2.65s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide7.active .s7-row2 .s7-plat-card:nth-child(2) { animation:s7CardIn 0.7s 3.1s  cubic-bezier(0.34,1.56,0.64,1) both; }
+    #slide7.active .s7-tag   { animation:zoomShrink 1.2s 0.3s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide7.active .s7-title { animation:boomIn     1.1s 0.7s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide7.active .s7-lead  { animation:crashLeft  0.8s 1.2s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide7.active .s7-row1 .s7-plat-card:nth-child(1) { animation:crashLeft  0.9s 1.5s  cubic-bezier(0.22,1,0.36,1) both; }
+    #slide7.active .s7-row1 .s7-plat-card:nth-child(2) { animation:slamDown   0.9s 1.95s cubic-bezier(0.34,1.56,0.64,1) both; }
+    #slide7.active .s7-row1 .s7-plat-card:nth-child(3) { animation:crashRight 0.9s 2.4s  cubic-bezier(0.22,1,0.36,1) both; }
+    #slide7.active .s7-row2 .s7-plat-card:nth-child(1) { animation:crashLeft  0.9s 2.85s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide7.active .s7-row2 .s7-plat-card:nth-child(2) { animation:crashRight 0.9s 3.3s  cubic-bezier(0.22,1,0.36,1) both; }
     #slide7.active .s7-speed-badge { animation:s7SpeedPulse 2.5s 5s ease-in-out infinite; }
 
     /* ════ SLIDE 8 — API Access ════ */
@@ -480,16 +491,16 @@
     .s9-result-text  { font-size:0.8rem; font-weight:700; color:var(--green); }
     .s9-result-sub   { font-size:0.68rem; color:var(--green2); margin-top:2px; }
     .s9-grid-label   { font-size:0.64rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--text); opacity:0; }
-    #slide8.active .s9-tag   { animation:riseUpFast 0.7s 0.4s ease both; }
-    #slide8.active .s9-title { animation:riseUp     0.9s 1.2s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide8.active .s9-lead  { animation:riseUpFast 0.7s 2.5s ease both; }
-    #slide8.active .s9-note  { animation:riseUpFast 0.7s 3.8s ease both; }
-    #slide8.active .s9-grid-label        { animation:riseUpFast 0.6s 0.4s ease both; }
-    #slide8.active .s9-card:nth-child(1) { animation:cardFlip 0.7s 1.2s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide8.active .s9-card:nth-child(2) { animation:cardFlip 0.7s 1.7s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide8.active .s9-card:nth-child(3) { animation:cardFlip 0.7s 2.2s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide8.active .s9-card:nth-child(4) { animation:cardFlip 0.7s 2.7s cubic-bezier(0.34,1.56,0.64,1) both; }
-    #slide8.active .s9-result            { animation:riseUp   0.7s 3.8s cubic-bezier(0.34,1.56,0.64,1) both; }
+    #slide8.active .s9-tag   { animation:zoomShrink 1.2s 0.3s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide8.active .s9-title { animation:slamDown   1.1s 1.0s cubic-bezier(0.34,1.56,0.64,1) both; }
+    #slide8.active .s9-lead  { animation:crashLeft  0.8s 2.3s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide8.active .s9-note  { animation:crashRight 0.8s 3.6s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide8.active .s9-grid-label        { animation:zoomShrink 1.0s 0.3s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide8.active .s9-card:nth-child(1) { animation:crashLeft  0.9s 1.1s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide8.active .s9-card:nth-child(2) { animation:slamDown   0.9s 1.6s cubic-bezier(0.34,1.56,0.64,1) both; }
+    #slide8.active .s9-card:nth-child(3) { animation:slamDown   0.9s 2.1s cubic-bezier(0.34,1.56,0.64,1) both; }
+    #slide8.active .s9-card:nth-child(4) { animation:crashRight 0.9s 2.6s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide8.active .s9-result            { animation:boomIn     0.9s 3.6s cubic-bezier(0.22,1,0.36,1) both; }
 
     /* ════ SLIDE 9 — Producer Dashboard ════ */
     #slide9 { flex-direction:column; align-items:center; justify-content:flex-start; padding:22px 44px 18px; position:relative; overflow:hidden; }
@@ -555,14 +566,14 @@
     .s10-alert.success .s10-alert-text { color:var(--green); }
     .s10-alert.info    .s10-alert-text { color:var(--amber); }
     .s10-alert-time { font-size:0.63rem; color:var(--text2); flex-shrink:0; }
-    #slide9.active .s10-header { animation:riseUpFast 0.7s 0.4s ease both; }
-    #slide9.active .s10-stats  { animation:riseUpFast 0.7s 1.4s ease both; }
-    #slide9.active .s10-panels { animation:riseUpFast 0.7s 2.8s ease both; }
-    #slide9.active .s10-bar.yt  { animation:barGrow58 1.3s 4.2s ease both; }
-    #slide9.active .s10-bar.tg  { animation:barGrow15 1.3s 5.5s ease both; }
-    #slide9.active .s10-bar.fb  { animation:barGrow13 1.3s 6.8s ease both; }
-    #slide9.active .s10-bar.ig  { animation:barGrow9  1.3s 8.1s ease both; }
-    #slide9.active .s10-bar.web { animation:barGrow5  1.3s 9.4s ease both; }
+    #slide9.active .s10-header          { animation:boomIn    1.0s 0.3s cubic-bezier(0.22,1,0.36,1) both; }
+    #slide9.active .s10-stats           { animation:slamDown  1.1s 1.2s cubic-bezier(0.34,1.56,0.64,1) both; }
+    #slide9.active .s10-panels          { animation:panelCrash 1.0s 2.6s cubic-bezier(0.34,1.56,0.64,1) both; }
+    #slide9.active .s10-bar.yt  { animation:barGrow58 1.3s 4.0s ease both; }
+    #slide9.active .s10-bar.tg  { animation:barGrow15 1.3s 5.3s ease both; }
+    #slide9.active .s10-bar.fb  { animation:barGrow13 1.3s 6.6s ease both; }
+    #slide9.active .s10-bar.ig  { animation:barGrow9  1.3s 7.9s ease both; }
+    #slide9.active .s10-bar.web { animation:barGrow5  1.3s 9.2s ease both; }
 
     /* ════ SLIDE 10 — The Result ════ */
     #slide10 {
