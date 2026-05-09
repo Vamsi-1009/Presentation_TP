@@ -819,22 +819,22 @@
       #slide6 .s6-prog-count{ font-size:0.52rem !important; min-width:60px !important; }
       #slide6 .s6-sys-timer { display:none !important; }
       #slide6 .s6-sys-sep:last-of-type { display:none !important; }
-      /* 2 columns × 3 rows */
+      /* 2 columns × 3 rows — auto rows so content never clips */
       #slide6 .s6-grid {
         grid-template-columns:repeat(2,1fr) !important;
-        grid-template-rows:repeat(3,1fr) !important;
+        grid-template-rows:repeat(3,auto) !important;
         gap:8px !important;
       }
-      #slide6 .s6-card { padding:11px 12px 10px !important; border-radius:11px !important; }
+      #slide6 .s6-card { padding:11px 12px 10px !important; border-radius:11px !important; overflow:visible !important; }
       #slide6 .s6-card-top  { margin-bottom:8px !important; }
       #slide6 .s6-card-step { font-size:0.44rem !important; padding:2px 7px !important; }
       #slide6 .s6-card-ind  { width:14px !important; height:14px !important; }
-      #slide6 .s6-card-icon { font-size:1.8rem !important; margin-bottom:5px !important; }
-      #slide6 .s6-card-name { font-size:0.76rem !important; margin-bottom:3px !important; }
-      #slide6 .s6-card-desc { font-size:0.56rem !important; }
-      #slide6 .s6-card-div  { margin:7px 0 !important; }
-      #slide6 .s6-card-status { font-size:0.5rem !important; }
-      #slide6 .s6-card-result { font-size:0.52rem !important; }
+      #slide6 .s6-card-icon { display:none !important; }
+      #slide6 .s6-card-name { font-size:0.78rem !important; margin-bottom:3px !important; }
+      #slide6 .s6-card-desc { font-size:0.58rem !important; }
+      #slide6 .s6-card-div  { margin:6px 0 !important; }
+      #slide6 .s6-card-status { font-size:0.52rem !important; }
+      #slide6 .s6-card-result { font-size:0.54rem !important; }
 
       /* ────── SLIDE 7 — Platform Coverage (mobile single-column) ────── */
       #slide7 {
