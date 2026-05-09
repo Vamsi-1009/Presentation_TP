@@ -926,7 +926,8 @@
       /* Mobile description text */
       #slide7 .s7-mob-desc {
         font-size:0.8rem !important;
-        color:var(--text2) !important;
+        color:var(--text) !important;
+        font-weight:600 !important;
         line-height:1.55 !important;
         margin:0 !important;
       }
@@ -1017,12 +1018,79 @@
 
       /* Slide 6 mobile card animations handled by JS state machine (startSlide6) */
 
-      /* ────── Mobile one-by-one animations: Slide 7 cards ────── */
-      #slide7.active .s7-plat-card:nth-child(1) { animation:fadeUp 0.6s 0.4s cubic-bezier(0.22,1,0.36,1) both !important; }
-      #slide7.active .s7-plat-card:nth-child(2) { animation:fadeUp 0.6s 0.85s cubic-bezier(0.22,1,0.36,1) both !important; }
-      #slide7.active .s7-plat-card:nth-child(3) { animation:fadeUp 0.6s 1.3s cubic-bezier(0.22,1,0.36,1) both !important; }
-      #slide7.active .s7-plat-card:nth-child(4) { animation:fadeUp 0.6s 1.75s cubic-bezier(0.22,1,0.36,1) both !important; }
-      #slide7.active .s7-plat-card:nth-child(5) { animation:fadeUp 0.6s 2.2s cubic-bezier(0.22,1,0.36,1) both !important; }
+      /* ════ MOBILE — Prevent animation overflow on all slides ════ */
+      .slide { overflow-x:hidden !important; }
+
+      /* ════ MOBILE — Scaled-down dramatic keyframes (no horizontal overflow) ════ */
+      @keyframes crashLeftMob  { 0%{opacity:0;transform:translateX(-110px) rotate(-10deg) scale(0.65);filter:blur(5px)} 55%{filter:blur(0);transform:translateX(7px) rotate(2.5deg) scale(1.03)} 74%{transform:translateX(-3px) rotate(-1deg)} 89%{transform:translateX(2px)} 100%{opacity:1;transform:none} }
+      @keyframes crashRightMob { 0%{opacity:0;transform:translateX(110px) rotate(10deg) scale(0.65);filter:blur(5px)} 55%{filter:blur(0);transform:translateX(-7px) rotate(-2.5deg) scale(1.03)} 74%{transform:translateX(3px) rotate(1deg)} 89%{transform:translateX(-2px)} 100%{opacity:1;transform:none} }
+      @keyframes slamDownMob   { 0%{opacity:0;transform:translateY(-170px) scale(1.3) rotate(-6deg);filter:blur(4px)} 52%{opacity:1;filter:blur(0);transform:translateY(10px) scale(0.93) rotate(2deg)} 70%{transform:translateY(-6px) scale(1.04) rotate(-1deg)} 84%{transform:translateY(3px) scale(0.99)} 93%{transform:translateY(-2px)} 100%{opacity:1;transform:none} }
+      @keyframes boomInMob     { 0%{opacity:0;transform:scale(2.4) translateY(16px);filter:blur(8px)} 40%{filter:blur(0)} 64%{transform:scale(0.96) translateY(-4px)} 80%{transform:scale(1.02)} 100%{opacity:1;transform:scale(1) translateY(0)} }
+      @keyframes zoomShrinkMob { 0%{opacity:0;transform:scale(7) translateY(-6px);filter:blur(10px)} 22%{opacity:1;filter:blur(0)} 100%{opacity:1;transform:scale(1) translateY(0)} }
+      @keyframes numberBoomMob { 0%{opacity:0;transform:scale(0.2) rotate(-8deg);filter:blur(8px)} 52%{filter:blur(0);transform:scale(1.1) rotate(2deg)} 72%{transform:scale(0.97) rotate(-0.5deg)} 88%{transform:scale(1.02)} 100%{opacity:1;transform:scale(1) rotate(0)} }
+      @keyframes panelCrashMob { 0%{opacity:0;transform:translateY(55px) scale(0.9) rotate(1.5deg);filter:blur(4px)} 55%{filter:blur(0);transform:translateY(-5px) scale(1.01)} 74%{transform:translateY(3px)} 89%{transform:translateY(-1px)} 100%{opacity:1;transform:none} }
+
+      /* ────── Slide 1 mobile animations ────── */
+      #slide1.active .s1-title { animation:boomInMob    0.9s 0.2s cubic-bezier(0.22,1,0.36,1) both !important; }
+      #slide1.active .s1-flow  { animation:slamDownMob  0.9s 0.6s cubic-bezier(0.34,1.56,0.64,1) both !important; }
+
+      /* ────── Slide 2 mobile animations ────── */
+      #slide2.active .s2-title .line1  { animation:crashLeftMob  0.85s 0.3s  cubic-bezier(0.22,1,0.36,1) both !important; }
+      #slide2.active .s2-title .line2  { animation:crashRightMob 0.85s 0.65s cubic-bezier(0.22,1,0.36,1) both !important; }
+      #slide2.active .s2-point:nth-child(1){ animation:crashLeftMob 0.75s 1.4s cubic-bezier(0.22,1,0.36,1) both !important; }
+      #slide2.active .s2-point:nth-child(2){ animation:crashLeftMob 0.75s 1.7s cubic-bezier(0.22,1,0.36,1) both !important; }
+      #slide2.active .s2-point:nth-child(3){ animation:crashLeftMob 0.75s 2.0s cubic-bezier(0.22,1,0.36,1) both !important; }
+      #slide2.active .s2-point:nth-child(4){ animation:crashLeftMob 0.75s 2.3s cubic-bezier(0.22,1,0.36,1) both !important; }
+      #slide2.active .s2-point:nth-child(5){ animation:crashLeftMob 0.75s 2.6s cubic-bezier(0.22,1,0.36,1) both !important; }
+      #slide2.active .s2-revenue-label { animation:zoomShrinkMob 1.0s 1.1s cubic-bezier(0.22,1,0.36,1) both !important; }
+      #slide2.active .s2-revenue-number{ animation:numberBoomMob 0.95s 1.8s cubic-bezier(0.34,1.56,0.64,1) both, floatBob 3.5s 3.2s ease-in-out infinite !important; }
+      #slide2.active .s2-chart         { animation:panelCrashMob 0.85s 3.0s cubic-bezier(0.34,1.56,0.64,1) both !important; }
+
+      /* ────── Slide 3 mobile animations ────── */
+      #slide3.active .s3-shield-wrap { animation:slamDownMob   0.95s 0.1s cubic-bezier(0.34,1.56,0.64,1) both !important; }
+      #slide3.active .s3-badge       { animation:zoomShrinkMob 1.0s  0.8s cubic-bezier(0.22,1,0.36,1) both !important; }
+      #slide3.active .s3-title-wrap  { animation:boomInMob     0.9s  1.3s cubic-bezier(0.22,1,0.36,1) both !important; }
+      #slide3.active .s3-subtitle    { animation:crashLeftMob  0.8s  2.1s cubic-bezier(0.22,1,0.36,1) both !important; }
+
+      /* ────── Slide 5 mobile animations ────── */
+      #slide5.active .s8-tag               { animation:zoomShrinkMob 1.0s 0.2s cubic-bezier(0.22,1,0.36,1) both !important; }
+      #slide5.active .s8-title             { animation:boomInMob     0.9s 0.8s cubic-bezier(0.22,1,0.36,1) both !important; }
+      #slide5.active .s8-lead              { animation:crashLeftMob  0.8s 1.5s cubic-bezier(0.22,1,0.36,1) both !important; }
+      #slide5.active .s8-block:nth-child(1){ animation:crashLeftMob  0.8s 2.1s cubic-bezier(0.22,1,0.36,1) both !important; }
+      #slide5.active .s8-block:nth-child(2){ animation:crashRightMob 0.8s 2.6s cubic-bezier(0.22,1,0.36,1) both !important; }
+      #slide5.active .s8-block:nth-child(3){ animation:crashLeftMob  0.8s 3.1s cubic-bezier(0.22,1,0.36,1) both !important; }
+
+      /* ────── Slide 6 mobile animations ────── */
+      #slide6.active .s6-tag   { animation:zoomShrinkMob 1.0s 0.1s cubic-bezier(0.22,1,0.36,1) both !important; }
+      #slide6.active .s6-title { animation:boomInMob     0.9s 0.4s cubic-bezier(0.22,1,0.36,1) both !important; }
+      #slide6.active .s6-lead  { animation:crashLeftMob  0.75s 0.9s cubic-bezier(0.22,1,0.36,1) both !important; }
+
+      /* ────── Slide 7 mobile animations ────── */
+      #slide7.active .s7-tag   { animation:zoomShrinkMob 1.0s 0.3s cubic-bezier(0.22,1,0.36,1) both !important; }
+      #slide7.active .s7-title { animation:boomInMob     0.9s 0.6s cubic-bezier(0.22,1,0.36,1) both !important; }
+      #slide7.active .s7-lead  { animation:crashLeftMob  0.75s 1.0s cubic-bezier(0.22,1,0.36,1) both !important; }
+      #slide7.active .s7-plat-card:nth-child(1) { animation:crashLeftMob  0.8s 1.3s  cubic-bezier(0.22,1,0.36,1) both !important; }
+      #slide7.active .s7-plat-card:nth-child(2) { animation:slamDownMob   0.8s 1.75s cubic-bezier(0.34,1.56,0.64,1) both !important; }
+      #slide7.active .s7-plat-card:nth-child(3) { animation:crashRightMob 0.8s 2.2s  cubic-bezier(0.22,1,0.36,1) both !important; }
+      #slide7.active .s7-plat-card:nth-child(4) { animation:crashLeftMob  0.8s 2.65s cubic-bezier(0.22,1,0.36,1) both !important; }
+      #slide7.active .s7-plat-card:nth-child(5) { animation:crashRightMob 0.8s 3.1s  cubic-bezier(0.22,1,0.36,1) both !important; }
+
+      /* ────── Slide 8 mobile animations ────── */
+      #slide8.active .s9-tag               { animation:zoomShrinkMob 1.0s 0.3s  cubic-bezier(0.22,1,0.36,1) both !important; }
+      #slide8.active .s9-title             { animation:slamDownMob   0.95s 1.0s cubic-bezier(0.34,1.56,0.64,1) both !important; }
+      #slide8.active .s9-lead              { animation:crashLeftMob  0.75s 2.2s cubic-bezier(0.22,1,0.36,1) both !important; }
+      #slide8.active .s9-note              { animation:crashRightMob 0.75s 3.5s cubic-bezier(0.22,1,0.36,1) both !important; }
+      #slide8.active .s9-grid-label        { animation:zoomShrinkMob 0.9s  0.3s cubic-bezier(0.22,1,0.36,1) both !important; }
+      #slide8.active .s9-card:nth-child(1) { animation:crashLeftMob  0.8s  1.0s cubic-bezier(0.22,1,0.36,1) both !important; }
+      #slide8.active .s9-card:nth-child(2) { animation:slamDownMob   0.8s  1.45s cubic-bezier(0.34,1.56,0.64,1) both !important; }
+      #slide8.active .s9-card:nth-child(3) { animation:slamDownMob   0.8s  1.9s cubic-bezier(0.34,1.56,0.64,1) both !important; }
+      #slide8.active .s9-card:nth-child(4) { animation:crashRightMob 0.8s  2.35s cubic-bezier(0.22,1,0.36,1) both !important; }
+      #slide8.active .s9-result            { animation:boomInMob     0.8s  3.5s cubic-bezier(0.22,1,0.36,1) both !important; }
+
+      /* ────── Slide 9 mobile animations ────── */
+      #slide9.active .s10-header { animation:boomInMob    0.9s  0.3s cubic-bezier(0.22,1,0.36,1) both !important; }
+      #slide9.active .s10-stats  { animation:slamDownMob  0.95s 1.1s cubic-bezier(0.34,1.56,0.64,1) both !important; }
+      #slide9.active .s10-panels { animation:panelCrashMob 0.9s 2.4s cubic-bezier(0.34,1.56,0.64,1) both !important; }
     }
 
     /* ════ Small landscape phones (e.g. 667×375) ════ */
