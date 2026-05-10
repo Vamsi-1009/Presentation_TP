@@ -1,17 +1,15 @@
 {
   "language": "en",
-  "tld": "co.in",
   "slides": {
     "01": "You spent crores making your film. On release day, someone records it in the theatre — and within 24 hours, your investment is leaking across the internet. You worked for months. It takes one phone to undo all of it.",
     "02": "Indian producers lose 60 to 80 percent of their revenue to piracy — and there is nothing they can do about it. No evidence. No control. Just loss.",
     "03": "We built a system that detects piracy, proves it, and removes it — automatically, without you doing anything. Your film is protected before you even know there is a problem.",
-    "04": "Four layers of protection — IR Detection blocks recording in the theatre, TPVM destroys any footage captured, Watermarking identifies exactly who leaked it, and the Takedown System removes it from the internet automatically. Nothing gets through.",
-    "05": "Invisible infrared LEDs around the screen make every phone camera useless — the audience sees nothing different, but any recording turns into a completely white, unusable blur. No phone on earth can beat it.",
-    "06": "Seven invisible layers are injected into every frame during projection — the audience sees a perfect film, but any phone camera captures a flickering, scrambled, completely unwatchable mess. No recording device on the planet can beat this.",
-    "07": "Every frame carries a unique invisible watermark — the moment a pirated copy is found online, it reveals the exact theatre, screen, and show time. Court-admissible evidence. The person responsible cannot escape.",
-    "08": "YouTube — 10 minutes. Instagram — within 1 hour. Telegram, torrents, illegal sites — all gone within 72 hours. Every copy, every platform, handled automatically. Your film will never stay pirated for long.",
-    "09": "One-time setup — four documents, submitted once. After that, every takedown across YouTube, Telegram, Instagram, and Facebook happens automatically, instantly, forever. You do this once. We protect you always.",
-    "10": "A real-time dashboard shows every piracy link detected, removed, and pending — by platform. Instant alert the moment something is found. You do nothing — but you always know your film is safe.",
-    "11": "Before — 80 percent of revenue lost, no control, no evidence, no hope. After — revenue protected from day one, automatic 24/7 piracy removal, court-ready evidence always available. Your film releases and stays yours. That is our promise."
+    "04": "Introducing the Takedown System — India's first fully automated anti-piracy engine. The moment your film is released, it starts working. Detecting, verifying, filing, removing, blocking, and reporting — all without a single human touch. Nothing gets through.",
+    "05": "Your film releases. Piracy attempts start on day one. Our Takedown System is already running — scanning every platform, every minute. AI fingerprint matching identifies even a 3-second clip from a dark cinema. The moment a match is confirmed, DMCA notices are filed automatically. No human involved. No delays. Your film is protected.",
+    "06": "The moment piracy is detected, six automated steps fire in sequence — no human input, no delays. Step one: scan 50-plus platforms. Step two: AI verifies with 99.8 percent confidence. Step three: DMCA notice filed in under 30 seconds. Step four: content removed from all regions. Step five: permanent re-upload block activated. Step six: full report delivered to you. Start to finish — minutes, not days.",
+    "07": "Your film is protected everywhere piracy happens. YouTube takedowns in 10 minutes. Instagram and Facebook removed within 1 hour. Telegram channels shut down within 24 hours. Torrent sites and illegal streaming platforms cleared within 72 hours. Every platform. Every copy. Handled automatically.",
+    "08": "To remove pirated content at scale, platforms require authorized API access. Four documents — Digital Rights Certificate, Content ID fingerprint, Metadata, and chain of title Documentation. Submit them once. After that, the system removes thousands of pirated links per hour — automatically, legally, across every platform. Once granted, it never expires.",
+    "09": "Your Producer Dashboard shows everything in real time. Over 1200 piracy links found. 96 percent removed successfully. A live breakdown by platform — YouTube leads at 58 percent. Instant alerts the moment a new piracy link appears. You do nothing — but you always know your film is safe.",
+    "10": "Before — 80 percent of revenue lost, no control, no evidence, no hope. After — revenue protected from day one, automatic 24/7 piracy removal, court-ready evidence always available. Your film releases and stays yours. That is our promise."
   }
 }
