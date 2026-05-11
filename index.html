@@ -325,10 +325,10 @@
 
     /* ── Header ── */
     .s6-header { display:flex; flex-direction:column; align-items:center; gap:5px; flex-shrink:0; }
-    .s6-tag    { display:inline-flex; align-items:center; font-size:clamp(0.72rem,1.1vw,0.86rem); letter-spacing:0.14em; text-transform:uppercase; color:var(--blue); border:1.5px solid rgba(37,99,235,0.22); padding:4px 14px; border-radius:100px; background:var(--blue-l); width:fit-content; opacity:0; }
-    .s6-title  { font-size:clamp(1.75rem,3.2vw,2.35rem); font-weight:900; line-height:1.08; text-align:center; opacity:0; color:var(--text); letter-spacing:-0.025em; }
+    .s6-tag    { display:inline-flex; align-items:center; font-size:clamp(0.82rem,1.2vw,0.96rem); letter-spacing:0.14em; text-transform:uppercase; color:var(--blue); border:1.5px solid rgba(37,99,235,0.22); padding:5px 16px; border-radius:100px; background:var(--blue-l); width:fit-content; opacity:0; }
+    .s6-title  { font-size:clamp(2.1rem,3.8vw,2.8rem); font-weight:900; line-height:1.08; text-align:center; opacity:0; color:var(--text); letter-spacing:-0.025em; }
     .s6-accent { color:var(--blue); }
-    .s6-lead   { font-size:clamp(0.82rem,1.3vw,1.0rem); color:var(--text2); text-align:center; max-width:700px; margin:0 auto; opacity:0; line-height:1.6; }
+    .s6-lead   { font-size:clamp(1.0rem,1.6vw,1.18rem); color:var(--text2); text-align:center; max-width:700px; margin:0 auto; opacity:0; line-height:1.65; }
     #slide6.active .s6-tag   { animation:zoomShrink 1.2s 0.1s cubic-bezier(0.22,1,0.36,1) both; }
     #slide6.active .s6-title { animation:boomIn     1.0s 0.5s cubic-bezier(0.22,1,0.36,1) both; }
     #slide6.active .s6-lead  { animation:crashLeft  0.8s 1.0s cubic-bezier(0.22,1,0.36,1) both; }
@@ -337,13 +337,13 @@
     .s6-sysbar { display:flex; align-items:center; gap:14px; flex-shrink:0; background:var(--surface); border:1.5px solid var(--border2); border-radius:10px; padding:clamp(6px,1vh,10px) clamp(14px,1.6vw,20px); box-shadow:var(--sh1); }
     .s6-sys-live { display:flex; align-items:center; gap:8px; flex-shrink:0; }
     .s6-sys-dot  { width:9px; height:9px; border-radius:50%; background:var(--green); flex-shrink:0; animation:s6LiveDot 1.4s ease-in-out infinite; }
-    .s6-sys-label{ font-size:clamp(0.7rem,1.1vw,0.84rem); font-weight:800; color:var(--green); letter-spacing:0.14em; text-transform:uppercase; }
-    .s6-sys-sep  { width:1px; height:16px; background:var(--border2); flex-shrink:0; }
+    .s6-sys-label{ font-size:clamp(0.84rem,1.3vw,0.98rem); font-weight:800; color:var(--green); letter-spacing:0.14em; text-transform:uppercase; }
+    .s6-sys-sep  { width:1px; height:18px; background:var(--border2); flex-shrink:0; }
     .s6-sys-prog { display:flex; align-items:center; gap:12px; flex:1; min-width:0; }
-    .s6-prog-track{ flex:1; height:7px; background:var(--border2); border-radius:4px; overflow:hidden; }
+    .s6-prog-track{ flex:1; height:8px; background:var(--border2); border-radius:4px; overflow:hidden; }
     .s6-prog-fill { height:100%; background:linear-gradient(90deg,var(--blue) 0%,var(--green) 100%); border-radius:4px; width:0%; transition:width 0.65s cubic-bezier(0.4,0,0.2,1); }
-    .s6-prog-count{ font-size:clamp(0.7rem,1.1vw,0.84rem); font-weight:700; color:var(--text2); white-space:nowrap; min-width:80px; }
-    .s6-sys-timer { font-size:clamp(0.7rem,1.1vw,0.84rem); font-weight:700; color:var(--text2); font-family:'SF Mono','Fira Code',monospace; letter-spacing:0.04em; flex-shrink:0; }
+    .s6-prog-count{ font-size:clamp(0.84rem,1.3vw,0.98rem); font-weight:700; color:var(--text2); white-space:nowrap; min-width:90px; }
+    .s6-sys-timer { font-size:clamp(0.84rem,1.3vw,0.98rem); font-weight:700; color:var(--text2); font-family:'SF Mono','Fira Code',monospace; letter-spacing:0.04em; flex-shrink:0; }
 
     /* ── 3 × 2 card grid ── */
     .s6-grid { display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(2,minmax(0,1fr)); gap:clamp(10px,1.4vw,16px); flex:1 1 0%; min-height:0; overflow:hidden; }
@@ -369,7 +369,7 @@
 
     /* top row: step badge + indicator */
     .s6-card-top  { display:flex; align-items:center; justify-content:space-between; margin-bottom:clamp(8px,1.2vh,14px); flex-shrink:0; }
-    .s6-card-step { font-size:clamp(0.62rem,0.95vw,0.76rem); font-weight:900; letter-spacing:0.14em; text-transform:uppercase; color:var(--text); background:var(--surface2); padding:4px 10px; border-radius:6px; border:1px solid var(--border); transition:color 0.35s,background 0.35s,border-color 0.35s; }
+    .s6-card-step { font-size:clamp(0.74rem,1.1vw,0.9rem); font-weight:900; letter-spacing:0.14em; text-transform:uppercase; color:var(--text); background:var(--surface2); padding:5px 12px; border-radius:6px; border:1px solid var(--border); transition:color 0.35s,background 0.35s,border-color 0.35s; }
     .s6-card.run  .s6-card-step { color:var(--blue); background:var(--blue-l); border-color:rgba(37,99,235,0.25); }
     .s6-card.done .s6-card-step { color:var(--green); background:var(--green-l); border-color:rgba(22,163,74,0.25); }
 
@@ -380,27 +380,27 @@
     .s6-card.done .s6-card-ind::after { content:'✓'; font-size:clamp(0.6rem,1vw,0.76rem); color:#fff; font-weight:900; }
 
     /* icon */
-    .s6-card-icon { font-size:clamp(1.9rem,2.8vw,2.5rem); line-height:1; margin-bottom:6px; filter:grayscale(1) opacity(0.35); transition:filter 0.5s; flex-shrink:0; }
+    .s6-card-icon { font-size:clamp(2.2rem,3.2vw,2.8rem); line-height:1; margin-bottom:7px; filter:grayscale(1) opacity(0.35); transition:filter 0.5s; flex-shrink:0; }
     .s6-card.run  .s6-card-icon { filter:none; animation:s6IconRun 1.5s ease-in-out infinite; }
     .s6-card.done .s6-card-icon { filter:none; animation:none; }
 
     /* name */
-    .s6-card-name { font-size:clamp(1.0rem,1.7vw,1.28rem); font-weight:900; color:var(--text); line-height:1.2; margin-bottom:5px; flex-shrink:0; }
+    .s6-card-name { font-size:clamp(1.2rem,2.0vw,1.55rem); font-weight:900; color:var(--text); line-height:1.2; margin-bottom:6px; flex-shrink:0; }
     /* desc */
-    .s6-card-desc { font-size:clamp(0.78rem,1.2vw,0.94rem); color:var(--text); font-weight:600; line-height:1.55; flex-shrink:0; }
+    .s6-card-desc { font-size:clamp(0.96rem,1.45vw,1.12rem); color:var(--text); font-weight:600; line-height:1.6; flex-shrink:0; }
     /* spacer: absorbs extra vertical space, capped so COMPLETE+result never get pushed off-screen */
-    .s6-card-spacer { flex:1; max-height:clamp(14px,3.5vh,55px); }
+    .s6-card-spacer { flex:1; max-height:clamp(10px,2.5vh,40px); }
 
     /* divider */
     .s6-card-div  { height:1px; background:var(--border); margin:clamp(6px,1vh,10px) 0; flex-shrink:0; }
 
     /* status text */
-    .s6-card-status { font-size:clamp(0.7rem,1.1vw,0.84rem); font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:var(--text); transition:color 0.3s; flex-shrink:0; }
+    .s6-card-status { font-size:clamp(0.86rem,1.3vw,1.0rem); font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:var(--text); transition:color 0.3s; flex-shrink:0; }
     .s6-card.run  .s6-card-status { color:var(--blue); }
     .s6-card.done .s6-card-status { color:var(--green); }
 
     /* result (appears on done) */
-    .s6-card-result { font-size:clamp(0.74rem,1.15vw,0.9rem); font-weight:700; color:var(--green); margin-top:4px; opacity:0; flex-shrink:0; }
+    .s6-card-result { font-size:clamp(0.9rem,1.35vw,1.06rem); font-weight:700; color:var(--green); margin-top:4px; opacity:0; flex-shrink:0; }
     .s6-card.done .s6-card-result { animation:s6ResIn 0.5s 0.18s ease both; }
 
     /* ════ SLIDE 7 — Platform Coverage ════ */
@@ -825,34 +825,37 @@
 
       /* ────── SLIDE 6 — Mobile control room (2×3 grid) ────── */
       #slide6 {
-        padding:46px 14px 16px !important;
-        gap:10px !important;
+        padding:46px 14px 20px !important;
+        gap:12px !important;
         overflow-y:auto !important;
+        -webkit-overflow-scrolling:touch !important;
       }
-      #slide6 .s6-title { font-size:clamp(1.5rem,6vw,1.85rem) !important; }
-      #slide6 .s6-lead  { font-size:clamp(0.88rem,3.8vw,1.05rem) !important; line-height:1.6 !important; }
-      #slide6 .s6-sysbar { padding:8px 12px !important; gap:10px !important; }
-      #slide6 .s6-sys-label { font-size:clamp(0.7rem,3vw,0.82rem) !important; }
-      #slide6 .s6-prog-count{ font-size:clamp(0.7rem,3vw,0.82rem) !important; min-width:80px !important; }
-      #slide6 .s6-prog-track{ height:6px !important; }
+      #slide6 .s6-title { font-size:clamp(1.7rem,7vw,2.1rem) !important; }
+      #slide6 .s6-lead  { font-size:clamp(1.0rem,4.5vw,1.2rem) !important; line-height:1.65 !important; }
+      #slide6 .s6-sysbar { padding:10px 14px !important; gap:10px !important; }
+      #slide6 .s6-sys-label { font-size:clamp(0.8rem,3.5vw,0.96rem) !important; }
+      #slide6 .s6-prog-count{ font-size:clamp(0.8rem,3.5vw,0.96rem) !important; min-width:90px !important; }
+      #slide6 .s6-prog-track{ height:7px !important; }
       #slide6 .s6-sys-timer { display:none !important; }
       #slide6 .s6-sys-sep:last-of-type { display:none !important; }
-      /* 2 columns × 3 rows — auto rows so content never clips */
+      /* 2 columns × 3 rows — equal height per row, smooth scroll */
       #slide6 .s6-grid {
         grid-template-columns:repeat(2,1fr) !important;
         grid-template-rows:repeat(3,auto) !important;
-        gap:10px !important;
+        grid-auto-rows:1fr !important;
+        gap:12px !important;
+        align-items:stretch !important;
       }
-      #slide6 .s6-card { padding:14px 14px 12px !important; border-radius:14px !important; overflow:visible !important; }
-      #slide6 .s6-card-top  { margin-bottom:10px !important; }
-      #slide6 .s6-card-step { font-size:clamp(0.62rem,2.8vw,0.76rem) !important; padding:3px 9px !important; }
-      #slide6 .s6-card-ind  { width:18px !important; height:18px !important; }
+      #slide6 .s6-card { padding:16px 14px 14px !important; border-radius:14px !important; overflow:visible !important; height:100% !important; box-sizing:border-box !important; }
+      #slide6 .s6-card-top  { margin-bottom:12px !important; }
+      #slide6 .s6-card-step { font-size:clamp(0.72rem,3.2vw,0.88rem) !important; padding:4px 10px !important; }
+      #slide6 .s6-card-ind  { width:20px !important; height:20px !important; }
       #slide6 .s6-card-icon { display:none !important; }
-      #slide6 .s6-card-name { font-size:clamp(0.96rem,4.2vw,1.15rem) !important; margin-bottom:5px !important; }
-      #slide6 .s6-card-desc { font-size:clamp(0.8rem,3.5vw,0.95rem) !important; line-height:1.55 !important; }
-      #slide6 .s6-card-div  { margin:8px 0 !important; }
-      #slide6 .s6-card-status { font-size:clamp(0.72rem,3.2vw,0.86rem) !important; }
-      #slide6 .s6-card-result { font-size:clamp(0.74rem,3.2vw,0.88rem) !important; }
+      #slide6 .s6-card-name { font-size:clamp(1.1rem,5vw,1.35rem) !important; margin-bottom:6px !important; }
+      #slide6 .s6-card-desc { font-size:clamp(0.92rem,4.2vw,1.1rem) !important; line-height:1.6 !important; }
+      #slide6 .s6-card-div  { margin:10px 0 !important; }
+      #slide6 .s6-card-status { font-size:clamp(0.84rem,3.8vw,1.0rem) !important; }
+      #slide6 .s6-card-result { font-size:clamp(0.86rem,3.8vw,1.02rem) !important; }
 
       /* ────── SLIDE 7 — Platform Coverage (mobile single-column) ────── */
       #slide7 {
