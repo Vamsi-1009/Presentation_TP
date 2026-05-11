@@ -588,7 +588,7 @@
     #slide10 {
       background:var(--bg);
       flex-direction:column; align-items:center; justify-content:flex-start;
-      padding:24px 44px 18px; position:relative; overflow-y:auto; overflow-x:hidden;
+      padding:24px 44px clamp(40px,7vh,60px); position:relative; overflow-y:auto; overflow-x:hidden;
     }
 
     .s11-tag   { font-size:clamp(0.86rem,1.2vw,1.0rem); letter-spacing:0.15em; text-transform:uppercase; color:var(--blue); background:var(--blue-l); border:1.5px solid rgba(37,99,235,0.2); padding:4px 18px; border-radius:100px; display:flex; align-items:center; gap:7px; opacity:0; margin-bottom:8px; }
@@ -1025,7 +1025,7 @@
         align-items:center !important;
         justify-content:flex-start !important;
         overflow-y:auto !important;
-        padding:44px 14px 20px !important;
+        padding:44px 14px 72px !important;
         gap:10px !important;
       }
       .s11-title { font-size:clamp(1.7rem,7vw,2.1rem) !important; }
