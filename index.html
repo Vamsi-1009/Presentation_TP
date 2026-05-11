@@ -316,43 +316,46 @@
 
     /* ── Slide 6 — light theme background ── */
     #slide6 {
-      flex-direction:column; align-items:stretch; padding:10px 40px 8px; gap:6px;
+      flex-direction:column; align-items:stretch;
+      padding: clamp(10px,1.6vh,20px) clamp(24px,2.8vw,48px) clamp(8px,1.2vh,16px);
+      gap: clamp(6px,1vh,11px);
       background:var(--bg);
       background-image: radial-gradient(ellipse 80% 55% at 50% -5%, rgba(37,99,235,0.07) 0%, transparent 55%);
     }
 
     /* ── Header ── */
-    .s6-header { display:flex; flex-direction:column; align-items:center; gap:2px; flex-shrink:0; }
-    .s6-tag    { display:inline-flex; align-items:center; font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--blue); border:1.5px solid rgba(37,99,235,0.22); padding:3px 12px; border-radius:100px; background:var(--blue-l); width:fit-content; opacity:0; }
-    .s6-title  { font-size:1.55rem; font-weight:900; line-height:1.08; text-align:center; opacity:0; color:var(--text); letter-spacing:-0.025em; }
+    .s6-header { display:flex; flex-direction:column; align-items:center; gap:5px; flex-shrink:0; }
+    .s6-tag    { display:inline-flex; align-items:center; font-size:clamp(0.72rem,1.1vw,0.86rem); letter-spacing:0.14em; text-transform:uppercase; color:var(--blue); border:1.5px solid rgba(37,99,235,0.22); padding:4px 14px; border-radius:100px; background:var(--blue-l); width:fit-content; opacity:0; }
+    .s6-title  { font-size:clamp(1.75rem,3.2vw,2.35rem); font-weight:900; line-height:1.08; text-align:center; opacity:0; color:var(--text); letter-spacing:-0.025em; }
     .s6-accent { color:var(--blue); }
-    .s6-lead   { font-size:0.68rem; color:var(--text2); text-align:center; max-width:640px; margin:0 auto; opacity:0; }
+    .s6-lead   { font-size:clamp(0.82rem,1.3vw,1.0rem); color:var(--text2); text-align:center; max-width:700px; margin:0 auto; opacity:0; line-height:1.6; }
     #slide6.active .s6-tag   { animation:zoomShrink 1.2s 0.1s cubic-bezier(0.22,1,0.36,1) both; }
     #slide6.active .s6-title { animation:boomIn     1.0s 0.5s cubic-bezier(0.22,1,0.36,1) both; }
     #slide6.active .s6-lead  { animation:crashLeft  0.8s 1.0s cubic-bezier(0.22,1,0.36,1) both; }
 
     /* ── System status bar ── */
-    .s6-sysbar { display:flex; align-items:center; gap:12px; flex-shrink:0; background:var(--surface); border:1.5px solid var(--border2); border-radius:10px; padding:5px 14px; box-shadow:var(--sh1); }
-    .s6-sys-live { display:flex; align-items:center; gap:7px; flex-shrink:0; }
-    .s6-sys-dot  { width:7px; height:7px; border-radius:50%; background:var(--green); flex-shrink:0; animation:s6LiveDot 1.4s ease-in-out infinite; }
-    .s6-sys-label{ font-size:0.6rem; font-weight:800; color:var(--green); letter-spacing:0.14em; text-transform:uppercase; }
-    .s6-sys-sep  { width:1px; height:14px; background:var(--border2); flex-shrink:0; }
-    .s6-sys-prog { display:flex; align-items:center; gap:10px; flex:1; min-width:0; }
-    .s6-prog-track{ flex:1; height:5px; background:var(--border2); border-radius:3px; overflow:hidden; }
-    .s6-prog-fill { height:100%; background:linear-gradient(90deg,var(--blue) 0%,var(--green) 100%); border-radius:3px; width:0%; transition:width 0.65s cubic-bezier(0.4,0,0.2,1); }
-    .s6-prog-count{ font-size:0.6rem; font-weight:700; color:var(--text2); white-space:nowrap; min-width:72px; }
-    .s6-sys-timer { font-size:0.6rem; font-weight:700; color:var(--text2); font-family:'SF Mono','Fira Code',monospace; letter-spacing:0.04em; flex-shrink:0; }
+    .s6-sysbar { display:flex; align-items:center; gap:14px; flex-shrink:0; background:var(--surface); border:1.5px solid var(--border2); border-radius:10px; padding:clamp(6px,1vh,10px) clamp(14px,1.6vw,20px); box-shadow:var(--sh1); }
+    .s6-sys-live { display:flex; align-items:center; gap:8px; flex-shrink:0; }
+    .s6-sys-dot  { width:9px; height:9px; border-radius:50%; background:var(--green); flex-shrink:0; animation:s6LiveDot 1.4s ease-in-out infinite; }
+    .s6-sys-label{ font-size:clamp(0.7rem,1.1vw,0.84rem); font-weight:800; color:var(--green); letter-spacing:0.14em; text-transform:uppercase; }
+    .s6-sys-sep  { width:1px; height:16px; background:var(--border2); flex-shrink:0; }
+    .s6-sys-prog { display:flex; align-items:center; gap:12px; flex:1; min-width:0; }
+    .s6-prog-track{ flex:1; height:7px; background:var(--border2); border-radius:4px; overflow:hidden; }
+    .s6-prog-fill { height:100%; background:linear-gradient(90deg,var(--blue) 0%,var(--green) 100%); border-radius:4px; width:0%; transition:width 0.65s cubic-bezier(0.4,0,0.2,1); }
+    .s6-prog-count{ font-size:clamp(0.7rem,1.1vw,0.84rem); font-weight:700; color:var(--text2); white-space:nowrap; min-width:80px; }
+    .s6-sys-timer { font-size:clamp(0.7rem,1.1vw,0.84rem); font-weight:700; color:var(--text2); font-family:'SF Mono','Fira Code',monospace; letter-spacing:0.04em; flex-shrink:0; }
 
     /* ── 3 × 2 card grid ── */
-    .s6-grid { display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(2,minmax(0,1fr)); gap:9px; flex:1 1 0%; min-height:0; overflow:hidden; }
+    .s6-grid { display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(2,minmax(0,1fr)); gap:clamp(10px,1.4vw,16px); flex:1 1 0%; min-height:0; overflow:hidden; }
 
     /* ── Step card (light theme) ── */
     .s6-card {
-      display:flex; flex-direction:column; border-radius:14px;
+      display:flex; flex-direction:column; border-radius:16px;
       background:var(--surface);
       border:1.5px solid var(--border2);
       box-shadow:var(--sh1);
-      padding:11px 16px 10px; position:relative; overflow:hidden;
+      padding:clamp(13px,1.8vh,20px) clamp(14px,1.6vw,22px) clamp(11px,1.6vh,18px);
+      position:relative; overflow:hidden;
       min-height:0;
       opacity:0; transform:translateY(22px) scale(0.96);
       transition:border-color 0.4s ease, background 0.4s ease, box-shadow 0.4s ease;
@@ -365,41 +368,39 @@
     .s6-card.done { border-color:rgba(22,163,74,0.4); background:rgba(22,163,74,0.03); animation:s6DoneGlow 0.5s ease forwards; opacity:1; transform:none; }
 
     /* top row: step badge + indicator */
-    .s6-card-top  { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; flex-shrink:0; }
-    .s6-card-step { font-size:0.52rem; font-weight:900; letter-spacing:0.14em; text-transform:uppercase; color:var(--text); background:var(--surface2); padding:3px 9px; border-radius:5px; border:1px solid var(--border); transition:color 0.35s,background 0.35s,border-color 0.35s; }
+    .s6-card-top  { display:flex; align-items:center; justify-content:space-between; margin-bottom:clamp(8px,1.2vh,14px); flex-shrink:0; }
+    .s6-card-step { font-size:clamp(0.62rem,0.95vw,0.76rem); font-weight:900; letter-spacing:0.14em; text-transform:uppercase; color:var(--text); background:var(--surface2); padding:4px 10px; border-radius:6px; border:1px solid var(--border); transition:color 0.35s,background 0.35s,border-color 0.35s; }
     .s6-card.run  .s6-card-step { color:var(--blue); background:var(--blue-l); border-color:rgba(37,99,235,0.25); }
     .s6-card.done .s6-card-step { color:var(--green); background:var(--green-l); border-color:rgba(22,163,74,0.25); }
 
     /* indicator (spinner → check) */
-    .s6-card-ind  { width:18px; height:18px; border-radius:50%; background:var(--border2); border:1.5px solid var(--border); flex-shrink:0; transition:background 0.3s; }
+    .s6-card-ind  { width:clamp(20px,2.2vh,26px); height:clamp(20px,2.2vh,26px); border-radius:50%; background:var(--border2); border:1.5px solid var(--border); flex-shrink:0; transition:background 0.3s; }
     .s6-card.run  .s6-card-ind { background:transparent; border:2.5px solid rgba(37,99,235,0.2); border-top-color:var(--blue); animation:spin 0.65s linear infinite; }
     .s6-card.done .s6-card-ind { background:var(--green); border:none; animation:s6CheckIn 0.5s cubic-bezier(0.34,1.56,0.64,1) both; display:flex; align-items:center; justify-content:center; }
-    .s6-card.done .s6-card-ind::after { content:'✓'; font-size:0.54rem; color:#fff; font-weight:900; }
+    .s6-card.done .s6-card-ind::after { content:'✓'; font-size:clamp(0.6rem,1vw,0.76rem); color:#fff; font-weight:900; }
 
     /* icon */
-    .s6-card-icon { font-size:2.0rem; line-height:1; margin-bottom:5px; filter:grayscale(1) opacity(0.35); transition:filter 0.5s; flex-shrink:0; }
+    .s6-card-icon { font-size:clamp(1.9rem,2.8vw,2.5rem); line-height:1; margin-bottom:6px; filter:grayscale(1) opacity(0.35); transition:filter 0.5s; flex-shrink:0; }
     .s6-card.run  .s6-card-icon { filter:none; animation:s6IconRun 1.5s ease-in-out infinite; }
     .s6-card.done .s6-card-icon { filter:none; animation:none; }
 
     /* name */
-    .s6-card-name { font-size:0.88rem; font-weight:900; color:var(--text); line-height:1.2; margin-bottom:3px; flex-shrink:0; }
-    /* desc — NO flex:1, fixed natural height so COMPLETE+result
-       always sit at a predictable position above the card bottom */
-    .s6-card-desc { font-size:0.63rem; color:var(--text); font-weight:600; line-height:1.45; flex-shrink:0; }
-    /* spacer: absorbs extra vertical space between desc and divider,
-       capped at 60px so COMPLETE+result never get pushed off-screen */
-    .s6-card-spacer { flex:1; max-height:60px; }
+    .s6-card-name { font-size:clamp(1.0rem,1.7vw,1.28rem); font-weight:900; color:var(--text); line-height:1.2; margin-bottom:5px; flex-shrink:0; }
+    /* desc */
+    .s6-card-desc { font-size:clamp(0.78rem,1.2vw,0.94rem); color:var(--text); font-weight:600; line-height:1.55; flex-shrink:0; }
+    /* spacer: absorbs extra vertical space, capped so COMPLETE+result never get pushed off-screen */
+    .s6-card-spacer { flex:1; max-height:clamp(14px,3.5vh,55px); }
 
     /* divider */
-    .s6-card-div  { height:1px; background:var(--border); margin:7px 0; flex-shrink:0; }
+    .s6-card-div  { height:1px; background:var(--border); margin:clamp(6px,1vh,10px) 0; flex-shrink:0; }
 
     /* status text */
-    .s6-card-status { font-size:0.59rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:var(--text); transition:color 0.3s; flex-shrink:0; }
+    .s6-card-status { font-size:clamp(0.7rem,1.1vw,0.84rem); font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:var(--text); transition:color 0.3s; flex-shrink:0; }
     .s6-card.run  .s6-card-status { color:var(--blue); }
     .s6-card.done .s6-card-status { color:var(--green); }
 
     /* result (appears on done) */
-    .s6-card-result { font-size:0.62rem; font-weight:700; color:var(--green); margin-top:4px; opacity:0; flex-shrink:0; }
+    .s6-card-result { font-size:clamp(0.74rem,1.15vw,0.9rem); font-weight:700; color:var(--green); margin-top:4px; opacity:0; flex-shrink:0; }
     .s6-card.done .s6-card-result { animation:s6ResIn 0.5s 0.18s ease both; }
 
     /* ════ SLIDE 7 — Platform Coverage ════ */
@@ -824,33 +825,34 @@
 
       /* ────── SLIDE 6 — Mobile control room (2×3 grid) ────── */
       #slide6 {
-        padding:46px 12px 12px !important;
-        gap:7px !important;
+        padding:46px 14px 16px !important;
+        gap:10px !important;
         overflow-y:auto !important;
       }
-      #slide6 .s6-title { font-size:1.28rem !important; }
-      #slide6 .s6-lead  { font-size:0.67rem !important; }
-      #slide6 .s6-sysbar { padding:6px 10px !important; gap:9px !important; }
-      #slide6 .s6-sys-label { font-size:0.52rem !important; }
-      #slide6 .s6-prog-count{ font-size:0.52rem !important; min-width:60px !important; }
+      #slide6 .s6-title { font-size:clamp(1.5rem,6vw,1.85rem) !important; }
+      #slide6 .s6-lead  { font-size:clamp(0.88rem,3.8vw,1.05rem) !important; line-height:1.6 !important; }
+      #slide6 .s6-sysbar { padding:8px 12px !important; gap:10px !important; }
+      #slide6 .s6-sys-label { font-size:clamp(0.7rem,3vw,0.82rem) !important; }
+      #slide6 .s6-prog-count{ font-size:clamp(0.7rem,3vw,0.82rem) !important; min-width:80px !important; }
+      #slide6 .s6-prog-track{ height:6px !important; }
       #slide6 .s6-sys-timer { display:none !important; }
       #slide6 .s6-sys-sep:last-of-type { display:none !important; }
       /* 2 columns × 3 rows — auto rows so content never clips */
       #slide6 .s6-grid {
         grid-template-columns:repeat(2,1fr) !important;
         grid-template-rows:repeat(3,auto) !important;
-        gap:8px !important;
+        gap:10px !important;
       }
-      #slide6 .s6-card { padding:11px 12px 10px !important; border-radius:11px !important; overflow:visible !important; }
-      #slide6 .s6-card-top  { margin-bottom:8px !important; }
-      #slide6 .s6-card-step { font-size:0.44rem !important; padding:2px 7px !important; }
-      #slide6 .s6-card-ind  { width:14px !important; height:14px !important; }
+      #slide6 .s6-card { padding:14px 14px 12px !important; border-radius:14px !important; overflow:visible !important; }
+      #slide6 .s6-card-top  { margin-bottom:10px !important; }
+      #slide6 .s6-card-step { font-size:clamp(0.62rem,2.8vw,0.76rem) !important; padding:3px 9px !important; }
+      #slide6 .s6-card-ind  { width:18px !important; height:18px !important; }
       #slide6 .s6-card-icon { display:none !important; }
-      #slide6 .s6-card-name { font-size:0.78rem !important; margin-bottom:3px !important; }
-      #slide6 .s6-card-desc { font-size:0.58rem !important; }
-      #slide6 .s6-card-div  { margin:6px 0 !important; }
-      #slide6 .s6-card-status { font-size:0.52rem !important; }
-      #slide6 .s6-card-result { font-size:0.54rem !important; }
+      #slide6 .s6-card-name { font-size:clamp(0.96rem,4.2vw,1.15rem) !important; margin-bottom:5px !important; }
+      #slide6 .s6-card-desc { font-size:clamp(0.8rem,3.5vw,0.95rem) !important; line-height:1.55 !important; }
+      #slide6 .s6-card-div  { margin:8px 0 !important; }
+      #slide6 .s6-card-status { font-size:clamp(0.72rem,3.2vw,0.86rem) !important; }
+      #slide6 .s6-card-result { font-size:clamp(0.74rem,3.2vw,0.88rem) !important; }
 
       /* ────── SLIDE 7 — Platform Coverage (mobile single-column) ────── */
       #slide7 {
@@ -1113,9 +1115,9 @@
       /* Two-column slides — keep columns but reduce padding */
       .s5-left,.s7-left,.s8-left { padding:0 20px 0 10px !important; gap:8px !important; }
       .s5-right,.s7-right,.s8-right { padding:0 10px 0 0 !important; gap:8px !important; }
-      .s5-title,.s6-title,.s7-title,.s8-title { font-size:1.4rem !important; }
+      .s5-title,.s6-title,.s7-title,.s8-title { font-size:clamp(1.3rem,4vw,1.6rem) !important; }
       .s5-block,.s7-block,.s8-block { padding:5px 8px !important; }
-      .s5-lead,.s6-lead,.s7-lead,.s8-lead,.s8-lead2 { font-size:0.72rem !important; line-height:1.4 !important; }
+      .s5-lead,.s6-lead,.s7-lead,.s8-lead,.s8-lead2 { font-size:clamp(0.78rem,2.5vw,0.92rem) !important; line-height:1.5 !important; }
       /* Slide 1 landscape */
       #slide1 { gap:8px !important; padding:8px 10px !important; }
       .s1-title { font-size:0.95rem !important; }
