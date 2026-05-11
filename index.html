@@ -347,7 +347,7 @@
     .s6-sys-timer { font-size:clamp(0.84rem,1.3vw,0.98rem); font-weight:700; color:var(--text2); font-family:'SF Mono','Fira Code',monospace; letter-spacing:0.04em; flex-shrink:0; }
 
     /* ── 3 × 2 card grid ── */
-    .s6-grid { display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(2,auto); gap:clamp(10px,1.4vw,16px); flex:none; min-height:auto; overflow:visible; }
+    .s6-grid { display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(2,auto); gap:clamp(10px,1.4vw,16px); flex:1 1 0%; min-height:0; overflow-y:auto; overflow-x:hidden; }
 
     /* ── Step card (light theme) ── */
     .s6-card {
@@ -2249,10 +2249,11 @@
     if (_s6Clock) { clearInterval(_s6Clock); _s6Clock = null; }
   }
   function fixS6GridRows() {
+    // Desktop: grid uses auto rows + overflow-y:auto scroll — no JS override needed
+    if (window.innerWidth > 599) return;
     const grid = document.querySelector('#slide6 .s6-grid');
     if (!grid) return;
-    // Read the grid's actual flex-allocated height, then set explicit pixel rows
-    // This bypasses CSS Grid's unreliable 1fr behaviour in flex children
+    // Mobile only: Read the grid's actual flex-allocated height, then set explicit pixel rows
     requestAnimationFrame(() => {
       const h = grid.clientHeight;
       if (h > 20) {
