@@ -347,7 +347,9 @@
     .s6-sys-timer { font-size:clamp(0.84rem,1.3vw,0.98rem); font-weight:700; color:var(--text2); font-family:'SF Mono','Fira Code',monospace; letter-spacing:0.04em; flex-shrink:0; }
 
     /* ── 3 × 2 card grid ── */
-    .s6-grid { display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(2,auto); gap:clamp(10px,1.4vw,16px); flex:none; min-height:auto; overflow:visible; }
+    .s6-grid { display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(2,auto); gap:clamp(10px,1.4vw,16px); flex:none; width:100%; align-items:start; overflow:visible; }
+    /* Desktop: cards never clip content */
+    #slide6 .s6-card { overflow:visible; min-height:auto; height:auto; }
 
     /* ── Step card (light theme) ── */
     .s6-card {
@@ -389,8 +391,8 @@
     .s6-card-name { font-size:clamp(1.2rem,2.0vw,1.55rem); font-weight:900; color:var(--text); line-height:1.2; margin-bottom:6px; flex-shrink:0; }
     /* desc */
     .s6-card-desc { font-size:clamp(0.96rem,1.45vw,1.12rem); color:var(--text); font-weight:600; line-height:1.6; flex-shrink:0; }
-    /* spacer: absorbs extra vertical space, capped so COMPLETE+result never get pushed off-screen */
-    .s6-card-spacer { flex:1; max-height:clamp(10px,2.5vh,40px); }
+    /* spacer: hidden on all views — cards are height:auto, no spacer needed */
+    .s6-card-spacer { display:none; }
 
     /* divider */
     .s6-card-div  { height:1px; background:var(--border); margin:clamp(6px,1vh,10px) 0; flex-shrink:0; }
@@ -401,7 +403,7 @@
     .s6-card.done .s6-card-status { color:var(--green); }
 
     /* result (appears on done) */
-    .s6-card-result { font-size:clamp(0.9rem,1.35vw,1.06rem); font-weight:700; color:var(--green); margin-top:4px; opacity:0; flex-shrink:0; }
+    .s6-card-result { font-size:clamp(0.9rem,1.35vw,1.06rem); font-weight:700; color:var(--green); margin-top:4px; opacity:0; flex-shrink:0; min-height:1.2em; }
     .s6-card.done .s6-card-result { animation:s6ResIn 0.5s 0.18s ease both; }
 
     /* ════ SLIDE 7 — Platform Coverage ════ */
@@ -2249,10 +2251,11 @@
     if (_s6Clock) { clearInterval(_s6Clock); _s6Clock = null; }
   }
   function fixS6GridRows() {
+    // Desktop: grid uses auto rows + overflow-y:auto scroll — no JS override needed
+    if (window.innerWidth > 599) return;
     const grid = document.querySelector('#slide6 .s6-grid');
     if (!grid) return;
-    // Read the grid's actual flex-allocated height, then set explicit pixel rows
-    // This bypasses CSS Grid's unreliable 1fr behaviour in flex children
+    // Mobile only: Read the grid's actual flex-allocated height, then set explicit pixel rows
     requestAnimationFrame(() => {
       const h = grid.clientHeight;
       if (h > 20) {
