@@ -347,7 +347,7 @@
     .s6-sys-timer { font-size:clamp(0.84rem,1.3vw,0.98rem); font-weight:700; color:var(--text2); font-family:'SF Mono','Fira Code',monospace; letter-spacing:0.04em; flex-shrink:0; }
 
     /* ── 3 × 2 card grid ── */
-    .s6-grid { display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(2,minmax(0,1fr)); gap:clamp(10px,1.4vw,16px); flex:1 1 0%; min-height:0; overflow:hidden; }
+    .s6-grid { display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(2,auto); gap:clamp(10px,1.4vw,16px); flex:none; min-height:auto; overflow:visible; }
 
     /* ── Step card (light theme) ── */
     .s6-card {
@@ -2158,6 +2158,8 @@
     q('#slide6 .s6-tag').innerHTML = t.slide6.tag;
     q('#slide6 .s6-title').innerHTML = t.slide6.title;
     q('#slide6 .s6-lead').innerHTML = t.slide6.lead;
+    qa('#slide6 .s6-card-name').forEach((el,i) => { if(t.slide6.stepTitles[i]) el.innerHTML = t.slide6.stepTitles[i]; });
+    qa('#slide6 .s6-card-desc').forEach((el,i) => { if(t.slide6.stepDescs[i])  el.innerHTML = t.slide6.stepDescs[i];  });
 
     // Slide 7 (Platform Coverage — new)
     q('#slide7 .s7-tag').innerHTML = t.slide7.tag;
