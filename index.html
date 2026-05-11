@@ -838,24 +838,27 @@
       #slide6 .s6-prog-track{ height:7px !important; }
       #slide6 .s6-sys-timer { display:none !important; }
       #slide6 .s6-sys-sep:last-of-type { display:none !important; }
-      /* 2 columns × 3 rows — equal height per row, smooth scroll */
+      /* 2 columns × 3 rows — rows size to tallest card, slide scrolls */
       #slide6 .s6-grid {
         grid-template-columns:repeat(2,1fr) !important;
         grid-template-rows:repeat(3,auto) !important;
-        grid-auto-rows:1fr !important;
-        gap:12px !important;
-        align-items:stretch !important;
+        gap:10px !important;
+        align-items:start !important;
+        flex:none !important;
       }
-      #slide6 .s6-card { padding:16px 14px 14px !important; border-radius:14px !important; overflow:visible !important; height:100% !important; box-sizing:border-box !important; }
-      #slide6 .s6-card-top  { margin-bottom:12px !important; }
-      #slide6 .s6-card-step { font-size:clamp(0.72rem,3.2vw,0.88rem) !important; padding:4px 10px !important; }
-      #slide6 .s6-card-ind  { width:20px !important; height:20px !important; }
+      /* Cards: visible overflow, height driven purely by content */
+      #slide6 .s6-card { padding:14px 12px 14px !important; border-radius:14px !important; overflow:visible !important; height:auto !important; min-height:0 !important; box-sizing:border-box !important; }
+      /* Collapse spacer completely — COMPLETE+result sit right after desc */
+      #slide6 .s6-card-spacer { display:none !important; }
+      #slide6 .s6-card-top  { margin-bottom:10px !important; }
+      #slide6 .s6-card-step { font-size:clamp(0.7rem,3vw,0.84rem) !important; padding:3px 9px !important; }
+      #slide6 .s6-card-ind  { width:19px !important; height:19px !important; }
       #slide6 .s6-card-icon { display:none !important; }
-      #slide6 .s6-card-name { font-size:clamp(1.1rem,5vw,1.35rem) !important; margin-bottom:6px !important; }
-      #slide6 .s6-card-desc { font-size:clamp(0.92rem,4.2vw,1.1rem) !important; line-height:1.6 !important; }
-      #slide6 .s6-card-div  { margin:10px 0 !important; }
-      #slide6 .s6-card-status { font-size:clamp(0.84rem,3.8vw,1.0rem) !important; }
-      #slide6 .s6-card-result { font-size:clamp(0.86rem,3.8vw,1.02rem) !important; }
+      #slide6 .s6-card-name { font-size:clamp(1.05rem,4.8vw,1.28rem) !important; margin-bottom:5px !important; }
+      #slide6 .s6-card-desc { font-size:clamp(0.88rem,4vw,1.06rem) !important; line-height:1.55 !important; }
+      #slide6 .s6-card-div  { margin:8px 0 !important; }
+      #slide6 .s6-card-status { font-size:clamp(0.82rem,3.6vw,0.98rem) !important; }
+      #slide6 .s6-card-result { font-size:clamp(0.82rem,3.6vw,0.98rem) !important; margin-top:3px !important; }
 
       /* ────── SLIDE 7 — Platform Coverage (mobile single-column) ────── */
       #slide7 {
