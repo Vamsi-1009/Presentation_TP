@@ -38,15 +38,11 @@
     }
     body { font-family:'Segoe UI',system-ui,-apple-system,sans-serif; background:var(--bg); color:var(--text); overflow:hidden; width:100vw; height:100vh; }
 
-    .slide { display:none; width:1440px; height:810px; position:absolute; top:0; left:0; overflow:hidden; background:var(--bg); scrollbar-width:none; }
+    .slide { display:none; width:1440px; height:810px; position:absolute; top:0; left:0; overflow:hidden; background:transparent; scrollbar-width:none; }
     .slide::-webkit-scrollbar { display:none; }
     .slide.active { display:flex; }
-    /* Mesh gradient overlay — only on non-scrolling slides */
-    .slide::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse at 15% 15%, rgba(37,99,235,0.07) 0%, transparent 55%), radial-gradient(ellipse at 85% 85%, rgba(124,58,237,0.05) 0%, transparent 55%); pointer-events:none; z-index:0; }
-    /* Scrollable slides: transparent bg so wrapper bg shows through; no fixed ::before artifact */
-    #slide5, #slide6, #slide7, #slide8, #slide9, #slide10 { background:transparent; }
-    #slide5::before, #slide6::before, #slide7::before,
-    #slide8::before, #slide9::before, #slide10::before { content:none !important; display:none !important; }
+    /* No ::before rectangle on any slide — wrapper provides the background */
+    .slide::before { content:none !important; display:none !important; }
 
     /* progress bar */
     .s-progress { position:fixed; bottom:0; left:0; height:3px; background:linear-gradient(90deg,var(--blue),var(--purple)); width:0%; z-index:9999; transition:none; box-shadow:0 0 8px rgba(37,99,235,0.4); }
