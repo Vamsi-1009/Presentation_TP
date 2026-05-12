@@ -41,8 +41,12 @@
     .slide { display:none; width:1440px; height:810px; position:absolute; top:0; left:0; overflow:hidden; background:var(--bg); scrollbar-width:none; }
     .slide::-webkit-scrollbar { display:none; }
     .slide.active { display:flex; }
-    /* Mesh gradient overlay on every slide */
+    /* Mesh gradient overlay — only on non-scrolling slides */
     .slide::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse at 15% 15%, rgba(37,99,235,0.07) 0%, transparent 55%), radial-gradient(ellipse at 85% 85%, rgba(124,58,237,0.05) 0%, transparent 55%); pointer-events:none; z-index:0; }
+    /* Scrollable slides: transparent bg so wrapper bg shows through; no fixed ::before artifact */
+    #slide5, #slide6, #slide7, #slide8, #slide9, #slide10 { background:transparent; }
+    #slide5::before, #slide6::before, #slide7::before,
+    #slide8::before, #slide9::before, #slide10::before { content:none !important; display:none !important; }
 
     /* progress bar */
     .s-progress { position:fixed; bottom:0; left:0; height:3px; background:linear-gradient(90deg,var(--blue),var(--purple)); width:0%; z-index:9999; transition:none; box-shadow:0 0 8px rgba(37,99,235,0.4); }
@@ -112,7 +116,7 @@
     .rupee { font-size:2.4rem; color:var(--red); }
 
     /* ════ SLIDE 2 ════ */
-    #slide2 { flex-direction:row; align-items:stretch; position:relative; }
+    #slide2 { flex-direction:row; align-items:stretch; position:relative; overflow-y:auto; overflow-x:hidden; }
     .s2-left { flex:1.1; display:flex; flex-direction:column; justify-content:center; padding:56px 48px 56px 72px; gap:32px; position:relative; z-index:1; }
     .s2-left::after { content:''; position:absolute; right:0; top:10%; bottom:10%; width:1px; background:linear-gradient(to bottom,transparent,var(--border2),transparent); }
     .s2-title .line1 { font-size:clamp(2.2rem,4.0vw,3.2rem); font-weight:900; color:var(--text); display:block; opacity:0; letter-spacing:-0.02em; }
@@ -321,8 +325,7 @@
       padding: clamp(10px,1.6vh,20px) clamp(24px,2.8vw,48px) clamp(8px,1.2vh,16px);
       gap: clamp(6px,1vh,11px);
       overflow-y:auto;
-      background:var(--bg);
-      background-image: radial-gradient(ellipse 80% 55% at 50% -5%, rgba(37,99,235,0.07) 0%, transparent 55%);
+      background:transparent;
     }
 
     /* ── Header ── */
@@ -638,6 +641,7 @@
       position:fixed;
       transform-origin:top left;
       top:0; left:0;
+      background:var(--bg);
     }
 
     /* ═══ LANGUAGE TOGGLE ═══ */
@@ -919,7 +923,7 @@
       #slide7 .s7-plat-name { font-size:clamp(1.25rem,5.5vw,1.45rem) !important; font-weight:900 !important; white-space:nowrap !important; }
       #slide7 .s7-plat-icon { font-size:1.6rem !important; width:40px !important; height:40px !important; flex-shrink:0 !important; }
       #slide7 .s7-yt-icon    { width:44px !important; height:30px !important; flex-shrink:0 !important; }
-      #slide7 .s7-meta-logo  { height:20px !important; flex-shrink:0 !important; }
+      #slide7 .s7-meta-logo  { display:none !important; }
       #slide7 .s7-ig-fb-wrap { gap:5px !important; flex-shrink:0 !important; }
       #slide7 .s7-ig-icon,
       #slide7 .s7-fb-icon    { width:30px !important; height:30px !important; }
