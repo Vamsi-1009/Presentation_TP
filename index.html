@@ -38,15 +38,11 @@
     }
     body { font-family:'Segoe UI',system-ui,-apple-system,sans-serif; background:var(--bg); color:var(--text); overflow:hidden; width:100vw; height:100vh; }
 
-    .slide { display:none; width:1440px; height:810px; position:absolute; top:0; left:0; overflow:hidden; background:var(--bg); scrollbar-width:none; }
+    .slide { display:none; width:1440px; height:810px; position:absolute; top:0; left:0; overflow:hidden; background:transparent; scrollbar-width:none; }
     .slide::-webkit-scrollbar { display:none; }
     .slide.active { display:flex; }
-    /* Mesh gradient overlay — only on non-scrolling slides */
-    .slide::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse at 15% 15%, rgba(37,99,235,0.07) 0%, transparent 55%), radial-gradient(ellipse at 85% 85%, rgba(124,58,237,0.05) 0%, transparent 55%); pointer-events:none; z-index:0; }
-    /* Scrollable slides: transparent bg so wrapper bg shows through; no fixed ::before artifact */
-    #slide5, #slide6, #slide7, #slide8, #slide9, #slide10 { background:transparent; }
-    #slide5::before, #slide6::before, #slide7::before,
-    #slide8::before, #slide9::before, #slide10::before { content:none !important; display:none !important; }
+    /* No ::before rectangle on any slide — wrapper provides the background */
+    .slide::before { content:none !important; display:none !important; }
 
     /* progress bar */
     .s-progress { position:fixed; bottom:0; left:0; height:3px; background:linear-gradient(90deg,var(--blue),var(--purple)); width:0%; z-index:9999; transition:none; box-shadow:0 0 8px rgba(37,99,235,0.4); }
@@ -263,8 +259,9 @@
     #slide4.active .s4-brand-title { animation:s4TitleBoom   1.05s 3.1s cubic-bezier(0.34,1.56,0.64,1) both; }
     #slide4.active .s4-brand-line  { animation:drawLine      0.8s  4.0s ease both; }
     /* ════ SLIDE 5 — Takedown System ════ */
-    #slide5 { align-items:center; justify-content:flex-start !important; flex-direction:column; position:relative; overflow-y:auto; overflow-x:hidden; }
-    .s5-content { display:flex; flex-direction:column; gap:20px; width:100%; max-width:820px; padding:28px 64px 32px; position:relative; z-index:1; }
+    #slide5 { position:relative; overflow:hidden; }
+    #slide5.active { display:block !important; overflow-y:auto !important; overflow-x:hidden !important; }
+    .s5-content { display:flex; flex-direction:column; gap:20px; width:100%; max-width:820px; padding:28px 64px 32px; position:relative; z-index:1; margin:0 auto; }
     .s8-tag   { display:inline-flex; align-items:center; font-size:clamp(0.86rem,1.2vw,1.0rem); font-weight:700; letter-spacing:0.12em; text-transform:uppercase; padding:5px 14px; border-radius:100px; border:1.5px solid rgba(37,99,235,0.22); background:var(--blue-l); color:var(--blue); width:fit-content; opacity:0; }
     .s8-title { font-size:clamp(3rem,4.5vw,3.6rem); font-weight:900; line-height:1.1; opacity:0; color:var(--text); letter-spacing:-0.02em; }
     .s8-accent { color:var(--blue); }
@@ -412,7 +409,8 @@
 
     /* ════ SLIDE 7 — Platform Coverage ════ */
     /* ════ SLIDE 7 — Platform Coverage (3+2 layout) ════ */
-    #slide7 { flex-direction:column; align-items:center; justify-content:flex-start !important; padding:16px 44px 14px; position:relative; overflow-y:auto; overflow-x:hidden; }
+    #slide7 { position:relative; padding:16px 44px 14px; overflow:hidden; }
+    #slide7.active { display:block !important; overflow-y:auto !important; overflow-x:hidden !important; }
     .s7-header { display:flex; flex-direction:column; align-items:center; gap:5px; margin-bottom:14px; position:relative; z-index:1; }
     .s7-tag    { display:inline-flex; align-items:center; font-size:clamp(0.99rem,1.38vw,1.15rem); letter-spacing:0.12em; text-transform:uppercase; color:var(--blue); border:1.5px solid rgba(37,99,235,0.22); padding:5px 14px; border-radius:100px; background:var(--blue-l); width:fit-content; opacity:0; }
     .s7-title  { font-size:clamp(2.5rem,4.4vw,3.2rem); font-weight:900; line-height:1.1; text-align:center; opacity:0; color:var(--text); letter-spacing:-0.02em; }
@@ -2366,6 +2364,7 @@
     slides[current].classList.remove('active');
     current = (idx + slides.length) % slides.length;
     slides[current].classList.add('active');
+    slides[current].scrollTop = 0;
     elapsed = 0;
     startTimer();
     if (current === 3) startSlide4Typewriter();
